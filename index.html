@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обзор игровых платформ</title>
+    <style>
+        :root {
+            --primary: #2a6496;
+            --secondary: #e67e22;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #27ae60;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .platform-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .platform-header {
+            background: linear-gradient(to right, #2a6496, #3a7bd5);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        .platform-logo {
+            height: 80px;
+            margin: 15px auto;
+            display: block;
+            object-fit: contain;
+        }
+        .platform-content {
+            padding: 20px;
+        }
+        .platform-feature {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .feature-title {
+            font-weight: bold;
+            color: var(--secondary);
+            min-width: 120px;
+        }
+        .more-btn {
+            display: block;
+            background: var(--success);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .more-btn:hover {
+            background: #2ecc71;
+        }
+        .payment-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .payment-icon {
+            width: 50px;
+            height: 30px;
+            object-fit: contain;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 3px;
+            background: white;
+        }
+        .category-title {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 900px) {
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="images/logo_1.jpeg" alt="Логотип сайта" style="height: 60px; margin-bottom: 15px;">
+            <h1>Лучшие игровые платформы</h1>
+            <p>Топовые площадки для развлечений</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="category-title">Популярные игровые платформы</div>
+        <div class="platform-grid">
+            <!-- Платформа 1 -->
+            <div class="platform-card">
+                <div class="platform-header">Платформа A</div>
+                <img src="images/logo_1.jpeg" alt="Логотип Платформы A" class="platform-logo">
+                <div class="platform-content">
+                    <div class="platform-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.8/10
+                    </div>
+                    <div class="platform-feature">
+                        <span class="feature-title">Игры:</span> 500+ вариантов
+                    </div>
+                    <div class="payment-icons">
+                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                    </div>
+                    <a href="/platform-a" class="more-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 2 -->
+            <div class="platform-card">
+                <div class="platform-header">Платформа B</div>
+                <img src="images/logo_2.jpeg" alt="Логотип Платформы B" class="platform-logo">
+                <div class="platform-content">
+                    <div class="platform-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.5/10
+                    </div>
+                    <div class="platform-feature">
+                        <span class="feature-title">Игры:</span> 700+ вариантов
+                    </div>
+                    <div class="payment-icons">
+                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                        <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
+                    </div>
+                    <a href="/platform-b" class="more-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 3 -->
+            <div class="platform-card">
+                <div class="platform-header">Платформа C</div>
+                <img src="images/logo_3.jpeg" alt="Логотип Платформы C" class="platform-logo">
+                <div class="platform-content">
+                    <div class="platform-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.7/10
+                    </div>
+                    <div class="platform-feature">
+                        <span class="feature-title">Игры:</span> 1000+ вариантов
+                    </div>
+                    <div class="payment-icons">
+                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                        <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                        <img src="images/Trustly.png" alt="Trustly" class="payment-icon">
+                    </div>
+                    <a href="/platform-c" class="more-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <div class="category-title">Платформы с игровыми автоматами</div>
+
+            <!-- Платформа 4 -->
+            <div class="platform-card">
+                <div class="platform-header">Платформа D</div>
+                <img src="images/logo_4.jpeg" alt="Логотип Платформы D" class="platform-logo">
+                <div class="platform-content">
+                    <div class="platform-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.4/10
+                    </div>
+                    <div class="platform-feature">
+                        <span class="feature-title">Автоматы:</span> 500+ вариантов
+                    </div>
+                    <div class="payment-icons">
+                        <img src="images/American Express.png" alt="American Express" class="payment-icon">
+                        <img src="images/Maestro.png" alt="Maestro" class="payment-icon">
+                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                    </div>
+                    <a href="/platform-d" class="more-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 5 -->
+            <div class="platform-card">
+                <div class="platform-header">Платформа E</div>
+                <img src="images/logo_5.jpeg" alt="Логотип Платформы E" class="platform-logo">
+                <div class="platform-content">
+                    <div class="platform-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.6/10
+                    </div>
+                    <div class="platform-feature">
+                        <span class="feature-title">Автоматы:</span> 1500+ вариантов
+                    </div>
+                    <div class="payment-icons">
+                        <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
+                        <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                        <img src="images/Zimpler.png" alt="Zimpler" class="payment-icon">
+                    </div>
+                    <a href="/platform-e" class="more-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 6 -->
+            <div class="platform-card">
+                <div class="platform-header">Платформа F</div>
+                <img src="images/logo_6.jpeg" alt="Логотип Платформы F" class="platform-logo">
+                <div class="platform-content">
+                    <div class="platform-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.3/10
+                    </div>
+                    <div class="platform-feature">
+                        <span class="feature-title">Автоматы:</span> 2000+ вариантов
+                    </div>
+                    <div class="payment-icons">
+                        <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
+                        <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
+                        <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                    </div>
+                    <a href="/platform-f" class="more-btn">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Информационный портал. Все права защищены.</p>
+            <p>Материалы предназначены для лиц старше 18 лет.</p>
+        </div>
+    </footer>
+</body>
+</html>
