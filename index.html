@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игровые платформы - Обзор</title>
+    <style>
+        :root {
+            --primary: #2a6496;
+            --secondary: #e67e22;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #27ae60;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .casino-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .casino-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .casino-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .casino-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            background: linear-gradient(to right, #2a6496, #3a7bd5);
+        }
+        .casino-logo {
+            height: 60px;
+            margin: 10px auto;
+            display: block;
+        }
+        .casino-content {
+            padding: 20px;
+        }
+        .casino-feature {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .feature-title {
+            font-weight: bold;
+            color: var(--secondary);
+            min-width: 120px;
+        }
+        .visit-btn {
+            display: block;
+            background: var(--success);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .visit-btn:hover {
+            background: #2ecc71;
+        }
+        .payment-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            object-fit: contain;
+        }
+        .category-title {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 1.8em;
+            margin: 30px 0 15px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 900px) {
+            .casino-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .casino-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Лучшие игровые платформы</h1>
+            <p>Топовые площадки для развлечений</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="category-title">Популярные платформы</div>
+        <div class="casino-grid">
+            <!-- Платформа 1 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа A</div>
+                <img src="platform1-logo.png" alt="Логотип Платформы A" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.8/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Игры:</span> 500+ вариантов
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Разнообразный контент
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-visa.png" alt="Visa" class="payment-icon">
+                        <img src="payment-mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="payment-skrill.png" alt="Skrill" class="payment-icon">
+                    </div>
+                    <a href="/platform-a" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 2 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа B</div>
+                <img src="platform2-logo.png" alt="Логотип Платформы B" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.5/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Игры:</span> 700+ вариантов
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Качественная графика
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-visa.png" alt="Visa" class="payment-icon">
+                        <img src="payment-neteller.png" alt="Neteller" class="payment-icon">
+                        <img src="payment-bitcoin.png" alt="Bitcoin" class="payment-icon">
+                    </div>
+                    <a href="/platform-b" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 3 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа C</div>
+                <img src="platform3-logo.png" alt="Логотип Платформы C" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.7/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Игры:</span> 1000+ вариантов
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Удобный интерфейс
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="payment-paypal.png" alt="PayPal" class="payment-icon">
+                        <img src="payment-litecoin.png" alt="Litecoin" class="payment-icon">
+                    </div>
+                    <a href="/platform-c" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <div class="category-title">Платформы с игровыми автоматами</div>
+
+            <!-- Платформа 4 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа D</div>
+                <img src="platform4-logo.png" alt="Логотип Платформы D" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.4/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Автоматы:</span> 500+ вариантов
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Тематические подборки
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-visa.png" alt="Visa" class="payment-icon">
+                        <img src="payment-skrill.png" alt="Skrill" class="payment-icon">
+                        <img src="payment-ethereum.png" alt="Ethereum" class="payment-icon">
+                    </div>
+                    <a href="/platform-d" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 5 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа E</div>
+                <img src="platform5-logo.png" alt="Логотип Платформы E" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.6/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Автоматы:</span> 1500+ вариантов
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Регулярные обновления
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="payment-neteller.png" alt="Neteller" class="payment-icon">
+                        <img src="payment-bitcoin.png" alt="Bitcoin" class="payment-icon">
+                    </div>
+                    <a href="/platform-e" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 6 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа F</div>
+                <img src="platform6-logo.png" alt="Логотип Платформы F" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.3/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Автоматы:</span> 2000+ вариантов
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Инновационные решения
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-visa.png" alt="Visa" class="payment-icon">
+                        <img src="payment-paypal.png" alt="PayPal" class="payment-icon">
+                        <img src="payment-dogecoin.png" alt="Dogecoin" class="payment-icon">
+                    </div>
+                    <a href="/platform-f" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <div class="category-title">Платформы с живыми дилерами</div>
+
+            <!-- Платформа 7 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа G</div>
+                <img src="platform7-logo.png" alt="Логотип Платформы G" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.5/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Формат:</span> Реальные дилеры
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Высокое качество трансляций
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="payment-skrill.png" alt="Skrill" class="payment-icon">
+                        <img src="payment-bitcoin.png" alt="Bitcoin" class="payment-icon">
+                    </div>
+                    <a href="/platform-g" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 8 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа H</div>
+                <img src="platform8-logo.png" alt="Логотип Платформы H" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.2/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Формат:</span> Азиатские игры
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Эксклюзивные столы
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-visa.png" alt="Visa" class="payment-icon">
+                        <img src="payment-neteller.png" alt="Neteller" class="payment-icon">
+                        <img src="payment-ethereum.png" alt="Ethereum" class="payment-icon">
+                    </div>
+                    <a href="/platform-h" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <!-- Платформа 9 -->
+            <div class="casino-card">
+                <div class="casino-header">Платформа I</div>
+                <img src="platform9-logo.png" alt="Логотип Платформы I" class="casino-logo">
+                <div class="casino-content">
+                    <div class="casino-feature">
+                        <span class="feature-title">Рейтинг:</span> 9.4/10
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Формат:</span> Игровые шоу
+                    </div>
+                    <div class="casino-feature">
+                        <span class="feature-title">Особенности:</span> Интерактивные элементы
+                    </div>
+                    <div class="payment-icons">
+                        <img src="payment-mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="payment-paypal.png" alt="PayPal" class="payment-icon">
+                        <img src="payment-litecoin.png" alt="Litecoin" class="payment-icon">
+                    </div>
+                    <a href="/platform-i" class="visit-btn">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Информационный портал об игровых платформах. Все права защищены.</p>
+            <p>Материалы предназначены для лиц старше 18 лет. Ответственность за использование информации лежит на посетителях сайта.</p>
+        </div>
+    </footer>
+</body>
+</html>
