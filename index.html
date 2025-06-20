@@ -74,17 +74,47 @@
         }
         .falling-item {
             position: absolute;
-            width: 50px;
-            height: 50px;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             opacity: 0.9;
             filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
+            z-index: 1;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        .coin {
             z-index: 3;
-            animation: float 8s linear infinite;
+            animation-name: float;
+            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
+        }
+        .dollar {
+            z-index: 2;
+            animation-name: float-dollar;
+            filter: drop-shadow(0 0 8px rgba(30, 180, 30, 0.5));
+        }
+        .diamond {
+            z-index: 2;
+            animation-name: float-diamond;
+            filter: drop-shadow(0 0 10px rgba(100, 200, 255, 0.6));
         }
         @keyframes float {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+            }
+        }
+        @keyframes float-dollar {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(0deg);
+            }
+        }
+        @keyframes float-diamond {
             0% {
                 transform: translateY(-100px) rotate(0deg);
             }
@@ -683,17 +713,24 @@
             'hero': {
                 image: 'images/coin.png',
                 count: 25,
-                sectionHeight: 600
+                sectionHeight: 600,
+                class: 'coin',
+                startPos: 0,
+                endPos: 600
             },
             'casino': {
                 image: 'images/dollar.png',
                 count: 20,
-                sectionHeight: null // Will be calculated
+                class: 'dollar',
+                startPos: 600,
+                endPos: document.getElementById('casino-section') ? document.getElementById('casino-section').offsetTop + document.getElementById('casino-section').offsetHeight : 1600
             },
             'live': {
                 image: 'images/diamond.png',
                 count: 15,
-                sectionHeight: null // Will be calculated
+                class: 'diamond',
+                startPos: document.getElementById('live-section') ? document.getElementById('live-section').offsetTop : 1600,
+                endPos: document.getElementById('live-section') ? document.getElementById('live-section').offsetTop + document.getElementById('live-section').offsetHeight : 2400
             }
         };
 
@@ -702,17 +739,13 @@
             const container = document.getElementById(`${sectionId}-animation`);
             if (!container) return;
             
-            // Calculate section height if not provided
-            const section = document.getElementById(`${sectionId}-section`);
-            const sectionHeight = config.sectionHeight || section.offsetHeight;
-            
             // Clear previous items
             container.innerHTML = '';
             
             // Create new items
             for (let i = 0; i < config.count; i++) {
                 const item = document.createElement('div');
-                item.className = 'falling-item';
+                item.className = `falling-item ${config.class}`;
                 
                 // Set image
                 item.style.backgroundImage = `url('${config.image}')`;
@@ -722,8 +755,8 @@
                 item.style.width = `${size}px`;
                 item.style.height = `${size}px`;
                 
-                // Random position - distribute across the section height
-                const startY = -size - (Math.random() * sectionHeight * 0.5);
+                // Random position
+                const startY = config.startPos - size - (Math.random() * 300);
                 const startX = Math.random() * 100;
                 
                 item.style.left = `${startX}%`;
@@ -731,7 +764,8 @@
                 
                 // Random animation duration
                 const duration = 5 + Math.random() * 10;
-                item.style.animationDuration = `${duration}s`;
+                const animationDuration = (config.endPos - startY) / 100;
+                item.style.animationDuration = `${animationDuration}s`;
                 
                 // Random delay (negative to start mid-animation)
                 const delay = Math.random() * -duration;
@@ -740,15 +774,29 @@
                 // Random sway animation for coins only
                 if (sectionId === 'hero' && Math.random() > 0.5) {
                     item.style.animationName = `float, sway`;
-                    item.style.animationDuration = `${duration}s, ${3 + Math.random() * 4}s`;
+                    item.style.animationDuration = `${animationDuration}s, ${3 + Math.random() * 4}s`;
                 }
                 
                 container.appendChild(item);
             }
         }
 
+        // Calculate section positions
+        function calculatePositions() {
+            const casinoSection = document.getElementById('casino-section');
+            const liveSection = document.getElementById('live-section');
+            
+            sectionsConfig.casino.startPos = 600; // Hero section height
+            sectionsConfig.casino.endPos = casinoSection ? casinoSection.offsetTop + casinoSection.offsetHeight : 1600;
+            
+            sectionsConfig.live.startPos = liveSection ? liveSection.offsetTop : 1600;
+            sectionsConfig.live.endPos = liveSection ? liveSection.offsetTop + liveSection.offsetHeight : 2400;
+        }
+
         // Initialize all animations
         function initAnimations() {
+            calculatePositions();
+            
             // Hero section (coins)
             createFallingItems('hero', sectionsConfig.hero);
             
@@ -761,6 +809,7 @@
 
         // Recreate animations on resize
         function handleResize() {
+            calculatePositions();
             initAnimations();
         }
 
