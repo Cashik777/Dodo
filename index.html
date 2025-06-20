@@ -21,6 +21,26 @@
             text-align: center;
             padding: 30px;
             background: linear-gradient(135deg, #1a1a3a, #0a0a1a);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coins {
+            position: absolute;
+            font-size: 20px;
+            animation: coinFall linear forwards;
+            z-index: 1;
+        }
+        
+        @keyframes coinFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
         
         .header h1 {
@@ -28,6 +48,8 @@
             font-size: 42px;
             text-transform: uppercase;
             letter-spacing: 3px;
+            position: relative;
+            z-index: 2;
         }
         
         .container {
@@ -64,17 +86,32 @@
             border-radius: 8px;
             padding: 20px;
             border: 1px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slot-machine {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 40px;
+            opacity: 0.3;
+            z-index: 1;
         }
         
         .casino-name {
             font-size: 20px;
             color: #d4af37;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
         
         .games-info, .highlights {
             margin-bottom: 10px;
             font-size: 14px;
+            position: relative;
+            z-index: 2;
         }
         
         .highlights {
@@ -84,6 +121,8 @@
         .payment {
             margin-top: 15px;
             color: #d4af37;
+            position: relative;
+            z-index: 2;
         }
         
         .explore-btn {
@@ -95,6 +134,13 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s;
+        }
+        
+        .explore-btn:hover {
+            transform: scale(1.05);
         }
         
         /* Animation Sections */
@@ -156,6 +202,8 @@
             display: flex;
             align-items: center;
             margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
         }
         
         .rating-number {
@@ -166,10 +214,27 @@
             font-weight: bold;
             margin-right: 10px;
         }
+        
+        .slots-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .slot-item {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
+    <div class="header" id="header">
         <h1>Premium Casino Collection</h1>
     </div>
     
@@ -179,25 +244,43 @@
             <div class="section-title">Luxury Live</div>
             <div class="casino-grid">
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">CasinoDays</div>
                     <div class="games-info"><strong>Games:</strong> 100+ Live Tables</div>
                     <div class="highlights"><strong>Highlights:</strong> 4K Streaming, VIP Rooms</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Mega Fortune</div>
+                        <div class="slot-item">Book of Dead</div>
+                        <div class="slot-item">Starburst</div>
+                    </div>
                     <div class="payment">VISA</div>
                     <button class="explore-btn">EXPLORE PLATFORM</button>
                 </div>
                 
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">Golden Tables</div>
                     <div class="games-info"><strong>Games:</strong> 80+ Live Games</div>
                     <div class="highlights"><strong>Highlights:</strong> Private Dealers, High Limits</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Gonzo's Quest</div>
+                        <div class="slot-item">Dead or Alive</div>
+                        <div class="slot-item">Bonanza</div>
+                    </div>
                     <div class="payment">VISA</div>
                     <button class="explore-btn">EXPLORE PLATFORM</button>
                 </div>
                 
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">Passage Live</div>
                     <div class="games-info"><strong>Games:</strong> 120+ Live Options</div>
                     <div class="highlights"><strong>Highlights:</strong> Celebrity Events, Concierge</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Reactoonz</div>
+                        <div class="slot-item">Jammin' Jars</div>
+                        <div class="slot-item">Big Bass Bonanza</div>
+                    </div>
                     <div class="payment">VISA</div>
                     <button class="explore-btn">EXPLORE PLATFORM</button>
                 </div>
@@ -209,25 +292,43 @@
             <div class="section-title">Polar Fortune</div>
             <div class="casino-grid">
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">LUXURY CASINO</div>
                     <div class="games-info"><strong>Games:</strong> 300+ Premium Games</div>
                     <div class="highlights"><strong>Highlights:</strong> High Roller Tables, Concierge</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Wheel of Fortune</div>
+                        <div class="slot-item">Cleopatra</div>
+                        <div class="slot-item">Diamond Mine</div>
+                    </div>
                     <div class="payment">VISA</div>
                     <button class="explore-btn">EXPLORE PLATFORM</button>
                 </div>
                 
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">Aurora Wins</div>
                     <div class="games-info"><strong>Games:</strong> 500+ Games</div>
                     <div class="highlights"><strong>Highlights:</strong> Progressive Jackpots, Live Events</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Mega Moolah</div>
+                        <div class="slot-item">Thunderstruck</div>
+                        <div class="slot-item">Wolf Gold</div>
+                    </div>
                     <div class="payment">VISA</div>
                     <button class="explore-btn">EXPLORE PLATFORM</button>
                 </div>
                 
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">JACKPOTCITY</div>
                     <div class="games-info"><strong>Games:</strong> 700+ Games Collection</div>
                     <div class="highlights"><strong>Highlights:</strong> Exclusive Tournaments, Mobile App</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Buffalo King</div>
+                        <div class="slot-item">Sweet Bonanza</div>
+                        <div class="slot-item">Gates of Olympus</div>
+                    </div>
                     <div class="payment">VISA</div>
                     <button class="explore-btn">EXPLORE PLATFORM</button>
                 </div>
@@ -255,27 +356,53 @@
                         <div class="rating-number">9.8</div>
                         <div class="casino-name">Royal Fortune</div>
                     </div>
+                    <div class="slots-container">
+                        <div class="slot-item">Divine Fortune</div>
+                        <div class="slot-item">Golden Goddess</div>
+                    </div>
+                    
                     <div class="rating">
                         <div class="rating-number">9.7</div>
                         <div class="casino-name">Northern Diamonds</div>
                     </div>
+                    <div class="slots-container">
+                        <div class="slot-item">Diamond Strike</div>
+                        <div class="slot-item">Diamond King</div>
+                    </div>
+                    
                     <div class="rating">
                         <div class="rating-number">9.6</div>
                         <div class="casino-name">Maple Gold</div>
                     </div>
+                    <div class="slots-container">
+                        <div class="slot-item">Golden Ticket</div>
+                        <div class="slot-item">Gold Party</div>
+                    </div>
                 </div>
                 
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">LeoVegas</div>
                     <div class="games-info"><strong>Games:</strong> 500+ Slots & Tables</div>
                     <div class="highlights"><strong>Highlights:</strong> VIP Program, Fast Payouts</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Book of Ra</div>
+                        <div class="slot-item">Sizzling Hot</div>
+                        <div class="slot-item">Lucky Lady's Charm</div>
+                    </div>
                     <div class="payment">VISA</div>
                 </div>
                 
                 <div class="casino-card">
+                    <div class="slot-machine">🎰</div>
                     <div class="casino-name">True North Casino</div>
                     <div class="games-info"><strong>Games:</strong> 400+ Slots, 50+ Tables</div>
                     <div class="highlights"><strong>Highlights:</strong> CAD Focused, Weekly Cashback</div>
+                    <div class="slots-container">
+                        <div class="slot-item">Mystery Joker</div>
+                        <div class="slot-item">Fire Joker</div>
+                        <div class="slot-item">Joker Pro</div>
+                    </div>
                     <div class="payment">VISA</div>
                 </div>
             </div>
@@ -283,6 +410,30 @@
     </div>
 
     <script>
+        // Coin animation in header
+        function createCoins() {
+            const container = document.getElementById('header');
+            const coins = ['🪙', '💰', '💲'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const coin = document.createElement('div');
+                    coin.className = 'coins';
+                    coin.textContent = coins[Math.floor(Math.random() * coins.length)];
+                    
+                    coin.style.left = `${Math.random() * 100}%`;
+                    const duration = 5 + Math.random() * 5;
+                    coin.style.animationDuration = `${duration}s`;
+                    
+                    container.appendChild(coin);
+                    
+                    setTimeout(() => {
+                        coin.remove();
+                    }, duration * 1000);
+                }, i * 300);
+            }
+        }
+        
         // Dollar rain animation
         function createDollarRain() {
             const container = document.getElementById('goldRain');
@@ -293,14 +444,12 @@
                 dollar.className = 'dollar';
                 dollar.textContent = dollars[Math.floor(Math.random() * dollars.length)];
                 
-                // Random position and animation duration
                 dollar.style.left = `${Math.random() * 100}%`;
                 const duration = 3 + Math.random() * 2;
                 dollar.style.animationDuration = `${duration}s`;
                 
                 container.appendChild(dollar);
                 
-                // Remove element after animation completes
                 setTimeout(() => {
                     dollar.remove();
                 }, duration * 1000);
@@ -317,26 +466,26 @@
                 diamond.className = 'diamond';
                 diamond.textContent = diamonds[Math.floor(Math.random() * diamonds.length)];
                 
-                // Random position and animation duration
                 diamond.style.left = `${Math.random() * 100}%`;
                 const duration = 4 + Math.random() * 3;
                 diamond.style.animationDuration = `${duration}s`;
                 
                 container.appendChild(diamond);
                 
-                // Remove element after animation completes
                 setTimeout(() => {
                     diamond.remove();
                 }, duration * 1000);
             }
         }
         
-        // Run animations every 2 seconds
+        // Run animations
+        setInterval(createCoins, 2000);
         setInterval(createDollarRain, 2000);
         setInterval(createDiamondFall, 2000);
         
         // Initial animations
         window.onload = function() {
+            createCoins();
             createDollarRain();
             createDiamondFall();
         };
