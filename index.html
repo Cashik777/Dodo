@@ -75,11 +75,11 @@
         
         /* Анимационные элементы */
         .animation-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 600px;
             pointer-events: none;
             z-index: 2;
             overflow: hidden;
@@ -103,7 +103,7 @@
         
         @keyframes float-coin {
             0% { transform: translateY(-100px) rotate(0); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+            100% { transform: translateY(600px) rotate(360deg); }
         }
         
         .hero-content {
@@ -447,14 +447,12 @@
 
     <!-- Геро секция с монетками -->
     <section class="hero" id="hero-section">
+        <div class="animation-container" id="coin-animation"></div>
         <div class="hero-content">
             <h1>Luxury Canadian Gaming Experience</h1>
             <p>Discover the most exclusive platforms for sophisticated players</p>
         </div>
     </section>
-
-    <!-- Контейнер для анимаций -->
-    <div class="animation-container" id="main-animation"></div>
 
     <!-- Секция с 6 казино -->
     <section class="section bg-medium" id="casinos-section">
@@ -731,94 +729,41 @@
     </footer>
 
     <script>
-        // Конфигурация анимаций (только монетки)
-        const animationsConfig = {
-            coin: {
-                image: 'images/coin.png',
-                count: 25,
-                section: 'hero-section',
-                maxBottom: document.getElementById('casinos-section')?.offsetTop || 1200
-            }
-        };
-
-        // Создание падающих элементов
-        function createFallingElements() {
-            const container = document.getElementById('main-animation');
+        // Создание падающих монеток (однократное)
+        function createCoins() {
+            const container = document.getElementById('coin-animation');
             if (!container) return;
             
             container.innerHTML = '';
             
-            // Только монетки в геро-секции
-            createItems('coin', container);
-        }
-
-        function createItems(type, container) {
-            const config = animationsConfig[type];
-            const section = document.getElementById(config.section);
-            if (!section) return;
-            
-            const sectionRect = section.getBoundingClientRect();
-            const startY = sectionRect.top + window.scrollY;
-            
-            for (let i = 0; i < config.count; i++) {
+            for (let i = 0; i < 25; i++) {
                 const element = document.createElement('div');
-                element.className = `falling-item ${type}`;
-                element.style.backgroundImage = `url('${config.image}')`;
+                element.className = 'falling-item coin';
+                element.style.backgroundImage = 'url(\'images/coin.png\')';
                 
                 const size = 20 + Math.random() * 40;
                 element.style.width = `${size}px`;
                 element.style.height = `${size}px`;
                 
                 const posX = Math.random() * 100;
-                const posY = startY - size - Math.random() * 300;
+                const posY = -size - Math.random() * 100;
                 
                 element.style.left = `${posX}%`;
                 element.style.top = `${posY}px`;
                 
-                const distance = config.maxBottom - posY;
-                const duration = 5 + Math.random() * 5 + (distance / 100);
+                const duration = 3 + Math.random() * 4;
                 element.style.animationDuration = `${duration}s`;
                 
-                const delay = -Math.random() * duration;
+                const delay = Math.random() * 2;
                 element.style.animationDelay = `${delay}s`;
                 
                 container.appendChild(element);
             }
         }
 
-        // Оптимизированный обработчик скролла
-        let lastScrollPos = window.scrollY;
-        let scrollTimeout;
-        
-        function handleScroll() {
-            const currentScrollPos = window.scrollY;
-            
-            // Обновляем только при значительном скролле
-            if (Math.abs(currentScrollPos - lastScrollPos) > 50) {
-                lastScrollPos = currentScrollPos;
-                
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(createFallingElements, 100);
-            }
-        }
-
-        // Инициализация с задержкой для стабильности
+        // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                createFallingElements();
-                window.addEventListener('resize', createFallingElements);
-                window.addEventListener('scroll', handleScroll);
-            }, 300);
-        });
-
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+            createCoins();
         });
     </script>
 </body>
