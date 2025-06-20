@@ -50,6 +50,7 @@
             align-items: center;
         }
         
+        /* Геро секция с сокровищами */
         .hero {
             height: 600px;
             display: flex;
@@ -72,15 +73,16 @@
             z-index: 1;
         }
         
+        /* Контейнеры для анимаций */
         .animation-container {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: 2;
             pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
         }
         
         .falling-item {
@@ -181,6 +183,10 @@
         
         .bg-medium {
             background: var(--card-bg);
+        }
+        
+        .bg-footer {
+            background: var(--dark);
         }
         
         .section-title {
@@ -347,10 +353,9 @@
         }
         
         footer {
-            background: var(--dark);
+            position: relative;
             color: white;
             padding: 70px 0 30px;
-            position: relative;
         }
         
         .footer-content {
@@ -472,18 +477,19 @@
         </div>
     </header>
 
-    <!-- Геро секция с монетками -->
+    <!-- Геро секция с сокровищами (монетки) -->
     <section class="hero" id="hero-section">
-        <div class="animation-container" id="hero-animation"></div>
         <div class="hero-content">
             <h1>Luxury Canadian Gaming Experience</h1>
             <p>Discover the most exclusive platforms for sophisticated players</p>
         </div>
     </section>
 
-    <!-- Секция с монетками (6 казино) -->
-    <section class="section bg-dark" id="coins-section">
-        <div class="animation-container" id="coins-animation"></div>
+    <!-- Основной контент -->
+    <div class="animation-container" id="main-animation"></div>
+
+    <!-- Секция с долларами (6 казино) -->
+    <section class="section bg-medium" id="dollars-section">
         <div class="container section-content">
             <h2 class="section-title">Premium Casino Collection</h2>
             <div class="platform-grid">
@@ -629,9 +635,8 @@
         </div>
     </section>
 
-    <!-- Секция с долларами (3 казино) -->
-    <section class="section bg-medium" id="dollars-section">
-        <div class="animation-container" id="dollars-animation"></div>
+    <!-- Секция с алмазами (3 казино) -->
+    <section class="section bg-dark" id="diamonds-section">
         <div class="container section-content">
             <h2 class="section-title">Elite Live Casinos</h2>
             <div class="platform-grid">
@@ -709,7 +714,7 @@
     </section>
 
     <!-- Футер -->
-    <footer>
+    <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
@@ -759,76 +764,86 @@
 
     <script>
         // Конфигурация анимаций
-        const animationsConfig = [
-            {
-                id: 'hero-animation',
-                type: 'coin',
+        const animationsConfig = {
+            coin: {
+                image: 'images/coin.png',
                 count: 25,
-                sectionId: 'hero-section'
+                section: 'hero-section',
+                maxBottom: 0
             },
-            {
-                id: 'coins-animation',
-                type: 'coin',
+            dollar: {
+                image: 'images/dollar.png',
                 count: 30,
-                sectionId: 'coins-section'
+                section: 'dollars-section',
+                maxBottom: document.getElementById('diamonds-section') ? 
+                    document.getElementById('diamonds-section').offsetTop : 2000
             },
-            {
-                id: 'dollars-animation',
-                type: 'dollar',
+            diamond: {
+                image: 'images/diamond.png',
                 count: 20,
-                sectionId: 'dollars-section'
+                section: 'diamonds-section',
+                maxBottom: document.querySelector('footer') ? 
+                    document.querySelector('footer').offsetTop : 3000
             }
-        ];
-
-        // Изображения для элементов
-        const elementImages = {
-            coin: 'images/coin.png',
-            dollar: 'images/dollar.png',
-            diamond: 'images/diamond.png'
         };
 
         // Создание падающих элементов
         function createFallingElements() {
-            animationsConfig.forEach(config => {
-                const container = document.getElementById(config.id);
-                const section = document.getElementById(config.sectionId);
+            const container = document.getElementById('main-animation');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            // Создаем монетки только для геро-секции
+            createItems('coin', container);
+            
+            // Создаем доллары для секции с долларами
+            createItems('dollar', container);
+            
+            // Создаем алмазы для секции с алмазами
+            createItems('diamond', container);
+        }
+
+        function createItems(type, container) {
+            const config = animationsConfig[type];
+            const section = document.getElementById(config.section);
+            if (!section) return;
+            
+            const sectionRect = section.getBoundingClientRect();
+            const startY = sectionRect.top + window.scrollY;
+            const endY = startY + sectionRect.height;
+            
+            for (let i = 0; i < config.count; i++) {
+                const element = document.createElement('div');
+                element.className = `falling-item ${type}`;
+                element.style.backgroundImage = `url('${config.image}')`;
                 
-                if (!container || !section) return;
+                const size = 20 + Math.random() * 40;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
                 
-                container.innerHTML = '';
+                const posX = Math.random() * 100;
+                const posY = startY - size - Math.random() * 300;
                 
-                const sectionRect = section.getBoundingClientRect();
-                const startY = sectionRect.top;
-                const endY = sectionRect.bottom;
+                element.style.left = `${posX}%`;
+                element.style.top = `${posY}px`;
                 
-                for (let i = 0; i < config.count; i++) {
-                    const element = document.createElement('div');
-                    element.className = `falling-item ${config.type}`;
-                    element.style.backgroundImage = `url('${elementImages[config.type]}')`;
-                    
-                    const size = 20 + Math.random() * 40;
-                    element.style.width = `${size}px`;
-                    element.style.height = `${size}px`;
-                    
-                    const posX = Math.random() * 100;
-                    const posY = startY - size - Math.random() * 300;
-                    
-                    element.style.left = `${posX}%`;
-                    element.style.top = `${posY}px`;
-                    
-                    const duration = 5 + Math.random() * 5 + ((endY - posY) / 100);
-                    element.style.animationDuration = `${duration}s`;
-                    
-                    const delay = -Math.random() * duration;
-                    element.style.animationDelay = `${delay}s`;
-                    
-                    if (config.type === 'coin') {
-                        element.style.animationName = `float-coin, sway`;
-                    }
-                    
-                    container.appendChild(element);
+                // Рассчитываем длительность анимации в зависимости от расстояния
+                const distance = config.maxBottom - posY;
+                const duration = 5 + Math.random() * 5 + (distance / 100);
+                element.style.animationDuration = `${duration}s`;
+                
+                // Задержка для разного времени начала
+                const delay = -Math.random() * duration;
+                element.style.animationDelay = `${delay}s`;
+                
+                // Для монеток добавляем вращение
+                if (type === 'coin') {
+                    element.style.animationName = `float-coin, sway`;
                 }
-            });
+                
+                container.appendChild(element);
+            }
         }
 
         // Обновление анимаций при скролле и ресайзе
