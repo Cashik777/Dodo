@@ -53,7 +53,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: url('images/hero-bg.jpg') center/cover no-repeat;
+            background: url('images/treasure-bg.jpg') center/cover no-repeat;
         }
         .hero::before {
             content: '';
@@ -87,7 +87,7 @@
         }
         @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg) translateX(0);
+                transform: translateY(-100px) rotate(0deg) translateX(0);
                 opacity: 0;
             }
             10% {
@@ -97,7 +97,7 @@
                 opacity: 0.9;
             }
             100% {
-                transform: translateY(-150px) rotate(360deg) translateX(20px);
+                transform: translateY(100vh) rotate(360deg) translateX(20px);
                 opacity: 0;
             }
         }
@@ -397,7 +397,7 @@
 <body>
     <header>
         <div class="container header-content">
-            <img src="images/GoldenVault.ca.jpg" alt="GoldenVault.ca" class="footer-logo">
+            <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
         </div>
     </header>
 
@@ -643,7 +643,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="images/GoldenVault.ca.jpg" alt="GoldenVault.ca" class="footer-logo">
+                    <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
                         <img src="images/trust-badge1.png" alt="SSL Secure" class="trust-badge">
@@ -704,13 +704,13 @@
                 coin.style.width = `${size}px`;
                 coin.style.height = `${size}px`;
                 
-                // Random position at bottom (starting off-screen)
+                // Random position at top (starting off-screen)
                 coin.style.left = `${Math.random() * 100}%`;
-                coin.style.bottom = `-${size}px`;
+                coin.style.top = `-${size}px`;
                 
                 // Random animation duration and delay
-                const duration = 15 + Math.random() * 15;
-                const delay = Math.random() * 10;
+                const duration = 10 + Math.random() * 10;
+                const delay = Math.random() * 5;
                 coin.style.animation = `float ${duration}s linear ${delay}s infinite`;
                 
                 // Random sway animation
