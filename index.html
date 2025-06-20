@@ -45,60 +45,48 @@
             justify-content: center;
             align-items: center;
         }
-        .hero {
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        
+        /* Секции с анимациями */
+        .animation-section {
             position: relative;
             overflow: hidden;
-            background: url('images/treasure-bg.jpg') center/cover no-repeat;
         }
-        .hero::before {
-            content: '';
+        .animation-container {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
-            z-index: 1;
-        }
-        .coin-animation {
-            position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 2;
+            z-index: 1; /* Предпоследний слой - над фоном, но под контентом */
         }
+        
         .falling-item {
             position: absolute;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
-            z-index: 1;
+            opacity: 0.8;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
         }
         .coin {
-            z-index: 3;
-            animation-name: float;
+            z-index: 1;
+            animation-name: float-coin;
             filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         .dollar {
-            z-index: 2;
+            z-index: 1;
             animation-name: float-dollar;
             filter: drop-shadow(0 0 8px rgba(30, 180, 30, 0.5));
         }
         .diamond {
-            z-index: 2;
+            z-index: 1;
             animation-name: float-diamond;
             filter: drop-shadow(0 0 10px rgba(100, 200, 255, 0.6));
         }
-        @keyframes float {
+        
+        @keyframes float-coin {
             0% {
                 transform: translateY(-100px) rotate(0deg);
             }
@@ -122,16 +110,40 @@
                 transform: translateY(calc(100vh + 100px)) rotate(0deg);
             }
         }
-        @keyframes sway {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
+        
+        /* Геро секция */
+        .hero {
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('images/treasure-bg.jpg') center/cover no-repeat;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
+            z-index: 0; /* Фон */
         }
         .hero-content {
             position: relative;
-            z-index: 4;
+            z-index: 2; /* Контент поверх анимаций */
             width: 100%;
             padding: 0 20px;
         }
+        
+        /* Основной контент */
+        .content {
+            position: relative;
+            z-index: 2; /* Контент поверх анимаций */
+        }
+        
+        /* Остальные стили остаются без изменений */
         h1 {
             font-size: 3.8rem;
             margin: 0 0 25px;
@@ -422,243 +434,106 @@
         </div>
     </header>
 
-    <section class="hero" id="hero-section">
-        <div class="coin-animation" id="hero-animation"></div>
+    <!-- Блок 1: Геро секция -->
+    <section class="hero animation-section" id="hero-section">
+        <div class="animation-container" id="hero-animation"></div>
         <div class="hero-content">
             <h1>Luxury Canadian Gaming Experience</h1>
             <p>Discover the most exclusive platforms for sophisticated players</p>
         </div>
     </section>
 
-    <section id="casino-section">
-        <div class="container">
-            <h2 class="section-title">Premium Casino Selection</h2>
-            <div class="coin-animation" id="casino-animation"></div>
+    <!-- Блок 2: Монетки -->
+    <section class="animation-section" id="coins-section">
+        <div class="animation-container" id="coins-animation"></div>
+        <div class="container content">
+            <h2 class="section-title">Premium Coin Collection</h2>
             <div class="platform-grid">
-                <!-- Platform 1 -->
+                <!-- Контент блока с монетками -->
                 <div class="platform-card">
                     <div class="rating">9.8</div>
-                    <div class="platform-header">Royal Fortune</div>
-                    <img src="images/logo_1.jpeg" alt="Royal Fortune" class="platform-logo">
+                    <div class="platform-header">Golden Coins</div>
+                    <img src="images/logo_1.jpeg" alt="Golden Coins" class="platform-logo">
                     <div class="platform-content">
                         <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">500+ Slots & Tables</span>
+                            <span class="feature-title">Collection:</span>
+                            <span class="feature-value">Rare Canadian coins</span>
                         </div>
                         <div class="platform-feature">
                             <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">VIP Program, Fast Payouts</span>
+                            <span class="feature-value">Gold & Silver editions</span>
                         </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        </div>
-                        <a href="/royal-fortune" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 2 -->
-                <div class="platform-card">
-                    <div class="rating">9.6</div>
-                    <div class="platform-header">Northern Diamonds</div>
-                    <img src="images/logo_2.jpeg" alt="Northern Diamonds" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">650+ Games</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Daily Bonuses, 24/7 Support</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                            <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
-                        </div>
-                        <a href="/northern-diamonds" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 3 -->
-                <div class="platform-card">
-                    <div class="rating">9.5</div>
-                    <div class="platform-header">Maple Gold</div>
-                    <img src="images/logo_3.jpeg" alt="Maple Gold" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">400+ Slots, 50+ Tables</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">CAD Focused, Weekly Cashback</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                            <img src="images/Ethereum.png" alt="Ethereum" class="payment-icon">
-                        </div>
-                        <a href="/maple-gold" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 4 -->
-                <div class="platform-card">
-                    <div class="rating">9.4</div>
-                    <div class="platform-header">Polar Fortune</div>
-                    <img src="images/logo_4.jpeg" alt="Polar Fortune" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">300+ Premium Games</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">High Roller Tables, Concierge</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                        </div>
-                        <a href="/polar-fortune" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 5 -->
-                <div class="platform-card">
-                    <div class="rating">9.3</div>
-                    <div class="platform-header">Aurora Wins</div>
-                    <img src="images/logo_5.jpeg" alt="Aurora Wins" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">550+ Games</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Progressive Jackpots, Live Events</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        </div>
-                        <a href="/aurora-wins" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 6 -->
-                <div class="platform-card">
-                    <div class="rating">9.2</div>
-                    <div class="platform-header">True North Casino</div>
-                    <img src="images/logo_6.jpeg" alt="True North Casino" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">700+ Games Collection</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Exclusive Tournaments, Mobile App</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                        </div>
-                        <a href="/true-north" class="visit-btn">Explore Platform</a>
+                        <a href="/golden-coins" class="visit-btn">View Collection</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section style="background: var(--card-bg);" id="live-section">
-        <div class="container">
-            <h2 class="section-title">Elite Live Casinos</h2>
-            <div class="coin-animation" id="live-animation"></div>
+    <!-- Блок 3: Доллары -->
+    <section class="animation-section" style="background: var(--card-bg);" id="dollars-section">
+        <div class="animation-container" id="dollars-animation"></div>
+        <div class="container content">
+            <h2 class="section-title">Exclusive Dollar Games</h2>
             <div class="platform-grid">
-                <!-- Platform 7 -->
+                <!-- Контент блока с долларами -->
                 <div class="platform-card">
                     <div class="rating">9.7</div>
-                    <div class="platform-header">Luxury Live</div>
-                    <img src="images/logo_7.jpeg" alt="Luxury Live" class="platform-logo">
+                    <div class="platform-header">Dollar Fortune</div>
+                    <img src="images/logo_2.jpeg" alt="Dollar Fortune" class="platform-logo">
                     <div class="platform-content">
                         <div class="platform-feature">
                             <span class="feature-title">Games:</span>
-                            <span class="feature-value">100+ Live Tables</span>
+                            <span class="feature-value">High-stakes dollar tables</span>
                         </div>
                         <div class="platform-feature">
                             <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">4K Streaming, VIP Rooms</span>
+                            <span class="feature-value">VIP dollar rewards</span>
                         </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        </div>
-                        <a href="/luxury-live" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 8 -->
-                <div class="platform-card">
-                    <div class="rating">9.5</div>
-                    <div class="platform-header">Golden Tables</div>
-                    <img src="images/logo_8.jpeg" alt="Golden Tables" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">80+ Live Games</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Private Dealers, High Limits</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                            <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                        </div>
-                        <a href="/golden-tables" class="visit-btn">Explore Platform</a>
-                    </div>
-                </div>
-
-                <!-- Platform 9 -->
-                <div class="platform-card">
-                    <div class="rating">9.4</div>
-                    <div class="platform-header">Prestige Live</div>
-                    <img src="images/logo_9.jpeg" alt="Prestige Live" class="platform-logo">
-                    <div class="platform-content">
-                        <div class="platform-feature">
-                            <span class="feature-title">Games:</span>
-                            <span class="feature-value">120+ Live Options</span>
-                        </div>
-                        <div class="platform-feature">
-                            <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Celebrity Events, Concierge</span>
-                        </div>
-                        <div class="payment-icons">
-                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                            <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
-                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        </div>
-                        <a href="/prestige-live" class="visit-btn">Explore Platform</a>
+                        <a href="/dollar-fortune" class="visit-btn">Play Now</a>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Блок 4: Алмазы -->
+    <section class="animation-section" id="diamonds-section">
+        <div class="animation-container" id="diamonds-animation"></div>
+        <div class="container content">
+            <h2 class="section-title">Diamond VIP Club</h2>
+            <div class="platform-grid">
+                <!-- Контент блока с алмазами -->
+                <div class="platform-card">
+                    <div class="rating">9.9</div>
+                    <div class="platform-header">Diamond Elite</div>
+                    <img src="images/logo_3.jpeg" alt="Diamond Elite" class="platform-logo">
+                    <div class="platform-content">
+                        <div class="platform-feature">
+                            <span class="feature-title">Benefits:</span>
+                            <span class="feature-value">Exclusive diamond rewards</span>
+                        </div>
+                        <div class="platform-feature">
+                            <span class="feature-title">Highlights:</span>
+                            <span class="feature-value">Private diamond tables</span>
+                        </div>
+                        <a href="/diamond-elite" class="visit-btn">Join Club</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Остальные блоки -->
+    <section style="background: var(--card-bg);">
+        <div class="container content">
+            <h2 class="section-title">More Luxury Experiences</h2>
+            <!-- Дополнительный контент -->
         </div>
     </section>
 
     <footer>
-        <div class="container">
+        <div class="container content">
             <div class="footer-content">
                 <div class="footer-about">
                     <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
@@ -675,7 +550,6 @@
                         <li><a href="#">British Columbia</a></li>
                         <li><a href="#">Alberta</a></li>
                         <li><a href="#">Quebec</a></li>
-                        <li><a href="#">New Players Guide</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -685,19 +559,7 @@
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Responsible Gaming</a></li>
                     </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Payment Methods</h3>
-                    <div class="payment-icons">
-                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                        <img src="images/interac.png" alt="Interac" class="payment-icon">
-                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                        <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
-                    </div>
                 </div>
             </div>
             <div class="copyright">
@@ -708,120 +570,106 @@
     </footer>
 
     <script>
-        // Configuration for different sections
-        const sectionsConfig = {
-            'hero': {
-                image: 'images/coin.png',
-                count: 25,
-                sectionHeight: 600,
-                class: 'coin',
-                startPos: 0,
-                endPos: 600
-            },
-            'casino': {
-                image: 'images/dollar.png',
-                count: 20,
-                class: 'dollar',
-                startPos: 600,
-                endPos: document.getElementById('casino-section') ? document.getElementById('casino-section').offsetTop + document.getElementById('casino-section').offsetHeight : 1600
-            },
-            'live': {
-                image: 'images/diamond.png',
+        // Конфигурация анимаций для каждого блока
+        const animationsConfig = [
+            {
+                id: 'hero',
+                type: 'coin',
                 count: 15,
-                class: 'diamond',
-                startPos: document.getElementById('live-section') ? document.getElementById('live-section').offsetTop : 1600,
-                endPos: document.getElementById('live-section') ? document.getElementById('live-section').offsetTop + document.getElementById('live-section').offsetHeight : 2400
+                section: 'hero-section'
+            },
+            {
+                id: 'coins',
+                type: 'coin',
+                count: 20,
+                section: 'coins-section'
+            },
+            {
+                id: 'dollars',
+                type: 'dollar',
+                count: 18,
+                section: 'dollars-section'
+            },
+            {
+                id: 'diamonds',
+                type: 'diamond',
+                count: 12,
+                section: 'diamonds-section'
             }
+        ];
+
+        // Изображения для элементов
+        const elementImages = {
+            coin: 'images/coin.png',
+            dollar: 'images/dollar.png',
+            diamond: 'images/diamond.png'
         };
 
-        // Create falling items for a specific section
-        function createFallingItems(sectionId, config) {
-            const container = document.getElementById(`${sectionId}-animation`);
-            if (!container) return;
+        // Создание падающих элементов
+        function createFallingElements(config) {
+            const container = document.getElementById(`${config.id}-animation`);
+            const section = document.getElementById(config.section);
             
-            // Clear previous items
+            if (!container || !section) return;
+            
+            // Очищаем предыдущие элементы
             container.innerHTML = '';
             
-            // Create new items
+            // Создаем новые элементы
             for (let i = 0; i < config.count; i++) {
-                const item = document.createElement('div');
-                item.className = `falling-item ${config.class}`;
+                const element = document.createElement('div');
+                element.className = `falling-item ${config.type}`;
+                element.style.backgroundImage = `url('${elementImages[config.type]}')`;
                 
-                // Set image
-                item.style.backgroundImage = `url('${config.image}')`;
-                
-                // Random size
+                // Случайный размер
                 const size = 20 + Math.random() * 40;
-                item.style.width = `${size}px`;
-                item.style.height = `${size}px`;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
                 
-                // Random position
-                const startY = config.startPos - size - (Math.random() * 300);
+                // Начальная позиция (выше видимой области)
+                const startY = -size - Math.random() * 200;
                 const startX = Math.random() * 100;
+                element.style.left = `${startX}%`;
+                element.style.top = `${startY}px`;
                 
-                item.style.left = `${startX}%`;
-                item.style.top = `${startY}px`;
+                // Длительность анимации (зависит от высоты секции)
+                const duration = 5 + Math.random() * 10 + (section.offsetHeight / 100);
+                element.style.animationDuration = `${duration}s`;
                 
-                // Random animation duration
-                const duration = 5 + Math.random() * 10;
-                const animationDuration = (config.endPos - startY) / 100;
-                item.style.animationDuration = `${animationDuration}s`;
+                // Задержка для разного времени начала
+                const delay = -Math.random() * duration;
+                element.style.animationDelay = `${delay}s`;
                 
-                // Random delay (negative to start mid-animation)
-                const delay = Math.random() * -duration;
-                item.style.animationDelay = `${delay}s`;
-                
-                // Random sway animation for coins only
-                if (sectionId === 'hero' && Math.random() > 0.5) {
-                    item.style.animationName = `float, sway`;
-                    item.style.animationDuration = `${animationDuration}s, ${3 + Math.random() * 4}s`;
+                // Для монеток добавляем вращение
+                if (config.type === 'coin') {
+                    element.style.animationName = `float-coin, sway`;
                 }
                 
-                container.appendChild(item);
+                container.appendChild(element);
             }
         }
 
-        // Calculate section positions
-        function calculatePositions() {
-            const casinoSection = document.getElementById('casino-section');
-            const liveSection = document.getElementById('live-section');
-            
-            sectionsConfig.casino.startPos = 600; // Hero section height
-            sectionsConfig.casino.endPos = casinoSection ? casinoSection.offsetTop + casinoSection.offsetHeight : 1600;
-            
-            sectionsConfig.live.startPos = liveSection ? liveSection.offsetTop : 1600;
-            sectionsConfig.live.endPos = liveSection ? liveSection.offsetTop + liveSection.offsetHeight : 2400;
-        }
-
-        // Initialize all animations
+        // Инициализация всех анимаций
         function initAnimations() {
-            calculatePositions();
-            
-            // Hero section (coins)
-            createFallingItems('hero', sectionsConfig.hero);
-            
-            // Casino section (dollars)
-            createFallingItems('casino', sectionsConfig.casino);
-            
-            // Live section (diamonds)
-            createFallingItems('live', sectionsConfig.live);
+            animationsConfig.forEach(config => {
+                createFallingElements(config);
+            });
         }
 
-        // Recreate animations on resize
+        // Пересчет при изменении размера окна
         function handleResize() {
-            calculatePositions();
             initAnimations();
         }
 
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        // Запуск при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
             initAnimations();
             window.addEventListener('resize', handleResize);
         });
 
-        // Smooth scroll for anchor links
+        // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
