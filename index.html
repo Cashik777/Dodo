@@ -101,29 +101,9 @@
             filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         
-        .dollar {
-            animation-name: float-dollar;
-            filter: drop-shadow(0 0 8px rgba(30, 180, 30, 0.5));
-        }
-        
-        .diamond {
-            animation-name: float-diamond;
-            filter: drop-shadow(0 0 10px rgba(100, 200, 255, 0.6));
-        }
-        
         @keyframes float-coin {
             0% { transform: translateY(-100px) rotate(0); }
             100% { transform: translateY(100vh) rotate(360deg); }
-        }
-        
-        @keyframes float-dollar {
-            0% { transform: translateY(-100px); }
-            100% { transform: translateY(100vh); }
-        }
-        
-        @keyframes float-diamond {
-            0% { transform: translateY(-100px) scale(1); }
-            100% { transform: translateY(100vh) scale(1.3); }
         }
         
         .hero-content {
@@ -476,7 +456,7 @@
     <!-- Контейнер для анимаций -->
     <div class="animation-container" id="main-animation"></div>
 
-    <!-- Секция с 6 казино (доллары только в 3-ем) -->
+    <!-- Секция с 6 казино -->
     <section class="section bg-medium" id="casinos-section">
         <div class="container section-content">
             <h2 class="section-title">Premium Casino Collection</h2>
@@ -527,8 +507,8 @@
                     </div>
                 </div>
 
-                <!-- Казино 3 (единственное с долларами) -->
-                <div class="platform-card" id="dollar-casino">
+                <!-- Казино 3 -->
+                <div class="platform-card">
                     <div class="rating">9.6</div>
                     <div class="platform-header">Maple Gold</div>
                     <img src="images/logo_3.jpeg" alt="Maple Gold" class="platform-logo">
@@ -623,7 +603,7 @@
         </div>
     </section>
 
-    <!-- Секция с 3 казино (алмазы) -->
+    <!-- Секция с 3 казино -->
     <section class="section bg-dark" id="diamonds-section">
         <div class="container section-content">
             <h2 class="section-title">Elite Live Casinos</h2>
@@ -751,25 +731,13 @@
     </footer>
 
     <script>
-        // Конфигурация анимаций
+        // Конфигурация анимаций (только монетки)
         const animationsConfig = {
             coin: {
                 image: 'images/coin.png',
                 count: 25,
                 section: 'hero-section',
                 maxBottom: document.getElementById('casinos-section')?.offsetTop || 1200
-            },
-            dollar: {
-                image: 'images/dollar.png',
-                count: 15,
-                section: 'dollar-casino',
-                maxBottom: document.getElementById('diamonds-section')?.offsetTop || 2000
-            },
-            diamond: {
-                image: 'images/diamond.png',
-                count: 20,
-                section: 'diamonds-section',
-                maxBottom: document.querySelector('footer')?.offsetTop || 3000
             }
         };
 
@@ -780,14 +748,8 @@
             
             container.innerHTML = '';
             
-            // Монетки только в геро-секции
+            // Только монетки в геро-секции
             createItems('coin', container);
-            
-            // Доллары только в 3-ем казино
-            createItems('dollar', container);
-            
-            // Алмазы в секции с 7-9 казино
-            createItems('diamond', container);
         }
 
         function createItems(type, container) {
