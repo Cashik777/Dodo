@@ -73,7 +73,7 @@
             z-index: 1;
         }
         
-        /* Контейнеры для анимаций */
+        /* Анимационные элементы */
         .animation-container {
             position: fixed;
             top: 0;
@@ -112,30 +112,18 @@
         }
         
         @keyframes float-coin {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-            }
-            100% {
-                transform: translateY(calc(100vh + 100px)) rotate(360deg);
-            }
+            0% { transform: translateY(-100px) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
         
         @keyframes float-dollar {
-            0% {
-                transform: translateY(-100px);
-            }
-            100% {
-                transform: translateY(calc(100vh + 100px));
-            }
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
         }
         
         @keyframes float-diamond {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-            }
-            100% {
-                transform: translateY(calc(100vh + 100px)) rotate(0deg);
-            }
+            0% { transform: translateY(-100px) scale(1); }
+            100% { transform: translateY(100vh) scale(1.3); }
         }
         
         .hero-content {
@@ -477,7 +465,7 @@
         </div>
     </header>
 
-    <!-- Геро секция с сокровищами (монетки) -->
+    <!-- Геро секция с монетками -->
     <section class="hero" id="hero-section">
         <div class="hero-content">
             <h1>Luxury Canadian Gaming Experience</h1>
@@ -485,11 +473,11 @@
         </div>
     </section>
 
-    <!-- Основной контент -->
+    <!-- Контейнер для анимаций -->
     <div class="animation-container" id="main-animation"></div>
 
-    <!-- Секция 1 (монетки) -->
-    <section class="section bg-medium" id="section1">
+    <!-- Секция с 6 казино (доллары только в 3-ем) -->
+    <section class="section bg-medium" id="casinos-section">
         <div class="container section-content">
             <h2 class="section-title">Premium Casino Collection</h2>
             <div class="platform-grid">
@@ -540,7 +528,7 @@
                 </div>
 
                 <!-- Казино 3 (единственное с долларами) -->
-                <div class="platform-card">
+                <div class="platform-card" id="dollar-casino">
                     <div class="rating">9.6</div>
                     <div class="platform-header">Maple Gold</div>
                     <img src="images/logo_3.jpeg" alt="Maple Gold" class="platform-logo">
@@ -635,8 +623,8 @@
         </div>
     </section>
 
-    <!-- Секция 2 (алмазы) -->
-    <section class="section bg-dark" id="section2">
+    <!-- Секция с 3 казино (алмазы) -->
+    <section class="section bg-dark" id="diamonds-section">
         <div class="container section-content">
             <h2 class="section-title">Elite Live Casinos</h2>
             <div class="platform-grid">
@@ -768,17 +756,20 @@
             coin: {
                 image: 'images/coin.png',
                 count: 25,
-                sections: ['hero-section', 'section1']
+                section: 'hero-section',
+                maxBottom: document.getElementById('casinos-section')?.offsetTop || 1200
             },
             dollar: {
                 image: 'images/dollar.png',
                 count: 15,
-                sections: ['section1'] // Только для секции с Maple Gold (казино 3)
+                section: 'dollar-casino',
+                maxBottom: document.getElementById('diamonds-section')?.offsetTop || 2000
             },
             diamond: {
                 image: 'images/diamond.png',
                 count: 20,
-                sections: ['section2']
+                section: 'diamonds-section',
+                maxBottom: document.querySelector('footer')?.offsetTop || 3000
             }
         };
 
@@ -789,37 +780,24 @@
             
             container.innerHTML = '';
             
-            // Создаем элементы для каждой конфигурации
-            Object.keys(animationsConfig).forEach(type => {
-                const config = animationsConfig[type];
-                
-                config.sections.forEach(sectionId => {
-                    const section = document.getElementById(sectionId);
-                    if (!section) return;
-                    
-                    const sectionRect = section.getBoundingClientRect();
-                    const startY = sectionRect.top + window.scrollY;
-                    const endY = startY + sectionRect.height;
-                    
-                    // Особый случай для долларов - только в казино 3
-                    if (type === 'dollar' && sectionId === 'section1') {
-                        const casino3 = document.querySelector('#section1 .platform-card:nth-child(3)');
-                        if (!casino3) return;
-                        
-                        const casinoRect = casino3.getBoundingClientRect();
-                        const casinoStartY = casinoRect.top + window.scrollY;
-                        const casinoEndY = casinoStartY + casinoRect.height;
-                        
-                        createItems(type, config, container, casinoStartY, casinoEndY);
-                        return;
-                    }
-                    
-                    createItems(type, config, container, startY, endY);
-                });
-            });
+            // Монетки только в геро-секции
+            createItems('coin', container);
+            
+            // Доллары только в 3-ем казино
+            createItems('dollar', container);
+            
+            // Алмазы в секции с 7-9 казино
+            createItems('diamond', container);
         }
 
-        function createItems(type, config, container, startY, endY) {
+        function createItems(type, container) {
+            const config = animationsConfig[type];
+            const section = document.getElementById(config.section);
+            if (!section) return;
+            
+            const sectionRect = section.getBoundingClientRect();
+            const startY = sectionRect.top + window.scrollY;
+            
             for (let i = 0; i < config.count; i++) {
                 const element = document.createElement('div');
                 element.className = `falling-item ${type}`;
@@ -835,54 +813,39 @@
                 element.style.left = `${posX}%`;
                 element.style.top = `${posY}px`;
                 
-                const distance = endY - posY + 300;
+                const distance = config.maxBottom - posY;
                 const duration = 5 + Math.random() * 5 + (distance / 100);
                 element.style.animationDuration = `${duration}s`;
                 
                 const delay = -Math.random() * duration;
                 element.style.animationDelay = `${delay}s`;
                 
-                if (type === 'coin') {
-                    element.style.animationName = `float-coin, sway`;
-                }
-                
                 container.appendChild(element);
             }
         }
 
-        // Оптимизированное обновление анимаций
-        let isUpdating = false;
-        function updateAnimations() {
-            if (isUpdating) return;
+        // Оптимизированный обработчик скролла
+        let lastScrollPos = window.scrollY;
+        let scrollTimeout;
+        
+        function handleScroll() {
+            const currentScrollPos = window.scrollY;
             
-            isUpdating = true;
-            requestAnimationFrame(() => {
-                createFallingElements();
-                isUpdating = false;
-            });
+            // Обновляем только при значительном скролле
+            if (Math.abs(currentScrollPos - lastScrollPos) > 50) {
+                lastScrollPos = currentScrollPos;
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(createFallingElements, 100);
+            }
         }
 
         // Инициализация с задержкой для стабильности
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 createFallingElements();
-                window.addEventListener('resize', updateAnimations);
-                
-                // Оптимизированный обработчик скролла
-                let lastScrollPos = window.scrollY;
-                let scrollTimeout;
-                
-                window.addEventListener('scroll', () => {
-                    const currentScrollPos = window.scrollY;
-                    
-                    // Обновляем только при значительном скролле
-                    if (Math.abs(currentScrollPos - lastScrollPos) > 50) {
-                        lastScrollPos = currentScrollPos;
-                        
-                        clearTimeout(scrollTimeout);
-                        scrollTimeout = setTimeout(updateAnimations, 100);
-                    }
-                });
+                window.addEventListener('resize', createFallingElements);
+                window.addEventListener('scroll', handleScroll);
             }, 300);
         });
 
