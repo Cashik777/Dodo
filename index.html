@@ -25,31 +25,11 @@
             overflow: hidden;
         }
         
-        .coins {
-            position: absolute;
-            font-size: 20px;
-            animation: coinFall linear forwards;
-            z-index: 1;
-        }
-        
-        @keyframes coinFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
         .header h1 {
             color: #d4af37;
             font-size: 42px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            position: relative;
-            z-index: 2;
         }
         
         .container {
@@ -63,6 +43,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
         }
         
         .section-title {
@@ -90,28 +71,15 @@
             overflow: hidden;
         }
         
-        .slot-machine {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            font-size: 40px;
-            opacity: 0.3;
-            z-index: 1;
-        }
-        
         .casino-name {
             font-size: 20px;
             color: #d4af37;
             margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
         }
         
         .games-info, .highlights {
             margin-bottom: 10px;
             font-size: 14px;
-            position: relative;
-            z-index: 2;
         }
         
         .highlights {
@@ -121,8 +89,6 @@
         .payment {
             margin-top: 15px;
             color: #d4af37;
-            position: relative;
-            z-index: 2;
         }
         
         .explore-btn {
@@ -134,13 +100,6 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
-            position: relative;
-            z-index: 2;
-            transition: transform 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: scale(1.05);
         }
         
         /* Animation Sections */
@@ -202,8 +161,6 @@
             display: flex;
             align-items: center;
             margin-bottom: 5px;
-            position: relative;
-            z-index: 2;
         }
         
         .rating-number {
@@ -215,13 +172,41 @@
             margin-right: 10px;
         }
         
+        /* Coin animation in header */
+        .coins {
+            position: absolute;
+            font-size: 20px;
+            animation: coinFall linear forwards;
+            z-index: 1;
+        }
+        
+        @keyframes coinFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Slot machine icon */
+        .slot-machine {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 40px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        /* Slots container */
         .slots-container {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 15px;
-            position: relative;
-            z-index: 2;
         }
         
         .slot-item {
@@ -239,7 +224,7 @@
     </div>
     
     <div class="container">
-        <!-- Block 1: Luxury Live -->
+        <!-- Block 1: Luxury Live (оставить как есть) -->
         <div class="section">
             <div class="section-title">Luxury Live</div>
             <div class="casino-grid">
@@ -287,7 +272,7 @@
             </div>
         </div>
         
-        <!-- Block 2: Polar Fortune -->
+        <!-- Block 2: Polar Fortune (оставить как есть) -->
         <div class="section">
             <div class="section-title">Polar Fortune</div>
             <div class="casino-grid">
@@ -335,13 +320,13 @@
             </div>
         </div>
         
-        <!-- Block 3: Golden Rain (Dollars) -->
+        <!-- Block 3: Golden Rain (только доллары) -->
         <div class="section animation-section gold-rain" id="goldRain">
             <h2 class="animation-title">Golden Rain</h2>
             <p>Exclusive Currency Flow - USD Only</p>
         </div>
         
-        <!-- Block 4: Diamond Cascade -->
+        <!-- Block 4: Diamond Cascade (только алмазы) -->
         <div class="section animation-section diamond-fall" id="diamondFall">
             <h2 class="animation-title">Diamond Cascade</h2>
             <p>Elite Diamond Tier - Pure Luxury</p>
@@ -434,7 +419,7 @@
             }
         }
         
-        // Dollar rain animation
+        // Dollar rain animation (Block 3)
         function createDollarRain() {
             const container = document.getElementById('goldRain');
             const dollars = ['💰', '💵', '💲'];
@@ -456,7 +441,7 @@
             }
         }
         
-        // Diamond fall animation
+        // Diamond fall animation (Block 4)
         function createDiamondFall() {
             const container = document.getElementById('diamondFall');
             const diamonds = ['💎', '🔶', '♦️'];
