@@ -46,8 +46,28 @@
         
         .header-content {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+        }
+        
+        /* Стили для логотипа */
+        .logo-link {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-link:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.7));
+        }
+        
+        .logo-link:active {
+            transform: scale(0.95);
+        }
+        
+        .footer-logo {
+            height: 50px;
+            transition: all 0.3s ease;
         }
         
         /* Геро секция с сокровищами */
@@ -333,12 +353,6 @@
             margin-bottom: 50px;
         }
         
-        .footer-logo {
-            height: 50px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        
         .footer-about p {
             opacity: 0.8;
             line-height: 1.8;
@@ -508,8 +522,6 @@
         .nav-menu {
             display: flex;
             gap: 20px;
-            position: absolute;
-            right: 20px;
         }
         
         .nav-menu a {
@@ -531,10 +543,11 @@
             .hero {
                 height: 500px;
             }
+            .header-content {
+                flex-direction: column;
+            }
             .nav-menu {
-                position: static;
-                justify-content: center;
-                margin-top: 15px;
+                margin-top: 20px;
             }
         }
         
@@ -563,7 +576,9 @@
 <body>
     <header>
         <div class="container header-content">
-            <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+            <a href="#" class="logo-link" id="home-link">
+                <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+            </a>
             <div class="nav-menu">
                 <a href="#" data-page="about">About Us</a>
                 <a href="#" data-page="contact">Contact</a>
@@ -814,7 +829,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+                    <a href="#" class="logo-link">
+                        <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+                    </a>
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
                         <img src="images/trust-badge1.png" alt="SSL Secure" class="trust-badge">
@@ -1054,7 +1071,6 @@
                     initContactForm();
                 }
             } else {
-                // Если шаблон не найден, загружаем главную страницу
                 loadHomePage();
             }
         }
@@ -1071,13 +1087,47 @@
                     </div>
                 </section>
 
-                <!-- Вставляем секции с казино -->
                 <section class="section bg-medium" id="casinos-section">
-                    <!-- ... (все секции с казино) ... -->
+                    <div class="container section-content">
+                        <h2 class="section-title">Premium Casino Collection</h2>
+                        <div class="platform-grid">
+                            <!-- Казино 1 -->
+                            <div class="platform-card">
+                                <div class="rating">9.8</div>
+                                <div class="platform-header">Royal Fortune</div>
+                                <img src="images/logo_1.jpeg" alt="Royal Fortune" class="platform-logo">
+                                <div class="platform-content">
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">500+ Slots & Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">VIP Program, Fast Payouts</span>
+                                    </div>
+                                    <div class="payment-icons">
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Все остальные казино 2-6 -->
+                            <!-- ... -->
+                        </div>
+                    </div>
                 </section>
 
                 <section class="section bg-dark" id="diamonds-section">
-                    <!-- ... (все секции с казино) ... -->
+                    <div class="container section-content">
+                        <h2 class="section-title">Elite Live Casinos</h2>
+                        <div class="platform-grid">
+                            <!-- Казино 7-9 -->
+                            <!-- ... -->
+                        </div>
+                    </div>
                 </section>
             `;
             
@@ -1092,7 +1142,6 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Здесь можно добавить AJAX-запрос для отправки формы
                     document.getElementById('successMessage').style.display = 'block';
                     form.reset();
                     
@@ -1105,44 +1154,28 @@
 
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем, есть ли hash в URL (для прямых ссылок)
-            const hash = window.location.hash.substring(1);
-            const validPages = ['about', 'contact', 'privacy', 'terms'];
-            
-            if (validPages.includes(hash)) {
-                loadPage(hash);
-            } else {
-                createCoins();
-            }
+            createCoins();
             
             // Обработка кликов по ссылкам
             document.querySelectorAll('a[data-page]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const pageId = this.getAttribute('data-page');
-                    window.location.hash = pageId;
                     loadPage(pageId);
                 });
             });
             
-            // Обработка кликов по логотипу для возврата на главную
-            document.querySelector('.footer-logo').addEventListener('click', function(e) {
+            // Обработка кликов по логотипу
+            document.getElementById('home-link').addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location.hash = '';
                 loadHomePage();
             });
-        });
-
-        // Обработка изменения hash в URL
-        window.addEventListener('hashchange', function() {
-            const hash = window.location.hash.substring(1);
-            const validPages = ['about', 'contact', 'privacy', 'terms'];
             
-            if (validPages.includes(hash)) {
-                loadPage(hash);
-            } else {
+            // Обработка кликов по логотипу в футере
+            document.querySelector('footer .logo-link').addEventListener('click', function(e) {
+                e.preventDefault();
                 loadHomePage();
-            }
+            });
         });
     </script>
 </body>
