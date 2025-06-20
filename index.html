@@ -17,6 +17,8 @@
             --text-light: #ffffff;
             --overlay: rgba(12, 27, 50, 0.85);
         }
+        
+        /* Базовые стили */
         body {
             font-family: 'Playfair Display', 'Montserrat', serif;
             line-height: 1.7;
@@ -26,31 +28,82 @@
             padding: 0;
             overflow-x: hidden;
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+        
+        /* Стили для header */
         header {
             background: var(--overlay);
             color: white;
             padding: 25px 0;
             position: relative;
-            z-index: 100;
+            z-index: 1000;
             backdrop-filter: blur(5px);
             border-bottom: 1px solid rgba(201, 162, 39, 0.3);
         }
+        
         .header-content {
             display: flex;
             justify-content: center;
             align-items: center;
         }
         
-        /* Секции с анимациями */
-        .animation-section {
+        /* Стили для hero-секции */
+        .hero {
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            background: url('images/treasure-bg.jpg') center/cover no-repeat;
         }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 3.8rem;
+            margin: 0 0 25px;
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: var(--text-light);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.5px;
+        }
+        
+        /* Анимационные элементы */
         .animation-container {
             position: absolute;
             top: 0;
@@ -58,7 +111,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 1; /* Предпоследний слой - над фоном, но под контентом */
+            z-index: 2;
+            pointer-events: none;
         }
         
         .falling-item {
@@ -69,19 +123,20 @@
             opacity: 0.8;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            z-index: 2;
         }
+        
         .coin {
-            z-index: 1;
             animation-name: float-coin;
             filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
+        
         .dollar {
-            z-index: 1;
             animation-name: float-dollar;
             filter: drop-shadow(0 0 8px rgba(30, 180, 30, 0.5));
         }
+        
         .diamond {
-            z-index: 1;
             animation-name: float-diamond;
             filter: drop-shadow(0 0 10px rgba(100, 200, 255, 0.6));
         }
@@ -94,14 +149,16 @@
                 transform: translateY(calc(100vh + 100px)) rotate(360deg);
             }
         }
+        
         @keyframes float-dollar {
             0% {
-                transform: translateY(-100px) rotate(0deg);
+                transform: translateY(-100px);
             }
             100% {
-                transform: translateY(calc(100vh + 100px)) rotate(0deg);
+                transform: translateY(calc(100vh + 100px));
             }
         }
+        
         @keyframes float-diamond {
             0% {
                 transform: translateY(-100px) rotate(0deg);
@@ -111,64 +168,52 @@
             }
         }
         
-        /* Геро секция */
-        .hero {
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Стили для секций */
+        .section {
+            position: relative;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .bg-dark {
+            background: var(--bg-color);
+        }
+        
+        .bg-medium {
+            background: var(--card-bg);
+        }
+        
+        .section-title {
             text-align: center;
-            background: url('images/treasure-bg.jpg') center/cover no-repeat;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
-            z-index: 0; /* Фон */
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2; /* Контент поверх анимаций */
-            width: 100%;
-            padding: 0 20px;
-        }
-        
-        /* Основной контент */
-        .content {
-            position: relative;
-            z-index: 2; /* Контент поверх анимаций */
-        }
-        
-        /* Остальные стили остаются без изменений */
-        h1 {
-            font-size: 3.8rem;
-            margin: 0 0 25px;
+            font-size: 2.5rem;
             color: var(--secondary);
+            margin-bottom: 50px;
+            position: relative;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            line-height: 1.2;
         }
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            color: var(--text-light);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-            letter-spacing: 0.5px;
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
         }
+        
+        /* Стили для карточек */
         .platform-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
             margin: 60px 0;
         }
+        
         .platform-card {
             background: var(--card-bg);
             border-radius: 12px;
@@ -178,10 +223,12 @@
             position: relative;
             border: 1px solid rgba(201, 162, 39, 0.15);
         }
+        
         .platform-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 18px 42px rgba(0,0,0,0.25);
         }
+        
         .platform-card::before {
             content: '';
             position: absolute;
@@ -191,6 +238,7 @@
             height: 4px;
             background: linear-gradient(to right, var(--secondary), var(--accent));
         }
+        
         .platform-header {
             background: var(--card-bg);
             color: var(--secondary);
@@ -200,6 +248,7 @@
             font-size: 1.5rem;
             border-bottom: 1px solid rgba(201, 162, 39, 0.1);
         }
+        
         .platform-logo {
             height: 80px;
             margin: 20px auto;
@@ -208,17 +257,21 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
             transition: transform 0.3s;
         }
+        
         .platform-card:hover .platform-logo {
             transform: scale(1.05);
         }
+        
         .platform-content {
             padding: 25px;
         }
+        
         .platform-feature {
             margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
+        
         .feature-title {
             font-weight: 600;
             color: var(--secondary);
@@ -226,10 +279,12 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
         }
+        
         .feature-value {
             flex: 1;
             font-weight: 500;
         }
+        
         .visit-btn {
             display: block;
             background: linear-gradient(to right, var(--secondary), var(--accent));
@@ -248,17 +303,20 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
         }
+        
         .visit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
             background: linear-gradient(to right, #d4af37, #b58e2b);
         }
+        
         .payment-icons {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin: 20px 0;
         }
+        
         .payment-icon {
             width: 50px;
             height: 32px;
@@ -270,9 +328,11 @@
             border: 1px solid rgba(201, 162, 39, 0.2);
             transition: transform 0.3s;
         }
+        
         .payment-icon:hover {
             transform: scale(1.1);
         }
+        
         .rating {
             display: inline-flex;
             align-items: center;
@@ -291,54 +351,34 @@
             border: 3px solid var(--card-bg);
             z-index: 2;
         }
-        section {
-            padding: 80px 0;
-            position: relative;
-        }
-        section:nth-child(odd) {
-            background: var(--bg-color);
-        }
-        section:nth-child(even) {
-            background: var(--card-bg);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 50px;
-            position: relative;
-            font-weight: 700;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 15px auto 0;
-        }
+        
+        /* Футер */
         footer {
             background: var(--dark);
             color: white;
             padding: 70px 0 30px;
             position: relative;
         }
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 50px;
         }
+        
         .footer-logo {
             height: 50px;
             margin-bottom: 20px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
+        
         .footer-about p {
             opacity: 0.8;
             line-height: 1.8;
             font-size: 15px;
         }
+        
         .footer-links h3 {
             font-size: 1.2rem;
             margin-bottom: 20px;
@@ -346,6 +386,7 @@
             padding-bottom: 10px;
             color: var(--secondary);
         }
+        
         .footer-links h3::after {
             content: '';
             position: absolute;
@@ -355,23 +396,28 @@
             height: 2px;
             background: var(--secondary);
         }
+        
         .footer-links ul {
             list-style: none;
             padding: 0;
         }
+        
         .footer-links li {
             margin-bottom: 12px;
         }
+        
         .footer-links a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: all 0.3s;
             font-size: 15px;
         }
+        
         .footer-links a:hover {
             color: var(--secondary);
             padding-left: 5px;
         }
+        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -380,6 +426,7 @@
             font-size: 14px;
             opacity: 0.7;
         }
+        
         .trust-badges {
             display: flex;
             justify-content: center;
@@ -387,21 +434,19 @@
             margin-top: 40px;
             flex-wrap: wrap;
         }
+        
         .trust-badge {
             height: 60px;
             opacity: 0.9;
             transition: all 0.3s;
         }
+        
         .trust-badge:hover {
             opacity: 1;
             transform: translateY(-3px);
         }
-        .luxury-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-            margin: 40px 0;
-            border: none;
-        }
+        
+        /* Адаптивность */
         @media (max-width: 992px) {
             h1 {
                 font-size: 3rem;
@@ -410,6 +455,7 @@
                 height: 500px;
             }
         }
+        
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.4rem;
@@ -434,49 +480,52 @@
         </div>
     </header>
 
-    <!-- Блок 1: Геро секция -->
-    <section class="hero animation-section" id="hero-section">
-        <div class="animation-container" id="hero-animation"></div>
+    <!-- Секция 1: Геро -->
+    <section class="hero" id="section1">
+        <div class="animation-container" id="animation1"></div>
         <div class="hero-content">
             <h1>Luxury Canadian Gaming Experience</h1>
             <p>Discover the most exclusive platforms for sophisticated players</p>
         </div>
     </section>
 
-    <!-- Блок 2: Монетки -->
-    <section class="animation-section" id="coins-section">
-        <div class="animation-container" id="coins-animation"></div>
-        <div class="container content">
+    <!-- Секция 2: Монетки -->
+    <section class="section bg-dark" id="section2">
+        <div class="animation-container" id="animation2"></div>
+        <div class="container section-content">
             <h2 class="section-title">Premium Coin Collection</h2>
             <div class="platform-grid">
-                <!-- Контент блока с монетками -->
                 <div class="platform-card">
                     <div class="rating">9.8</div>
-                    <div class="platform-header">Golden Coins</div>
+                    <div class="platform-header">Golden Coins Casino</div>
                     <img src="images/logo_1.jpeg" alt="Golden Coins" class="platform-logo">
                     <div class="platform-content">
                         <div class="platform-feature">
-                            <span class="feature-title">Collection:</span>
-                            <span class="feature-value">Rare Canadian coins</span>
+                            <span class="feature-title">Games:</span>
+                            <span class="feature-value">500+ Slots & Tables</span>
                         </div>
                         <div class="platform-feature">
                             <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Gold & Silver editions</span>
+                            <span class="feature-value">VIP Coin Rewards</span>
                         </div>
-                        <a href="/golden-coins" class="visit-btn">View Collection</a>
+                        <div class="payment-icons">
+                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                        </div>
+                        <a href="#" class="visit-btn">Explore Platform</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Блок 3: Доллары -->
-    <section class="animation-section" style="background: var(--card-bg);" id="dollars-section">
-        <div class="animation-container" id="dollars-animation"></div>
-        <div class="container content">
-            <h2 class="section-title">Exclusive Dollar Games</h2>
+    <!-- Секция 3: Доллары -->
+    <section class="section bg-medium" id="section3">
+        <div class="animation-container" id="animation3"></div>
+        <div class="container section-content">
+            <h2 class="section-title">Dollar High Rollers</h2>
             <div class="platform-grid">
-                <!-- Контент блока с долларами -->
                 <div class="platform-card">
                     <div class="rating">9.7</div>
                     <div class="platform-header">Dollar Fortune</div>
@@ -484,56 +533,83 @@
                     <div class="platform-content">
                         <div class="platform-feature">
                             <span class="feature-title">Games:</span>
-                            <span class="feature-value">High-stakes dollar tables</span>
+                            <span class="feature-value">300+ High-Stakes</span>
                         </div>
                         <div class="platform-feature">
                             <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">VIP dollar rewards</span>
+                            <span class="feature-value">Exclusive Dollar Tables</span>
                         </div>
-                        <a href="/dollar-fortune" class="visit-btn">Play Now</a>
+                        <div class="payment-icons">
+                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                        </div>
+                        <a href="#" class="visit-btn">Play Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Блок 4: Алмазы -->
-    <section class="animation-section" id="diamonds-section">
-        <div class="animation-container" id="diamonds-animation"></div>
-        <div class="container content">
+    <!-- Секция 4: Алмазы -->
+    <section class="section bg-dark" id="section4">
+        <div class="animation-container" id="animation4"></div>
+        <div class="container section-content">
             <h2 class="section-title">Diamond VIP Club</h2>
             <div class="platform-grid">
-                <!-- Контент блока с алмазами -->
                 <div class="platform-card">
                     <div class="rating">9.9</div>
                     <div class="platform-header">Diamond Elite</div>
                     <img src="images/logo_3.jpeg" alt="Diamond Elite" class="platform-logo">
                     <div class="platform-content">
                         <div class="platform-feature">
-                            <span class="feature-title">Benefits:</span>
-                            <span class="feature-value">Exclusive diamond rewards</span>
+                            <span class="feature-title">Games:</span>
+                            <span class="feature-value">150+ Exclusive</span>
                         </div>
                         <div class="platform-feature">
                             <span class="feature-title">Highlights:</span>
-                            <span class="feature-value">Private diamond tables</span>
+                            <span class="feature-value">Private Diamond Rooms</span>
                         </div>
-                        <a href="/diamond-elite" class="visit-btn">Join Club</a>
+                        <div class="payment-icons">
+                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                            <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                        </div>
+                        <a href="#" class="visit-btn">Join Club</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Остальные блоки -->
-    <section style="background: var(--card-bg);">
-        <div class="container content">
+    <!-- Дополнительные секции -->
+    <section class="section bg-medium">
+        <div class="container section-content">
             <h2 class="section-title">More Luxury Experiences</h2>
-            <!-- Дополнительный контент -->
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="rating">9.6</div>
+                    <div class="platform-header">Platinum Lounge</div>
+                    <img src="images/logo_4.jpeg" alt="Platinum Lounge" class="platform-logo">
+                    <div class="platform-content">
+                        <div class="platform-feature">
+                            <span class="feature-title">Games:</span>
+                            <span class="feature-value">400+ Premium</span>
+                        </div>
+                        <div class="platform-feature">
+                            <span class="feature-title">Highlights:</span>
+                            <span class="feature-value">24/7 Concierge</span>
+                        </div>
+                        <a href="#" class="visit-btn">Explore Lounge</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Футер -->
     <footer>
-        <div class="container content">
+        <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
                     <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
@@ -570,100 +646,91 @@
     </footer>
 
     <script>
-        // Конфигурация анимаций для каждого блока
-        const animationsConfig = [
+        // Конфигурация анимаций
+        const animations = [
             {
-                id: 'hero',
-                type: 'coin',
-                count: 15,
-                section: 'hero-section'
-            },
-            {
-                id: 'coins',
+                id: 'animation1',
                 type: 'coin',
                 count: 20,
-                section: 'coins-section'
+                sectionId: 'section1'
             },
             {
-                id: 'dollars',
+                id: 'animation2',
+                type: 'coin',
+                count: 25,
+                sectionId: 'section2'
+            },
+            {
+                id: 'animation3',
                 type: 'dollar',
                 count: 18,
-                section: 'dollars-section'
+                sectionId: 'section3'
             },
             {
-                id: 'diamonds',
+                id: 'animation4',
                 type: 'diamond',
-                count: 12,
-                section: 'diamonds-section'
+                count: 15,
+                sectionId: 'section4'
             }
         ];
 
         // Изображения для элементов
-        const elementImages = {
+        const images = {
             coin: 'images/coin.png',
             dollar: 'images/dollar.png',
             diamond: 'images/diamond.png'
         };
 
         // Создание падающих элементов
-        function createFallingElements(config) {
-            const container = document.getElementById(`${config.id}-animation`);
-            const section = document.getElementById(config.section);
-            
-            if (!container || !section) return;
-            
-            // Очищаем предыдущие элементы
-            container.innerHTML = '';
-            
-            // Создаем новые элементы
-            for (let i = 0; i < config.count; i++) {
-                const element = document.createElement('div');
-                element.className = `falling-item ${config.type}`;
-                element.style.backgroundImage = `url('${elementImages[config.type]}')`;
+        function createFallingElements() {
+            animations.forEach(anim => {
+                const container = document.getElementById(anim.id);
+                const section = document.getElementById(anim.sectionId);
                 
-                // Случайный размер
-                const size = 20 + Math.random() * 40;
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
+                if (!container || !section) return;
                 
-                // Начальная позиция (выше видимой области)
-                const startY = -size - Math.random() * 200;
-                const startX = Math.random() * 100;
-                element.style.left = `${startX}%`;
-                element.style.top = `${startY}px`;
+                container.innerHTML = '';
                 
-                // Длительность анимации (зависит от высоты секции)
-                const duration = 5 + Math.random() * 10 + (section.offsetHeight / 100);
-                element.style.animationDuration = `${duration}s`;
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop;
                 
-                // Задержка для разного времени начала
-                const delay = -Math.random() * duration;
-                element.style.animationDelay = `${delay}s`;
-                
-                // Для монеток добавляем вращение
-                if (config.type === 'coin') {
-                    element.style.animationName = `float-coin, sway`;
+                for (let i = 0; i < anim.count; i++) {
+                    const element = document.createElement('div');
+                    element.className = `falling-item ${anim.type}`;
+                    element.style.backgroundImage = `url('${images[anim.type]}')`;
+                    
+                    const size = 20 + Math.random() * 40;
+                    element.style.width = `${size}px`;
+                    element.style.height = `${size}px`;
+                    
+                    const startY = sectionTop - size - Math.random() * 300;
+                    const startX = Math.random() * 100;
+                    element.style.left = `${startX}%`;
+                    element.style.top = `${startY}px`;
+                    
+                    const duration = 5 + Math.random() * 5 + (sectionHeight / 100);
+                    element.style.animationDuration = `${duration}s`;
+                    
+                    const delay = -Math.random() * duration;
+                    element.style.animationDelay = `${delay}s`;
+                    
+                    if (anim.type === 'coin') {
+                        element.style.animationName = `float-coin, sway`;
+                    }
+                    
+                    container.appendChild(element);
                 }
-                
-                container.appendChild(element);
-            }
-        }
-
-        // Инициализация всех анимаций
-        function initAnimations() {
-            animationsConfig.forEach(config => {
-                createFallingElements(config);
             });
         }
 
-        // Пересчет при изменении размера окна
+        // Обновление анимаций при ресайзе
         function handleResize() {
-            initAnimations();
+            createFallingElements();
         }
 
-        // Запуск при загрузке страницы
+        // Инициализация
         document.addEventListener('DOMContentLoaded', () => {
-            initAnimations();
+            createFallingElements();
             window.addEventListener('resize', handleResize);
         });
 
