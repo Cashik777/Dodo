@@ -768,3 +768,347 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Canadian Gaming 2025 | GoldenVault.ca</title>
+    <style>
+        /* Все предыдущие стили остаются без изменений */
+        /* Добавляем новые стили для информационных страниц */
+        
+        .info-page {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .info-page h2 {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .info-page h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-page p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .info-page ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .info-page li {
+            margin-bottom: 10px;
+        }
+        
+        .contact-form {
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+        }
+        
+        .success-message {
+            display: none;
+            background: rgba(201, 162, 39, 0.1);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border-left: 4px solid var(--secondary);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header остается без изменений -->
+    <header>
+        <div class="container header-content">
+            <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+        </div>
+    </header>
+
+    <!-- Основное содержимое (будет заменяться JavaScript) -->
+    <main id="main-content">
+        <!-- По умолчанию показываем главную страницу -->
+        <section class="hero" id="hero-section">
+            <div class="animation-container" id="coin-animation"></div>
+            <div class="hero-content">
+                <h1>Luxury Canadian Gaming Experience</h1>
+                <p>Discover the most exclusive platforms for sophisticated players</p>
+            </div>
+        </section>
+
+        <!-- Секции с казино остаются без изменений -->
+        <!-- ... -->
+    </main>
+
+    <!-- Футер остается без изменений -->
+    <footer class="bg-footer">
+        <!-- ... -->
+    </footer>
+
+    <!-- Шаблоны для информационных страниц -->
+    <template id="about-template">
+        <div class="info-page">
+            <h2>About GoldenVault.ca</h2>
+            <p>Welcome to GoldenVault.ca, Canada's premier guide to luxury gaming experiences since 2015. We are dedicated to providing sophisticated players with the most comprehensive and reliable information about high-end online gaming platforms.</p>
+            
+            <h3>Our Mission</h3>
+            <p>Our mission is to curate the finest selection of premium online casinos, offering our users an unparalleled gaming experience with exclusive bonuses, VIP treatment, and the highest standards of security and fairness.</p>
+            
+            <h3>Our Team</h3>
+            <p>Our team consists of gaming industry veterans with over 50 years of combined experience. We meticulously review each platform to ensure it meets our strict criteria for excellence:</p>
+            <ul>
+                <li>Game quality and variety</li>
+                <li>Security and licensing</li>
+                <li>Payment processing speed</li>
+                <li>Customer service excellence</li>
+                <li>VIP and high roller benefits</li>
+            </ul>
+            
+            <h3>Why Trust Us?</h3>
+            <p>We maintain complete editorial independence. Our reviews are based on thorough testing and objective criteria. We never allow commercial relationships to influence our ratings or recommendations.</p>
+        </div>
+    </template>
+
+    <template id="contact-template">
+        <div class="info-page">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Our team is here to help you with any inquiries regarding our recommended platforms or services.</p>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="account">Account Inquiry</option>
+                            <option value="recommendation">Casino Recommendation</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="other">Other Question</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <h3>Thank you for contacting us!</h3>
+                    <p>We have received your message and will respond to you at the email address provided within 24-48 hours.</p>
+                </div>
+            </div>
+            
+            <h3>Alternative Contact Methods</h3>
+            <p>For urgent matters, you may also reach us at:</p>
+            <ul>
+                <li>Email: <a href="mailto:support@goldenvault.ca">support@goldenvault.ca</a></li>
+                <li>Phone: +1 (888) 555-7890 (Mon-Fri, 9am-5pm EST)</li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="privacy-template">
+        <div class="info-page">
+            <h2>Privacy Policy</h2>
+            <p>Last Updated: January 1, 2025</p>
+            
+            <h3>Information We Collect</h3>
+            <p>We collect information to provide better services to our users. The types of information we collect include:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> When you contact us, we may collect your name, email address, and other contact details.</li>
+                <li><strong>Usage Data:</strong> We collect information about how you interact with our website through cookies and similar technologies.</li>
+                <li><strong>Device Information:</strong> We may collect device-specific information such as your IP address, browser type, and operating system.</li>
+            </ul>
+            
+            <h3>How We Use Information</h3>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul>
+                <li>To provide, maintain, and improve our services</li>
+                <li>To respond to your inquiries and provide customer support</li>
+                <li>To analyze website usage and improve user experience</li>
+                <li>To detect, prevent, and address technical issues</li>
+            </ul>
+            
+            <h3>Information Sharing</h3>
+            <p>We do not sell or rent your personal information to third parties. We may share information with:</p>
+            <ul>
+                <li>Service providers who assist us in operating our website</li>
+                <li>Law enforcement or government agencies when required by law</li>
+            </ul>
+            
+            <h3>Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access, update, or delete your personal information</li>
+                <li>Opt-out of marketing communications</li>
+                <li>Request restriction of processing your data</li>
+            </ul>
+            
+            <h3>Cookies</h3>
+            <p>We use cookies to enhance your experience. You can set your browser to refuse all or some cookies, but this may affect website functionality.</p>
+        </div>
+    </template>
+
+    <template id="terms-template">
+        <div class="info-page">
+            <h2>Terms of Service</h2>
+            <p>Last Updated: January 1, 2025</p>
+            
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing and using GoldenVault.ca, you accept and agree to be bound by these Terms of Service. If you do not agree, you must not use our website.</p>
+            
+            <h3>Eligibility</h3>
+            <p>You must be at least 19 years of age to use this website. By using GoldenVault.ca, you represent that you meet this age requirement.</p>
+            
+            <h3>Intellectual Property</h3>
+            <p>All content on this website, including text, graphics, logos, and images, is our property or the property of our licensors and is protected by copyright laws.</p>
+            
+            <h3>User Responsibilities</h3>
+            <p>You agree to:</p>
+            <ul>
+                <li>Use the website only for lawful purposes</li>
+                <li>Not attempt to gain unauthorized access to our systems</li>
+                <li>Not interfere with the proper working of the website</li>
+                <li>Not use the website to promote any illegal activities</li>
+            </ul>
+            
+            <h3>Disclaimer</h3>
+            <p>GoldenVault.ca provides information about online gaming for entertainment purposes only. We do not operate any gambling services and are not responsible for any losses incurred at third-party sites.</p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>To the maximum extent permitted by law, GoldenVault.ca shall not be liable for any indirect, incidental, or consequential damages resulting from the use of our website.</p>
+            
+            <h3>Changes to Terms</h3>
+            <p>We may modify these terms at any time. Your continued use of the website constitutes acceptance of the modified terms.</p>
+        </div>
+    </template>
+
+    <script>
+        // Все предыдущие скрипты остаются без изменений
+        // Добавляем навигацию и обработку форм
+        
+        // Навигация по страницам
+        function loadPage(pageId) {
+            const mainContent = document.getElementById('main-content');
+            const template = document.getElementById(`${pageId}-template`);
+            
+            if (template) {
+                mainContent.innerHTML = '';
+                const clone = template.content.cloneNode(true);
+                mainContent.appendChild(clone);
+                
+                // Прокрутка вверх
+                window.scrollTo(0, 0);
+                
+                // Инициализация формы контактов
+                if (pageId === 'contact') {
+                    initContactForm();
+                }
+            }
+        }
+        
+        // Инициализация формы контактов
+        function initContactForm() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Здесь можно добавить AJAX-запрос для отправки формы
+                    // Для демонстрации просто покажем сообщение об успехе
+                    document.getElementById('successMessage').style.display = 'block';
+                    form.reset();
+                    
+                    // Прокрутка к сообщению об успехе
+                    document.getElementById('successMessage').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        }
+        
+        // Обработка кликов по ссылкам в футере
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация анимации монеток
+            createCoins();
+            
+            // Обработка кликов по ссылкам
+            document.querySelectorAll('a[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadPage(this.getAttribute('data-page'));
+                });
+            });
+            
+            // Обработка кликов по логотипу для возврата на главную
+            document.querySelector('.footer-logo').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
