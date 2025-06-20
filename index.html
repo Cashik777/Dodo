@@ -488,8 +488,8 @@
     <!-- Основной контент -->
     <div class="animation-container" id="main-animation"></div>
 
-    <!-- Секция с долларами (6 казино) -->
-    <section class="section bg-medium" id="dollars-section">
+    <!-- Секция 1 (монетки) -->
+    <section class="section bg-medium" id="section1">
         <div class="container section-content">
             <h2 class="section-title">Premium Casino Collection</h2>
             <div class="platform-grid">
@@ -539,7 +539,7 @@
                     </div>
                 </div>
 
-                <!-- Казино 3 -->
+                <!-- Казино 3 (единственное с долларами) -->
                 <div class="platform-card">
                     <div class="rating">9.6</div>
                     <div class="platform-header">Maple Gold</div>
@@ -635,8 +635,8 @@
         </div>
     </section>
 
-    <!-- Секция с алмазами (3 казино) -->
-    <section class="section bg-dark" id="diamonds-section">
+    <!-- Секция 2 (алмазы) -->
+    <section class="section bg-dark" id="section2">
         <div class="container section-content">
             <h2 class="section-title">Elite Live Casinos</h2>
             <div class="platform-grid">
@@ -768,22 +768,17 @@
             coin: {
                 image: 'images/coin.png',
                 count: 25,
-                section: 'hero-section',
-                maxBottom: 0
+                sections: ['hero-section', 'section1']
             },
             dollar: {
                 image: 'images/dollar.png',
-                count: 30,
-                section: 'dollars-section',
-                maxBottom: document.getElementById('diamonds-section') ? 
-                    document.getElementById('diamonds-section').offsetTop : 2000
+                count: 15,
+                sections: ['section1'] // Только для секции с Maple Gold (казино 3)
             },
             diamond: {
                 image: 'images/diamond.png',
                 count: 20,
-                section: 'diamonds-section',
-                maxBottom: document.querySelector('footer') ? 
-                    document.querySelector('footer').offsetTop : 3000
+                sections: ['section2']
             }
         };
 
@@ -794,25 +789,37 @@
             
             container.innerHTML = '';
             
-            // Создаем монетки только для геро-секции
-            createItems('coin', container);
-            
-            // Создаем доллары для секции с долларами
-            createItems('dollar', container);
-            
-            // Создаем алмазы для секции с алмазами
-            createItems('diamond', container);
+            // Создаем элементы для каждой конфигурации
+            Object.keys(animationsConfig).forEach(type => {
+                const config = animationsConfig[type];
+                
+                config.sections.forEach(sectionId => {
+                    const section = document.getElementById(sectionId);
+                    if (!section) return;
+                    
+                    const sectionRect = section.getBoundingClientRect();
+                    const startY = sectionRect.top + window.scrollY;
+                    const endY = startY + sectionRect.height;
+                    
+                    // Особый случай для долларов - только в казино 3
+                    if (type === 'dollar' && sectionId === 'section1') {
+                        const casino3 = document.querySelector('#section1 .platform-card:nth-child(3)');
+                        if (!casino3) return;
+                        
+                        const casinoRect = casino3.getBoundingClientRect();
+                        const casinoStartY = casinoRect.top + window.scrollY;
+                        const casinoEndY = casinoStartY + casinoRect.height;
+                        
+                        createItems(type, config, container, casinoStartY, casinoEndY);
+                        return;
+                    }
+                    
+                    createItems(type, config, container, startY, endY);
+                });
+            });
         }
 
-        function createItems(type, container) {
-            const config = animationsConfig[type];
-            const section = document.getElementById(config.section);
-            if (!section) return;
-            
-            const sectionRect = section.getBoundingClientRect();
-            const startY = sectionRect.top + window.scrollY;
-            const endY = startY + sectionRect.height;
-            
+        function createItems(type, config, container, startY, endY) {
             for (let i = 0; i < config.count; i++) {
                 const element = document.createElement('div');
                 element.className = `falling-item ${type}`;
@@ -828,16 +835,13 @@
                 element.style.left = `${posX}%`;
                 element.style.top = `${posY}px`;
                 
-                // Рассчитываем длительность анимации в зависимости от расстояния
-                const distance = config.maxBottom - posY;
+                const distance = endY - posY + 300;
                 const duration = 5 + Math.random() * 5 + (distance / 100);
                 element.style.animationDuration = `${duration}s`;
                 
-                // Задержка для разного времени начала
                 const delay = -Math.random() * duration;
                 element.style.animationDelay = `${delay}s`;
                 
-                // Для монеток добавляем вращение
                 if (type === 'coin') {
                     element.style.animationName = `float-coin, sway`;
                 }
@@ -846,16 +850,40 @@
             }
         }
 
-        // Обновление анимаций при скролле и ресайзе
+        // Оптимизированное обновление анимаций
+        let isUpdating = false;
         function updateAnimations() {
-            createFallingElements();
+            if (isUpdating) return;
+            
+            isUpdating = true;
+            requestAnimationFrame(() => {
+                createFallingElements();
+                isUpdating = false;
+            });
         }
 
-        // Инициализация
+        // Инициализация с задержкой для стабильности
         document.addEventListener('DOMContentLoaded', () => {
-            createFallingElements();
-            window.addEventListener('resize', updateAnimations);
-            window.addEventListener('scroll', updateAnimations);
+            setTimeout(() => {
+                createFallingElements();
+                window.addEventListener('resize', updateAnimations);
+                
+                // Оптимизированный обработчик скролла
+                let lastScrollPos = window.scrollY;
+                let scrollTimeout;
+                
+                window.addEventListener('scroll', () => {
+                    const currentScrollPos = window.scrollY;
+                    
+                    // Обновляем только при значительном скролле
+                    if (Math.abs(currentScrollPos - lastScrollPos) > 50) {
+                        lastScrollPos = currentScrollPos;
+                        
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(updateAnimations, 100);
+                    }
+                });
+            }, 300);
         });
 
         // Плавная прокрутка
