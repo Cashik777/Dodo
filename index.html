@@ -76,11 +76,12 @@
             position: absolute;
             width: 50px;
             height: 50px;
+            background-image: url('images/coin.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             opacity: 0;
-            animation: float 18s linear forwards;
+            animation: float 15s linear infinite;
             filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
             z-index: 3;
         }
@@ -396,7 +397,7 @@
 <body>
     <header>
         <div class="container header-content">
-            <img src="images/logo_1.jpeg" alt="GoldenVault.ca" class="footer-logo">
+            <img src="images/GoldenVault.ca.jpg" alt="GoldenVault.ca" class="footer-logo">
         </div>
     </header>
 
@@ -642,7 +643,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="images/logo_10.jpeg" alt="GoldenVault.ca" class="footer-logo">
+                    <img src="images/GoldenVault.ca.jpg" alt="GoldenVault.ca" class="footer-logo">
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
                         <img src="images/trust-badge1.png" alt="SSL Secure" class="trust-badge">
@@ -698,9 +699,6 @@
                 const coin = document.createElement('div');
                 coin.className = 'coin';
                 
-                // Use your coin image
-                coin.style.backgroundImage = "url('images/coin.png')";
-                
                 // Random size
                 const size = 30 + Math.random() * 30;
                 coin.style.width = `${size}px`;
@@ -713,7 +711,7 @@
                 // Random animation duration and delay
                 const duration = 15 + Math.random() * 15;
                 const delay = Math.random() * 10;
-                coin.style.animation = `float ${duration}s linear ${delay}s forwards`;
+                coin.style.animation = `float ${duration}s linear ${delay}s infinite`;
                 
                 // Random sway animation
                 if (Math.random() > 0.5) {
