@@ -219,6 +219,9 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 1px solid rgba(201, 162, 39, 0.15);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .platform-card:hover {
@@ -261,6 +264,13 @@
         
         .platform-content {
             padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .platform-features {
+            flex: 1;
         }
         
         .platform-feature {
@@ -280,6 +290,10 @@
         .feature-value {
             flex: 1;
             font-weight: 500;
+        }
+        
+        .payment-section {
+            margin-top: auto;
         }
         
         .visit-btn {
@@ -312,6 +326,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin: 20px 0;
+            min-height: 72px; /* Ensures consistent height for payment icons section */
         }
         
         .payment-icon {
@@ -614,25 +629,29 @@
                         <div class="platform-header">LeoVegas</div>
                         <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">500+ Slots & Tables</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">500+ Slots & Tables</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">VIP Program, Fast Payouts</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$20 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">VIP Program, Fast Payouts</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$20 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -642,26 +661,30 @@
                         <div class="platform-header">Luxury Casino</div>
                         <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">650+ Games</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">650+ Games</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">Daily Bonuses, 24/7 Support</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$25 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Daily Bonuses, 24/7 Support</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$25 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -671,25 +694,29 @@
                         <div class="platform-header">888 Casino</div>
                         <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">400+ Slots, 50+ Tables</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">400+ Slots, 50+ Tables</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">CAD Focused, Weekly Cashback</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$10 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">CAD Focused, Weekly Cashback</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$10 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -699,25 +726,29 @@
                         <div class="platform-header">BET99</div>
                         <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">300+ Premium Games</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">300+ Premium Games</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">High Roller Tables, Concierge</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$50 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">High Roller Tables, Concierge</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$50 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -727,27 +758,31 @@
                         <div class="platform-header">Jackpot City</div>
                         <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">550+ Games</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">550+ Games</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">Progressive Jackpots, Live Events</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$15 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Progressive Jackpots, Live Events</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$15 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                                <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
-                                <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -757,27 +792,31 @@
                         <div class="platform-header">Casino Days</div>
                         <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">700+ Games Collection</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">700+ Games Collection</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">Exclusive Tournaments, Mobile App</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$20 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Exclusive Tournaments, Mobile App</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                    <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$20 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -787,27 +826,31 @@
                         <div class="platform-header">Royal Panda</div>
                         <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">600+ Slots & Tables</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">600+ Slots & Tables</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$10 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$10 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
-                                <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
-                                <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -817,23 +860,27 @@
                         <div class="platform-header">Sports Interaction</div>
                         <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">450+ Games</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">450+ Games</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$15 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$15 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
@@ -843,28 +890,32 @@
                         <div class="platform-header">PartyCasino</div>
                         <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
                         <div class="platform-content">
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">550+ Slots & Tables</span>
+                            <div class="platform-features">
+                                <div class="platform-feature">
+                                    <span class="feature-title">Games:</span>
+                                    <span class="feature-value">550+ Slots & Tables</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Highlights:</span>
+                                    <span class="feature-value">Live Dealers, Mobile Friendly</span>
+                                </div>
+                                <div class="platform-feature">
+                                    <span class="feature-title">Min Deposit:</span>
+                                    <span class="feature-value">$20 CAD</span>
+                                </div>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Live Dealers, Mobile Friendly</span>
+                            <div class="payment-section">
+                                <div class="payment-icons">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Viza Electron.png" alt="Visa Electron" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                </div>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$20 CAD</span>
-                            </div>
-                            <div class="payment-icons">
-                                <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                <img src="images/Viza Electron.png" alt="Visa Electron" class="payment-icon">
-                                <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
                 </div>
