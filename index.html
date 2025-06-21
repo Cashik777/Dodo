@@ -108,7 +108,7 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.8;
+            opacity: 0;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             z-index: 2;
@@ -1074,52 +1074,51 @@
     <script>
         // JavaScript для анимации падающих монет
         document.addEventListener('DOMContentLoaded', function() {
-            const animationContainer = document.getElementById('coin-animation');
             const coinCount = 15;
             
-            function createCoin() {
-                const coin = document.createElement('div');
-                coin.className = 'falling-item coin';
-                
-                // Случайный размер от 20 до 40px
-                const size = Math.random() * 20 + 20;
-                coin.style.width = `${size}px`;
-                coin.style.height = `${size}px`;
-                
-                // Случайная позиция по горизонтали
-                coin.style.left = `${Math.random() * 100}%`;
-                
-                // Случайная задержка анимации
-                const delay = Math.random() * 5;
-                coin.style.animationDelay = `${delay}s`;
-                
-                // Случайная продолжительность анимации
-                const duration = Math.random() * 5 + 5;
-                coin.style.animationDuration = `${duration}s`;
-                
-                animationContainer.appendChild(coin);
-                
-                // После завершения анимации, перемещаем монету обратно наверх
-                coin.addEventListener('animationiteration', () => {
-                    coin.style.left = `${Math.random() * 100}%`;
-                });
-            }
-            
-            // Создаем монеты при загрузке
-            for (let i = 0; i < coinCount; i++) {
-                createCoin();
-            }
-            
-            // Функция для создания анимации монет
+            // Функция для создания и управления анимацией монет
             function initCoinAnimation() {
-                const container = document.getElementById('coin-animation');
-                if (container) {
-                    container.innerHTML = '';
-                    for (let i = 0; i < coinCount; i++) {
-                        createCoin();
-                    }
+                const animationContainer = document.getElementById('coin-animation');
+                if (!animationContainer) return;
+                
+                // Очищаем контейнер перед созданием новых монет
+                animationContainer.innerHTML = '';
+                
+                // Создаем монеты с разными параметрами
+                for (let i = 0; i < coinCount; i++) {
+                    const coin = document.createElement('div');
+                    coin.className = 'falling-item coin';
+                    
+                    // Случайный размер от 20 до 40px
+                    const size = Math.random() * 20 + 20;
+                    coin.style.width = `${size}px`;
+                    coin.style.height = `${size}px`;
+                    
+                    // Случайная начальная позиция по горизонтали
+                    const startPos = Math.random() * 100;
+                    coin.style.left = `${startPos}%`;
+                    
+                    // Случайная задержка анимации (0-5 секунд)
+                    const delay = Math.random() * 5;
+                    coin.style.animationDelay = `${delay}s`;
+                    
+                    // Случайная продолжительность анимации (5-10 секунд)
+                    const duration = Math.random() * 5 + 5;
+                    coin.style.animationDuration = `${duration}s`;
+                    
+                    // Добавляем монету в контейнер
+                    animationContainer.appendChild(coin);
+                    
+                    // После завершения анимации, перемещаем монету обратно наверх
+                    coin.addEventListener('animationiteration', () => {
+                        // Новая случайная позиция
+                        coin.style.left = `${Math.random() * 100}%`;
+                    });
                 }
             }
+            
+            // Инициализируем анимацию при загрузке
+            initCoinAnimation();
             
             // Навигация между страницами
             const navLinks = document.querySelectorAll('[data-page]');
@@ -1133,6 +1132,7 @@
             const privacyTemplate = document.getElementById('privacy-template').content;
             const termsTemplate = document.getElementById('terms-template').content;
             
+            // Функция для показа главной страницы
             function showHomePage() {
                 mainContent.innerHTML = `
                     <section class="hero" id="hero-section">
@@ -1157,30 +1157,29 @@
                     e.preventDefault();
                     const page = this.getAttribute('data-page');
                     
+                    // Очищаем основное содержимое
+                    mainContent.innerHTML = '';
+                    
+                    // Загружаем соответствующую страницу
                     switch(page) {
                         case 'about':
-                            mainContent.innerHTML = '';
                             mainContent.appendChild(aboutTemplate.cloneNode(true));
                             break;
                         case 'contact':
-                            mainContent.innerHTML = '';
                             mainContent.appendChild(contactTemplate.cloneNode(true));
                             break;
                         case 'privacy':
-                            mainContent.innerHTML = '';
                             mainContent.appendChild(privacyTemplate.cloneNode(true));
                             break;
                         case 'terms':
-                            mainContent.innerHTML = '';
                             mainContent.appendChild(termsTemplate.cloneNode(true));
                             break;
                         default:
                             showHomePage();
                     }
                     
-                    // Прокрутка вверх и инициализация анимации
+                    // Прокрутка вверх
                     window.scrollTo(0, 0);
-                    initCoinAnimation();
                 });
             });
             
@@ -1220,9 +1219,6 @@
                     .catch(error => console.error('Error:', error));
                 }
             });
-            
-            // Инициализация анимации при загрузке
-            initCoinAnimation();
         });
     </script>
 </body>
