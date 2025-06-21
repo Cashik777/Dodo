@@ -53,6 +53,7 @@
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .logo-link:hover {
@@ -326,7 +327,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin: 20px 0;
-            min-height: 72px; /* Ensures consistent height for payment icons section */
+            min-height: 72px;
         }
         
         .payment-icon {
@@ -411,6 +412,7 @@
             text-decoration: none;
             transition: all 0.3s;
             font-size: 15px;
+            cursor: pointer;
         }
         
         .footer-links a:hover {
@@ -550,6 +552,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         .nav-menu a:hover {
@@ -1183,6 +1186,11 @@
             const privacyTemplate = document.getElementById('privacy-template').content;
             const termsTemplate = document.getElementById('terms-template').content;
             
+            // Текущее состояние приложения
+            const appState = {
+                currentPage: 'home'
+            };
+            
             // Функция для показа главной страницы
             function showHomePage() {
                 mainContent.innerHTML = `
@@ -1200,6 +1208,47 @@
                 
                 // Инициализируем анимацию монет
                 initCoinAnimation();
+                
+                // Обновляем состояние
+                appState.currentPage = 'home';
+                
+                // Обновляем URL без перезагрузки страницы
+                history.pushState({ page: 'home' }, '', '/');
+            }
+            
+            // Функция для загрузки страницы
+            function loadPage(page) {
+                // Очищаем основное содержимое
+                mainContent.innerHTML = '';
+                
+                // Загружаем соответствующую страницу
+                switch(page) {
+                    case 'about':
+                        mainContent.appendChild(aboutTemplate.cloneNode(true));
+                        appState.currentPage = 'about';
+                        history.pushState({ page: 'about' }, '', '#about');
+                        break;
+                    case 'contact':
+                        mainContent.appendChild(contactTemplate.cloneNode(true));
+                        appState.currentPage = 'contact';
+                        history.pushState({ page: 'contact' }, '', '#contact');
+                        break;
+                    case 'privacy':
+                        mainContent.appendChild(privacyTemplate.cloneNode(true));
+                        appState.currentPage = 'privacy';
+                        history.pushState({ page: 'privacy' }, '', '#privacy');
+                        break;
+                    case 'terms':
+                        mainContent.appendChild(termsTemplate.cloneNode(true));
+                        appState.currentPage = 'terms';
+                        history.pushState({ page: 'terms' }, '', '#terms');
+                        break;
+                    default:
+                        showHomePage();
+                }
+                
+                // Прокрутка вверх
+                window.scrollTo(0, 0);
             }
             
             // Обработчики для навигации
@@ -1207,38 +1256,14 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const page = this.getAttribute('data-page');
-                    
-                    // Очищаем основное содержимое
-                    mainContent.innerHTML = '';
-                    
-                    // Загружаем соответствующую страницу
-                    switch(page) {
-                        case 'about':
-                            mainContent.appendChild(aboutTemplate.cloneNode(true));
-                            break;
-                        case 'contact':
-                            mainContent.appendChild(contactTemplate.cloneNode(true));
-                            break;
-                        case 'privacy':
-                            mainContent.appendChild(privacyTemplate.cloneNode(true));
-                            break;
-                        case 'terms':
-                            mainContent.appendChild(termsTemplate.cloneNode(true));
-                            break;
-                        default:
-                            showHomePage();
-                    }
-                    
-                    // Прокрутка вверх
-                    window.scrollTo(0, 0);
+                    loadPage(page);
                 });
             });
             
-            // Обработчики для логотипов (возврат на главную)
+            // Обработчик для логотипов (возврат на главную)
             function handleLogoClick(e) {
                 e.preventDefault();
                 showHomePage();
-                window.scrollTo(0, 0);
             }
             
             // Добавляем обработчики для всех логотипов
@@ -1250,7 +1275,15 @@
                 if (e.target.closest('.logo-link')) {
                     e.preventDefault();
                     showHomePage();
-                    window.scrollTo(0, 0);
+                }
+            });
+            
+            // Обработчик для кнопки "Назад" в браузере
+            window.addEventListener('popstate', function(e) {
+                if (e.state && e.state.page) {
+                    loadPage(e.state.page);
+                } else {
+                    showHomePage();
                 }
             });
             
@@ -1277,6 +1310,14 @@
                     .catch(error => console.error('Error:', error));
                 }
             });
+            
+            // Инициализация страницы при загрузке
+            if (window.location.hash) {
+                const page = window.location.hash.substring(1);
+                loadPage(page);
+            } else {
+                showHomePage();
+            }
         });
     </script>
 </body>
