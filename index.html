@@ -1235,16 +1235,23 @@
             });
             
             // Обработчики для логотипов (возврат на главную)
-            homeLink.addEventListener('click', function(e) {
+            function handleLogoClick(e) {
                 e.preventDefault();
                 showHomePage();
                 window.scrollTo(0, 0);
-            });
+            }
             
-            footerLogoLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showHomePage();
-                window.scrollTo(0, 0);
+            // Добавляем обработчики для всех логотипов
+            homeLink.addEventListener('click', handleLogoClick);
+            footerLogoLink.addEventListener('click', handleLogoClick);
+            
+            // Также добавляем обработчик для логотипа в шаблонах
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.logo-link')) {
+                    e.preventDefault();
+                    showHomePage();
+                    window.scrollTo(0, 0);
+                }
             });
             
             // Обработка формы контактов
