@@ -16,6 +16,7 @@
             --text-dark: #e0e3e7;
             --text-light: #ffffff;
             --overlay: rgba(12, 27, 50, 0.85);
+            --glow-color: rgba(201, 162, 39, 0.6);
         }
         
         body {
@@ -298,6 +299,56 @@
             margin-top: auto;
         }
         
+        .payment-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            min-height: 72px;
+        }
+        
+        .payment-icon-container {
+            position: relative;
+            width: 54px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-icon-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            background: var(--glow-color);
+            filter: blur(5px);
+            opacity: 0.7;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-icon {
+            width: 50px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            filter: brightness(1) drop-shadow(0 0 2px rgba(255,255,255,0.3));
+        }
+        
+        .payment-icon-container:hover .payment-icon-glow {
+            opacity: 1;
+            filter: blur(8px);
+        }
+        
+        .payment-icon-container:hover .payment-icon {
+            transform: scale(1.15);
+            filter: brightness(1.1) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+        }
+        
         .visit-btn {
             display: block;
             background: linear-gradient(to right, var(--secondary), var(--accent));
@@ -308,7 +359,7 @@
             text-decoration: none;
             font-weight: 600;
             margin-top: 25px;
-            transition: all 0.3s;
+            transition: all 0.4s;
             text-transform: uppercase;
             font-size: 14px;
             letter-spacing: 1px;
@@ -323,64 +374,86 @@
         .visit-btn::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 8px;
-            background: linear-gradient(45deg, 
-                #ff0000, #ff7300, #fffb00, #48ff00, 
-                #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 400%;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.8) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(30deg);
+            animation: northernLights 6s linear infinite;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        @keyframes northernLights {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        .visit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            background: linear-gradient(
+                45deg,
+                rgba(72, 255, 0, 0.5),
+                rgba(0, 213, 255, 0.5),
+                rgba(122, 0, 255, 0.5),
+                rgba(255, 0, 200, 0.5)
+            );
+            background-size: 300% 300%;
+            animation: borderGlow 8s ease infinite;
             z-index: -1;
             opacity: 0;
-            transition: 0.5s;
-            animation: neonGlow 20s linear infinite;
+            transition: opacity 0.3s;
         }
         
-        .visit-btn:hover::before {
-            opacity: 1;
-        }
-        
-        @keyframes neonGlow {
-            0% {
-                background-position: 0 0;
-            }
-            50% {
-                background-position: 400% 0;
-            }
-            100% {
-                background-position: 0 0;
-            }
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .visit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
-            background: linear-gradient(to right, #d4af37, #b58e2b);
-            color: white;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.5);
         }
         
-        .payment-icons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
-            min-height: 72px;
+        .visit-btn:hover::after {
+            opacity: 1;
         }
         
-        .payment-icon {
-            width: 50px;
-            height: 32px;
-            object-fit: contain;
-            border-radius: 4px;
-            transition: all 0.3s;
-            filter: brightness(0.9);
+        .visit-btn:hover::before {
+            animation: northernLights 3s linear infinite;
+            opacity: 0.8;
         }
         
-        .payment-icon:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2) drop-shadow(0 0 5px rgba(201, 162, 39, 0.7));
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(201, 162, 39, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+        }
+        
+        .platform-card:nth-child(1) .visit-btn {
+            animation: pulse 2s infinite 1s;
+        }
+        
+        .platform-card:nth-child(2) .visit-btn {
+            animation: pulse 2s infinite 1.5s;
+        }
+        
+        .platform-card:nth-child(3) .visit-btn {
+            animation: pulse 2s infinite 2s;
         }
         
         .rating {
@@ -689,10 +762,22 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -721,11 +806,26 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -754,10 +854,22 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -786,10 +898,22 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -818,12 +942,30 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                                    <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -852,12 +994,30 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                    <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -886,12 +1046,30 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
-                                    <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
-                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -920,8 +1098,14 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -950,13 +1134,34 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Viza Electron.png" alt="Visa Electron" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Viza Electron.png" alt="Visa Electron" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                    </div>
+                                    <div class="payment-icon-container">
+                                        <div class="payment-icon-glow"></div>
+                                        <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    </div>
                                 </div>
                                 <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
@@ -993,16 +1198,46 @@
                 <div class="footer-links">
                     <h3>Payment Methods</h3>
                     <div class="payment-icons">
-                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                        <img src="images/American Express.png" alt="American Express" class="payment-icon">
-                        <img src="images/interac.png" alt="Interac" class="payment-icon">
-                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                        <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
-                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        <img src="images/Bank Transfer.png" alt="Bank Transfer" class="payment-icon">
-                        <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/American Express.png" alt="American Express" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Bank Transfer.png" alt="Bank Transfer" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                        </div>
+                        <div class="payment-icon-container">
+                            <div class="payment-icon-glow"></div>
+                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1239,12 +1474,59 @@
                 });
             }
             
-            // Автоматическая прокрутка к казино через 1.5 секунды
+            // Автоматическая прокрутка к казино с bounce-эффектом
             setTimeout(function() {
-                document.getElementById('casinos-section').scrollIntoView({
-                    behavior: 'smooth'
+                const casinoSection = document.getElementById('casinos-section');
+                casinoSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
-            }, 1500);
+                
+                setTimeout(function() {
+                    window.scrollBy({
+                        top: -20,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(function() {
+                        window.scrollBy({
+                            top: 20,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                }, 1000);
+            }, 1800);
+            
+            // Эффект при наведении на карточку
+            const platformCards = document.querySelectorAll('.platform-card');
+            platformCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const btn = this.querySelector('.visit-btn');
+                    btn.style.animation = 'none';
+                    setTimeout(() => {
+                        btn.style.animation = '';
+                    }, 10);
+                });
+            });
+            
+            // Эффект при клике на кнопку
+            const visitButtons = document.querySelectorAll('.visit-btn');
+            visitButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Эффект "пульсации" при клике
+                    this.style.transform = 'scale(0.95)';
+                    this.style.boxShadow = '0 0 0 15px rgba(201, 162, 39, 0.4)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                        
+                        // Перенаправление (заменить на реальный URL)
+                        window.location.href = this.parentElement.parentElement.querySelector('.platform-header').textContent.toLowerCase().replace(' ', '-') + '.html';
+                    }, 300);
+                });
+            });
             
             // Навигация между страницами
             const navLinks = document.querySelectorAll('[data-page]');
