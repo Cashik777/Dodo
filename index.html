@@ -22,138 +22,12 @@
             font-family: 'Playfair Display', 'Montserrat', serif;
             line-height: 1.7;
             color: var(--text-dark);
-            background: linear-gradient(45deg, #0c1b32, #1a2a47);
-            animation: gradient-shift 15s ease infinite;
+            background: var(--bg-color);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            position: relative;
         }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: radial-gradient(circle, rgba(201,162,39,1) 0%, rgba(255,215,0,1) 100%);
-            border-radius: 50%;
-            filter: blur(1px) drop-shadow(0 0 5px rgba(201, 162, 39, 0.7));
-            animation: sparkle-fade 1.5s ease-out infinite;
-            z-index: 1;
-        }
-
-        @keyframes sparkle-fade {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.3); opacity: 0; }
-        }
-
-        .live-counter {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.8);
-            color: var(--secondary);
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 15px;
-            z-index: 1000;
-            border: 2px solid var(--secondary);
-            animation: pulse-gold 1.5s infinite;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 5px 25px rgba(201, 162, 39, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .live-counter::before {
-            content: '';
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #ff0000;
-            border-radius: 50%;
-            animation: pulse-red 1.5s infinite;
-        }
-
-        @keyframes pulse-red {
-            0% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.7; }
-        }
-
-        .live-chat {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background: rgba(0,0,0,0.85);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 13px;
-            max-width: 220px;
-            border-left: 4px solid var(--secondary);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.5s, transform 0.3s;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-            transform: translateY(10px);
-        }
-
-        .live-chat::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 20px;
-            border-width: 10px 10px 0;
-            border-style: solid;
-            border-color: rgba(0,0,0,0.85) transparent transparent;
-        }
-
-        .live-chat.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .chat-message {
-            margin-bottom: 8px;
-            line-height: 1.4;
-            position: relative;
-            padding-left: 15px;
-        }
-
-        .chat-message::before {
-            content: '»';
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-        }
-
-        .chat-user {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        .chat-time {
-            display: block;
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            margin-top: 2px;
-        }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.3); }
-            50% { box-shadow: 0 0 25px rgba(201, 162, 39, 0.7); }
-            100% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.3); }
-        }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -179,7 +53,6 @@
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .logo-link:hover {
@@ -241,11 +114,11 @@
             z-index: 2;
             width: 30px;
             height: 30px;
-            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         
         .coin {
             animation-name: float-coin;
+            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         
         @keyframes float-coin {
@@ -440,7 +313,6 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
-            animation: pulse-gold 2s infinite alternate;
         }
         
         .visit-btn:hover {
@@ -454,7 +326,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin: 20px 0;
-            min-height: 72px;
+            min-height: 72px; /* Ensures consistent height for payment icons section */
         }
         
         .payment-icon {
@@ -539,7 +411,6 @@
             text-decoration: none;
             transition: all 0.3s;
             font-size: 15px;
-            cursor: pointer;
         }
         
         .footer-links a:hover {
@@ -575,6 +446,7 @@
             transform: translateY(-3px);
         }
 
+        /* Стили для информационных страниц */
         .info-page {
             padding: 80px 0;
             max-width: 800px;
@@ -666,6 +538,7 @@
             border-left: 4px solid var(--secondary);
         }
 
+        /* Навигационное меню */
         .nav-menu {
             display: flex;
             gap: 20px;
@@ -677,7 +550,6 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             transition: color 0.3s;
-            cursor: pointer;
         }
         
         .nav-menu a:hover {
@@ -717,53 +589,36 @@
                 gap: 10px;
                 align-items: center;
             }
-            .live-chat, .live-counter {
-                display: none;
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Динамические элементы -->
-    <div class="live-counter">🔥 <span id="usersOnline">2,843</span> PLAYERS ONLINE • <span id="lastWin">$12,450</span> LAST WIN</div>
-    <div class="live-chat" id="liveChat">
-        <div class="chat-message"><span class="chat-user">Mike_S:</span> Just hit $12,450 on Mega Moolah! <span class="chat-time">2 min ago</span></div>
-        <div class="chat-message"><span class="chat-user">VIP_Agent:</span> New 300% bonus for high rollers! <span class="chat-time">5 min ago</span></div>
-        <div class="chat-message"><span class="chat-user">Sarah_K:</span> How to withdraw? Help! <span class="chat-time">7 min ago</span></div>
-    </div>
-    <div id="webgl-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></div>
-
     <header>
         <div class="container header-content">
-            <a href="#home" class="logo-link" id="home-link">
+            <a href="#" class="logo-link" id="home-link">
                 <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
             </a>
             <div class="nav-menu">
-                <a href="#home" data-page="home">Home</a>
-                <a href="#about" data-page="about">About Us</a>
-                <a href="#contact" data-page="contact">Contact</a>
-                <a href="#privacy" data-page="privacy">Privacy Policy</a>
-                <a href="#terms" data-page="terms">Terms of Service</a>
+                <a href="#" data-page="about">About Us</a>
+                <a href="#" data-page="contact">Contact</a>
+                <a href="#" data-page="privacy">Privacy Policy</a>
+                <a href="#" data-page="terms">Terms of Service</a>
             </div>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- Главная страница -->
-        <section class="hero" id="home">
+        <!-- Главная страница по умолчанию -->
+        <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
                 <h1>Luxury Canadian Gaming Experience</h1>
                 <p>Discover the most exclusive platforms for sophisticated players</p>
-                <div class="deposit-counter" style="margin-top: 30px; font-size: 1.2rem;">
-                    💰 TODAY'S DEPOSITS: <span id="depositCounter">$184,892.34 CAD</span> • <span id="jackpotCounter">$5,842,129</span> JACKPOT
-                </div>
             </div>
         </section>
 
-        <!-- Секция с казино -->
+        <!-- Секция с 9 казино -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -790,12 +645,12 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
                                 </div>
-                                <a href="https://www.leovegas.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -824,11 +679,11 @@
                                 <div class="payment-icons">
                                     <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
                                     <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                 </div>
-                                <a href="https://www.luxurycasino.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -856,11 +711,11 @@
                             <div class="payment-section">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
                                 </div>
-                                <a href="https://www.888casino.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -888,11 +743,11 @@
                             <div class="payment-section">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
                                     <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
                                 </div>
-                                <a href="https://www.bet99.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -919,14 +774,14 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
-                                    <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
+                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
                                     <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
                                 </div>
-                                <a href="https://www.jackpotcitycasino.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -954,13 +809,13 @@
                             <div class="payment-section">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
                                     <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                     <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                     <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                 </div>
-                                <a href="https://www.casinodays.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -987,14 +842,14 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
                                     <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                     <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                 </div>
-                                <a href="https://www.royalpanda.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -1024,7 +879,7 @@
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
                                 </div>
-                                <a href="https://www.sportsinteraction.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
@@ -1052,108 +907,31 @@
                             <div class="payment-section">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                    <img src="images/VisaElectron.png" alt="Visa Electron" class="payment-icon">
-                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Viza Electron.png" alt="Visa Electron" class="payment-icon">
+                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
                                     <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                     <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                     <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
                                 </div>
-                                <a href="https://www.partycasino.com" target="_blank" class="visit-btn">Explore Platform</a>
+                                <a href="#" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Информационные страницы -->
-        <section id="about" class="info-page" style="display: none;">
-            <div class="container">
-                <h2>About GoldenVault.ca</h2>
-                <p>Welcome to Canada's premier luxury gaming guide since 2015. We specialize in curating the finest online gaming experiences for Canadian players.</p>
-                <h3>Our Mission</h3>
-                <p>To provide trusted, sophisticated gaming recommendations with uncompromising quality standards.</p>
-                <h3>Why Choose Us</h3>
-                <ul>
-                    <li>Expert reviews of top-tier casinos</li>
-                    <li>Exclusive bonus offers</li>
-                    <li>Focus on Canadian players</li>
-                    <li>24/7 customer support</li>
-                </ul>
-                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
-            </div>
-        </section>
-
-        <section id="contact" class="info-page" style="display: none;">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject">
-                                <option value="general">General Inquiry</option>
-                                <option value="support">Support Request</option>
-                                <option value="partnership">Partnership</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                    <div class="success-message" id="successMessage">
-                        <h3>Thank you for contacting us!</h3>
-                        <p>Our team will respond within 24 hours.</p>
-                    </div>
-                </div>
-                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
-            </div>
-        </section>
-
-        <section id="privacy" class="info-page" style="display: none;">
-            <div class="container">
-                <h2>Privacy Policy</h2>
-                <p>Last Updated: January 2025</p>
-                <h3>1. Information We Collect</h3>
-                <p>We collect minimal information necessary to provide our services...</p>
-                <h3>2. How We Use Your Data</h3>
-                <p>Your information is used solely to improve your experience...</p>
-                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
-            </div>
-        </section>
-
-        <section id="terms" class="info-page" style="display: none;">
-            <div class="container">
-                <h2>Terms of Service</h2>
-                <p>Last Updated: January 2025</p>
-                <h3>1. Acceptance of Terms</h3>
-                <p>By using this website, you agree to these terms and conditions...</p>
-                <h3>2. User Responsibilities</h3>
-                <p>Users must be 19+ and comply with all applicable laws...</p>
-                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
-            </div>
-        </section>
     </main>
 
+    <!-- Футер -->
     <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <a href="#home" class="logo-link">
+                    <a href="#" class="logo-link" id="footer-logo-link">
                         <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
                     </a>
-                    <p>Canada's premier guide to luxury gaming since 2015.</p>
+                    <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
                         <img src="images/trust-badge1.png" alt="SSL Secure" class="trust-badge">
                         <img src="images/trust-badge2.png" alt="Responsible Gaming" class="trust-badge">
@@ -1162,21 +940,25 @@
                 <div class="footer-links">
                     <h3>Information</h3>
                     <ul>
-                        <li><a href="#about" data-page="about">About Us</a></li>
-                        <li><a href="#contact" data-page="contact">Contact</a></li>
-                        <li><a href="#privacy" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#terms" data-page="terms">Terms of Service</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-page="terms">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h3>Payment Methods</h3>
                     <div class="payment-icons">
-                        <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                        <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/American Express.png" alt="American Express" class="payment-icon">
                         <img src="images/interac.png" alt="Interac" class="payment-icon">
-                        <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                        <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
                         <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                        <img src="images/Bank Transfer.png" alt="Bank Transfer" class="payment-icon">
+                        <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                     </div>
                 </div>
             </div>
@@ -1187,256 +969,314 @@
         </div>
     </footer>
 
-    <script>
-        // 1. Супер-чат с анимацией
-        const chatMessages = [
-            {user: "Mike_S", text: "Just hit $12,450 on Mega Moolah!", time: "2 min ago"},
-            {user: "VIP_Agent", text: "New 300% bonus for high rollers! CODE: GOLD300", time: "5 min ago"},
-            {user: "Sarah_K", text: "How to withdraw? Help!", time: "7 min ago"},
-            {user: "Support", text: "Sarah, check your email for instructions", time: "6 min ago"},
-            {user: "Alex_T", text: "Anyone playing live dealer? Join me!", time: "9 min ago"},
-            {user: "JackpotKing", text: "Won $8,200 on Book of Dead!", time: "12 min ago"},
-            {user: "DiamondVIP", text: "Cashout $23k in 10 mins!", time: "15 min ago"}
-        ];
+    <!-- Шаблоны для информационных страниц -->
+    <template id="about-template">
+        <div class="info-page">
+            <h2>About GoldenVault.ca</h2>
+            <p>Welcome to GoldenVault.ca, Canada's premier guide to luxury gaming experiences since 2015. We are dedicated to providing sophisticated players with the most comprehensive and reliable information about high-end online gaming platforms.</p>
+            
+            <h3>Our Mission</h3>
+            <p>Our mission is to curate the finest selection of premium online casinos, offering our users an unparalleled gaming experience with exclusive bonuses, VIP treatment, and the highest standards of security and fairness.</p>
+            
+            <h3>Our Team</h3>
+            <p>Our team consists of gaming industry veterans with over 50 years of combined experience. We meticulously review each platform to ensure it meets our strict criteria for excellence:</p>
+            <ul>
+                <li>Game quality and variety</li>
+                <li>Security and licensing</li>
+                <li>Payment processing speed</li>
+                <li>Customer service excellence</li>
+                <li>VIP and high roller benefits</li>
+            </ul>
+            
+            <h3>Why Trust Us?</h3>
+            <p>We maintain complete editorial independence. Our reviews are based on thorough testing and objective criteria. We never allow commercial relationships to influence our ratings or recommendations.</p>
+        </div>
+    </template>
 
-        function animateChat() {
-            const chatElement = document.getElementById('liveChat');
-            let counter = 0;
+    <template id="contact-template">
+        <div class="info-page">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Our concierge team is available to provide personalized support for all your gaming needs.</p>
             
-            setTimeout(() => {
-                chatElement.classList.add('active');
-            }, 2000);
+            <div class="contact-form">
+                <form id="contactForm" action="https://formspree.io/f/vip.support@goldenvault.ca" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="account">VIP Account Assistance</option>
+                            <option value="payment">Payment Questions</option>
+                            <option value="platform">Platform Recommendations</option>
+                            <option value="business">Business Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <p>Thank you for your message! Our support team will respond as soon as possible.</p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="privacy-template">
+        <div class="info-page">
+            <h2>Privacy Policy</h2>
+            <p>Last Updated: January 1, 2025</p>
             
-            setInterval(() => {
-                const message = chatMessages[counter % chatMessages.length];
-                const newMessage = document.createElement('div');
-                newMessage.className = 'chat-message';
-                newMessage.innerHTML = `
-                    <span class="chat-user">${message.user}:</span> 
-                    ${message.text} 
-                    <span class="chat-time">${message.time}</span>
+            <h3>Information We Collect</h3>
+            <p>We may collect personal information when you use our website, including:</p>
+            <ul>
+                <li>Contact information you provide (email address)</li>
+                <li>Technical data (IP address, browser type, device information)</li>
+                <li>Usage data (pages visited, time spent on site)</li>
+            </ul>
+            
+            <h3>How We Use Your Information</h3>
+            <p>We use collected information to:</p>
+            <ul>
+                <li>Provide and improve our services</li>
+                <li>Respond to inquiries and provide support</li>
+                <li>Analyze website usage and trends</li>
+                <li>Ensure compliance with legal obligations</li>
+            </ul>
+            
+            <h3>Data Security</h3>
+            <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, or destruction.</p>
+            
+            <h3>Third-Party Services</h3>
+            <p>We may use third-party services that collect information to provide analytics and improve our services. These services have their own privacy policies.</p>
+            
+            <h3>Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Request correction or deletion</li>
+                <li>Object to processing</li>
+                <li>Request data portability</li>
+            </ul>
+            
+            <h3>Changes to This Policy</h3>
+            <p>We may update this Privacy Policy periodically. We will notify you of significant changes by posting the new policy on our website.</p>
+        </div>
+    </template>
+
+    <template id="terms-template">
+        <div class="info-page">
+            <h2>Terms of Service</h2>
+            <p>Last Updated: January 1, 2025</p>
+            
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing and using GoldenVault.ca, you accept and agree to be bound by these Terms of Service.</p>
+            
+            <h3>Eligibility</h3>
+            <p>You must be at least 19 years of age to use our services. By using this website, you represent that you meet this age requirement.</p>
+            
+            <h3>Intellectual Property</h3>
+            <p>All content on this website, including text, graphics, logos, and images, is our property or the property of our licensors and is protected by copyright laws.</p>
+            
+            <h3>User Responsibilities</h3>
+            <p>You agree to:</p>
+            <ul>
+                <li>Use the website only for lawful purposes</li>
+                <li>Not engage in any fraudulent activity</li>
+                <li>Not attempt to interfere with website security</li>
+                <li>Not use any automated systems to access the site</li>
+            </ul>
+            
+            <h3>Disclaimer of Warranties</h3>
+            <p>The website is provided "as is" without warranties of any kind. We do not guarantee that the website will be uninterrupted or error-free.</p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>We shall not be liable for any damages resulting from the use or inability to use the website or its content.</p>
+            
+            <h3>Governing Law</h3>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada.</p>
+            
+            <h3>Changes to Terms</h3>
+            <p>We reserve the right to modify these Terms at any time. Your continued use of the website constitutes acceptance of the modified Terms.</p>
+        </div>
+    </template>
+
+    <script>
+        // JavaScript для анимации падающих монет
+        document.addEventListener('DOMContentLoaded', function() {
+            const coinCount = 15;
+            
+            // Функция для создания и управления анимацией монет
+            function initCoinAnimation() {
+                const animationContainer = document.getElementById('coin-animation');
+                if (!animationContainer) return;
+                
+                // Очищаем контейнер перед созданием новых монет
+                animationContainer.innerHTML = '';
+                
+                // Создаем монеты с разными параметрами
+                for (let i = 0; i < coinCount; i++) {
+                    const coin = document.createElement('div');
+                    coin.className = 'falling-item coin';
+                    
+                    // Случайный размер от 20 до 40px
+                    const size = Math.random() * 20 + 20;
+                    coin.style.width = `${size}px`;
+                    coin.style.height = `${size}px`;
+                    
+                    // Случайная начальная позиция по горизонтали
+                    const startPos = Math.random() * 100;
+                    coin.style.left = `${startPos}%`;
+                    
+                    // Случайная задержка анимации (0-5 секунд)
+                    const delay = Math.random() * 5;
+                    coin.style.animationDelay = `${delay}s`;
+                    
+                    // Случайная продолжительность анимации (5-10 секунд)
+                    const duration = Math.random() * 5 + 5;
+                    coin.style.animationDuration = `${duration}s`;
+                    
+                    // Добавляем монету в контейнер
+                    animationContainer.appendChild(coin);
+                    
+                    // После завершения анимации, перемещаем монету обратно наверх
+                    coin.addEventListener('animationiteration', () => {
+                        // Новая случайная позиция
+                        coin.style.left = `${Math.random() * 100}%`;
+                    });
+                }
+            }
+            
+            // Инициализируем анимацию при загрузке
+            initCoinAnimation();
+            
+            // Навигация между страницами
+            const navLinks = document.querySelectorAll('[data-page]');
+            const mainContent = document.getElementById('main-content');
+            const homeLink = document.getElementById('home-link');
+            const footerLogoLink = document.getElementById('footer-logo-link');
+            
+            // Загружаем шаблоны
+            const aboutTemplate = document.getElementById('about-template').content;
+            const contactTemplate = document.getElementById('contact-template').content;
+            const privacyTemplate = document.getElementById('privacy-template').content;
+            const termsTemplate = document.getElementById('terms-template').content;
+            
+            // Функция для показа главной страницы
+            function showHomePage() {
+                mainContent.innerHTML = `
+                    <section class="hero" id="hero-section">
+                        <div class="animation-container" id="coin-animation"></div>
+                        <div class="hero-content">
+                            <h1>Luxury Canadian Gaming Experience</h1>
+                            <p>Discover the most exclusive platforms for sophisticated players</p>
+                        </div>
+                    </section>
+                    <section class="section bg-medium" id="casinos-section">
+                        ${document.querySelector('#casinos-section').innerHTML}
+                    </section>
                 `;
                 
-                chatElement.insertBefore(newMessage, chatElement.firstChild);
-                if (chatElement.children.length > 3) {
-                    chatElement.removeChild(chatElement.lastChild);
-                }
-                
-                counter++;
-            }, 4000);
-        }
-
-        // 2. Прокачанные счетчики
-        function updateCounters() {
-            // Онлайн-игроки
-            let online = 2843;
-            setInterval(() => {
-                online += Math.floor(Math.random() * 10) - 3;
-                online = Math.max(2500, Math.min(3500, online));
-                document.getElementById('usersOnline').textContent = online.toLocaleString();
-            }, 3000);
-
-            // Последний выигрыш
-            const wins = ["$12,450", "$8,200", "$23,100", "$5,750", "$15,300"];
-            setInterval(() => {
-                document.getElementById('lastWin').textContent = 
-                    wins[Math.floor(Math.random() * wins.length)];
-            }, 5000);
-
-            // Депозиты
-            let deposits = 184892.34;
-            setInterval(() => {
-                deposits += (Math.random() * 5000 - 1000);
-                deposits = Math.max(150000, deposits);
-                document.getElementById('depositCounter').textContent = 
-                    '$' + deposits.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' CAD';
-            }, 2500);
-
-            // Джекпот
-            let jackpot = 5842129;
-            setInterval(() => {
-                jackpot += Math.floor(Math.random() * 1000);
-                document.getElementById('jackpotCounter').textContent = 
-                    '$' + jackpot.toLocaleString();
-            }, 1000);
-        }
-
-        // 3. Навигация
-        function setupNavigation() {
-            const sections = {
-                'home': document.getElementById('home'),
-                'casinos-section': document.getElementById('casinos-section'),
-                'about': document.getElementById('about'),
-                'contact': document.getElementById('contact'),
-                'privacy': document.getElementById('privacy'),
-                'terms': document.getElementById('terms')
-            };
-
-            // Обработчик кликов
-            document.querySelectorAll('[data-page]').forEach(link => {
+                // Инициализируем анимацию монет
+                initCoinAnimation();
+            }
+            
+            // Обработчики для навигации
+            navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const page = this.getAttribute('data-page');
                     
-                    // Скрыть все секции
-                    Object.values(sections).forEach(section => {
-                        if (section) section.style.display = 'none';
-                    });
+                    // Очищаем основное содержимое
+                    mainContent.innerHTML = '';
                     
-                    // Показать выбранную
-                    if (page === 'home') {
-                        sections.home.style.display = 'flex';
-                        sections['casinos-section'].style.display = 'block';
-                    } else if (sections[page]) {
-                        sections[page].style.display = 'block';
+                    // Загружаем соответствующую страницу
+                    switch(page) {
+                        case 'about':
+                            mainContent.appendChild(aboutTemplate.cloneNode(true));
+                            break;
+                        case 'contact':
+                            mainContent.appendChild(contactTemplate.cloneNode(true));
+                            break;
+                        case 'privacy':
+                            mainContent.appendChild(privacyTemplate.cloneNode(true));
+                            break;
+                        case 'terms':
+                            mainContent.appendChild(termsTemplate.cloneNode(true));
+                            break;
+                        default:
+                            showHomePage();
                     }
                     
-                    // Плавный скролл
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                    // Прокрутка вверх
+                    window.scrollTo(0, 0);
                 });
             });
-        }
-
-        // 4. Форма обратной связи
-        function setupForm() {
-            const form = document.getElementById('contactForm');
-            const successMessage = document.getElementById('successMessage');
             
-            if (form) {
-                form.addEventListener('submit', function(e) {
+            // Обработчики для логотипов (возврат на главную)
+            function handleLogoClick(e) {
+                e.preventDefault();
+                showHomePage();
+                window.scrollTo(0, 0);
+            }
+            
+            // Добавляем обработчики для всех логотипов
+            homeLink.addEventListener('click', handleLogoClick);
+            footerLogoLink.addEventListener('click', handleLogoClick);
+            
+            // Также добавляем обработчик для логотипа в шаблонах
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.logo-link')) {
                     e.preventDefault();
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
-                });
-            }
-        }
-
-        // 5. Анимация падающих монет
-        function initCoinAnimation() {
-            const container = document.getElementById('coin-animation');
-            const coinCount = 15;
-            
-            for (let i = 0; i < coinCount; i++) {
-                createCoin();
-            }
-            
-            function createCoin() {
-                const coin = document.createElement('div');
-                coin.className = 'falling-item coin';
-                
-                const startPosition = Math.random() * 100;
-                const duration = 10 + Math.random() * 20;
-                const delay = Math.random() * 15;
-                const size = 20 + Math.random() * 30;
-                
-                coin.style.left = `${startPosition}%`;
-                coin.style.width = `${size}px`;
-                coin.style.height = `${size}px`;
-                coin.style.animationDuration = `${duration}s`;
-                coin.style.animationDelay = `${delay}s`;
-                
-                container.appendChild(coin);
-                
-                coin.addEventListener('animationend', function() {
-                    coin.style.left = `${Math.random() * 100}%`;
-                    coin.style.animationDuration = `${10 + Math.random() * 20}s`;
-                    coin.style.animationDelay = '0s';
-                });
-            }
-        }
-
-        // 6. Золотые частицы
-        function createSparkles() {
-            setInterval(() => {
-                const spark = document.createElement('div');
-                spark.className = 'sparkle';
-                spark.style.top = `${Math.random() * 100}%`;
-                spark.style.left = `${Math.random() * 100}%`;
-                document.body.appendChild(spark);
-                setTimeout(() => spark.remove(), 1500);
-            }, 300);
-        }
-
-        // 7. 3D сейф (упрощенная версия)
-        function init3DSafe() {
-            const container = document.getElementById('webgl-container');
-            if (!container) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-
-            // Свет
-            const light = new THREE.AmbientLight(0x404040);
-            scene.add(light);
-            const directionalLight = new THREE.DirectionalLight(0xc9a227, 0.5);
-            directionalLight.position.set(0, 1, 1);
-            scene.add(directionalLight);
-
-            // Золотой материал
-            const material = new THREE.MeshPhongMaterial({ 
-                color: 0xc9a227,
-                shininess: 100,
-                specular: 0x111111
+                    showHomePage();
+                    window.scrollTo(0, 0);
+                }
             });
-
-            // Группа для сейфа
-            const safeGroup = new THREE.Group();
             
-            // Основа сейфа
-            const geometry = new THREE.BoxGeometry(3, 2, 2);
-            const safe = new THREE.Mesh(geometry, material);
-            safeGroup.add(safe);
-            
-            // Дверь
-            const doorGeometry = new THREE.BoxGeometry(2.8, 1.8, 0.2);
-            const door = new THREE.Mesh(doorGeometry, material);
-            door.position.z = 1;
-            safeGroup.add(door);
-            
-            // Ручка
-            const handleGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-            const handle = new THREE.Mesh(handleGeometry, new THREE.MeshPhongMaterial({ color: 0x333333 }));
-            handle.position.set(1, 0, 1);
-            safeGroup.add(handle);
-
-            scene.add(safeGroup);
-            camera.position.z = 5;
-
-            // Анимация
-            function animate() {
-                requestAnimationFrame(animate);
-                safeGroup.rotation.y += 0.005;
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            // Адаптация к размеру окна
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
+            // Обработка формы контактов
+            document.addEventListener('submit', function(e) {
+                if (e.target && e.target.id === 'contactForm') {
+                    e.preventDefault();
+                    const form = e.target;
+                    const formData = new FormData(form);
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            form.reset();
+                            document.getElementById('successMessage').style.display = 'block';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
             });
-        }
-
-        // Инициализация всех систем
-        document.addEventListener('DOMContentLoaded', function() {
-            createSparkles();
-            animateChat();
-            updateCounters();
-            init3DSafe();
-            initCoinAnimation();
-            setupNavigation();
-            setupForm();
-            
-            // Показать главную страницу по умолчанию
-            document.getElementById('home').style.display = 'flex';
-            document.getElementById('casinos-section').style.display = 'block';
         });
     </script>
 </body>
