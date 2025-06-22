@@ -26,6 +26,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         .container {
@@ -314,12 +315,50 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .visit-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, 
+                #ff0000, #ff7300, #fffb00, #48ff00, 
+                #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s;
+            animation: neonGlow 20s linear infinite;
+        }
+        
+        .visit-btn:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes neonGlow {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
         }
         
         .visit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
             background: linear-gradient(to right, #d4af37, #b58e2b);
+            color: white;
         }
         
         .payment-icons {
@@ -335,11 +374,13 @@
             height: 32px;
             object-fit: contain;
             border-radius: 4px;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            filter: brightness(0.9);
         }
         
         .payment-icon:hover {
             transform: scale(1.1);
+            filter: brightness(1.2) drop-shadow(0 0 5px rgba(201, 162, 39, 0.7));
         }
         
         .rating {
@@ -599,7 +640,7 @@
 <body>
     <header>
         <div class="container header-content">
-            <a href="#" class="logo-link" id="home-link">
+            <a href="#casinos-section" class="logo-link" id="home-link">
                 <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
             </a>
             <div class="nav-menu">
@@ -931,7 +972,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <a href="#" class="logo-link" id="footer-logo-link">
+                    <a href="#casinos-section" class="logo-link" id="footer-logo-link">
                         <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
                     </a>
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
@@ -1089,7 +1130,7 @@
                 <li>Respond to your inquiries</li>
                 <li>Improve user experience</li>
                 <li>Analyze website usage</li>
-                                <li>Prevent fraudulent activity</li>
+                <li>Prevent fraudulent activity</li>
                 <li>Comply with legal obligations</li>
             </ul>
 
@@ -1168,7 +1209,6 @@
     </template>
 
     <script>
-        // JavaScript для анимации падающих монет
         document.addEventListener('DOMContentLoaded', function() {
             const animationContainer = document.getElementById('coin-animation');
             const coinCount = 15;
@@ -1181,7 +1221,6 @@
                 const coin = document.createElement('div');
                 coin.className = 'falling-item coin';
                 
-                // Random position and animation duration
                 const startPosition = Math.random() * 100;
                 const duration = 5 + Math.random() * 10;
                 const delay = Math.random() * 5;
@@ -1195,11 +1234,17 @@
                 
                 animationContainer.appendChild(coin);
                 
-                // Reset animation when it ends
                 coin.addEventListener('animationiteration', function() {
                     this.style.left = `${Math.random() * 100}%`;
                 });
             }
+            
+            // Автоматическая прокрутка к казино через 1.5 секунды
+            setTimeout(function() {
+                document.getElementById('casinos-section').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 1500);
             
             // Навигация между страницами
             const navLinks = document.querySelectorAll('[data-page]');
@@ -1207,7 +1252,6 @@
             const homeLink = document.getElementById('home-link');
             const footerLogoLink = document.getElementById('footer-logo-link');
             
-            // Функция для загрузки контента страницы
             function loadPageContent(page) {
                 const template = document.getElementById(`${page}-template`);
                 if (template) {
@@ -1215,15 +1259,11 @@
                     const content = document.importNode(template.content, true);
                     mainContent.appendChild(content);
                     
-                    // Прокрутка к верху страницы
                     window.scrollTo(0, 0);
-                    
-                    // Добавляем обработчики событий для новых элементов
                     addPageEventListeners();
                 }
             }
             
-            // Функция для показа главной страницы
             function showHomePage() {
                 mainContent.innerHTML = `
                     <section class="hero" id="hero-section">
@@ -1234,7 +1274,6 @@
                         </div>
                     </section>
                     <section class="section bg-medium" id="casinos-section">
-                        <!-- Содержимое секции с казино -->
                         ${document.querySelector('#casinos-section').innerHTML}
                     </section>
                 `;
@@ -1245,11 +1284,14 @@
                     createFallingCoin();
                 }
                 
-                // Прокрутка к верху страницы
-                window.scrollTo(0, 0);
+                // Плавная прокрутка к казино
+                setTimeout(function() {
+                    document.getElementById('casinos-section').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 100);
             }
             
-            // Добавляем обработчики событий для навигации
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1258,7 +1300,6 @@
                 });
             });
             
-            // Обработчики для логотипов (возврат на главную)
             homeLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 showHomePage();
@@ -1269,13 +1310,11 @@
                 showHomePage();
             });
             
-            // Обработчик для формы контактов
             function addPageEventListeners() {
                 const contactForm = document.getElementById('contactForm');
                 if (contactForm) {
                     contactForm.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        // Здесь можно добавить код для отправки формы
                         document.getElementById('successMessage').style.display = 'block';
                         contactForm.reset();
                     });
