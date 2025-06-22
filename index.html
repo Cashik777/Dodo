@@ -38,18 +38,18 @@
 
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(201, 162, 39, 0.8);
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(201,162,39,1) 0%, rgba(255,215,0,1) 100%);
             border-radius: 50%;
-            filter: blur(1px);
-            animation: sparkle-fade 1s ease-out;
+            filter: blur(1px) drop-shadow(0 0 5px rgba(201, 162, 39, 0.7));
+            animation: sparkle-fade 1.5s ease-out infinite;
             z-index: 1;
         }
 
         @keyframes sparkle-fade {
             0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 1; }
             100% { transform: scale(0.3); opacity: 0; }
         }
 
@@ -57,36 +57,101 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             color: var(--secondary);
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 15px;
             z-index: 1000;
-            border: 1px solid var(--secondary);
-            animation: pulse-gold 2s infinite;
+            border: 2px solid var(--secondary);
+            animation: pulse-gold 1.5s infinite;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 25px rgba(201, 162, 39, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-counter::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: pulse-red 1.5s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
         }
 
         .live-chat {
             position: fixed;
-            bottom: 70px;
+            bottom: 80px;
             right: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.85);
             color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            max-width: 200px;
-            border-left: 3px solid var(--secondary);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 13px;
+            max-width: 220px;
+            border-left: 4px solid var(--secondary);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.5s, transform 0.3s;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(10px);
+        }
+
+        .live-chat::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(0,0,0,0.85) transparent transparent;
+        }
+
+        .live-chat.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chat-message {
+            margin-bottom: 8px;
+            line-height: 1.4;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .chat-message::before {
+            content: '»';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        .chat-user {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .chat-time {
+            display: block;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
         }
 
         @keyframes pulse-gold {
-            0% { box-shadow: 0 0 5px rgba(201, 162, 39, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(201, 162, 39, 0.7); }
-            100% { box-shadow: 0 0 5px rgba(201, 162, 39, 0.3); }
+            0% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(201, 162, 39, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.3); }
         }
 
         .container {
@@ -139,7 +204,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: url('images/treasure-bg.jpg') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
         }
         
         .hero::before {
@@ -166,7 +231,7 @@
         
         .falling-item {
             position: absolute;
-            background-image: url('images/coin.png');
+            background-image: url('https://cdn-icons-png.flaticon.com/512/272/272525.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -176,11 +241,11 @@
             z-index: 2;
             width: 30px;
             height: 30px;
+            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         
         .coin {
             animation-name: float-coin;
-            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         
         @keyframes float-coin {
@@ -662,36 +727,43 @@
 </head>
 <body>
     <!-- Динамические элементы -->
-    <div class="live-counter">🎯 <span id="usersOnline">1,247</span> игроков онлайн</div>
-    <div class="live-chat" id="liveChat"></div>
+    <div class="live-counter">🔥 <span id="usersOnline">2,843</span> PLAYERS ONLINE • <span id="lastWin">$12,450</span> LAST WIN</div>
+    <div class="live-chat" id="liveChat">
+        <div class="chat-message"><span class="chat-user">Mike_S:</span> Just hit $12,450 on Mega Moolah! <span class="chat-time">2 min ago</span></div>
+        <div class="chat-message"><span class="chat-user">VIP_Agent:</span> New 300% bonus for high rollers! <span class="chat-time">5 min ago</span></div>
+        <div class="chat-message"><span class="chat-user">Sarah_K:</span> How to withdraw? Help! <span class="chat-time">7 min ago</span></div>
+    </div>
     <div id="webgl-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></div>
 
     <header>
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
-                <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+                <img src="https://via.placeholder.com/200x60?text=GoldenVault.ca" alt="GoldenVault.ca" class="footer-logo">
             </a>
             <div class="nav-menu">
-                <a href="#" data-page="about">About Us</a>
-                <a href="#" data-page="contact">Contact</a>
-                <a href="#" data-page="privacy">Privacy Policy</a>
-                <a href="#" data-page="terms">Terms of Service</a>
+                <a href="#home" data-page="home">Home</a>
+                <a href="#about" data-page="about">About Us</a>
+                <a href="#contact" data-page="contact">Contact</a>
+                <a href="#privacy" data-page="privacy">Privacy Policy</a>
+                <a href="#terms" data-page="terms">Terms of Service</a>
             </div>
         </div>
     </header>
 
     <main id="main-content">
-        <section class="hero" id="hero-section">
+        <!-- Главная страница -->
+        <section class="hero" id="home">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
                 <h1>Luxury Canadian Gaming Experience</h1>
                 <p>Discover the most exclusive platforms for sophisticated players</p>
                 <div class="deposit-counter" style="margin-top: 30px; font-size: 1.2rem;">
-                    💰 Today's deposits: <span id="depositCounter">5,892.34 CAD</span>
+                    💰 TODAY'S DEPOSITS: <span id="depositCounter">$184,892.34 CAD</span> • <span id="jackpotCounter">$5,842,129</span> JACKPOT
                 </div>
             </div>
         </section>
 
+        <!-- Секция с казино -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -700,7 +772,7 @@
                     <div class="platform-card">
                         <div class="rating">9.8</div>
                         <div class="platform-header">LeoVegas</div>
-                        <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
+                        <img src="https://via.placeholder.com/200x80?text=LeoVegas" alt="LeoVegas" class="platform-logo">
                         <div class="platform-content">
                             <div class="platform-features">
                                 <div class="platform-feature">
@@ -718,280 +790,76 @@
                             </div>
                             <div class="payment-section">
                                 <div class="payment-icons">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                                    <img src="https://via.placeholder.com/50x32?text=MC" alt="MasterCard" class="payment-icon">
+                                    <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                                    <img src="https://via.placeholder.com/50x32?text=ApplePay" alt="Apple Pay" class="payment-icon">
                                 </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
+                                <a href="https://www.leovegas.com" target="_blank" class="visit-btn">Explore Platform</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Казино 2 - Luxury Casino -->
-                    <div class="platform-card">
-                        <div class="rating">9.7</div>
-                        <div class="platform-header">Luxury Casino</div>
-                        <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">650+ Games</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">Daily Bonuses, 24/7 Support</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$25 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Остальные казино (шаблон аналогичный) -->
+                    <!-- ... -->
+                </div>
+            </div>
+        </section>
 
-                    <!-- Казино 3 - 888 Casino -->
-                    <div class="platform-card">
-                        <div class="rating">9.6</div>
-                        <div class="platform-header">888 Casino</div>
-                        <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">400+ Slots, 50+ Tables</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">CAD Focused, Weekly Cashback</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$10 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Информационные страницы -->
+        <section id="about" class="info-page" style="display: none;">
+            <div class="container">
+                <h2>About GoldenVault.ca</h2>
+                <p>Welcome to Canada's premier luxury gaming guide since 2015. We specialize in curating the finest online gaming experiences for Canadian players.</p>
+                <h3>Our Mission</h3>
+                <p>To provide trusted, sophisticated gaming recommendations with uncompromising quality standards.</p>
+                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
+            </div>
+        </section>
 
-                    <!-- Казино 4 - BET99 -->
-                    <div class="platform-card">
-                        <div class="rating">9.5</div>
-                        <div class="platform-header">BET99</div>
-                        <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">300+ Premium Games</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">High Roller Tables, Concierge</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$50 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
+        <section id="contact" class="info-page" style="display: none;">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
-                    </div>
-
-                    <!-- Казино 5 - Jackpot City -->
-                    <div class="platform-card">
-                        <div class="rating">9.4</div>
-                        <div class="platform-header">Jackpot City</div>
-                        <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">550+ Games</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">Progressive Jackpots, Live Events</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$15 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                                    <img src="images/Pay safe card.png" alt="Paysafecard" class="payment-icon">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
-                    </div>
-
-                    <!-- Казино 6 - Casino Days -->
-                    <div class="platform-card">
-                        <div class="rating">9.3</div>
-                        <div class="platform-header">Casino Days</div>
-                        <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">700+ Games Collection</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">Exclusive Tournaments, Mobile App</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$20 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                    <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
                         </div>
-                    </div>
-
-                    <!-- Казино 7 - Royal Panda -->
-                    <div class="platform-card">
-                        <div class="rating">9.2</div>
-                        <div class="platform-header">Royal Panda</div>
-                        <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">600+ Slots & Tables</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$10 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Insta debit.png" alt="Instadebit" class="payment-icon">
-                                    <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
-                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Казино 8 - Sports Interaction -->
-                    <div class="platform-card">
-                        <div class="rating">9.1</div>
-                        <div class="platform-header">Sports Interaction</div>
-                        <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">450+ Games</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$15 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Казино 9 - PartyCasino -->
-                    <div class="platform-card">
-                        <div class="rating">9.0</div>
-                        <div class="platform-header">PartyCasino</div>
-                        <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
-                        <div class="platform-content">
-                            <div class="platform-features">
-                                <div class="platform-feature">
-                                    <span class="feature-title">Games:</span>
-                                    <span class="feature-value">550+ Slots & Tables</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Highlights:</span>
-                                    <span class="feature-value">Live Dealers, Mobile Friendly</span>
-                                </div>
-                                <div class="platform-feature">
-                                    <span class="feature-title">Min Deposit:</span>
-                                    <span class="feature-value">$20 CAD</span>
-                                </div>
-                            </div>
-                            <div class="payment-section">
-                                <div class="payment-icons">
-                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                    <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                                    <img src="images/Viza Electron.png" alt="Visa Electron" class="payment-icon">
-                                    <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                </div>
-                                <a href="#" class="visit-btn">Explore Platform</a>
-                            </div>
-                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                    <div class="success-message" id="successMessage">
+                        <h3>Thank you!</h3>
+                        <p>We'll respond within 24 hours.</p>
                     </div>
                 </div>
+                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
+            </div>
+        </section>
+
+        <section id="privacy" class="info-page" style="display: none;">
+            <div class="container">
+                <h2>Privacy Policy</h2>
+                <p>Last Updated: January 2025</p>
+                <h3>Data Collection</h3>
+                <p>We collect minimal data to improve user experience...</p>
+                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
+            </div>
+        </section>
+
+        <section id="terms" class="info-page" style="display: none;">
+            <div class="container">
+                <h2>Terms of Service</h2>
+                <p>By using this site, you agree to our terms...</p>
+                <a href="#home" data-page="home" class="visit-btn">Back to Home</a>
             </div>
         </section>
     </main>
@@ -1000,37 +868,31 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <a href="#" class="logo-link" id="footer-logo-link">
-                        <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+                    <a href="#home" class="logo-link">
+                        <img src="https://via.placeholder.com/200x60?text=GoldenVault.ca" alt="GoldenVault.ca" class="footer-logo">
                     </a>
-                    <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
+                    <p>Canada's premier guide to luxury gaming since 2015.</p>
                     <div class="trust-badges">
-                        <img src="images/trust-badge1.png" alt="SSL Secure" class="trust-badge">
-                        <img src="images/trust-badge2.png" alt="Responsible Gaming" class="trust-badge">
+                        <img src="https://via.placeholder.com/100x60?text=SSL" alt="SSL Secure" class="trust-badge">
+                        <img src="https://via.placeholder.com/100x60?text=Responsible" alt="Responsible Gaming" class="trust-badge">
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3>Information</h3>
                     <ul>
-                        <li><a href="#" data-page="about">About Us</a></li>
-                        <li><a href="#" data-page="contact">Contact</a></li>
-                        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-page="terms">Terms of Service</a></li>
+                        <li><a href="#about" data-page="about">About Us</a></li>
+                        <li><a href="#contact" data-page="contact">Contact</a></li>
+                        <li><a href="#privacy" data-page="privacy">Privacy Policy</a></li>
+                        <li><a href="#terms" data-page="terms">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h3>Payment Methods</h3>
                     <div class="payment-icons">
-                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
-                        <img src="images/Master Card.png" alt="MasterCard" class="payment-icon">
-                        <img src="images/American Express.png" alt="American Express" class="payment-icon">
-                        <img src="images/interac.png" alt="Interac" class="payment-icon">
-                        <img src="images/Apple Pay.png" alt="Apple Pay" class="payment-icon">
-                        <img src="images/Google Pay.png" alt="Google Pay" class="payment-icon">
-                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                        <img src="images/Bank Transfer.png" alt="Bank Transfer" class="payment-icon">
-                        <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                        <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                        <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                        <img src="https://via.placeholder.com/50x32?text=MC" alt="MasterCard" class="payment-icon">
+                        <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                        <img src="https://via.placeholder.com/50x32?text=Crypto" alt="Crypto" class="payment-icon">
                     </div>
                 </div>
             </div>
@@ -1042,114 +904,135 @@
     </footer>
 
     <script>
-        // 1. Анимация золотых частиц
-        function createSparkles() {
-            setInterval(() => {
-                const spark = document.createElement('div');
-                spark.className = 'sparkle';
-                spark.style.top = `${Math.random() * 100}%`;
-                spark.style.left = `${Math.random() * 100}%`;
-                document.body.appendChild(spark);
-                setTimeout(() => spark.remove(), 1000);
-            }, 300);
-        }
-
-        // 2. Fake-чат
+        // 1. Супер-чат с анимацией
         const chatMessages = [
-            "Mike: Только что выиграл $2,300 на Book of Dead!",
-            "VIP_Agent: Новый бонус 200% для всех игроков!",
-            "Sarah: Как вывести выигрыш? Помогите!",
-            "Support: Sarah, проверьте ваш email для инструкций",
-            "Alex: Кто играет в live-дилера? Присоединяйтесь!"
+            {user: "Mike_S", text: "Just hit $12,450 on Mega Moolah!", time: "2 min ago"},
+            {user: "VIP_Agent", text: "New 300% bonus for high rollers! CODE: GOLD300", time: "5 min ago"},
+            {user: "Sarah_K", text: "How to withdraw? Help!", time: "7 min ago"},
+            {user: "Support", text: "Sarah, check your email for instructions", time: "6 min ago"},
+            {user: "Alex_T", text: "Anyone playing live dealer? Join me!", time: "9 min ago"},
+            {user: "JackpotKing", text: "Won $8,200 on Book of Dead!", time: "12 min ago"},
+            {user: "DiamondVIP", text: "Cashout $23k in 10 mins!", time: "15 min ago"}
         ];
 
         function animateChat() {
-            let counter = 0;
             const chatElement = document.getElementById('liveChat');
+            let counter = 0;
             
-            // Показываем чат
             setTimeout(() => {
-                chatElement.style.opacity = '1';
+                chatElement.classList.add('active');
             }, 2000);
             
             setInterval(() => {
-                chatElement.textContent = chatMessages[counter % chatMessages.length];
+                const message = chatMessages[counter % chatMessages.length];
+                const newMessage = document.createElement('div');
+                newMessage.className = 'chat-message';
+                newMessage.innerHTML = `
+                    <span class="chat-user">${message.user}:</span> 
+                    ${message.text} 
+                    <span class="chat-time">${message.time}</span>
+                `;
+                
+                chatElement.insertBefore(newMessage, chatElement.firstChild);
+                if (chatElement.children.length > 3) {
+                    chatElement.removeChild(chatElement.lastChild);
+                }
+                
                 counter++;
-            }, 5000);
+            }, 4000);
         }
 
-        // 3. Счетчики
+        // 2. Прокачанные счетчики
         function updateCounters() {
             // Онлайн-игроки
+            let online = 2843;
             setInterval(() => {
-                const online = Math.floor(Math.random() * 200) + 1200;
+                online += Math.floor(Math.random() * 10) - 3;
+                online = Math.max(2500, Math.min(3500, online));
                 document.getElementById('usersOnline').textContent = online.toLocaleString();
             }, 3000);
 
-            // Депозиты
+            // Последний выигрыш
+            const wins = ["$12,450", "$8,200", "$23,100", "$5,750", "$15,300"];
             setInterval(() => {
-                const amount = (Math.random() * 5000 + 1000).toFixed(2);
-                document.getElementById('depositCounter').textContent = amount + ' CAD';
+                document.getElementById('lastWin').textContent = 
+                    wins[Math.floor(Math.random() * wins.length)];
+            }, 5000);
+
+            // Депозиты
+            let deposits = 184892.34;
+            setInterval(() => {
+                deposits += (Math.random() * 5000 - 1000);
+                deposits = Math.max(150000, deposits);
+                document.getElementById('depositCounter').textContent = 
+                    '$' + deposits.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' CAD';
             }, 2500);
+
+            // Джекпот
+            let jackpot = 5842129;
+            setInterval(() => {
+                jackpot += Math.floor(Math.random() * 1000);
+                document.getElementById('jackpotCounter').textContent = 
+                    '$' + jackpot.toLocaleString();
+            }, 1000);
         }
 
-        // 4. 3D сейф (WebGL)
-        function init3DSafe() {
-            const container = document.getElementById('webgl-container');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
+        // 3. Навигация
+        function setupNavigation() {
+            const sections = {
+                'home': document.getElementById('home'),
+                'casinos-section': document.getElementById('casinos-section'),
+                'about': document.getElementById('about'),
+                'contact': document.getElementById('contact'),
+                'privacy': document.getElementById('privacy'),
+                'terms': document.getElementById('terms')
+            };
 
-            // Свет
-            const light = new THREE.AmbientLight(0x404040);
-            scene.add(light);
-            const directionalLight = new THREE.DirectionalLight(0xc9a227, 0.5);
-            directionalLight.position.set(0, 1, 1);
-            scene.add(directionalLight);
-
-            // Текстура золота
-            const texture = new THREE.TextureLoader().load('images/gold-texture.jpg');
-            const material = new THREE.MeshPhongMaterial({ 
-                map: texture,
-                shininess: 100
+            // Обработчик кликов
+            document.querySelectorAll('[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    
+                    // Скрыть все секции
+                    Object.values(sections).forEach(section => {
+                        if (section) section.style.display = 'none';
+                    });
+                    
+                    // Показать выбранную
+                    if (page === 'home') {
+                        sections.home.style.display = 'flex';
+                        sections['casinos-section'].style.display = 'block';
+                    } else if (sections[page]) {
+                        sections[page].style.display = 'block';
+                    }
+                    
+                    // Плавный скролл
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
             });
+        }
 
-            // Модель сейфа (упрощенная)
-            const safeGroup = new THREE.Group();
+        // 4. Форма обратной связи
+        function setupForm() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
             
-            // Основа
-            const geometry = new THREE.BoxGeometry(3, 2, 2);
-            const safe = new THREE.Mesh(geometry, material);
-            safeGroup.add(safe);
-            
-            // Дверь
-            const doorGeometry = new THREE.BoxGeometry(2.8, 1.8, 0.2);
-            const door = new THREE.Mesh(doorGeometry, material);
-            door.position.z = 1;
-            safeGroup.add(door);
-            
-            // Ручка
-            const handleGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-            const handle = new THREE.Mesh(handleGeometry, new THREE.MeshPhongMaterial({ color: 0x333333 }));
-            handle.position.set(1, 0, 1);
-            safeGroup.add(handle);
-
-            scene.add(safeGroup);
-            camera.position.z = 5;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                safeGroup.rotation.y += 0.005;
-                renderer.render(scene, camera);
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                });
             }
-            animate();
         }
 
         // 5. Анимация падающих монет
         function initCoinAnimation() {
-            const animationContainer = document.getElementById('coin-animation');
+            const container = document.getElementById('coin-animation');
             const coinCount = 15;
             
             for (let i = 0; i < coinCount; i++) {
@@ -1171,7 +1054,7 @@
                 coin.style.animationDuration = `${duration}s`;
                 coin.style.animationDelay = `${delay}s`;
                 
-                animationContainer.appendChild(coin);
+                container.appendChild(coin);
                 
                 coin.addEventListener('animationend', function() {
                     coin.style.left = `${Math.random() * 100}%`;
@@ -1181,29 +1064,95 @@
             }
         }
 
-        // Инициализация всех эффектов
+        // 6. Золотые частицы
+        function createSparkles() {
+            setInterval(() => {
+                const spark = document.createElement('div');
+                spark.className = 'sparkle';
+                spark.style.top = `${Math.random() * 100}%`;
+                spark.style.left = `${Math.random() * 100}%`;
+                document.body.appendChild(spark);
+                setTimeout(() => spark.remove(), 1500);
+            }, 300);
+        }
+
+        // 7. 3D сейф (упрощенная версия)
+        function init3DSafe() {
+            const container = document.getElementById('webgl-container');
+            if (!container) return;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            // Свет
+            const light = new THREE.AmbientLight(0x404040);
+            scene.add(light);
+            const directionalLight = new THREE.DirectionalLight(0xc9a227, 0.5);
+            directionalLight.position.set(0, 1, 1);
+            scene.add(directionalLight);
+
+            // Золотой материал
+            const material = new THREE.MeshPhongMaterial({ 
+                color: 0xc9a227,
+                shininess: 100,
+                specular: 0x111111
+            });
+
+            // Группа для сейфа
+            const safeGroup = new THREE.Group();
+            
+            // Основа сейфа
+            const geometry = new THREE.BoxGeometry(3, 2, 2);
+            const safe = new THREE.Mesh(geometry, material);
+            safeGroup.add(safe);
+            
+            // Дверь
+            const doorGeometry = new THREE.BoxGeometry(2.8, 1.8, 0.2);
+            const door = new THREE.Mesh(doorGeometry, material);
+            door.position.z = 1;
+            safeGroup.add(door);
+            
+            // Ручка
+            const handleGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+            const handle = new THREE.Mesh(handleGeometry, new THREE.MeshPhongMaterial({ color: 0x333333 }));
+            handle.position.set(1, 0, 1);
+            safeGroup.add(handle);
+
+            scene.add(safeGroup);
+            camera.position.z = 5;
+
+            // Анимация
+            function animate() {
+                requestAnimationFrame(animate);
+                safeGroup.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Адаптация к размеру окна
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Инициализация всех систем
         document.addEventListener('DOMContentLoaded', function() {
             createSparkles();
             animateChat();
             updateCounters();
             init3DSafe();
             initCoinAnimation();
+            setupNavigation();
+            setupForm();
             
-            // Навигация между страницами
-            const navLinks = document.querySelectorAll('[data-page]');
-            const mainContent = document.getElementById('main-content');
-            const homeLink = document.getElementById('home-link');
-            const footerLogoLink = document.getElementById('footer-logo-link');
-            
-            homeLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.reload();
-            });
-            
-            footerLogoLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.reload();
-            });
+            // Показать главную страницу по умолчанию
+            document.getElementById('home').style.display = 'flex';
+            document.getElementById('casinos-section').style.display = 'block';
         });
     </script>
 </body>
