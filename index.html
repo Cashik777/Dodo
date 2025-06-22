@@ -22,12 +22,73 @@
             font-family: 'Playfair Display', 'Montserrat', serif;
             line-height: 1.7;
             color: var(--text-dark);
-            background: var(--bg-color);
+            background: linear-gradient(45deg, #0c1b32, #1a2a47);
+            animation: gradient-shift 15s ease infinite;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            position: relative;
         }
-        
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(201, 162, 39, 0.8);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: sparkle-fade 1s ease-out;
+            z-index: 1;
+        }
+
+        @keyframes sparkle-fade {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.3); opacity: 0; }
+        }
+
+        .live-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: var(--secondary);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+            border: 1px solid var(--secondary);
+            animation: pulse-gold 2s infinite;
+        }
+
+        .live-chat {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-width: 200px;
+            border-left: 3px solid var(--secondary);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 5px rgba(201, 162, 39, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(201, 162, 39, 0.7); }
+            100% { box-shadow: 0 0 5px rgba(201, 162, 39, 0.3); }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -314,6 +375,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            animation: pulse-gold 2s infinite alternate;
         }
         
         .visit-btn:hover {
@@ -448,7 +510,6 @@
             transform: translateY(-3px);
         }
 
-        /* Стили для информационных страниц */
         .info-page {
             padding: 80px 0;
             max-width: 800px;
@@ -540,7 +601,6 @@
             border-left: 4px solid var(--secondary);
         }
 
-        /* Навигационное меню */
         .nav-menu {
             display: flex;
             gap: 20px;
@@ -592,11 +652,20 @@
                 gap: 10px;
                 align-items: center;
             }
+            .live-chat, .live-counter {
+                display: none;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+    <!-- Динамические элементы -->
+    <div class="live-counter">🎯 <span id="usersOnline">1,247</span> игроков онлайн</div>
+    <div class="live-chat" id="liveChat"></div>
+    <div id="webgl-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></div>
+
     <header>
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
@@ -612,16 +681,17 @@
     </header>
 
     <main id="main-content">
-        <!-- Главная страница по умолчанию -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
                 <h1>Luxury Canadian Gaming Experience</h1>
                 <p>Discover the most exclusive platforms for sophisticated players</p>
+                <div class="deposit-counter" style="margin-top: 30px; font-size: 1.2rem;">
+                    💰 Today's deposits: <span id="depositCounter">5,892.34 CAD</span>
+                </div>
             </div>
         </section>
 
-        <!-- Секция с 9 казино -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -926,7 +996,6 @@
         </section>
     </main>
 
-    <!-- Футер -->
     <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
@@ -972,207 +1041,114 @@
         </div>
     </footer>
 
-    <!-- Шаблоны для информационных страниц -->
-    <template id="about-template">
-        <div class="info-page">
-            <h2>About GoldenVault.ca</h2>
-            <p>Welcome to GoldenVault.ca, Canada's premier guide to luxury gaming experiences since 2015. We are dedicated to providing sophisticated players with the most comprehensive and reliable information about high-end online gaming platforms.</p>
-            
-            <h3>Our Mission</h3>
-            <p>Our mission is to curate the finest selection of premium online casinos,            <p>providing Canadian players with trustworthy reviews, exclusive insights, and personalized recommendations to enhance their gaming experience.</p>
-            
-            <h3>What Sets Us Apart</h3>
-            <ul>
-                <li><strong>Expert Curation:</strong> Our team of gaming connoisseurs personally tests each platform to evaluate quality, security, and user experience.</li>
-                <li><strong>Luxury Focus:</strong> We specialize in high-end gaming experiences that cater to discerning players.</li>
-                <li><strong>Canadian Perspective:</strong> All our recommendations are tailored specifically for Canadian players, considering local preferences and regulations.</li>
-                <li><strong>Transparent Reviews:</strong> We maintain complete editorial independence and provide honest, unbiased assessments.</li>
-            </ul>
-            
-            <h3>Our Selection Criteria</h3>
-            <p>Every platform featured on GoldenVault.ca must meet our stringent quality standards:</p>
-            <ul>
-                <li>Valid gaming license from reputable jurisdictions</li>
-                <li>Premium game selection from top-tier providers</li>
-                <li>Robust security measures and fair gaming certifications</li>
-                <li>Excellent customer service and support</li>
-                <li>Generous bonuses and VIP programs</li>
-                <li>Fast and reliable payment options for Canadian players</li>
-            </ul>
-            
-            <h3>Our Team</h3>
-            <p>GoldenVault.ca was founded by a group of gaming enthusiasts with over 30 years of combined industry experience. Our team includes:</p>
-            <ul>
-                <li>Former casino executives</li>
-                <li>Game development experts</li>
-                <li>Security specialists</li>
-                <li>Professional gamblers</li>
-            </ul>
-            
-            <h3>Commitment to Responsible Gaming</h3>
-            <p>We advocate for responsible gaming practices and provide resources to help players maintain control. All recommended platforms must offer comprehensive responsible gaming tools.</p>
-            
-            <p>For inquiries or partnership opportunities, please visit our <a href="#" data-page="contact">Contact page</a>.</p>
-        </div>
-    </template>
-
-    <template id="contact-template">
-        <div class="info-page">
-            <h2>Contact GoldenVault.ca</h2>
-            <p>We value your feedback, questions, and suggestions. Please use the form below to get in touch with our team.</p>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject">
-                            <option value="general">General Inquiry</option>
-                            <option value="feedback">Feedback/Suggestions</option>
-                            <option value="technical">Technical Issue</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="press">Press Inquiry</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-                
-                <div class="success-message" id="successMessage">
-                    <h3>Thank you for contacting us!</h3>
-                    <p>Your message has been successfully sent. Our team will get back to you within 24-48 hours.</p>
-                </div>
-            </div>
-            
-            <h3>Other Ways to Reach Us</h3>
-            <p><strong>Email:</strong> contact@goldenvault.ca</p>
-            <p><strong>Business Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</p>
-            
-            <h3>Media & Partnership Inquiries</h3>
-            <p>For media inquiries or partnership opportunities, please email partnerships@goldenvault.ca</p>
-        </div>
-    </template>
-
-    <template id="privacy-template">
-        <div class="info-page">
-            <h2>Privacy Policy</h2>
-            <p>Last Updated: January 1, 2025</p>
-            
-            <h3>1. Introduction</h3>
-            <p>GoldenVault.ca ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
-            
-            <h3>2. Information We Collect</h3>
-            <p>We may collect the following types of information:</p>
-            <ul>
-                <li><strong>Personal Data:</strong> Name, email address, and contact details when voluntarily submitted.</li>
-                <li><strong>Usage Data:</strong> Information about how you interact with our website.</li>
-                <li><strong>Technical Data:</strong> IP address, browser type, operating system, and other technical information.</li>
-            </ul>
-            
-            <h3>3. How We Use Your Information</h3>
-            <p>We may use the information we collect for various purposes, including to:</p>
-            <ul>
-                <li>Provide and maintain our service</li>
-                <li>Respond to your inquiries</li>
-                <li>Improve user experience</li>
-                <li>Analyze website usage</li>
-                <li>Prevent fraudulent activity</li>
-            </ul>
-            
-            <h3>4. Cookies and Tracking Technologies</h3>
-            <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information to improve your experience.</p>
-            
-            <h3>5. Third-Party Disclosure</h3>
-            <p>We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties except trusted third parties who assist us in operating our website.</p>
-            
-            <h3>6. Data Security</h3>
-            <p>We implement appropriate security measures to protect against unauthorized access, alteration, or destruction of your personal information.</p>
-            
-            <h3>7. Your Rights</h3>
-            <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
-            <ul>
-                <li>The right to access your data</li>
-                <li>The right to request correction</li>
-                <li>The right to request deletion</li>
-                <li>The right to restrict processing</li>
-            </ul>
-            
-            <h3>8. Changes to This Policy</h3>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-            
-            <h3>9. Contact Us</h3>
-            <p>If you have any questions about this Privacy Policy, please contact us at privacy@goldenvault.ca</p>
-        </div>
-    </template>
-
-    <template id="terms-template">
-        <div class="info-page">
-            <h2>Terms of Service</h2>
-            <p>Last Updated: January 1, 2025</p>
-            
-            <h3>1. Acceptance of Terms</h3>
-            <p>By accessing and using GoldenVault.ca ("the Website"), you accept and agree to be bound by these Terms of Service.</p>
-            
-            <h3>2. Website Purpose</h3>
-            <p>The Website provides information and reviews about online gaming platforms for entertainment purposes only. We do not operate any gambling services.</p>
-            
-            <h3>3. Eligibility</h3>
-            <p>You must be at least 19 years old to use this website. By using the Website, you confirm that you meet this age requirement.</p>
-            
-            <h3>4. User Responsibilities</h3>
-            <p>You agree to:</p>
-            <ul>
-                <li>Use the Website only for lawful purposes</li>
-                <li>Not engage in any activity that may harm the Website or its users</li>
-                <li>Comply with all applicable laws and regulations</li>
-            </ul>
-            
-            <h3>5. Intellectual Property</h3>
-            <p>All content on the Website, including text, graphics, logos, and images, is our property and protected by copyright laws.</p>
-            
-            <h3>6. Disclaimer of Warranties</h3>
-            <p>The Website is provided "as is" without warranties of any kind. We do not guarantee the accuracy, completeness, or usefulness of any information on the Website.</p>
-            
-            <h3>7. Limitation of Liability</h3>
-            <p>We shall not be liable for any damages resulting from the use or inability to use the Website or any content therein.</p>
-            
-            <h3>8. External Links</h3>
-            <p>The Website may contain links to third-party websites. We are not responsible for the content or practices of these external sites.</p>
-            
-            <h3>9. Affiliate Disclosure</h3>
-            <p>We may receive compensation when you click on links to certain products or services. This does not affect our reviews or recommendations.</p>
-            
-            <h3>10. Responsible Gaming</h3>
-            <p>We promote responsible gaming. If you believe you may have a gambling problem, please seek help from professional organizations.</p>
-            
-            <h3>11. Changes to Terms</h3>
-            <p>We reserve the right to modify these terms at any time. Your continued use of the Website constitutes acceptance of the modified terms.</p>
-            
-            <h3>12. Governing Law</h3>
-            <p>These Terms shall be governed by and construed in accordance with the laws of the Province of Ontario, Canada.</p>
-            
-            <h3>13. Contact Information</h3>
-            <p>For any questions about these Terms, please contact us at legal@goldenvault.ca</p>
-        </div>
-    </template>
-
     <script>
-        // Анимация падающих монет
-        document.addEventListener('DOMContentLoaded', function() {
+        // 1. Анимация золотых частиц
+        function createSparkles() {
+            setInterval(() => {
+                const spark = document.createElement('div');
+                spark.className = 'sparkle';
+                spark.style.top = `${Math.random() * 100}%`;
+                spark.style.left = `${Math.random() * 100}%`;
+                document.body.appendChild(spark);
+                setTimeout(() => spark.remove(), 1000);
+            }, 300);
+        }
+
+        // 2. Fake-чат
+        const chatMessages = [
+            "Mike: Только что выиграл $2,300 на Book of Dead!",
+            "VIP_Agent: Новый бонус 200% для всех игроков!",
+            "Sarah: Как вывести выигрыш? Помогите!",
+            "Support: Sarah, проверьте ваш email для инструкций",
+            "Alex: Кто играет в live-дилера? Присоединяйтесь!"
+        ];
+
+        function animateChat() {
+            let counter = 0;
+            const chatElement = document.getElementById('liveChat');
+            
+            // Показываем чат
+            setTimeout(() => {
+                chatElement.style.opacity = '1';
+            }, 2000);
+            
+            setInterval(() => {
+                chatElement.textContent = chatMessages[counter % chatMessages.length];
+                counter++;
+            }, 5000);
+        }
+
+        // 3. Счетчики
+        function updateCounters() {
+            // Онлайн-игроки
+            setInterval(() => {
+                const online = Math.floor(Math.random() * 200) + 1200;
+                document.getElementById('usersOnline').textContent = online.toLocaleString();
+            }, 3000);
+
+            // Депозиты
+            setInterval(() => {
+                const amount = (Math.random() * 5000 + 1000).toFixed(2);
+                document.getElementById('depositCounter').textContent = amount + ' CAD';
+            }, 2500);
+        }
+
+        // 4. 3D сейф (WebGL)
+        function init3DSafe() {
+            const container = document.getElementById('webgl-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            // Свет
+            const light = new THREE.AmbientLight(0x404040);
+            scene.add(light);
+            const directionalLight = new THREE.DirectionalLight(0xc9a227, 0.5);
+            directionalLight.position.set(0, 1, 1);
+            scene.add(directionalLight);
+
+            // Текстура золота
+            const texture = new THREE.TextureLoader().load('images/gold-texture.jpg');
+            const material = new THREE.MeshPhongMaterial({ 
+                map: texture,
+                shininess: 100
+            });
+
+            // Модель сейфа (упрощенная)
+            const safeGroup = new THREE.Group();
+            
+            // Основа
+            const geometry = new THREE.BoxGeometry(3, 2, 2);
+            const safe = new THREE.Mesh(geometry, material);
+            safeGroup.add(safe);
+            
+            // Дверь
+            const doorGeometry = new THREE.BoxGeometry(2.8, 1.8, 0.2);
+            const door = new THREE.Mesh(doorGeometry, material);
+            door.position.z = 1;
+            safeGroup.add(door);
+            
+            // Ручка
+            const handleGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+            const handle = new THREE.Mesh(handleGeometry, new THREE.MeshPhongMaterial({ color: 0x333333 }));
+            handle.position.set(1, 0, 1);
+            safeGroup.add(handle);
+
+            scene.add(safeGroup);
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                safeGroup.rotation.y += 0.005;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // 5. Анимация падающих монет
+        function initCoinAnimation() {
             const animationContainer = document.getElementById('coin-animation');
             const coinCount = 15;
             
@@ -1184,7 +1160,6 @@
                 const coin = document.createElement('div');
                 coin.className = 'falling-item coin';
                 
-                // Random position and animation duration
                 const startPosition = Math.random() * 100;
                 const duration = 10 + Math.random() * 20;
                 const delay = Math.random() * 15;
@@ -1198,75 +1173,28 @@
                 
                 animationContainer.appendChild(coin);
                 
-                // Restart animation when it ends
                 coin.addEventListener('animationend', function() {
                     coin.style.left = `${Math.random() * 100}%`;
                     coin.style.animationDuration = `${10 + Math.random() * 20}s`;
                     coin.style.animationDelay = '0s';
                 });
             }
+        }
+
+        // Инициализация всех эффектов
+        document.addEventListener('DOMContentLoaded', function() {
+            createSparkles();
+            animateChat();
+            updateCounters();
+            init3DSafe();
+            initCoinAnimation();
             
-            // Обработка навигации
+            // Навигация между страницами
             const navLinks = document.querySelectorAll('[data-page]');
             const mainContent = document.getElementById('main-content');
             const homeLink = document.getElementById('home-link');
             const footerLogoLink = document.getElementById('footer-logo-link');
             
-            // Загрузка шаблонов
-            const aboutTemplate = document.getElementById('about-template').content;
-            const contactTemplate = document.getElementById('contact-template').content;
-            const privacyTemplate = document.getElementById('privacy-template').content;
-            const termsTemplate = document.getElementById('terms-template').content;
-            
-            // Функция для загрузки страницы
-            function loadPage(template) {
-                mainContent.innerHTML = '';
-                const pageContent = document.importNode(template, true);
-                mainContent.appendChild(pageContent);
-                
-                // Прокрутка вверх
-                window.scrollTo(0, 0);
-                
-                // Обработка формы контактов
-                if (template === contactTemplate) {
-                    const contactForm = document.getElementById('contactForm');
-                    const successMessage = document.getElementById('successMessage');
-                    
-                    if (contactForm) {
-                        contactForm.addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            // Здесь должна быть логика отправки формы
-                            contactForm.style.display = 'none';
-                            successMessage.style.display = 'block';
-                        });
-                    }
-                }
-            }
-            
-            // Обработчики событий для навигации
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const page = this.getAttribute('data-page');
-                    
-                    switch(page) {
-                        case 'about':
-                            loadPage(aboutTemplate);
-                            break;
-                        case 'contact':
-                            loadPage(contactTemplate);
-                            break;
-                        case 'privacy':
-                            loadPage(privacyTemplate);
-                            break;
-                        case 'terms':
-                            loadPage(termsTemplate);
-                            break;
-                    }
-                });
-            });
-            
-            // Обработчики для возврата на главную
             homeLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 window.location.reload();
