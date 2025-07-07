@@ -961,7 +961,7 @@
                                     </div>
                                     <div class="payment-icon-container">
                                         <div class="payment-icon-glow"></div>
-                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                        <img src="images/Visa.png" alt="Visa" class="payment-icon">
                                     </div>
                                     <div class="payment-icon-container">
                                         <div class="payment-icon-glow"></div>
@@ -1008,7 +1008,7 @@
                                     </div>
                                     <div class="payment-icon-container">
                                         <div class="payment-icon-glow"></div>
-                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                        <img src="images/Visa.png" alt="Visa" class="payment-icon">
                                     </div>
                                     <div class="payment-icon-container">
                                         <div class="payment-icon-glow"></div>
@@ -1055,7 +1055,7 @@
                                     </div>
                                     <div class="payment-icon-container">
                                         <div class="payment-icon-glow"></div>
-                                        <img src="images/Visa.png.png" alt="Visa" class="payment-icon">
+                                        <img src="images/Visa.png" alt="Visa" class="payment-icon">
                                     </div>
                                     <div class="payment-icon-container">
                                         <div class="payment-icon-glow"></div>
@@ -1239,83 +1239,6 @@
                 coin.addEventListener('animationiteration', function() {
                     this.style.left = `${Math.random() * 100}%`;
                 });
-            }
-            
-            // Navigation
-            const navLinks = document.querySelectorAll('[data-page]');
-            const mainContent = document.getElementById('main-content');
-            const homeLink = document.getElementById('home-link');
-            const footerLogoLink = document.getElementById('footer-logo-link');
-            
-            function loadPageContent(page) {
-                const template = document.getElementById(`${page}-template`);
-                if (template) {
-                    mainContent.innerHTML = '';
-                    const content = document.importNode(template.content, true);
-                    mainContent.appendChild(content);
-                    
-                    window.scrollTo(0, 0);
-                    addPageEventListeners();
-                }
-            }
-            
-            function showHomePage() {
-                mainContent.innerHTML = `
-                    <section class="hero" id="hero-section">
-                        <div class="animation-container" id="coin-animation"></div>
-                        <div class="hero-content">
-                            <h1>Canada's Trusted Casino Guide</h1>
-                            <p>2025's top-rated online casinos for Ontario, Quebec & BC players</p>
-                            <div style="margin-top: 30px;">
-                                <a href="#casinos-section" class="visit-btn" style="display: inline-block; width: auto; padding: 15px 30px;">View Top 10 Casinos</a>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="section bg-medium" id="casinos-section">
-                        ${document.querySelector('#casinos-section').outerHTML}
-                    </section>
-                    <section class="section bg-dark">
-                        ${document.querySelector('.testimonials-grid').parentElement.parentElement.outerHTML}
-                    </section>
-                    <section class="section bg-medium">
-                        ${document.querySelector('.expert-card').parentElement.parentElement.parentElement.outerHTML}
-                    </section>
-                `;
-                
-                // Recreate coin animation
-                const animationContainer = document.getElementById('coin-animation');
-                for (let i = 0; i < coinCount; i++) {
-                    createFallingCoin();
-                }
-            }
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const page = this.getAttribute('data-page');
-                    loadPageContent(page);
-                });
-            });
-            
-            homeLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showHomePage();
-            });
-            
-            footerLogoLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showHomePage();
-            });
-            
-            function addPageEventListeners() {
-                const contactForm = document.getElementById('contactForm');
-                if (contactForm) {
-                    contactForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        document.getElementById('successMessage').style.display = 'block';
-                        contactForm.reset();
-                    });
-                }
             }
         });
     </script>
