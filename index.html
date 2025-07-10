@@ -14,6 +14,9 @@
     <meta property="og:url" content="https://goldenvault.ca">
     <meta property="og:image" content="https://goldenvault.ca/images/social-share.jpg">
     
+    <!-- Favicon -->
+    <link rel="icon" href="images/icons/diamond.png" type="image/png">
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -69,6 +72,7 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
         
         .container {
@@ -227,13 +231,24 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
+            background: url('images/backgrounds/treasure-bg.jpg') no-repeat center center/cover;
             z-index: 1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
+            z-index: 2;
         }
         
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             width: 100%;
             padding: 0 20px;
         }
@@ -574,6 +589,77 @@
             line-height: 1.8;
         }
         
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            padding: 30px;
+            background: rgba(201, 162, 39, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        
+        .contact-info h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .trust-badges {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .trust-badges img {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .contact-form {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
         /* Footer */
         footer {
             background: var(--dark);
@@ -776,6 +862,10 @@
             .filter-title {
                 margin-bottom: 10px;
             }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -784,7 +874,7 @@
     <header id="main-header">
         <div class="container header-container">
             <a href="#" class="logo-link">
-                <img src="https://via.placeholder.com/200x50?text=GoldenVault" alt="GoldenVault.ca" class="logo">
+                <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="logo">
             </a>
             
             <nav class="main-nav">
@@ -793,7 +883,6 @@
                     <li><a href="#casinos">Casinos</a></li>
                     <li><a href="#testimonials">Reviews</a></li>
                     <li><a href="#experts">Experts</a></li>
-                    <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
@@ -815,7 +904,6 @@
             <li><a href="#casinos">Casinos</a></li>
             <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#experts">Experts</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
@@ -850,7 +938,7 @@
                 <div class="casino-card" data-province="ON QC BC">
                     <div class="casino-rating">9.8</div>
                     <div class="casino-header">
-                        <img src="https://via.placeholder.com/200x80?text=LeoVegas" alt="LeoVegas" class="casino-logo">
+                        <img src="images/casinos/logo_1.jpeg" alt="LeoVegas" class="casino-logo">
                         <h3>LeoVegas</h3>
                     </div>
                     <div class="casino-content">
@@ -872,19 +960,19 @@
                         <div class="payment-methods">
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                                <img src="images/payments/Visa.png.png" alt="Visa" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Mastercard" alt="Mastercard" class="payment-icon">
+                                <img src="images/payments/Master Card.png" alt="Mastercard" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Bitcoin" alt="Bitcoin" class="payment-icon">
+                                <img src="images/payments/BTC.png" alt="Bitcoin" class="payment-icon">
                             </div>
                         </div>
                         
@@ -898,7 +986,7 @@
                 <div class="casino-card" data-province="ON QC">
                     <div class="casino-rating">9.7</div>
                     <div class="casino-header">
-                        <img src="https://via.placeholder.com/200x80?text=JackpotCity" alt="JackpotCity" class="casino-logo">
+                        <img src="images/casinos/logo_2.jpeg" alt="JackpotCity" class="casino-logo">
                         <h3>JackpotCity</h3>
                     </div>
                     <div class="casino-content">
@@ -920,15 +1008,15 @@
                         <div class="payment-methods">
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                                <img src="images/payments/Visa.png.png" alt="Visa" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=PayPal" alt="PayPal" class="payment-icon">
+                                <img src="images/payments/Payz.png" alt="PayPal" class="payment-icon">
                             </div>
                         </div>
                         
@@ -942,7 +1030,7 @@
                 <div class="casino-card" data-province="ON BC">
                     <div class="casino-rating">9.6</div>
                     <div class="casino-header">
-                        <img src="https://via.placeholder.com/200x80?text=888+Casino" alt="888 Casino" class="casino-logo">
+                        <img src="images/casinos/logo_3.jpeg" alt="888 Casino" class="casino-logo">
                         <h3>888 Casino</h3>
                     </div>
                     <div class="casino-content">
@@ -964,15 +1052,15 @@
                         <div class="payment-methods">
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                                <img src="images/payments/Visa.png.png" alt="Visa" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Skrill" alt="Skrill" class="payment-icon">
+                                <img src="images/payments/Skrill.png" alt="Skrill" class="payment-icon">
                             </div>
                         </div>
                         
@@ -986,7 +1074,7 @@
                 <div class="casino-card" data-province="ON">
                     <div class="casino-rating">9.5</div>
                     <div class="casino-header">
-                        <img src="https://via.placeholder.com/200x80?text=Spin+Casino" alt="Spin Casino" class="casino-logo">
+                        <img src="images/casinos/logo_4.jpeg" alt="Spin Casino" class="casino-logo">
                         <h3>Spin Casino</h3>
                     </div>
                     <div class="casino-content">
@@ -1008,15 +1096,15 @@
                         <div class="payment-methods">
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Mastercard" alt="Mastercard" class="payment-icon">
+                                <img src="images/payments/Master Card.png" alt="Mastercard" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Bitcoin" alt="Bitcoin" class="payment-icon">
+                                <img src="images/payments/BTC.png" alt="Bitcoin" class="payment-icon">
                             </div>
                         </div>
                         
@@ -1030,7 +1118,7 @@
                 <div class="casino-card" data-province="QC">
                     <div class="casino-rating">9.4</div>
                     <div class="casino-header">
-                        <img src="https://via.placeholder.com/200x80?text=Royal+Panda" alt="Royal Panda" class="casino-logo">
+                        <img src="images/casinos/logo_5.jpeg" alt="Royal Panda" class="casino-logo">
                         <h3>Royal Panda</h3>
                     </div>
                     <div class="casino-content">
@@ -1052,15 +1140,15 @@
                         <div class="payment-methods">
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                                <img src="images/payments/Visa.png.png" alt="Visa" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Neteller" alt="Neteller" class="payment-icon">
+                                <img src="images/payments/Neteller.png" alt="Neteller" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=PayPal" alt="PayPal" class="payment-icon">
+                                <img src="images/payments/Payz.png" alt="PayPal" class="payment-icon">
                             </div>
                         </div>
                         
@@ -1074,7 +1162,7 @@
                 <div class="casino-card" data-province="ON BC">
                     <div class="casino-rating">9.3</div>
                     <div class="casino-header">
-                        <img src="https://via.placeholder.com/200x80?text=Betway" alt="Betway" class="casino-logo">
+                        <img src="images/casinos/logo_6.jpeg" alt="Betway" class="casino-logo">
                         <h3>Betway</h3>
                     </div>
                     <div class="casino-content">
@@ -1096,19 +1184,19 @@
                         <div class="payment-methods">
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                                <img src="images/payments/Visa.png.png" alt="Visa" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Mastercard" alt="Mastercard" class="payment-icon">
+                                <img src="images/payments/Master Card.png" alt="Mastercard" class="payment-icon">
                             </div>
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
-                                <img src="https://via.placeholder.com/50x32?text=Bitcoin" alt="Bitcoin" class="payment-icon">
+                                <img src="images/payments/BTC.png" alt="Bitcoin" class="payment-icon">
                             </div>
                         </div>
                         
@@ -1133,7 +1221,7 @@
                         "I've been playing at LeoVegas for over a year now and the experience has been fantastic. Fast payouts, great customer service, and an amazing selection of slots. Highly recommend!"
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://via.placeholder.com/60x60?text=User1" alt="Sarah J." class="author-avatar">
+                        <img src="images/users/user1.jpg" alt="Sarah J." class="author-avatar">
                         <div class="author-info">
                             <h4>Sarah J.</h4>
                             <p>Toronto, ON</p>
@@ -1147,7 +1235,7 @@
                         "As a Quebec player, I was looking for a casino with French support. JackpotCity exceeded my expectations with their live dealer games and weekly promotions. My winnings arrived in 2 days!"
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://via.placeholder.com/60x60?text=User2" alt="Marc D." class="author-avatar">
+                        <img src="images/users/user2.jpg" alt="Marc D." class="author-avatar">
                         <div class="author-info">
                             <h4>Marc D.</h4>
                             <p>Montreal, QC</p>
@@ -1161,7 +1249,7 @@
                         "GoldenVault helped me find the perfect casino for BC players. 888 Casino has all my favorite games and the Interac deposits are instant. Won $2,500 on my third visit!"
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://via.placeholder.com/60x60?text=User3" alt="James L." class="author-avatar">
+                        <img src="images/users/user3.jpg" alt="James L." class="author-avatar">
                         <div class="author-info">
                             <h4>James L.</h4>
                             <p>Vancouver, BC</p>
@@ -1180,7 +1268,7 @@
             <div class="experts-grid">
                 <!-- Expert 1 -->
                 <div class="expert-card">
-                    <img src="https://via.placeholder.com/150x150?text=Michael" alt="Michael Chen" class="expert-avatar">
+                    <img src="images/experts/expert1.jpg" alt="Michael Chen" class="expert-avatar">
                     <h3 class="expert-name">Michael Chen</h3>
                     <p class="expert-position">Head of Casino Reviews</p>
                     <p class="expert-bio">
@@ -1190,7 +1278,7 @@
                 
                 <!-- Expert 2 -->
                 <div class="expert-card">
-                    <img src="https://via.placeholder.com/150x150?text=Sophie" alt="Sophie Martin" class="expert-avatar">
+                    <img src="images/experts/expert2.jpg" alt="Sophie Martin" class="expert-avatar">
                     <h3 class="expert-name">Sophie Martin</h3>
                     <p class="expert-position">Bonus Specialist</p>
                     <p class="expert-bio">
@@ -1200,7 +1288,7 @@
                 
                 <!-- Expert 3 -->
                 <div class="expert-card">
-                    <img src="https://via.placeholder.com/150x150?text=David" alt="David Wilson" class="expert-avatar">
+                    <img src="images/experts/expert3.jpg" alt="David Wilson" class="expert-avatar">
                     <h3 class="expert-name">David Wilson</h3>
                     <p class="expert-position">Payment Methods Analyst</p>
                     <p class="expert-bio">
@@ -1211,20 +1299,84 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions about Canadian online casinos? Fill out the form and we'll get back to you shortly.</p>
+                    <div class="trust-badges">
+                        <img src="images/trust-badge1.png" alt="Trust Badge">
+                        <img src="images/trust-badge2.png" alt="Trust Badge">
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="province">Province</label>
+                        <select id="province" name="province">
+                            <option value="">Select Province</option>
+                            <option value="ON">Ontario</option>
+                            <option value="QC">Quebec</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="AB">Alberta</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="SK">Saskatchewan</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="NB">New Brunswick</option>
+                            <option value="NL">Newfoundland and Labrador</option>
+                            <option value="PE">Prince Edward Island</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">What interests you?</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select Topic</option>
+                            <option value="bonuses">Casino Bonuses</option>
+                            <option value="payments">Payment Methods</option>
+                            <option value="games">Game Selection</option>
+                            <option value="security">Security Questions</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="https://via.placeholder.com/200x50?text=GoldenVault" alt="GoldenVault.ca" class="footer-logo">
+                    <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
                     <p>
-                        GoldenVault.ca is Canada's most trusted online casino guide. We provide independent reviews, expert analysis, and exclusive bonuses for Ontario, Quebec and British Columbia players.
+                        GoldenVault.ca is Canada's most trusted online casino guide. We provide independent reviews, expert analysis, and exclusive bonuses for Canadian players.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1242,19 +1394,18 @@
                 <div class="footer-links">
                     <h3>Legal Info</h3>
                     <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">KYC</a></li>
+                        <li><a href="#">NIX</a></li>
+                        <li><a href="#">ILLEGAL INFO</a></li>
+                        <li><a href="#">CONTACT ASSO</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Contact Us</h3>
+                    <h3>Location</h3>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> info@goldenvault.ca</li>
-                        <li><i class="fas fa-phone"></i> +1 (647) 555-1234</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Toronto, ON Canada</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Canada</li>
+                        <li><i class="fas fa-info-circle"></i> Contact form only</li>
                     </ul>
                 </div>
             </div>
@@ -1343,6 +1494,17 @@
                     });
                 }
             });
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For demonstration, we'll just show an alert
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
         });
     </script>
 </body>
