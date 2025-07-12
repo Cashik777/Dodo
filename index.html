@@ -1,206 +1,1349 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en-CA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Slots Casino</title>
+    <title>Premium Canadian Casinos 2025 | GoldenVault.ca</title>
+    <meta name="description" content="GoldenVault.ca - Canada's most trusted online casino guide. Expert reviews, exclusive bonuses and secure gaming for Ontario, Quebec and BC players.">
+    <meta name="keywords" content="online casino Canada, best slots Ontario, Quebec gambling, BC casinos, Interac deposits">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Premium Canadian Casinos 2025 | GoldenVault.ca">
+    <meta property="og:description" content="Canada's most trusted online casino guide with expert reviews and exclusive bonuses">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://goldenvault.ca">
+    <meta property="og:image" content="https://goldenvault.ca/images/social-share.jpg">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Основные стили */
-        body {
+        :root {
+            --primary: #0c1b32;
+            --secondary: #c9a227;
+            --accent: #a67c52;
+            --light: #f5f7fa;
+            --dark: #0e121b;
+            --bg-color: #141e32;
+            --card-bg: #1e2a47;
+            --text-dark: #e0e3e7;
+            --text-light: #ffffff;
+            --overlay: rgba(12, 27, 50, 0.85);
+            --glow-color: rgba(201, 162, 39, 0.6);
+            --verified-color: #28a745;
+        }
+        
+        /* Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: #0a0a0a url('https://example.com/casino-bg.jpg') no-repeat center/cover;
-            color: #ffd700;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-color);
             overflow-x: hidden;
         }
-
-        /* Шапка */
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid #ffd700;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
-
-        /* Игровое поле */
-        .slot-machine {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 90%;
-            max-width: 600px;
-            margin: 30px auto;
-            perspective: 1000px;
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
         }
-
-        .slot {
-            height: 120px;
-            background: rgba(255, 215, 0, 0.1);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 60px;
-            transform-style: preserve-3d;
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
             position: relative;
             overflow: hidden;
         }
-
-        .slot::before {
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.5);
+        }
+        
+        .btn::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
-            width: 200%;
-            height: 200%;
+            right: -50%;
+            bottom: -50%;
             background: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.3) 0%,
-                rgba(255, 255, 255, 0) 50%,
-                rgba(255, 255, 255, 0.3) 100%
+                to bottom right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.8) 50%,
+                rgba(255,255,255,0) 100%
             );
             transform: rotate(30deg);
-            animation: shine 3s infinite;
+            animation: northernLights 6s linear infinite;
+            z-index: -1;
+            opacity: 0.5;
         }
-
-        @keyframes shine {
+        
+        @keyframes northernLights {
             0% { transform: translateX(-100%) rotate(30deg); }
             100% { transform: translateX(100%) rotate(30deg); }
         }
-
-        /* Кнопки */
-        .btn {
-            background: linear-gradient(to bottom, #ffd700, #daa520);
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--overlay);
+            color: white;
+            padding: 20px 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            background: var(--primary);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.7));
+        }
+        
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
             border: none;
-            color: #000;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 50px;
+            color: white;
+            font-size: 24px;
             cursor: pointer;
-            margin: 10px;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0c1b32, #1a3a6a);
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-light);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Casino Filter */
+        .filter-section {
+            padding: 20px 0;
+            background: var(--card-bg);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+        
+        .filter-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--text-light);
+            border-radius: 20px;
+            cursor: pointer;
             transition: all 0.3s;
         }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--secondary);
+            color: var(--primary);
         }
-
-        /* Падающие монеты */
-        .coin {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('https://example.com/coin.png') no-repeat center/contain;
-            animation: fall linear;
-            z-index: -1;
+        
+        /* Casino Grid */
+        .casino-section {
+            padding: 80px 0;
+            background: var(--bg-color);
         }
-
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
-        }
-
-        /* Лендинг-секции */
-        .section {
-            padding: 50px 20px;
+        
+        .section-title {
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            margin: 30px 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.3);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+        }
+        
+        .casino-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .casino-card {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .casino-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent), #a67c52, var(--secondary));
+            background-size: 300% 300%;
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 0;
+            animation: borderGradient 8s ease infinite;
+        }
+        
+        @keyframes borderGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .casino-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+        }
+        
+        .casino-rating {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.3);
+            border: 3px solid var(--card-bg);
+            z-index: 2;
+        }
+        
+        .casino-logo {
+            height: 80px;
+            margin: 10px auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            transition: transform 0.3s;
+        }
+        
+        .casino-card:hover .casino-logo {
+            transform: scale(1.05);
+        }
+        
+        .casino-content {
+            padding: 25px;
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+        }
+        
+        .casino-features {
+            margin-bottom: 20px;
+        }
+        
+        .casino-feature {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: var(--secondary);
+            min-width: 120px;
+            font-size: 0.95rem;
+        }
+        
+        .feature-value {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            width: 54px;
+            height: 36px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-icon {
+            width: 50px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            filter: brightness(1) drop-shadow(0 0 2px rgba(255,255,255,0.3));
+        }
+        
+        .payment-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            background: var(--glow-color);
+            filter: blur(5px);
+            opacity: 0.7;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover .payment-glow {
+            opacity: 1;
+            filter: blur(8px);
+        }
+        
+        .payment-method:hover .payment-icon {
+            transform: scale(1.15);
+            filter: brightness(1.1) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+        }
+        
+        .casino-btn {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--secondary);
+        }
+        
+        .author-info h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Experts Section */
+        .experts-section {
+            padding: 80px 0;
+            background: var(--bg-color);
+        }
+        
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .expert-card {
+            text-align: center;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .expert-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--secondary);
+        }
+        
+        .expert-name {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .expert-position {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .expert-bio {
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.5);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .chat-widget:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-nav-menu li {
+            margin: 20px 0;
+        }
+        
+        .mobile-nav-menu a {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding: 120px 0;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .casino-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .filter-title {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Шапка -->
-    <header>
-        <h1>GOLDEN SLOTS CASINO</h1>
-        <p>Играйте и выигрывайте по-крупному!</p>
-    </header>
-
-    <!-- Игровой автомат -->
-    <div class="section">
-        <h2>Наши игровые автоматы</h2>
-        <div class="slot-machine" id="slotMachine">
-            <!-- 9 слотов (3x3) -->
-            <div class="slot">🍒</div>
-            <div class="slot">🍋</div>
-            <div class="slot">🍊</div>
-            <div class="slot">7</div>
-            <div class="slot">💰</div>
-            <div class="slot">💎</div>
-            <div class="slot">🍇</div>
-            <div class="slot">🔔</div>
-            <div class="slot">🍀</div>
-        </div>
-        <button class="btn" onclick="spin()">Крутить!</button>
-    </div>
-
-    <!-- Лендинг-секции -->
-    <div class="section">
-        <h2>О нашем казино</h2>
-        <p>Лучшие игровые автоматы с моментальными выплатами!</p>
-    </div>
-
-    <div class="section">
-        <h2>Начните играть прямо сейчас</h2>
-        <button class="btn">Зарегистрироваться</button>
-    </div>
-
-    <script>
-        // Символы для слотов
-        const symbols = ["🍒", "🍋", "🍊", "7", "💰", "💎", "🍇", "🔔", "🍀"];
-        
-        // Функция вращения
-        function spin() {
-            // Анимация вращения
-            const slots = document.querySelectorAll('.slot');
-            slots.forEach(slot => {
-                // Случайный символ
-                const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-                slot.textContent = randomSymbol;
-                
-                // Эффект вращения
-                slot.style.animation = 'none';
-                void slot.offsetWidth; // Перезапуск анимации
-                slot.style.animation = 'spin 0.5s';
-            });
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="https://via.placeholder.com/200x50?text=GoldenVault" alt="GoldenVault.ca" class="logo">
+            </a>
             
-            // Создаем падающие монеты
-            createCoins(20);
-        }
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#casinos">Casinos</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#experts">Experts</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <ul class="mobile-nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#casinos">Casinos</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#experts">Experts</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 
-        // Создание падающих монет
-        function createCoins(count) {
-            for (let i = 0; i < count; i++) {
-                const coin = document.createElement('div');
-                coin.className = 'coin';
-                
-                // Случайная позиция
-                coin.style.left = Math.random() * 100 + 'vw';
-                coin.style.top = '-30px';
-                coin.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                
-                document.body.appendChild(coin);
-                
-                // Удаляем монету после анимации
-                setTimeout(() => {
-                    coin.remove();
-                }, 5000);
-            }
-        }
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Canada's Premier Casino Guide</h1>
+            <p>Discover the best licensed online casinos for Ontario, Quebec and British Columbia players</p>
+            <a href="#casinos" class="btn">Explore Top Casinos</a>
+        </div>
+    </section>
 
-        // Инициализация
-        window.onload = function() {
-            // Первоначальное заполнение слотов
-            const slots = document.querySelectorAll('.slot');
-            slots.forEach(slot => {
-                slot.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    <!-- Casino Filter -->
+    <section class="filter-section">
+        <div class="container filter-container">
+            <span class="filter-title">Filter by Province:</span>
+            <button class="filter-btn active" data-province="all">All Canada</button>
+            <button class="filter-btn" data-province="ON">Ontario</button>
+            <button class="filter-btn" data-province="QC">Quebec</button>
+            <button class="filter-btn" data-province="BC">British Columbia</button>
+        </div>
+    </section>
+
+    <!-- Casino Section -->
+    <section class="casino-section" id="casinos">
+        <div class="container">
+            <h2 class="section-title">Top Rated Online Casinos</h2>
+            
+            <div class="casino-grid">
+                <!-- Casino 1 - LeoVegas -->
+                <div class="casino-card" data-province="ON QC BC">
+                    <div class="casino-rating">9.8</div>
+                    <div class="casino-header">
+                        <img src="https://via.placeholder.com/200x80?text=LeoVegas" alt="LeoVegas" class="casino-logo">
+                        <h3>LeoVegas</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$1500 + 200 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">1-3 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Mastercard" alt="Mastercard" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Bitcoin" alt="Bitcoin" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 2 - JackpotCity -->
+                <div class="casino-card" data-province="ON QC">
+                    <div class="casino-rating">9.7</div>
+                    <div class="casino-header">
+                        <img src="https://via.placeholder.com/200x80?text=JackpotCity" alt="JackpotCity" class="casino-logo">
+                        <h3>JackpotCity</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$1600 + 50 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">2-5 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$20 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=PayPal" alt="PayPal" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 3 - 888 Casino -->
+                <div class="casino-card" data-province="ON BC">
+                    <div class="casino-rating">9.6</div>
+                    <div class="casino-header">
+                        <img src="https://via.placeholder.com/200x80?text=888+Casino" alt="888 Casino" class="casino-logo">
+                        <h3>888 Casino</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$1200 + 150 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">1-2 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$15 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Skrill" alt="Skrill" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 4 - Spin Casino -->
+                <div class="casino-card" data-province="ON">
+                    <div class="casino-rating">9.5</div>
+                    <div class="casino-header">
+                        <img src="https://via.placeholder.com/200x80?text=Spin+Casino" alt="Spin Casino" class="casino-logo">
+                        <h3>Spin Casino</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$1000 + 100 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">3-7 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Mastercard" alt="Mastercard" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Bitcoin" alt="Bitcoin" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 5 - Royal Panda -->
+                <div class="casino-card" data-province="QC">
+                    <div class="casino-rating">9.4</div>
+                    <div class="casino-header">
+                        <img src="https://via.placeholder.com/200x80?text=Royal+Panda" alt="Royal Panda" class="casino-logo">
+                        <h3>Royal Panda</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$900 + 50 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">2-5 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$20 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Neteller" alt="Neteller" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=PayPal" alt="PayPal" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 6 - Betway -->
+                <div class="casino-card" data-province="ON BC">
+                    <div class="casino-rating">9.3</div>
+                    <div class="casino-header">
+                        <img src="https://via.placeholder.com/200x80?text=Betway" alt="Betway" class="casino-logo">
+                        <h3>Betway</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$800 + 30 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">1-3 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Interac" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Visa" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Mastercard" alt="Mastercard" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="https://via.placeholder.com/50x32?text=Bitcoin" alt="Bitcoin" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Player Testimonials</h2>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "I've been playing at LeoVegas for over a year now and the experience has been fantastic. Fast payouts, great customer service, and an amazing selection of slots. Highly recommend!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/60x60?text=User1" alt="Sarah J." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah J.</h4>
+                            <p>Toronto, ON</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "As a Quebec player, I was looking for a casino with French support. JackpotCity exceeded my expectations with their live dealer games and weekly promotions. My winnings arrived in 2 days!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/60x60?text=User2" alt="Marc D." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Marc D.</h4>
+                            <p>Montreal, QC</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "GoldenVault helped me find the perfect casino for BC players. 888 Casino has all my favorite games and the Interac deposits are instant. Won $2,500 on my third visit!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/60x60?text=User3" alt="James L." class="author-avatar">
+                        <div class="author-info">
+                            <h4>James L.</h4>
+                            <p>Vancouver, BC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experts Section -->
+    <section class="experts-section" id="experts">
+        <div class="container">
+            <h2 class="section-title">Our Casino Experts</h2>
+            
+            <div class="experts-grid">
+                <!-- Expert 1 -->
+                <div class="expert-card">
+                    <img src="https://via.placeholder.com/150x150?text=Michael" alt="Michael Chen" class="expert-avatar">
+                    <h3 class="expert-name">Michael Chen</h3>
+                    <p class="expert-position">Head of Casino Reviews</p>
+                    <p class="expert-bio">
+                        With over 12 years in the iGaming industry, Michael specializes in game fairness testing and payout analysis. His rigorous review process ensures only the most trustworthy casinos make our list.
+                    </p>
+                </div>
+                
+                <!-- Expert 2 -->
+                <div class="expert-card">
+                    <img src="https://via.placeholder.com/150x150?text=Sophie" alt="Sophie Martin" class="expert-avatar">
+                    <h3 class="expert-name">Sophie Martin</h3>
+                    <p class="expert-position">Bonus Specialist</p>
+                    <p class="expert-bio">
+                        Sophie has analyzed thousands of casino bonuses to find the most valuable offers for Canadian players. Her expertise helps players maximize their bankrolls with the best promotions.
+                    </p>
+                </div>
+                
+                <!-- Expert 3 -->
+                <div class="expert-card">
+                    <img src="https://via.placeholder.com/150x150?text=David" alt="David Wilson" class="expert-avatar">
+                    <h3 class="expert-name">David Wilson</h3>
+                    <p class="expert-position">Payment Methods Analyst</p>
+                    <p class="expert-bio">
+                        David tracks all Canadian-friendly payment options, ensuring fast deposits and withdrawals. His guides help players choose the most secure and efficient banking methods.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="https://via.placeholder.com/200x50?text=GoldenVault" alt="GoldenVault.ca" class="footer-logo">
+                    <p>
+                        GoldenVault.ca is Canada's most trusted online casino guide. We provide independent reviews, expert analysis, and exclusive bonuses for Ontario, Quebec and British Columbia players.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#casinos">Top Casinos</a></li>
+                        <li><a href="#testimonials">Player Reviews</a></li>
+                        <li><a href="#experts">Our Experts</a></li>
+                        <li><a href="#">Responsible Gambling</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal Info</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@goldenvault.ca</li>
+                        <li><i class="fas fa-phone"></i> +1 (647) 555-1234</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Toronto, ON Canada</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 GoldenVault.ca - All Rights Reserved. Must be 19+ to play. Gambling can be addictive, please play responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
             });
-        };
+        });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Casino Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const casinoCards = document.querySelectorAll('.casino-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const province = btn.dataset.province;
+                
+                // Filter casino cards
+                casinoCards.forEach(card => {
+                    if (province === 'all' || card.dataset.province.includes(province)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
