@@ -3,641 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium Casino Club - рейтинг лучших онлайн-казино с бонусами, обзорами и честными отзывами">
-    <meta name="keywords" content="казино онлайн, топ казино, игровые автоматы, бонусы казино">
-    <title>Premium Casino Club | Рейтинг ТОП-9 казино 2024</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Golden Slots Casino</title>
     <style>
-        :root {
-            --primary: #1E3A8A;
-            --secondary: #B91C1C;
-            --accent: #F59E0B;
-            --dark: #111827;
-            --light: #F3F4F6;
-            --gray: #6B7280;
-        }
-        
-        * {
+        /* Основные стили */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a url('https://example.com/casino-bg.jpg') no-repeat center/cover;
+            color: #ffd700;
+            overflow-x: hidden;
         }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f9fafb;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header */
+
+        /* Шапка */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ffd700;
         }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        /* Игровое поле */
+        .slot-machine {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            perspective: 1000px;
         }
-        
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: var(--dark);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
+
+        .slot {
+            height: 120px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
             display: flex;
             justify-content: center;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            position: relative;
-        }
-        
-        .nav-menu li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: block;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-menu li a:hover {
-            background-color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: url('https://via.placeholder.com/1920x600?text=Premium+Casino+Club') no-repeat center center/cover;
-            height: 400px;
-            display: flex;
             align-items: center;
+            font-size: 60px;
+            transform-style: preserve-3d;
             position: relative;
-            margin-bottom: 40px;
+            overflow: hidden;
         }
-        
-        .hero::before {
+
+        .slot::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(255, 255, 255, 0.3) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
         }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            color: white;
-            max-width: 600px;
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
         }
-        
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        
+
+        /* Кнопки */
         .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            background: linear-gradient(to bottom, #ffd700, #daa520);
             border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #EAB308;
-            transform: translateY(-2px);
-        }
-        
-        /* Casino Grid */
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: var(--primary);
-        }
-        
-        .casino-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .casino-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .casino-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .casino-logo {
-            height: 120px;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .casino-logo img {
-            max-height: 80px;
-            max-width: 100%;
-        }
-        
-        .casino-info {
-            padding: 20px;
-        }
-        
-        .casino-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .stars {
-            color: var(--accent);
-            margin-right: 10px;
-        }
-        
-        .bonus {
-            background-color: var(--light);
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .feature-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        
-        .feature-icon {
-            font-size: 40px;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        /* Contact Form */
-        .contact-section {
-            background-color: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 50px;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn-block {
-            display: block;
-            width: 100%;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
-            color: var(--accent);
-            margin-bottom: 20px;
+            color: #000;
+            padding: 15px 30px;
             font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s;
         }
-        
-        .footer-links {
-            list-style: none;
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
         }
-        
-        .footer-links li {
-            margin-bottom: 10px;
+
+        /* Падающие монеты */
+        .coin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('https://example.com/coin.png') no-repeat center/contain;
+            animation: fall linear;
+            z-index: -1;
         }
-        
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: color 0.3s ease;
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
         }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .copyright {
+
+        /* Лендинг-секции */
+        .section {
+            padding: 50px 20px;
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #374151;
-            font-size: 14px;
-            color: #9ca3af;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .nav-menu {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero {
-                height: 300px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
+            background: rgba(0, 0, 0, 0.7);
+            margin: 30px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Шапка -->
     <header>
-        <div class="container header-content">
-            <div class="logo">Premium<span>Casino</span>Club</div>
-            <div class="header-cta">
-                <a href="#top-casinos" class="btn">ТОП казино</a>
-            </div>
-        </div>
+        <h1>GOLDEN SLOTS CASINO</h1>
+        <p>Играйте и выигрывайте по-крупному!</p>
     </header>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-container">
-            <ul class="nav-menu">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#top-casinos">Рейтинг казино</a></li>
-                <li><a href="#bonuses">Бонусы</a></li>
-                <li><a href="#reviews">Обзоры</a></li>
-                <li><a href="#games">Игры</a></li>
-                <li><a href="#payments">Платежи</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
+
+    <!-- Игровой автомат -->
+    <div class="section">
+        <h2>Наши игровые автоматы</h2>
+        <div class="slot-machine" id="slotMachine">
+            <!-- 9 слотов (3x3) -->
+            <div class="slot">🍒</div>
+            <div class="slot">🍋</div>
+            <div class="slot">🍊</div>
+            <div class="slot">7</div>
+            <div class="slot">💰</div>
+            <div class="slot">💎</div>
+            <div class="slot">🍇</div>
+            <div class="slot">🔔</div>
+            <div class="slot">🍀</div>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Лучшие онлайн казино 2024 года</h1>
-            <p>Только проверенные и лицензированные казино с быстрыми выплатами и честными условиями. Экспертный рейтинг и эксклюзивные бонусы.</p>
-            <a href="#top-casinos" class="btn">Смотреть ТОП-9</a>
-        </div>
-    </section>
-    
-    <div class="container">
-        <!-- Top Casinos Section -->
-        <section id="top-casinos">
-            <h2 class="section-title">Наш ТОП-9 казино</h2>
-            <div class="casino-grid">
-                <!-- Casino 1 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+1" alt="Royal Casino">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Royal Casino</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★★</div>
-                            <span>5.0</span>
-                        </div>
-                        <div class="bonus">Бонус до 100 000₽ + 200FS</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 2 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+2" alt="Golden Star">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Golden Star</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.7</span>
-                        </div>
-                        <div class="bonus">150% на первый депозит</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 3 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+3" alt="Lucky Jack">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Lucky Jack</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.5</span>
-                        </div>
-                        <div class="bonus">100FS за регистрацию</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 4 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+4" alt="Vegas Nights">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Vegas Nights</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.3</span>
-                        </div>
-                        <div class="bonus">Кэшбэк 10%</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 5 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+5" alt="Diamond Club">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Diamond Club</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.9</span>
-                        </div>
-                        <div class="bonus">200% + 50FS</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 6 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+6" alt="Aztec Gold">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Aztec Gold</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.2</span>
-                        </div>
-                        <div class="bonus">Бонус за депозит 120%</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 7 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+7" alt="Nordic Bet">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Nordic Bet</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.8</span>
-                        </div>
-                        <div class="bonus">Фриспины каждую неделю</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 8 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+8" alt="Ocean King">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Ocean King</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.4</span>
-                        </div>
-                        <div class="bonus">Бездепозитный бонус 20FS</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-                
-                <!-- Casino 9 -->
-                <div class="casino-card">
-                    <div class="casino-logo">
-                        <img src="https://via.placeholder.com/200x80?text=Casino+9" alt="Fortune Wheel">
-                    </div>
-                    <div class="casino-info">
-                        <h3>Fortune Wheel</h3>
-                        <div class="rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.6</span>
-                        </div>
-                        <div class="bonus">Турниры с призами</div>
-                        <a href="#" class="btn">Играть сейчас</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Features Section -->
-        <section id="features">
-            <h2 class="section-title">Почему выбирают нас</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Честный рейтинг</h3>
-                    <p>Мы тестируем каждое казино перед добавлением в ТОП. Проверяем лицензии, выплаты и отзывы реальных игроков.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">★</div>
-                    <h3>Эксклюзивные бонусы</h3>
-                    <p>Только у нас специальные предложения с увеличенными бонусами для новых игроков.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Безопасность</h3>
-                    <p>Все рекомендуемые казино используют SSL-шифрование и имеют международные лицензии.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contacts" class="contact-section">
-            <h2 class="section-title">Свяжитесь с нами</h2>
-            <form class="contact-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Ваше имя</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="subject">Тема</label>
-                    <input type="text" id="subject" name="subject" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" name="message" class="form-control" required></textarea>
-                </div>
-                
-                <button type="submit" class="btn btn-block">Отправить сообщение</button>
-            </form>
-        </section>
+        <button class="btn" onclick="spin()">Крутить!</button>
     </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Premium Casino Club</h3>
-                    <p>Экспертный рейтинг лучших онлайн казино. Только проверенные площадки с честными условиями.</p>
-                </div>
+
+    <!-- Лендинг-секции -->
+    <div class="section">
+        <h2>О нашем казино</h2>
+        <p>Лучшие игровые автоматы с моментальными выплатами!</p>
+    </div>
+
+    <div class="section">
+        <h2>Начните играть прямо сейчас</h2>
+        <button class="btn">Зарегистрироваться</button>
+    </div>
+
+    <script>
+        // Символы для слотов
+        const symbols = ["🍒", "🍋", "🍊", "7", "💰", "💎", "🍇", "🔔", "🍀"];
+        
+        // Функция вращения
+        function spin() {
+            // Анимация вращения
+            const slots = document.querySelectorAll('.slot');
+            slots.forEach(slot => {
+                // Случайный символ
+                const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                slot.textContent = randomSymbol;
                 
-                <div class="footer-column">
-                    <h3>Разделы</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Главная</a></li>
-                        <li><a href="#top-casinos">ТОП казино</a></li>
-                        <li><a href="#bonuses">Бонусы</a></li>
-                        <li><a href="#games">Игры</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Информация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Политика конфиденциальности</a></li>
-                        <li><a href="#">Условия использования</a></li>
-                        <li><a href="#">Ответственная игра</a></li>
-                        <li><a href="#contacts">Контакты</a></li>
-                    </ul>
-                </div>
-            </div>
+                // Эффект вращения
+                slot.style.animation = 'none';
+                void slot.offsetWidth; // Перезапуск анимации
+                slot.style.animation = 'spin 0.5s';
+            });
             
-            <div class="copyright">
-                <p>© 2024 Premium Casino Club. Все права защищены. 18+</p>
-                <p>Азартные игры могут вызывать зависимость. Играйте ответственно.</p>
-            </div>
-        </div>
-    </footer>
+            // Создаем падающие монеты
+            createCoins(20);
+        }
+
+        // Создание падающих монет
+        function createCoins(count) {
+            for (let i = 0; i < count; i++) {
+                const coin = document.createElement('div');
+                coin.className = 'coin';
+                
+                // Случайная позиция
+                coin.style.left = Math.random() * 100 + 'vw';
+                coin.style.top = '-30px';
+                coin.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                document.body.appendChild(coin);
+                
+                // Удаляем монету после анимации
+                setTimeout(() => {
+                    coin.remove();
+                }, 5000);
+            }
+        }
+
+        // Инициализация
+        window.onload = function() {
+            // Первоначальное заполнение слотов
+            const slots = document.querySelectorAll('.slot');
+            slots.forEach(slot => {
+                slot.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            });
+        };
+    </script>
 </body>
 </html>
