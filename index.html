@@ -12,13 +12,19 @@
     <meta property="og:description" content="Canada's most trusted online casino guide with expert reviews and exclusive bonuses">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://goldenvault.ca">
-    <meta property="og:image" content="images/backgrounds/treasure-bg.jpg">
+    <meta property="og:image" content="https://goldenvault.ca/images/social-share.jpg">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Glide.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/css/glide.core.min.css">
     
     <style>
         :root {
@@ -34,6 +40,7 @@
             --overlay: rgba(12, 27, 50, 0.85);
             --glow-color: rgba(201, 162, 39, 0.6);
             --verified-color: #28a745;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         /* Base Styles */
@@ -63,7 +70,7 @@
         a {
             text-decoration: none;
             color: inherit;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         img {
@@ -73,31 +80,32 @@
         
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
-            padding: 14px 28px;
-            border-radius: 6px;
+            padding: 16px 32px;
+            border-radius: 8px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             border: none;
             cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.4);
             position: relative;
             overflow: hidden;
+            font-size: 0.95rem;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.6);
         }
         
         .btn::before {
@@ -132,16 +140,17 @@
             width: 100%;
             background: var(--overlay);
             color: white;
-            padding: 20px 0;
+            padding: 25px 0;
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(201, 162, 39, 0.3);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         header.scrolled {
             padding: 15px 0;
             background: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .header-container {
@@ -151,13 +160,13 @@
         }
         
         .logo {
-            height: 50px;
-            transition: all 0.3s ease;
+            height: 60px;
+            transition: var(--transition);
         }
         
         .logo:hover {
             transform: scale(1.05);
-            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.7));
+            filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.8));
         }
         
         .main-nav {
@@ -171,7 +180,7 @@
         }
         
         .nav-menu li {
-            margin-left: 30px;
+            margin-left: 35px;
             position: relative;
         }
         
@@ -179,7 +188,8 @@
             font-weight: 500;
             color: var(--text-light);
             position: relative;
-            padding: 5px 0;
+            padding: 8px 0;
+            font-size: 1.05rem;
         }
         
         .nav-menu a::after {
@@ -190,7 +200,7 @@
             width: 0;
             height: 2px;
             background: var(--secondary);
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
         
         .nav-menu a:hover::after {
@@ -202,21 +212,26 @@
             background: none;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--secondary);
         }
         
         /* Hero Section */
         .hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 800px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: url('images/backgrounds/treasure-bg.jpg') no-repeat center center/cover;
+            background: linear-gradient(135deg, #0c1b32, #1a3a6a);
             margin-top: 80px;
         }
         
@@ -235,32 +250,39 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 25px;
+            font-size: 4.5rem;
+            margin-bottom: 30px;
             color: var(--secondary);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
             line-height: 1.2;
+            animation: fadeInDown 1s ease;
         }
         
         .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
             color: var(--text-light);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero .btn {
+            animation: fadeInUp 1s ease;
         }
         
         /* Casino Filter */
         .filter-section {
-            padding: 20px 0;
+            padding: 25px 0;
             background: var(--card-bg);
             position: sticky;
             top: 80px;
             z-index: 999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .filter-container {
@@ -268,66 +290,76 @@
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
         
         .filter-title {
             color: var(--secondary);
             font-weight: 600;
-            margin-right: 10px;
+            margin-right: 15px;
+            font-size: 1.1rem;
         }
         
         .filter-btn {
-            padding: 8px 20px;
+            padding: 10px 25px;
             background: rgba(201, 162, 39, 0.1);
             border: 1px solid var(--secondary);
             color: var(--text-light);
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
+            font-size: 0.95rem;
         }
         
         .filter-btn.active, .filter-btn:hover {
             background: var(--secondary);
             color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.3);
         }
         
         /* Casino Grid */
         .casino-section {
-            padding: 80px 0;
+            padding: 100px 0;
             background: var(--bg-color);
         }
         
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--secondary);
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
         
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--secondary);
-            margin: 15px auto 0;
+            margin: 20px auto 0;
+            border-radius: 5px;
         }
         
         .casino-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
         }
         
         .casino-card {
             position: relative;
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        
+        .casino-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         
         .casino-card::before {
@@ -337,8 +369,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 12px;
-            padding: 2px;
+            border-radius: 15px;
+            padding: 3px;
             background: linear-gradient(45deg, var(--secondary), var(--accent), #a67c52, var(--secondary));
             background-size: 300% 300%;
             -webkit-mask: 
@@ -357,7 +389,7 @@
         }
         
         .casino-header {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             border-bottom: 1px solid rgba(201, 162, 39, 0.1);
             position: relative;
@@ -367,10 +399,10 @@
         
         .casino-rating {
             position: absolute;
-            top: -20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            top: -25px;
+            right: 25px;
+            width: 70px;
+            height: 70px;
             background: var(--secondary);
             color: white;
             border-radius: 50%;
@@ -378,64 +410,65 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 18px;
-            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.3);
-            border: 3px solid var(--card-bg);
+            font-size: 20px;
+            box-shadow: 0 8px 20px rgba(201, 162, 39, 0.4);
+            border: 4px solid var(--card-bg);
             z-index: 2;
         }
         
         .casino-logo {
-            height: 80px;
-            margin: 10px auto;
+            height: 90px;
+            margin: 15px auto;
             display: block;
             object-fit: contain;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-            transition: transform 0.3s;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+            transition: var(--transition);
         }
         
         .casino-card:hover .casino-logo {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .casino-content {
-            padding: 25px;
+            padding: 30px;
             position: relative;
             z-index: 1;
             background: var(--card-bg);
         }
         
         .casino-features {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .casino-feature {
             display: flex;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             align-items: center;
         }
         
         .feature-title {
             font-weight: 600;
             color: var(--secondary);
-            min-width: 120px;
-            font-size: 0.95rem;
+            min-width: 130px;
+            font-size: 1rem;
         }
         
         .feature-value {
             flex: 1;
             font-weight: 500;
+            font-size: 0.95rem;
         }
         
         .payment-methods {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 25px 0;
         }
         
         .payment-method {
-            width: 54px;
-            height: 36px;
+            width: 60px;
+            height: 40px;
             position: relative;
             display: flex;
             align-items: center;
@@ -443,67 +476,83 @@
         }
         
         .payment-icon {
-            width: 50px;
-            height: 32px;
+            width: 56px;
+            height: 36px;
             object-fit: contain;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            border-radius: 5px;
+            transition: var(--transition);
             position: relative;
             z-index: 2;
-            filter: brightness(1) drop-shadow(0 0 2px rgba(255,255,255,0.3));
+            filter: brightness(1) drop-shadow(0 0 3px rgba(255,255,255,0.4));
         }
         
         .payment-glow {
             position: absolute;
             width: 100%;
             height: 100%;
-            border-radius: 4px;
+            border-radius: 5px;
             background: var(--glow-color);
-            filter: blur(5px);
+            filter: blur(6px);
             opacity: 0.7;
             z-index: 1;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .payment-method:hover .payment-glow {
             opacity: 1;
-            filter: blur(8px);
+            filter: blur(10px);
         }
         
         .payment-method:hover .payment-icon {
-            transform: scale(1.15);
-            filter: brightness(1.1) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+            transform: scale(1.2);
+            filter: brightness(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.6));
         }
         
         .casino-btn {
             width: 100%;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
         /* Testimonials Section */
         .testimonials-section {
-            padding: 80px 0;
+            padding: 100px 0;
             background: var(--card-bg);
         }
         
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        .testimonials-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
         }
         
         .testimonial-card {
             background: var(--bg-color);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin: 0 15px;
+            transition: var(--transition);
         }
         
         .testimonial-content {
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            font-size: 5rem;
+            color: rgba(201, 162, 39, 0.1);
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
         }
         
         .testimonial-author {
@@ -512,141 +561,279 @@
         }
         
         .author-avatar {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 15px;
-            border: 2px solid var(--secondary);
+            margin-right: 20px;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .author-info h4 {
             color: var(--secondary);
             margin-bottom: 5px;
+            font-size: 1.2rem;
         }
         
         .author-info p {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
         
         /* Experts Section */
         .experts-section {
-            padding: 80px 0;
+            padding: 100px 0;
             background: var(--bg-color);
         }
         
         .experts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
         }
         
         .expert-card {
             text-align: center;
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .expert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
         .expert-avatar {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 20px;
-            border: 3px solid var(--secondary);
+            margin: 0 auto 25px;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        
+        .expert-card:hover .expert-avatar {
+            transform: scale(1.05);
         }
         
         .expert-name {
             color: var(--secondary);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
         }
         
         .expert-position {
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--text-light);
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .expert-position::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
         }
         
         .expert-bio {
             line-height: 1.8;
+            font-size: 0.95rem;
         }
         
-        /* Contact Form */
-        .contact-form {
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: url('images/backgrounds/contact-bg.jpg') no-repeat center center/cover;
+            position: relative;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(12, 27, 50, 0.9);
+            z-index: 1;
+        }
+        
+        .contact-container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            color: white;
+        }
+        
+        .contact-info h2 {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        
+        .contact-details {
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .contact-form-wrapper {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            max-width: 600px;
-            margin: 0 auto;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
         }
         
         .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 600;
             color: var(--secondary);
+            font-size: 1rem;
         }
         
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
             border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 6px;
+            border-radius: 8px;
             color: white;
             font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s;
+            transition: var(--transition);
+            font-size: 1rem;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--secondary);
             background: rgba(201, 162, 39, 0.1);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2);
         }
         
         textarea.form-control {
-            min-height: 150px;
+            min-height: 180px;
             resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 600;
         }
         
         /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 80px 0 30px;
+            padding: 100px 0 40px;
+            position: relative;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            gap: 50px;
+            margin-bottom: 60px;
         }
         
         .footer-logo {
-            height: 50px;
-            margin-bottom: 20px;
+            height: 60px;
+            margin-bottom: 25px;
+            filter: brightness(0) invert(1);
         }
         
         .footer-about p {
             opacity: 0.8;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
         }
         
         .footer-links h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
             color: var(--secondary);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .footer-links h3::after {
@@ -654,8 +841,8 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 40px;
-            height: 2px;
+            width: 50px;
+            height: 3px;
             background: var(--secondary);
         }
         
@@ -664,34 +851,36 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         
         .footer-links a {
             color: rgba(255,255,255,0.8);
-            transition: all 0.3s;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-block;
         }
         
         .footer-links a:hover {
             color: var(--secondary);
-            padding-left: 5px;
+            transform: translateX(5px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 14px;
+            font-size: 0.9rem;
             opacity: 0.7;
         }
         
         /* Chat Widget */
         .chat-widget {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
             background: var(--secondary);
             color: white;
             border-radius: 50%;
@@ -699,13 +888,15 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.5);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.6);
             z-index: 1000;
-            transition: all 0.3s;
+            transition: var(--transition);
+            font-size: 1.5rem;
         }
         
         .chat-widget:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.8);
         }
         
         /* Mobile Menu */
@@ -722,22 +913,32 @@
             justify-content: center;
             align-items: center;
             transform: translateX(100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
+            opacity: 0;
+            visibility: hidden;
         }
         
         .mobile-menu.active {
             transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
         }
         
         .mobile-menu-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            font-size: 24px;
+            top: 40px;
+            right: 40px;
+            font-size: 28px;
             color: white;
             background: none;
             border: none;
             cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-close:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
         }
         
         .mobile-nav-menu {
@@ -746,19 +947,47 @@
         }
         
         .mobile-nav-menu li {
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .mobile-nav-menu a {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: white;
             font-weight: 500;
+            position: relative;
+            padding: 10px 20px;
+        }
+        
+        .mobile-nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: width 0.4s ease;
+        }
+        
+        .mobile-nav-menu a:hover::after {
+            width: 80%;
         }
         
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .casino-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+        
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
             
             .nav-menu {
@@ -768,25 +997,56 @@
             .mobile-menu-btn {
                 display: block;
             }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+            
+            .contact-info p {
+                max-width: 100%;
+            }
+            
+            .contact-details {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .contact-item {
+                flex: 0 0 calc(50% - 20px);
+                margin-bottom: 0;
+            }
         }
         
         @media (max-width: 768px) {
             .hero {
                 height: auto;
-                padding: 120px 0;
+                padding: 150px 0;
                 min-height: auto;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 50px;
             }
             
             .casino-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .filter-container {
@@ -795,7 +1055,47 @@
             }
             
             .filter-title {
-                margin-bottom: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .contact-item {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+            
+            .contact-form-wrapper {
+                padding: 30px;
+            }
+            
+            .mobile-nav-menu a {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .testimonial-card {
+                padding: 30px;
+            }
+            
+            .expert-card {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
     </style>
@@ -814,7 +1114,6 @@
                     <li><a href="#casinos">Casinos</a></li>
                     <li><a href="#testimonials">Reviews</a></li>
                     <li><a href="#experts">Experts</a></li>
-                    <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
@@ -836,7 +1135,6 @@
             <li><a href="#casinos">Casinos</a></li>
             <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#experts">Experts</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
@@ -907,6 +1205,14 @@
                                 <div class="payment-glow"></div>
                                 <img src="images/payments/BTC.png" alt="Bitcoin" class="payment-icon">
                             </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Skrill.png" alt="Skrill" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Neteller.png" alt="Neteller" class="payment-icon">
+                            </div>
                         </div>
                         
                         <div class="casino-btn">
@@ -950,6 +1256,14 @@
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
                                 <img src="images/payments/Payz.png" alt="Payz" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Apple Pay.png" alt="Apple Pay" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Google Pay.png" alt="Google Pay" class="payment-icon">
                             </div>
                         </div>
                         
@@ -995,6 +1309,10 @@
                                 <div class="payment-glow"></div>
                                 <img src="images/payments/Skrill.png" alt="Skrill" class="payment-icon">
                             </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Pay safe card.png" alt="Paysafecard" class="payment-icon">
+                            </div>
                         </div>
                         
                         <div class="casino-btn">
@@ -1039,6 +1357,10 @@
                                 <div class="payment-glow"></div>
                                 <img src="images/payments/BTC.png" alt="Bitcoin" class="payment-icon">
                             </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Trustly.png" alt="Trustly" class="payment-icon">
+                            </div>
                         </div>
                         
                         <div class="casino-btn">
@@ -1082,6 +1404,10 @@
                             <div class="payment-method">
                                 <div class="payment-glow"></div>
                                 <img src="images/payments/Payz.png" alt="Payz" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/MuchBetter.png" alt="MuchBetter" class="payment-icon">
                             </div>
                         </div>
                         
@@ -1138,6 +1464,150 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Casino 7 - PlayOJO -->
+                <div class="casino-card" data-province="ON QC">
+                    <div class="casino-rating">9.2</div>
+                    <div class="casino-header">
+                        <img src="images/casinos/logo_7.jpeg" alt="PlayOJO" class="casino-logo">
+                        <h3>PlayOJO</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$50 Free + Cashback</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">1-2 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Visa.png" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Skrill.png" alt="Skrill" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/PayBit.png" alt="PayBit" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 8 - Casumo -->
+                <div class="casino-card" data-province="ON BC">
+                    <div class="casino-rating">9.1</div>
+                    <div class="casino-header">
+                        <img src="images/casinos/logo_8.jpeg" alt="Casumo" class="casino-logo">
+                        <h3>Casumo</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$1200 + 20 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">1-5 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Visa.png" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Payz.png" alt="Payz" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Zimpler.png" alt="Zimpler" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Casino 9 - Ruby Fortune -->
+                <div class="casino-card" data-province="ON QC BC">
+                    <div class="casino-rating">9.0</div>
+                    <div class="casino-header">
+                        <img src="images/casinos/logo_9.jpeg" alt="Ruby Fortune" class="casino-logo">
+                        <h3>Ruby Fortune</h3>
+                    </div>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Bonus:</span>
+                                <span class="feature-value">$750 + 50 Free Spins</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Payout:</span>
+                                <span class="feature-value">2-6 Business Days</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/interac.png" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Visa.png" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Master Card.png" alt="Mastercard" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-glow"></div>
+                                <img src="images/payments/Insta debit.png" alt="Instadebit" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Play Now</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1147,47 +1617,61 @@
         <div class="container">
             <h2 class="section-title">Player Testimonials</h2>
             
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "I've been playing at LeoVegas for over a year now and the experience has been fantastic. Fast payouts, great customer service, and an amazing selection of slots. Highly recommend!"
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/users/user1.jpg" alt="Sarah J." class="author-avatar">
-                        <div class="author-info">
-                            <h4>Sarah J.</h4>
-                            <p>Toronto, ON</p>
+            <div class="glide testimonials-slider">
+                <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                        <!-- Testimonial 1 -->
+                        <div class="glide__slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    "I've been playing at LeoVegas for over a year now and the experience has been fantastic. Fast payouts, great customer service, and an amazing selection of slots. Highly recommend!"
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="images/users/user1.jpg" alt="Sarah J." class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Sarah J.</h4>
+                                        <p>Toronto, ON</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="glide__slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    "As a Quebec player, I was looking for a casino with French support. JackpotCity exceeded my expectations with their live dealer games and weekly promotions. My winnings arrived in 2 days!"
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="images/users/user2.jpg" alt="Marc D." class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Marc D.</h4>
+                                        <p>Montreal, QC</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="glide__slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    "GoldenVault helped me find the perfect casino for BC players. 888 Casino has all my favorite games and the Interac deposits are instant. Won $2,500 on my third visit!"
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="images/users/user3.jpg" alt="James L." class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>James L.</h4>
+                                        <p>Vancouver, BC</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "As a Quebec player, I was looking for a casino with French support. JackpotCity exceeded my expectations with their live dealer games and weekly promotions. My winnings arrived in 2 days!"
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/users/user2.jpg" alt="Marc D." class="author-avatar">
-                        <div class="author-info">
-                            <h4>Marc D.</h4>
-                            <p>Montreal, QC</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "GoldenVault helped me find the perfect casino for BC players. 888 Casino has all my favorite games and the Interac deposits are instant. Won $2,500 on my third visit!"
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/users/user3.jpg" alt="James L." class="author-avatar">
-                        <div class="author-info">
-                            <h4>James L.</h4>
-                            <p>Vancouver, BC</p>
-                        </div>
-                    </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -1209,17 +1693,7 @@
                     </p>
                 </div>
                 
-                <!-- Expert 2 -->
-                <div class="expert-card">
-                    <img src="images/experts/expert2.jpg" alt="Sophie Martin" class="expert-avatar">
-                    <h3 class="expert-name">Sophie Martin</h3>
-                    <p class="expert-position">Bonus Specialist</p>
-                    <p class="expert-bio">
-                        Sophie has analyzed thousands of casino bonuses to find the most valuable offers for Canadian players. Her expertise helps players maximize their bankrolls with the best promotions.
-                    </p>
-                </div>
-                
-                <!-- Expert 3 -->
+                <!-- Expert 2 - Sophie and David swapped as requested -->
                 <div class="expert-card">
                     <img src="images/experts/expert3.jpg" alt="David Wilson" class="expert-avatar">
                     <h3 class="expert-name">David Wilson</h3>
@@ -1228,39 +1702,96 @@
                         David tracks all Canadian-friendly payment options, ensuring fast deposits and withdrawals. His guides help players choose the most secure and efficient banking methods.
                     </p>
                 </div>
+                
+                <!-- Expert 3 -->
+                <div class="expert-card">
+                    <img src="images/experts/expert2.jpg" alt="Sophie Martin" class="expert-avatar">
+                    <h3 class="expert-name">Sophie Martin</h3>
+                    <p class="expert-position">Bonus Specialist</p>
+                    <p class="expert-bio">
+                        Sophie has analyzed thousands of casino bonuses to find the most valuable offers for Canadian players. Her expertise helps players maximize their bankrolls with the best promotions.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="testimonials-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
+    <section class="contact-section" id="contact">
+        <div class="container contact-container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Have questions about Canadian online casinos? Our team of experts is ready to provide personalized advice and recommendations tailored to your needs.</p>
                     
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" class="form-control" required>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Our Location</h4>
+                                <p>Toronto, Ontario, Canada</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p>support@goldenvault.ca</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Call Us</h4>
+                                <p>+1 (647) 555-1234</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Working Hours</h4>
+                                <p>Mon-Fri: 9AM - 6PM EST</p>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">Your Message</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-control" required placeholder="What's this about?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" class="form-control" required placeholder="Type your message here..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn submit-btn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1310,6 +1841,7 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
     <script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1318,10 +1850,12 @@
         
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
         
         mobileMenuClose.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
         });
         
         // Close mobile menu when clicking on a link
@@ -1329,6 +1863,7 @@
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
         
@@ -1359,8 +1894,16 @@
                 casinoCards.forEach(card => {
                     if (province === 'all' || card.dataset.province.includes(province)) {
                         card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
                     } else {
-                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
@@ -1396,6 +1939,37 @@
                 contactForm.reset();
             });
         }
+        
+        // Initialize testimonials slider
+        new Glide('.testimonials-slider', {
+            type: 'carousel',
+            perView: 1,
+            gap: 30,
+            autoplay: 5000,
+            animationDuration: 800,
+            breakpoints: {
+                768: {
+                    perView: 1
+                }
+            }
+        }).mount();
+        
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.casino-card, .expert-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
