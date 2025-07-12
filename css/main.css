@@ -1,0 +1,74 @@
+:root {
+    --primary: #0c1b32;
+    --secondary: #c9a227;
+    --accent: #a67c52;
+    --light: #f5f7fa;
+    --dark: #0e121b;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--light);
+    background: var(--primary);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+#main-header {
+    background: rgba(12, 27, 50, 0.9);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 50px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+/* Casino Grid */
+.casino-grid {
+    padding: 100px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.casino-card {
+    background: var(--dark);
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.casino-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
