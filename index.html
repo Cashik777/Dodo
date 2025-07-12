@@ -1,122 +1,742 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Canadian Casinos 2025 | GoldenVault.ca</title>
-    <meta name="description" content="Canada's most trusted online casino guide with expert reviews">
+    <title>GoldenVault - Элитные казино Канады 2025</title>
+    <meta name="description" content="Только проверенные лицензированные казино с быстрыми выплатами">
     
     <!-- PWA -->
     <meta name="theme-color" content="#0c1b32">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="data:application/json;base64,ewogICAgIm5hbWUiOiAiR29sZGVuVmF1bHQiLAogICAgInNob3J0X25hbWUiOiAiR1ZhdWx0IiwKICAgICJzdGFydF91cmwiOiAiLyIsCiAgICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAgICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYzFiMzIiLAogICAgInRoZW1lX2NvbG9yIjogIiNjOWEyMjciLAogICAgImljb25zIjogWwogICAgICAgIHsKICAgICAgICAgICAgInNyYyI6ICJpbWFnZXMvaWNvbnMvaWNvbi0xOTIucG5nIiwKICAgICAgICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAgICAgICAidHlwZSI6ICJpbWFnZS9wbmciCiAgICAgICAgfQogICAgXQp9">
     
-    <!-- Preload -->
-    <link rel="preload" href="css/main.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
+    <!-- Фавиконки -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>">
     
-    <!-- Favicon -->
-    <link rel="icon" href="images/icons/coin.png" type="image/png">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Стили -->
+    <style>
+        :root {
+            --primary: #0c1b32;
+            --secondary: #c9a227;
+            --accent: #a67c52;
+            --dark: #0a0e17;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --gradient: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--light);
+            background: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 27, 50, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 32px;
+        }
+        
+        /* Главный экран */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9)), 
+                        url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMDEsIDE2MiwgMzksIDAuMDUpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+') center/cover;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.4);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
+        
+        /* Сетка казино */
+        .casino-section {
+            padding: 100px 0;
+            background: var(--dark);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+        
+        .casino-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .casino-card {
+            background: rgba(30, 42, 71, 0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .casino-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        .casino-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            padding: 2px;
+            background: var(--gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .casino-header {
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .casino-rating {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
+            border: 4px solid var(--dark);
+        }
+        
+        .casino-logo {
+            height: 80px;
+            margin: 10px auto;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+        
+        .casino-card:hover .casino-logo {
+            transform: scale(1.1);
+        }
+        
+        .casino-content {
+            padding: 0 25px 25px;
+        }
+        
+        .casino-features {
+            margin-bottom: 20px;
+        }
+        
+        .casino-feature {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: var(--secondary);
+            min-width: 120px;
+        }
+        
+        .feature-value {
+            flex: 1;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .payment-method {
+            width: 60px;
+            height: 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover .payment-icon {
+            filter: brightness(1.2);
+            transform: scale(1.1);
+        }
+        
+        .casino-btn {
+            margin-top: 20px;
+        }
+        
+        /* Контакты */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9)), 
+                        url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMDEsIDE2MiwgMzksIDAuMSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=') center/cover;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h2 {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            background: rgba(30, 42, 71, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+        
+        /* Подвал */
+        footer {
+            background: var(--dark);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-links h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Чат */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.6);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-widget:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-up {
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .casino-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .casino-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="main-header">
-        <div class="container">
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
             <a href="#" class="logo">
-                <img src="images/casinos/logo_9.jpeg" alt="GoldenVault" loading="lazy">
+                <span class="logo-icon">💰</span>
+                <span>GoldenVault</span>
             </a>
+            
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#casinos">Casinos</a></li>
-                    <li><a href="#experts">Experts</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#casinos">Казино</a></li>
+                    <li><a href="#bonuses">Бонусы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
                 </ul>
             </nav>
+            
+            <button class="btn">Войти</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home" style="background-image: url('images/backgrounds/treasure-bg.jpg')">
+    <!-- Главный экран -->
+    <section class="hero" id="home">
         <div class="container">
-            <h1>Canada's #1 Casino Guide</h1>
-            <p>Expert-curated selection of licensed online casinos</p>
-            <a href="#casinos" class="btn">Explore Now</a>
+            <h1 class="animate">Лучшие онлайн-казино Канады 2025</h1>
+            <p class="animate">Только проверенные заведения с мгновенными выплатами и щедрыми бонусами</p>
+            <a href="#casinos" class="btn animate-up">Смотреть ТОП-9</a>
         </div>
     </section>
 
-    <!-- Casino Grid -->
-    <section class="casino-grid" id="casinos">
+    <!-- Секция казино -->
+    <section class="casino-section" id="casinos">
         <div class="container">
-            <h2>Top Rated Casinos</h2>
-            <div class="grid">
-                <!-- Casino 1 -->
-                <div class="casino-card">
-                    <div class="rating">9.8</div>
-                    <img src="images/casinos/logo_1.jpeg" alt="LeoVegas" class="casino-logo" loading="lazy">
-                    <h3>LeoVegas</h3>
-                    <div class="payment-methods">
-                        <img src="images/payments/interac.png" alt="Interac" loading="lazy">
-                        <img src="images/payments/Visa.png" alt="Visa" loading="lazy">
+            <h2 class="section-title">ТОП-9 казино этого месяца</h2>
+            
+            <div class="casino-grid">
+                <!-- Казино 1 -->
+                <div class="casino-card animate" style="animation-delay: 0.1s">
+                    <div class="casino-rating">9.8</div>
+                    <div class="casino-header">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMTAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBjMWIzMiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYzlhMjI3IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiPkxlbyBWZWdhczwvdGV4dD48L3N2Zz4=" alt="LeoVegas" class="casino-logo">
+                        <h3>LeoVegas</h3>
                     </div>
-                    <a href="#" class="btn">Play Now</a>
+                    <div class="casino-content">
+                        <div class="casino-features">
+                            <div class="casino-feature">
+                                <span class="feature-title">Бонус:</span>
+                                <span class="feature-value">$1500 + 200 фриспинов</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Выплата:</span>
+                                <span class="feature-value">1-3 рабочих дня</span>
+                            </div>
+                            <div class="casino-feature">
+                                <span class="feature-title">Мин. депозит:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA0MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwYzFiMzIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+SW50ZXJhYzwvdGV4dD48L3N2Zz4=" alt="Interac" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA0MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjMWEzOUY1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+VmlzYTwvdGV4dD48L3N2Zz4=" alt="Visa" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA0MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmY2MDAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+TWFzdGVyY2FyZDwvdGV4dD48L3N2Zz4=" alt="Mastercard" class="payment-icon">
+                            </div>
+                            <div class="payment-method">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA0MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjY5NDIxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+Qml0Y29pbjwvdGV4dD48L3N2Zz4=" alt="Bitcoin" class="payment-icon">
+                            </div>
+                        </div>
+                        
+                        <div class="casino-btn">
+                            <a href="#" class="btn">Играть сейчас</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Casino 2 -->
-                <div class="casino-card">
-                    <div class="rating">9.7</div>
-                    <img src="images/casinos/logo_2.jpeg" alt="JackpotCity" class="casino-logo" loading="lazy">
-                    <h3>JackpotCity</h3>
-                    <div class="payment-methods">
-                        <img src="images/payments/Master Card.png" alt="Mastercard" loading="lazy">
-                        <img src="images/payments/BTC.png" alt="Bitcoin" loading="lazy">
-                    </div>
-                    <a href="#" class="btn">Play Now</a>
-                </div>
+                <!-- Казино 2-9 (аналогичная структура) -->
+                <!-- ... -->
+                
             </div>
         </div>
     </section>
 
-    <!-- Experts Section -->
-    <section class="experts" id="experts">
+    <!-- Секция контактов -->
+    <section class="contact-section" id="contact">
         <div class="container">
-            <h2>Our Experts</h2>
-            <div class="expert-grid">
-                <div class="expert-card">
-                    <img src="images/experts/expert1.jpg" alt="Michael Chen" loading="lazy">
-                    <h3>Michael Chen</h3>
-                    <p>Casino Analyst</p>
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Наша команда всегда на связи</h3>
+                    <p>Есть вопросы по выбору казино или нужна помощь с регистрацией? Напишите нам!</p>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Адрес</h4>
+                                <p>Торонто, Онтарио, Канада</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>support@goldenvault.ca</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h4>Телефон</h4>
+                                <p>+1 (647) 555-1234</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="expert-card">
-                    <img src="images/experts/expert2.jpg" alt="Sophie Martin" loading="lazy">
-                    <h3>Sophie Martin</h3>
-                    <p>Bonus Specialist</p>
-                </div>
-                <div class="expert-card">
-                    <img src="images/experts/expert3.jpg" alt="David Wilson" loading="lazy">
-                    <h3>David Wilson</h3>
-                    <p>Payment Expert</p>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Подвал -->
     <footer>
         <div class="container">
-            <div class="footer-logo">
-                <img src="images/casinos/logo_9.jpeg" alt="GoldenVault" loading="lazy">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">GoldenVault</a>
+                    <p>Лучший гид по онлайн-казино в Канаде с 2020 года</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Казино</h3>
+                    <ul>
+                        <li><a href="#">ТОП-10 казино</a></li>
+                        <li><a href="#">Новые казино</a></li>
+                        <li><a href="#">Казино с бонусами</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
             </div>
+            
             <div class="copyright">
-                <p>&copy; 2025 GoldenVault.ca - All Rights Reserved</p>
+                <p>© 2025 GoldenVault.ca. Все права защищены. 19+</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- Чат -->
+    <div class="chat-widget">💬</div>
+
+    <!-- Скрипты -->
+    <script>
+        // Анимации при скролле
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate, .animate-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                observer.observe(el);
+            });
+            
+            // Имитация загрузки данных казино
+            setTimeout(() => {
+                const loadingElements = document.querySelectorAll('.casino-logo[src^="data:"]');
+                loadingElements.forEach(el => {
+                    el.style.filter = 'none';
+                });
+            }, 1500);
+            
+            // Чат
+            document.querySelector('.chat-widget').addEventListener('click', () => {
+                alert('Чат-поддержка скоро будет доступна!');
+            });
+        });
+    </script>
 </body>
 </html>
