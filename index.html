@@ -35,7 +35,7 @@
         }
         
         header {
-            background: rgba(12, 27, 50, 0.8); /* Semi-transparent blue */
+            background: rgba(12, 27, 50, 0.8);
             color: white;
             padding: 15px 0;
             position: sticky;
@@ -51,7 +51,6 @@
             align-items: center;
         }
         
-        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -71,7 +70,6 @@
             transition: all 0.3s ease;
         }
         
-        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -94,7 +92,6 @@
             z-index: 1;
         }
         
-        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -280,7 +277,7 @@
         }
         
         .payment-icons-container {
-            min-height: 100px; /* Fixed height for payment icons container */
+            min-height: 100px;
             margin: 20px 0;
         }
         
@@ -311,7 +308,7 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: auto; /* Push button to bottom */
+            margin-top: auto;
             transition: all 0.3s;
             text-transform: uppercase;
             font-size: 14px;
@@ -432,7 +429,6 @@
             transform: translateY(-3px);
         }
 
-        /* Info pages styles */
         .info-page {
             padding: 80px 0;
             max-width: 800px;
@@ -524,7 +520,6 @@
             border-left: 4px solid var(--secondary);
         }
 
-        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 30px;
@@ -596,8 +591,286 @@
                 align-items: center;
             }
         }
+
+        /* New VIP Elements */
+        .vip-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #ffd700, #c9a227, #ffd700);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            z-index: 3;
+            animation: pulse 2s infinite;
+        }
+        
+        .exclusive-ribbon {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 3;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .bonus-counter {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px dashed var(--secondary);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bonus-counter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            animation: progress 10s linear infinite;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .bonus-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin: 10px 0;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .timer {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+        
+        .jackpot-display {
+            background: linear-gradient(135deg, #1e2a47, #0c1b32);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .jackpot-display::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                          rgba(201, 162, 39, 0.1) 0%, 
+                          rgba(201, 162, 39, 0) 20%,
+                          rgba(201, 162, 39, 0) 80%,
+                          rgba(201, 162, 39, 0.1) 100%);
+            pointer-events: none;
+        }
+        
+        .jackpot-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .jackpot-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.7);
+            margin: 10px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .jackpot-subtext {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 4rem;
+            font-family: serif;
+            color: rgba(201, 162, 39, 0.2);
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--secondary);
+        }
+        
+        .author-info {
+            flex: 1;
+        }
+        
+        .author-name {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .author-meta {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(201, 162, 39, 0.6);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(201, 162, 39, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .platform-image {
+            height: 120px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .platform-bonus {
+            background: rgba(166, 124, 82, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            text-align: center;
+            border: 1px dashed var(--accent);
+        }
+        
+        .floating-diamond {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23c9a227"><path d="M12 1.5l-5 9.5h10l-5-9.5zm0 21l5-9.5h-10l5 9.5z"/></svg>');
+            background-size: contain;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .jackpot-amount {
+                font-size: 2rem;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -615,26 +888,72 @@
     </header>
 
     <main id="main-content">
-        <!-- Default home page -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
+            <div class="floating-diamond" style="top:20%; left:10%; animation-delay:0s;"></div>
+            <div class="floating-diamond" style="top:70%; left:80%; animation-delay:1s; width:15px; height:15px;"></div>
+            <div class="floating-diamond" style="top:40%; left:85%; animation-delay:2s; width:25px; height:25px;"></div>
+            
             <div class="hero-content">
-                <h1>Luxury Canadian Gaming Experience</h1>
-                <p>Discover the most exclusive platforms for sophisticated players</p>
+                <h1>Exclusive Canadian Gaming Experience</h1>
+                <p>Unlock premium access to Canada's most luxurious gaming platforms with exclusive bonuses</p>
+                
+                <div class="bonus-counter">
+                    <div>Exclusive offer for new members:</div>
+                    <div class="bonus-amount">$1500 Welcome Bonus</div>
+                    <div class="timer">Offer expires in: <span id="countdown">24:59:59</span></div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#casinos-section" class="cta-primary">Claim My Bonus Now</a>
+                    <a href="#" class="cta-secondary">VIP Members Club</a>
+                </div>
             </div>
         </section>
 
-        <!-- Casino section with 9 casinos -->
+        <section class="section bg-dark">
+            <div class="container">
+                <div class="jackpot-display">
+                    <div class="jackpot-title">Progressive Jackpot Network</div>
+                    <div class="jackpot-amount">$12,758,429</div>
+                    <div class="jackpot-subtext">Canadian players won over $42M last month</div>
+                </div>
+            </div>
+        </section>
+
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a high roller, I appreciate the exclusive treatment GoldenVault offers. Their recommended casinos provide the best VIP programs in Canada. I've won over $250K this year alone!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
+                        <div class="author-info">
+                            <div class="author-name">Michael T.</div>
+                            <div class="author-meta">VIP Member since 2023</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="platform-grid">
-                    <!-- Casino 1 - LeoVegas -->
                     <div class="platform-card">
+                        <div class="vip-badge">VIP Choice</div>
+                        <div class="exclusive-ribbon">Exclusive</div>
                         <div class="rating">9.8</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">LeoVegas</div>
                         <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> Exclusive: 100% up to $500 + 50 Free Spins
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">500+ Slots & Tables</span>
@@ -647,6 +966,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$20 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -657,16 +977,27 @@
                                     <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 2 - Luxury Casino -->
+                    
                     <div class="platform-card">
+                        <div class="vip-badge">VIP Choice</div>
                         <div class="rating">9.7</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">Luxury Casino</div>
                         <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> Exclusive: 120% up to $600
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">650+ Games</span>
@@ -679,6 +1010,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$25 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
@@ -689,16 +1021,27 @@
                                     <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 3 - 888 Casino -->
+                    
                     <div class="platform-card">
+                        <div class="exclusive-ribbon">Exclusive</div>
                         <div class="rating">9.6</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">888 Casino</div>
                         <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> Exclusive: 150% up to $300 + 100 Free Spins
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">400+ Slots, 50+ Tables</span>
@@ -711,6 +1054,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$10 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -721,16 +1065,27 @@
                                     <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 4 - BET99 -->
+                    
                     <div class="platform-card">
+                        <div class="vip-badge">High Roller</div>
                         <div class="rating">9.5</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">BET99</div>
                         <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> VIP: 200% up to $1000
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">300+ Premium Games</span>
@@ -743,6 +1098,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$50 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -753,16 +1109,26 @@
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 5 - Jackpot City -->
+                    
                     <div class="platform-card">
                         <div class="rating">9.4</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">Jackpot City</div>
                         <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> 100% up to $400 + 20 Free Spins
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">550+ Games</span>
@@ -775,6 +1141,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$15 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -785,16 +1152,27 @@
                                     <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 6 - Casino Days -->
+                    
                     <div class="platform-card">
+                        <div class="exclusive-ribbon">Exclusive</div>
                         <div class="rating">9.3</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">Casino Days</div>
                         <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> Exclusive: 110% up to $700
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">700+ Games Collection</span>
@@ -807,6 +1185,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$20 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -817,16 +1196,26 @@
                                     <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 7 - Royal Panda -->
+                    
                     <div class="platform-card">
                         <div class="rating">9.2</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">Royal Panda</div>
                         <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> 100% up to $200 + 30 Free Spins
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">600+ Slots & Tables</span>
@@ -839,6 +1228,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$10 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -849,16 +1239,26 @@
                                     <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 8 - Sports Interaction -->
+                    
                     <div class="platform-card">
                         <div class="rating">9.1</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">Sports Interaction</div>
                         <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> 150% up to $350
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">450+ Games</span>
@@ -871,6 +1271,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$15 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
@@ -881,16 +1282,26 @@
                                     <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Casino 9 - PartyCasino -->
+                    
                     <div class="platform-card">
                         <div class="rating">9.0</div>
+                        
+                        <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                        
                         <div class="platform-header">PartyCasino</div>
                         <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
+                        
                         <div class="platform-content">
+                            <div class="platform-bonus">
+                                <i class="fas fa-gift"></i> 100% up to $500 + 25 Free Spins
+                            </div>
+                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">550+ Slots & Tables</span>
@@ -903,6 +1314,7 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$20 CAD</span>
                             </div>
+                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -913,7 +1325,48 @@
                                     <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            
+                            <a href="#" class="visit-btn">
+                                <i class="fas fa-lock-open"></i> Unlock Bonus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">Why Choose GoldenVault?</h2>
+                
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <i class="fas fa-shield-alt" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
+                            Trusted Selection
+                        </div>
+                        <div class="platform-content">
+                            <p>We rigorously test each casino to ensure they meet our 25-point inspection criteria for safety, fairness and player experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <i class="fas fa-star" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
+                            Exclusive Bonuses
+                        </div>
+                        <div class="platform-content">
+                            <p>Get special bonus offers not available anywhere else, with higher match percentages and lower wagering requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <i class="fas fa-concierge-bell" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
+                            VIP Concierge
+                        </div>
+                        <div class="platform-content">
+                            <p>Our members get access to personal account managers who can negotiate better bonuses and faster withdrawals.</p>
                         </div>
                     </div>
                 </div>
@@ -921,7 +1374,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
@@ -963,7 +1415,6 @@
         </div>
     </footer>
 
-    <!-- Templates for info pages -->
     <template id="about-template">
         <div class="info-page">
             <h2>About GoldenVault.ca</h2>
@@ -1104,7 +1555,7 @@
     </template>
 
     <script>
-        // Create falling coins (one-time)
+        // Create falling coins
         function createCoins() {
             const container = document.getElementById('coin-animation');
             if (!container) return;
@@ -1162,22 +1613,70 @@
             mainContent.innerHTML = `
                 <section class="hero" id="hero-section">
                     <div class="animation-container" id="coin-animation"></div>
+                    <div class="floating-diamond" style="top:20%; left:10%; animation-delay:0s;"></div>
+                    <div class="floating-diamond" style="top:70%; left:80%; animation-delay:1s; width:15px; height:15px;"></div>
+                    <div class="floating-diamond" style="top:40%; left:85%; animation-delay:2s; width:25px; height:25px;"></div>
+                    
                     <div class="hero-content">
-                        <h1>Luxury Canadian Gaming Experience</h1>
-                        <p>Discover the most exclusive platforms for sophisticated players</p>
+                        <h1>Exclusive Canadian Gaming Experience</h1>
+                        <p>Unlock premium access to Canada's most luxurious gaming platforms with exclusive bonuses</p>
+                        
+                        <div class="bonus-counter">
+                            <div>Exclusive offer for new members:</div>
+                            <div class="bonus-amount">$1500 Welcome Bonus</div>
+                            <div class="timer">Offer expires in: <span id="countdown">24:59:59</span></div>
+                        </div>
+                        
+                        <div class="hero-cta">
+                            <a href="#casinos-section" class="cta-primary">Claim My Bonus Now</a>
+                            <a href="#" class="cta-secondary">VIP Members Club</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section bg-dark">
+                    <div class="container">
+                        <div class="jackpot-display">
+                            <div class="jackpot-title">Progressive Jackpot Network</div>
+                            <div class="jackpot-amount">$12,758,429</div>
+                            <div class="jackpot-subtext">Canadian players won over $42M last month</div>
+                        </div>
                     </div>
                 </section>
 
                 <section class="section bg-medium" id="casinos-section">
                     <div class="container section-content">
                         <h2 class="section-title">Premium Casino Collection</h2>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "As a high roller, I appreciate the exclusive treatment GoldenVault offers. Their recommended casinos provide the best VIP programs in Canada. I've won over $250K this year alone!"
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
+                                <div class="author-info">
+                                    <div class="author-name">Michael T.</div>
+                                    <div class="author-meta">VIP Member since 2023</div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="platform-grid">
-                            <!-- Casino 1 - LeoVegas -->
                             <div class="platform-card">
+                                <div class="vip-badge">VIP Choice</div>
+                                <div class="exclusive-ribbon">Exclusive</div>
                                 <div class="rating">9.8</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">LeoVegas</div>
                                 <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> Exclusive: 100% up to $500 + 50 Free Spins
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">500+ Slots & Tables</span>
@@ -1190,6 +1689,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$20 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -1200,16 +1700,27 @@
                                             <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 2 - Luxury Casino -->
+                            
                             <div class="platform-card">
+                                <div class="vip-badge">VIP Choice</div>
                                 <div class="rating">9.7</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">Luxury Casino</div>
                                 <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> Exclusive: 120% up to $600
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">650+ Games</span>
@@ -1222,6 +1733,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$25 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
@@ -1232,16 +1744,27 @@
                                             <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 3 - 888 Casino -->
+                            
                             <div class="platform-card">
+                                <div class="exclusive-ribbon">Exclusive</div>
                                 <div class="rating">9.6</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">888 Casino</div>
                                 <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> Exclusive: 150% up to $300 + 100 Free Spins
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">400+ Slots, 50+ Tables</span>
@@ -1254,6 +1777,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$10 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1264,16 +1788,27 @@
                                             <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 4 - BET99 -->
+                            
                             <div class="platform-card">
+                                <div class="vip-badge">High Roller</div>
                                 <div class="rating">9.5</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">BET99</div>
                                 <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> VIP: 200% up to $1000
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">300+ Premium Games</span>
@@ -1286,6 +1821,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$50 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1296,16 +1832,26 @@
                                             <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 5 - Jackpot City -->
+                            
                             <div class="platform-card">
                                 <div class="rating">9.4</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">Jackpot City</div>
                                 <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> 100% up to $400 + 20 Free Spins
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">550+ Games</span>
@@ -1318,6 +1864,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$15 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -1328,16 +1875,27 @@
                                             <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 6 - Casino Days -->
+                            
                             <div class="platform-card">
+                                <div class="exclusive-ribbon">Exclusive</div>
                                 <div class="rating">9.3</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">Casino Days</div>
                                 <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> Exclusive: 110% up to $700
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">700+ Games Collection</span>
@@ -1350,6 +1908,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$20 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1360,16 +1919,26 @@
                                             <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 7 - Royal Panda -->
+                            
                             <div class="platform-card">
                                 <div class="rating">9.2</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">Royal Panda</div>
                                 <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> 100% up to $200 + 30 Free Spins
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">600+ Slots & Tables</span>
@@ -1382,6 +1951,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$10 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -1392,16 +1962,26 @@
                                             <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 8 - Sports Interaction -->
+                            
                             <div class="platform-card">
                                 <div class="rating">9.1</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">Sports Interaction</div>
                                 <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> 150% up to $350
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">450+ Games</span>
@@ -1414,6 +1994,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$15 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/Payz.png" alt="Payz" class="payment-icon">
@@ -1424,16 +2005,26 @@
                                             <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
                                 </div>
                             </div>
-
-                            <!-- Casino 9 - PartyCasino -->
+                            
                             <div class="platform-card">
                                 <div class="rating">9.0</div>
+                                
+                                <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
+                                
                                 <div class="platform-header">PartyCasino</div>
                                 <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
+                                
                                 <div class="platform-content">
+                                    <div class="platform-bonus">
+                                        <i class="fas fa-gift"></i> 100% up to $500 + 25 Free Spins
+                                    </div>
+                                    
                                     <div class="platform-feature">
                                         <span class="feature-title">Games:</span>
                                         <span class="feature-value">550+ Slots & Tables</span>
@@ -1446,6 +2037,7 @@
                                         <span class="feature-title">Min Deposit:</span>
                                         <span class="feature-value">$20 CAD</span>
                                     </div>
+                                    
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
                                             <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1456,7 +2048,48 @@
                                             <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    
+                                    <a href="#" class="visit-btn">
+                                        <i class="fas fa-lock-open"></i> Unlock Bonus
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section bg-dark">
+                    <div class="container">
+                        <h2 class="section-title">Why Choose GoldenVault?</h2>
+                        
+                        <div class="platform-grid">
+                            <div class="platform-card">
+                                <div class="platform-header">
+                                    <i class="fas fa-shield-alt" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
+                                    Trusted Selection
+                                </div>
+                                <div class="platform-content">
+                                    <p>We rigorously test each casino to ensure they meet our 25-point inspection criteria for safety, fairness and player experience.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="platform-card">
+                                <div class="platform-header">
+                                    <i class="fas fa-star" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
+                                    Exclusive Bonuses
+                                </div>
+                                <div class="platform-content">
+                                    <p>Get special bonus offers not available anywhere else, with higher match percentages and lower wagering requirements.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="platform-card">
+                                <div class="platform-header">
+                                    <i class="fas fa-concierge-bell" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
+                                    VIP Concierge
+                                </div>
+                                <div class="platform-content">
+                                    <p>Our members get access to personal account managers who can negotiate better bonuses and faster withdrawals.</p>
                                 </div>
                             </div>
                         </div>
@@ -1465,6 +2098,8 @@
             `;
             
             createCoins();
+            startCountdown();
+            animateJackpot();
             window.scrollTo(0, 0);
         }
 
@@ -1475,7 +2110,6 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Submit the form using Formspree
                     fetch(form.action, {
                         method: 'POST',
                         body: new FormData(form),
@@ -1499,9 +2133,61 @@
             }
         }
 
+        // Countdown timer
+        function startCountdown() {
+            let hours = 24;
+            let minutes = 59;
+            let seconds = 59;
+            
+            const countdown = setInterval(() => {
+                const countdownElement = document.getElementById('countdown');
+                if (countdownElement) {
+                    countdownElement.textContent = 
+                        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    if (seconds > 0) {
+                        seconds--;
+                    } else {
+                        if (minutes > 0) {
+                            minutes--;
+                            seconds = 59;
+                        } else {
+                            if (hours > 0) {
+                                hours--;
+                                minutes = 59;
+                                seconds = 59;
+                            } else {
+                                clearInterval(countdown);
+                            }
+                        }
+                    }
+                } else {
+                    clearInterval(countdown);
+                }
+            }, 1000);
+        }
+
+        // Animate jackpot
+        function animateJackpot() {
+            const jackpotElement = document.querySelector('.jackpot-amount');
+            if (!jackpotElement) return;
+            
+            let currentAmount = 12758429;
+            
+            setInterval(() => {
+                const increment = Math.floor(Math.random() * 500) + 100;
+                currentAmount += increment;
+                
+                const formattedAmount = '$' + currentAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                jackpotElement.textContent = formattedAmount;
+            }, 5000);
+        }
+
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             createCoins();
+            startCountdown();
+            animateJackpot();
             
             // Handle link clicks
             document.querySelectorAll('a[data-page]').forEach(link => {
