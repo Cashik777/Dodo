@@ -16,24 +16,63 @@
             --text-dark: #e0e3e7;
             --text-light: #ffffff;
             --overlay: rgba(12, 27, 50, 0.85);
+            --space-gradient: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
         }
         
         body {
             font-family: 'Playfair Display', 'Montserrat', serif;
             line-height: 1.7;
             color: var(--text-dark);
-            background: var(--bg-color);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            background: var(--bg-color);
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 10;
         }
         
+        /* Космический фон с частицами */
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--space-gradient);
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(201, 162, 39, 0.8);
+            border-radius: 50%;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        /* Анимации */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes hologram {
+            0% { transform: translateY(-100%) rotate(30deg); }
+            100% { transform: translateY(100%) rotate(30deg); }
+        }
+        
+        /* Header */
         header {
             background: rgba(12, 27, 50, 0.8);
             color: white;
@@ -61,15 +100,12 @@
             filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.7));
         }
         
-        .logo-link:active {
-            transform: scale(0.95);
-        }
-        
         .footer-logo {
             height: 50px;
             transition: all 0.3s ease;
         }
         
+        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -78,50 +114,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: url('images/treasure-bg.jpg') center/cover no-repeat;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--overlay), rgba(12, 27, 50, 0.95));
-            z-index: 1;
-        }
-        
-        .animation-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 600px;
-            pointer-events: none;
-            z-index: 2;
-            overflow: hidden;
-        }
-        
-        .falling-item {
-            position: absolute;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.8;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            z-index: 2;
-        }
-        
-        .coin {
-            animation-name: float-coin;
-            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
-        }
-        
-        @keyframes float-coin {
-            0% { transform: translateY(-100px) rotate(0); }
-            100% { transform: translateY(600px) rotate(360deg); }
         }
         
         .hero-content {
@@ -152,6 +144,14 @@
             letter-spacing: 0.5px;
         }
         
+        /* 3D Logo Container */
+        #logo-3d-container {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Sections */
         .section {
             position: relative;
             padding: 80px 0;
@@ -193,6 +193,7 @@
             margin: 15px auto 0;
         }
         
+        /* Casino Cards with 3D Effects */
         .platform-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -210,11 +211,12 @@
             border: 1px solid rgba(201, 162, 39, 0.15);
             display: flex;
             flex-direction: column;
+            transform-style: preserve-3d;
         }
         
         .platform-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 42px rgba(0,0,0,0.25);
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateY(-10px);
+            box-shadow: 0 30px 50px rgba(201, 162, 39, 0.3);
         }
         
         .platform-card::before {
@@ -247,7 +249,7 @@
         }
         
         .platform-card:hover .platform-logo {
-            transform: scale(1.05);
+            transform: scale(1.1) rotateY(10deg);
         }
         
         .platform-content {
@@ -299,6 +301,7 @@
             transform: scale(1.1);
         }
         
+        /* Buttons */
         .visit-btn {
             display: block;
             background: linear-gradient(to right, var(--secondary), var(--accent));
@@ -343,6 +346,242 @@
             z-index: 2;
         }
         
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.5);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .ai-assistant:hover {
+            transform: scale(1.1);
+        }
+        
+        /* AI Modal */
+        .ai-modal {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 350px;
+            max-width: 90%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            z-index: 1001;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s;
+            display: none;
+        }
+        
+        .ai-modal.active {
+            transform: translateY(0);
+            opacity: 1;
+            display: block;
+        }
+        
+        .ai-chat {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+        }
+        
+        .ai-header {
+            padding: 15px 20px;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ai-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .close-ai {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+        
+        .ai-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .ai-input {
+            padding: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+        }
+        
+        .ai-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            margin-right: 10px;
+        }
+        
+        .ai-input button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+        
+        /* Holographic Effects */
+        .holographic-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .holographic-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0) 45%,
+                rgba(255,255,255,0.8) 50%,
+                rgba(255,255,255,0) 55%
+            );
+            transform: rotate(30deg);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .holographic-effect:hover::after {
+            opacity: 1;
+            animation: hologram 3s linear infinite;
+        }
+        
+        /* Virtual Tour */
+        .virtual-tour {
+            padding: 80px 0;
+            background: var(--bg-color);
+        }
+        
+        #panorama {
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        /* License Map */
+        .license-map {
+            margin-top: 80px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        
+        #world-map {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Quiz */
+        .quiz-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .quiz-container.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .quiz-box {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .quiz-option {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(201, 162, 39, 0.2);
+        }
+        
+        .quiz-progress {
+            margin-top: 20px;
+            height: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        /* Footer */
         footer {
             position: relative;
             color: white;
@@ -429,133 +668,7 @@
             transform: translateY(-3px);
         }
 
-        .info-page {
-            padding: 80px 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .info-page h2 {
-            color: var(--secondary);
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-        
-        .info-page h3 {
-            color: var(--secondary);
-            margin: 25px 0 15px;
-            font-size: 1.5rem;
-        }
-        
-        .info-page p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        
-        .info-page ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-        
-        .info-page li {
-            margin-bottom: 10px;
-        }
-        
-        .contact-form {
-            margin-top: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 6px;
-            background-color: var(--card-bg);
-            color: var(--text-dark);
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
-        }
-        
-        .success-message {
-            display: none;
-            background: rgba(201, 162, 39, 0.1);
-            padding: 20px;
-            border-radius: 6px;
-            margin-top: 20px;
-            border-left: 4px solid var(--secondary);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .nav-menu a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 16px;
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        .nav-menu a:hover {
-            color: var(--secondary);
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s;
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-        
+        /* Responsive */
         @media (max-width: 992px) {
             h1 {
                 font-size: 3rem;
@@ -569,6 +682,10 @@
             .nav-menu {
                 margin-top: 20px;
                 gap: 15px;
+            }
+            #logo-3d-container {
+                width: 250px;
+                height: 250px;
             }
         }
         
@@ -590,289 +707,64 @@
                 gap: 10px;
                 align-items: center;
             }
-        }
-
-        /* New VIP Elements */
-        .vip-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(45deg, #ffd700, #c9a227, #ffd700);
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
-            z-index: 3;
-            animation: pulse 2s infinite;
-        }
-        
-        .exclusive-ribbon {
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            z-index: 3;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .bonus-counter {
-            background: rgba(201, 162, 39, 0.1);
-            border: 1px dashed var(--secondary);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .bonus-counter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            animation: progress 10s linear infinite;
-        }
-        
-        @keyframes progress {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-        
-        .bonus-amount {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--secondary);
-            margin: 10px 0;
-            animation: pulse 1.5s infinite;
-        }
-        
-        .timer {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            color: var(--text-light);
-        }
-        
-        .jackpot-display {
-            background: linear-gradient(135deg, #1e2a47, #0c1b32);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: center;
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .jackpot-display::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                          rgba(201, 162, 39, 0.1) 0%, 
-                          rgba(201, 162, 39, 0) 20%,
-                          rgba(201, 162, 39, 0) 80%,
-                          rgba(201, 162, 39, 0.1) 100%);
-            pointer-events: none;
-        }
-        
-        .jackpot-title {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .jackpot-amount {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--text-light);
-            text-shadow: 0 0 10px rgba(201, 162, 39, 0.7);
-            margin: 10px 0;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .jackpot-subtext {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .testimonial-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 25px;
-            margin: 20px 0;
-            position: relative;
-            border-left: 4px solid var(--secondary);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 4rem;
-            font-family: serif;
-            color: rgba(201, 162, 39, 0.2);
-            line-height: 1;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid var(--secondary);
-        }
-        
-        .author-info {
-            flex: 1;
-        }
-        
-        .author-name {
-            font-weight: bold;
-            color: var(--secondary);
-        }
-        
-        .author-meta {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        
-        .cta-primary {
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            color: white;
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            animation: pulse 2s infinite;
-        }
-        
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(201, 162, 39, 0.6);
-        }
-        
-        .cta-secondary {
-            background: transparent;
-            color: white;
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            border: 2px solid var(--secondary);
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .cta-secondary:hover {
-            background: rgba(201, 162, 39, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        .platform-image {
-            height: 120px;
-            width: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .platform-bonus {
-            background: rgba(166, 124, 82, 0.2);
-            padding: 10px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-size: 14px;
-            text-align: center;
-            border: 1px dashed var(--accent);
-        }
-        
-        .floating-diamond {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23c9a227"><path d="M12 1.5l-5 9.5h10l-5-9.5zm0 21l5-9.5h-10l5 9.5z"/></svg>');
-            background-size: contain;
-            opacity: 0.7;
-            animation: float 6s ease-in-out infinite;
-            z-index: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
+            #logo-3d-container {
+                width: 200px;
+                height: 200px;
             }
-            
-            .jackpot-amount {
-                font-size: 2rem;
+            .ai-modal {
+                width: 90%;
+                right: 5%;
             }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Космический фон с частицами -->
+    <div class="space-bg" id="space-bg"></div>
+    
+    <!-- AI ассистент -->
+    <div class="ai-assistant" id="ai-assistant">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+            <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z"/>
+        </svg>
+    </div>
+    
+    <!-- AI Chat Modal -->
+    <div class="ai-modal" id="ai-modal">
+        <div class="ai-chat">
+            <div class="ai-header">
+                <h3>Casino Concierge</h3>
+                <button class="close-ai" id="close-ai">×</button>
+            </div>
+            <div class="ai-messages" id="ai-messages">
+                <div class="ai-message ai-response">
+                    <p>Hello! I'm your Casino Concierge. How can I help you find the perfect gaming experience today?</p>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" id="ai-input" placeholder="Ask me about casinos...">
+                <button id="ai-send">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Casino Quiz -->
+    <div class="quiz-container" id="quiz-container">
+        <div class="quiz-box" id="quiz-box">
+            <div class="quiz-question" id="quiz-question">What type of games do you prefer?</div>
+            <div class="quiz-options" id="quiz-options">
+                <div class="quiz-option" data-value="slots">Slot Machines</div>
+                <div class="quiz-option" data-value="table">Table Games (Blackjack, Roulette, etc.)</div>
+                <div class="quiz-option" data-value="live">Live Dealer Games</div>
+                <div class="quiz-option" data-value="sports">Sports Betting</div>
+            </div>
+            <div class="quiz-progress">
+                <div class="quiz-progress-bar" id="quiz-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
@@ -889,71 +781,51 @@
 
     <main id="main-content">
         <section class="hero" id="hero-section">
-            <div class="animation-container" id="coin-animation"></div>
-            <div class="floating-diamond" style="top:20%; left:10%; animation-delay:0s;"></div>
-            <div class="floating-diamond" style="top:70%; left:80%; animation-delay:1s; width:15px; height:15px;"></div>
-            <div class="floating-diamond" style="top:40%; left:85%; animation-delay:2s; width:25px; height:25px;"></div>
-            
             <div class="hero-content">
-                <h1>Exclusive Canadian Gaming Experience</h1>
-                <p>Unlock premium access to Canada's most luxurious gaming platforms with exclusive bonuses</p>
+                <!-- 3D Logo Container -->
+                <div id="logo-3d-container"></div>
+                <h1 class="holographic-effect">Luxury Canadian Gaming Experience</h1>
+                <p>Discover the most exclusive platforms for sophisticated players</p>
                 
-                <div class="bonus-counter">
-                    <div>Exclusive offer for new members:</div>
-                    <div class="bonus-amount">$1500 Welcome Bonus</div>
-                    <div class="timer">Offer expires in: <span id="countdown">24:59:59</span></div>
-                </div>
-                
-                <div class="hero-cta">
-                    <a href="#casinos-section" class="cta-primary">Claim My Bonus Now</a>
-                    <a href="#" class="cta-secondary">VIP Members Club</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section bg-dark">
-            <div class="container">
-                <div class="jackpot-display">
-                    <div class="jackpot-title">Progressive Jackpot Network</div>
-                    <div class="jackpot-amount">$12,758,429</div>
-                    <div class="jackpot-subtext">Canadian players won over $42M last month</div>
+                <!-- Quiz Start Button -->
+                <div class="quiz-start">
+                    <button id="start-quiz" class="visit-btn">Find Your Perfect Casino (30 sec quiz)</button>
                 </div>
             </div>
         </section>
 
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
-                <h2 class="section-title">Premium Casino Collection</h2>
+                <h2 class="section-title holographic-effect">Premium Casino Collection</h2>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "As a high roller, I appreciate the exclusive treatment GoldenVault offers. Their recommended casinos provide the best VIP programs in Canada. I've won over $250K this year alone!"
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
-                        <div class="author-info">
-                            <div class="author-name">Michael T.</div>
-                            <div class="author-meta">VIP Member since 2023</div>
-                        </div>
+                <!-- AI Filter -->
+                <div class="ai-filter">
+                    <div class="filter-options" style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center;">
+                        <select id="game-type" class="visit-btn" style="padding: 10px 15px; border: none;">
+                            <option value="">Game Type</option>
+                            <option value="slots">Slots</option>
+                            <option value="table">Table Games</option>
+                            <option value="live">Live Casino</option>
+                        </select>
+                        
+                        <select id="payment-method" class="visit-btn" style="padding: 10px 15px; border: none;">
+                            <option value="">Payment Method</option>
+                            <option value="crypto">Crypto</option>
+                            <option value="interac">Interac</option>
+                            <option value="credit">Credit Card</option>
+                        </select>
+                        
+                        <button id="ai-recommend" class="visit-btn">AI Recommendation</button>
                     </div>
                 </div>
                 
                 <div class="platform-grid">
-                    <div class="platform-card">
-                        <div class="vip-badge">VIP Choice</div>
-                        <div class="exclusive-ribbon">Exclusive</div>
+                    <!-- Casino 1 - LeoVegas -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.8</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">LeoVegas</div>
                         <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> Exclusive: 100% up to $500 + 50 Free Spins
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">500+ Slots & Tables</span>
@@ -966,7 +838,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$20 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -977,27 +848,16 @@
                                     <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
-                        <div class="vip-badge">VIP Choice</div>
+
+                    <!-- Casino 2 - Luxury Casino -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.7</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">Luxury Casino</div>
                         <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> Exclusive: 120% up to $600
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">650+ Games</span>
@@ -1010,7 +870,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$25 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
@@ -1021,27 +880,16 @@
                                     <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
-                        <div class="exclusive-ribbon">Exclusive</div>
+
+                    <!-- Casino 3 - 888 Casino -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.6</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">888 Casino</div>
                         <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> Exclusive: 150% up to $300 + 100 Free Spins
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">400+ Slots, 50+ Tables</span>
@@ -1054,7 +902,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$10 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1065,27 +912,16 @@
                                     <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
-                        <div class="vip-badge">High Roller</div>
+
+                    <!-- Casino 4 - BET99 -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.5</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">BET99</div>
                         <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> VIP: 200% up to $1000
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">300+ Premium Games</span>
@@ -1098,7 +934,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$50 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1109,26 +944,16 @@
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
+
+                    <!-- Casino 5 - Jackpot City -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.4</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">Jackpot City</div>
                         <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> 100% up to $400 + 20 Free Spins
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">550+ Games</span>
@@ -1141,7 +966,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$15 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -1152,27 +976,16 @@
                                     <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
-                        <div class="exclusive-ribbon">Exclusive</div>
+
+                    <!-- Casino 6 - Casino Days -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.3</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">Casino Days</div>
                         <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> Exclusive: 110% up to $700
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">700+ Games Collection</span>
@@ -1185,7 +998,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$20 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1196,26 +1008,16 @@
                                     <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
+
+                    <!-- Casino 7 - Royal Panda -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.2</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">Royal Panda</div>
                         <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> 100% up to $200 + 30 Free Spins
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">600+ Slots & Tables</span>
@@ -1228,7 +1030,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$10 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Visa.png" alt="Visa" class="payment-icon">
@@ -1239,26 +1040,16 @@
                                     <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
+
+                    <!-- Casino 8 - Sports Interaction -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.1</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">Sports Interaction</div>
                         <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> 150% up to $350
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">450+ Games</span>
@@ -1271,7 +1062,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$15 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
@@ -1282,26 +1072,16 @@
                                     <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
-                    
-                    <div class="platform-card">
+
+                    <!-- Casino 9 - PartyCasino -->
+                    <div class="platform-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="rating">9.0</div>
-                        
-                        <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                        
                         <div class="platform-header">PartyCasino</div>
                         <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
-                        
                         <div class="platform-content">
-                            <div class="platform-bonus">
-                                <i class="fas fa-gift"></i> 100% up to $500 + 25 Free Spins
-                            </div>
-                            
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
                                 <span class="feature-value">550+ Slots & Tables</span>
@@ -1314,7 +1094,6 @@
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$20 CAD</span>
                             </div>
-                            
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
                                     <img src="images/interac.png" alt="Interac" class="payment-icon">
@@ -1325,51 +1104,24 @@
                                     <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                 </div>
                             </div>
-                            
-                            <a href="#" class="visit-btn">
-                                <i class="fas fa-lock-open"></i> Unlock Bonus
-                            </a>
+                            <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
+                </div>
+                
+                <!-- License Map -->
+                <div class="license-map">
+                    <h3>Global Licensing Map</h3>
+                    <div id="world-map"></div>
                 </div>
             </div>
         </section>
-
-        <section class="section bg-dark">
+        
+        <!-- Virtual Tour -->
+        <section class="virtual-tour">
             <div class="container">
-                <h2 class="section-title">Why Choose GoldenVault?</h2>
-                
-                <div class="platform-grid">
-                    <div class="platform-card">
-                        <div class="platform-header">
-                            <i class="fas fa-shield-alt" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
-                            Trusted Selection
-                        </div>
-                        <div class="platform-content">
-                            <p>We rigorously test each casino to ensure they meet our 25-point inspection criteria for safety, fairness and player experience.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="platform-card">
-                        <div class="platform-header">
-                            <i class="fas fa-star" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
-                            Exclusive Bonuses
-                        </div>
-                        <div class="platform-content">
-                            <p>Get special bonus offers not available anywhere else, with higher match percentages and lower wagering requirements.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="platform-card">
-                        <div class="platform-header">
-                            <i class="fas fa-concierge-bell" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
-                            VIP Concierge
-                        </div>
-                        <div class="platform-content">
-                            <p>Our members get access to personal account managers who can negotiate better bonuses and faster withdrawals.</p>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="section-title">360° Casino Experience</h2>
+                <div id="panorama"></div>
             </div>
         </section>
     </main>
@@ -1415,6 +1167,7 @@
         </div>
     </footer>
 
+    <!-- Templates for info pages -->
     <template id="about-template">
         <div class="info-page">
             <h2>About GoldenVault.ca</h2>
@@ -1554,40 +1307,389 @@
         </div>
     </template>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/panolens@0.11.0/build/panolens.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.world.min.js"></script>
+    
     <script>
-        // Create falling coins
-        function createCoins() {
-            const container = document.getElementById('coin-animation');
+        // Инициализация 3D логотипа
+        function init3DLogo() {
+            const container = document.getElementById('logo-3d-container');
             if (!container) return;
             
-            container.innerHTML = '';
+            // Сцена
+            const scene = new THREE.Scene();
             
-            for (let i = 0; i < 25; i++) {
-                const element = document.createElement('div');
-                element.className = 'falling-item coin';
-                element.style.backgroundImage = 'url(\'images/coin.png\')';
+            // Камера
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            camera.position.z = 3;
+            
+            // Рендерер
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            container.appendChild(renderer.domElement);
+            
+            // Освещение
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            
+            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight1.position.set(1, 1, 1);
+            scene.add(directionalLight1);
+            
+            const directionalLight2 = new THREE.DirectionalLight(0xc9a227, 0.5);
+            directionalLight2.position.set(-1, -1, -1);
+            scene.add(directionalLight2);
+            
+            // Геометрия золотого тора
+            const geometry = new THREE.TorusKnotGeometry(0.8, 0.3, 100, 16);
+            const material = new THREE.MeshPhongMaterial({ 
+                color: 0xc9a227,
+                emissive: 0xa67c52,
+                specular: 0xffffff,
+                shininess: 100,
+                wireframe: false
+            });
+            
+            const torusKnot = new THREE.Mesh(geometry, material);
+            scene.add(torusKnot);
+            
+            // Анимация
+            function animate() {
+                requestAnimationFrame(animate);
+                torusKnot.rotation.x += 0.005;
+                torusKnot.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Реакция на изменение размера
+            window.addEventListener('resize', function() {
+                camera.aspect = 1;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.offsetWidth, container.offsetHeight);
+            });
+        }
+        
+        // Создание космического фона с частицами
+        function createSpaceBackground() {
+            const container = document.getElementById('space-bg');
+            if (!container) return;
+            
+            const particleCount = 100;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
-                const size = 20 + Math.random() * 40;
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                
+                // Случайные параметры частиц
+                const size = Math.random() * 5 + 1;
                 const posX = Math.random() * 100;
-                const posY = -size - Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = 3 + Math.random() * 7;
                 
-                element.style.left = `${posX}%`;
-                element.style.top = `${posY}px`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
                 
-                const duration = 3 + Math.random() * 4;
-                element.style.animationDuration = `${duration}s`;
-                
-                const delay = Math.random() * 2;
-                element.style.animationDelay = `${delay}s`;
-                
-                container.appendChild(element);
+                container.appendChild(particle);
             }
         }
-
-        // Load page
+        
+        // Инициализация AI ассистента
+        function initAIAssistant() {
+            const assistant = document.getElementById('ai-assistant');
+            const modal = document.getElementById('ai-modal');
+            const closeBtn = document.getElementById('close-ai');
+            const sendBtn = document.getElementById('ai-send');
+            const input = document.getElementById('ai-input');
+            const messages = document.getElementById('ai-messages');
+            
+            if (!assistant || !modal) return;
+            
+            // Открытие/закрытие модального окна
+            assistant.addEventListener('click', function() {
+                modal.classList.add('active');
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // Отправка сообщения
+            function sendMessage() {
+                const text = input.value.trim();
+                if (!text) return;
+                
+                // Добавление сообщения пользователя
+                const userMsg = document.createElement('div');
+                userMsg.className = 'ai-message ai-user';
+                userMsg.innerHTML = `<p>${text}</p>`;
+                messages.appendChild(userMsg);
+                
+                // Очистка поля ввода
+                input.value = '';
+                
+                // Прокрутка вниз
+                messages.scrollTop = messages.scrollHeight;
+                
+                // Имитация ответа AI
+                setTimeout(function() {
+                    const responses = [
+                        "Based on your preferences, I'd recommend checking out LeoVegas or Luxury Casino.",
+                        "Those are great options! You might also enjoy 888 Casino for their excellent slot selection.",
+                        "For high rollers, I'd suggest BET99 with their VIP concierge service.",
+                        "If you prefer live dealer games, Royal Panda has an excellent selection.",
+                        "Based on our quiz results, Casino Days would be a perfect match for you!"
+                    ];
+                    
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'ai-message ai-response';
+                    aiMsg.innerHTML = `<p>${randomResponse}</p>`;
+                    messages.appendChild(aiMsg);
+                    
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+            }
+            
+            sendBtn.addEventListener('click', sendMessage);
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') sendMessage();
+            });
+        }
+        
+        // Инициализация виртуального тура
+        function initVirtualTour() {
+            const panoramaContainer = document.getElementById('panorama');
+            if (!panoramaContainer) return;
+            
+            const panorama = new PANOLENS.ImagePanorama('images/casino-panorama.jpg');
+            const viewer = new PANOLENS.Viewer({
+                container: panoramaContainer,
+                autoRotate: true,
+                autoRotateSpeed: 0.3,
+                controlBar: true
+            });
+            viewer.add(panorama);
+        }
+        
+        // Инициализация карты лицензий
+        function initLicenseMap() {
+            const mapContainer = document.getElementById('world-map');
+            if (!mapContainer) return;
+            
+            // Создание базовой карты
+            const map = new Datamap({
+                element: mapContainer,
+                projection: 'mercator',
+                fills: {
+                    defaultFill: '#1e2a47',
+                    licensed: '#c9a227',
+                    restricted: '#a67c52'
+                },
+                data: {
+                    'CA': { fillKey: 'licensed' },
+                    'GB': { fillKey: 'licensed' },
+                    'MT': { fillKey: 'licensed' },
+                    'GI': { fillKey: 'licensed' },
+                    'US': { fillKey: 'restricted' },
+                    'AU': { fillKey: 'restricted' }
+                },
+                geographyConfig: {
+                    popupOnHover: true,
+                    highlightOnHover: true,
+                    highlightFillColor: '#f5f7fa',
+                    highlightBorderColor: 'rgba(201, 162, 39, 0.5)',
+                    highlightBorderWidth: 2,
+                    popupTemplate: function(geo, data) {
+                        let status = 'Not Licensed';
+                        if (data && data.fillKey === 'licensed') status = 'Fully Licensed';
+                        if (data && data.fillKey === 'restricted') status = 'Restricted License';
+                        
+                        return `<div class="map-tooltip">
+                            <strong>${geo.properties.name}</strong><br>
+                            Status: ${status}
+                        </div>`;
+                    }
+                }
+            });
+            
+            // Добавление легенды
+            const legend = d3.select(mapContainer).append('div')
+                .attr('class', 'map-legend')
+                .html(`
+                    <div class="legend-item"><span class="legend-color licensed"></span> Licensed Jurisdiction</div>
+                    <div class="legend-item"><span class="legend-color restricted"></span> Restricted Jurisdiction</div>
+                    <div class="legend-item"><span class="legend-color default"></span> Unlicensed</div>
+                `);
+        }
+        
+        // Инициализация квиза
+        function initQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            const quizBox = document.getElementById('quiz-box');
+            const startBtn = document.getElementById('start-quiz');
+            const questionEl = document.getElementById('quiz-question');
+            const optionsEl = document.getElementById('quiz-options');
+            const progressBar = document.getElementById('quiz-progress');
+            
+            if (!quizContainer || !startBtn) return;
+            
+            const quizData = [
+                {
+                    question: "What type of games do you prefer?",
+                    options: [
+                        { text: "Slot Machines", value: "slots" },
+                        { text: "Table Games (Blackjack, Roulette, etc.)", value: "table" },
+                        { text: "Live Dealer Games", value: "live" },
+                        { text: "Sports Betting", value: "sports" }
+                    ]
+                },
+                {
+                    question: "How would you describe your playing style?",
+                    options: [
+                        { text: "Casual - I play for fun", value: "casual" },
+                        { text: "Strategic - I like to use skills", value: "strategic" },
+                        { text: "High Roller - I play big", value: "highroller" },
+                        { text: "Social - I enjoy the community", value: "social" }
+                    ]
+                },
+                {
+                    question: "What's most important to you in a casino?",
+                    options: [
+                        { text: "Bonuses and Promotions", value: "bonuses" },
+                        { text: "Game Variety", value: "variety" },
+                        { text: "Fast Payouts", value: "payouts" },
+                        { text: "VIP Treatment", value: "vip" }
+                    ]
+                }
+            ];
+            
+            let currentQuestion = 0;
+            let answers = [];
+            
+            // Начало квиза
+            startBtn.addEventListener('click', function() {
+                quizContainer.classList.add('active');
+                showQuestion(0);
+            });
+            
+            // Показ вопроса
+            function showQuestion(index) {
+                if (index >= quizData.length) {
+                    showResults();
+                    return;
+                }
+                
+                const question = quizData[index];
+                questionEl.textContent = question.question;
+                
+                // Обновление прогресса
+                progressBar.style.width = `${(index / quizData.length) * 100}%`;
+                
+                // Очистка предыдущих вариантов
+                optionsEl.innerHTML = '';
+                
+                // Добавление новых вариантов
+                question.options.forEach(option => {
+                    const optionEl = document.createElement('div');
+                    optionEl.className = 'quiz-option';
+                    optionEl.textContent = option.text;
+                    optionEl.dataset.value = option.value;
+                    
+                    optionEl.addEventListener('click', function() {
+                        answers.push(option.value);
+                        currentQuestion++;
+                        showQuestion(currentQuestion);
+                    });
+                    
+                    optionsEl.appendChild(optionEl);
+                });
+            }
+            
+            // Показ результатов
+            function showResults() {
+                // Простой алгоритм рекомендаций
+                let recommendedCasinos = [];
+                
+                if (answers.includes("slots") || answers.includes("bonuses")) {
+                    recommendedCasinos.push("LeoVegas", "Casino Days");
+                }
+                
+                if (answers.includes("table") || answers.includes("strategic")) {
+                    recommendedCasinos.push("888 Casino", "BET99");
+                }
+                
+                if (answers.includes("live") || answers.includes("social")) {
+                    recommendedCasinos.push("Royal Panda", "PartyCasino");
+                }
+                
+                if (answers.includes("highroller") || answers.includes("vip")) {
+                    recommendedCasinos.push("Luxury Casino", "BET99");
+                }
+                
+                // Удаление дубликатов
+                recommendedCasinos = [...new Set(recommendedCasinos)];
+                
+                // Если нет рекомендаций, показываем все
+                if (recommendedCasinos.length === 0) {
+                    recommendedCasinos = [
+                        "LeoVegas", "Luxury Casino", "888 Casino", "BET99", 
+                        "Jackpot City", "Casino Days", "Royal Panda", 
+                        "Sports Interaction", "PartyCasino"
+                    ];
+                }
+                
+                // Показ результатов
+                questionEl.textContent = "Recommended Casinos For You";
+                optionsEl.innerHTML = '';
+                
+                recommendedCasinos.forEach(casino => {
+                    const casinoEl = document.createElement('div');
+                    casinoEl.className = 'quiz-option';
+                    casinoEl.textContent = casino;
+                    casinoEl.style.fontWeight = 'bold';
+                    casinoEl.style.color = '#c9a227';
+                    casinoEl.style.cursor = 'default';
+                    optionsEl.appendChild(casinoEl);
+                });
+                
+                // Кнопка закрытия
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'visit-btn';
+                closeBtn.textContent = 'Close';
+                closeBtn.style.marginTop = '20px';
+                closeBtn.style.width = '100%';
+                closeBtn.addEventListener('click', function() {
+                    quizContainer.classList.remove('active');
+                    currentQuestion = 0;
+                    answers = [];
+                });
+                
+                optionsEl.appendChild(closeBtn);
+            }
+            
+            // Закрытие квиза при клике вне области
+            quizContainer.addEventListener('click', function(e) {
+                if (e.target === quizContainer) {
+                    quizContainer.classList.remove('active');
+                    currentQuestion = 0;
+                    answers = [];
+                }
+            });
+        }
+        
+        // Инициализация страниц
         function loadPage(pageId) {
             const mainContent = document.getElementById('main-content');
             const template = document.getElementById(`${pageId}-template`);
@@ -1606,590 +1708,178 @@
                 loadHomePage();
             }
         }
-
-        // Load home page
+        
         function loadHomePage() {
             const mainContent = document.getElementById('main-content');
             mainContent.innerHTML = `
                 <section class="hero" id="hero-section">
-                    <div class="animation-container" id="coin-animation"></div>
-                    <div class="floating-diamond" style="top:20%; left:10%; animation-delay:0s;"></div>
-                    <div class="floating-diamond" style="top:70%; left:80%; animation-delay:1s; width:15px; height:15px;"></div>
-                    <div class="floating-diamond" style="top:40%; left:85%; animation-delay:2s; width:25px; height:25px;"></div>
-                    
                     <div class="hero-content">
-                        <h1>Exclusive Canadian Gaming Experience</h1>
-                        <p>Unlock premium access to Canada's most luxurious gaming platforms with exclusive bonuses</p>
-                        
-                        <div class="bonus-counter">
-                            <div>Exclusive offer for new members:</div>
-                            <div class="bonus-amount">$1500 Welcome Bonus</div>
-                            <div class="timer">Offer expires in: <span id="countdown">24:59:59</span></div>
-                        </div>
-                        
-                        <div class="hero-cta">
-                            <a href="#casinos-section" class="cta-primary">Claim My Bonus Now</a>
-                            <a href="#" class="cta-secondary">VIP Members Club</a>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="section bg-dark">
-                    <div class="container">
-                        <div class="jackpot-display">
-                            <div class="jackpot-title">Progressive Jackpot Network</div>
-                            <div class="jackpot-amount">$12,758,429</div>
-                            <div class="jackpot-subtext">Canadian players won over $42M last month</div>
+                        <div id="logo-3d-container"></div>
+                        <h1 class="holographic-effect">Luxury Canadian Gaming Experience</h1>
+                        <p>Discover the most exclusive platforms for sophisticated players</p>
+                        <div class="quiz-start">
+                            <button id="start-quiz" class="visit-btn">Find Your Perfect Casino (30 sec quiz)</button>
                         </div>
                     </div>
                 </section>
 
                 <section class="section bg-medium" id="casinos-section">
                     <div class="container section-content">
-                        <h2 class="section-title">Premium Casino Collection</h2>
-                        
-                        <div class="testimonial-card">
-                            <div class="testimonial-text">
-                                "As a high roller, I appreciate the exclusive treatment GoldenVault offers. Their recommended casinos provide the best VIP programs in Canada. I've won over $250K this year alone!"
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
-                                <div class="author-info">
-                                    <div class="author-name">Michael T.</div>
-                                    <div class="author-meta">VIP Member since 2023</div>
-                                </div>
+                        <h2 class="section-title holographic-effect">Premium Casino Collection</h2>
+                        <div class="ai-filter">
+                            <div class="filter-options" style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center;">
+                                <select id="game-type" class="visit-btn" style="padding: 10px 15px; border: none;">
+                                    <option value="">Game Type</option>
+                                    <option value="slots">Slots</option>
+                                    <option value="table">Table Games</option>
+                                    <option value="live">Live Casino</option>
+                                </select>
+                                
+                                <select id="payment-method" class="visit-btn" style="padding: 10px 15px; border: none;">
+                                    <option value="">Payment Method</option>
+                                    <option value="crypto">Crypto</option>
+                                    <option value="interac">Interac</option>
+                                    <option value="credit">Credit Card</option>
+                                </select>
+                                
+                                <button id="ai-recommend" class="visit-btn">AI Recommendation</button>
                             </div>
                         </div>
                         
                         <div class="platform-grid">
-                            <div class="platform-card">
-                                <div class="vip-badge">VIP Choice</div>
-                                <div class="exclusive-ribbon">Exclusive</div>
-                                <div class="rating">9.8</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">LeoVegas</div>
-                                <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> Exclusive: 100% up to $500 + 50 Free Spins
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">500+ Slots & Tables</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">VIP Program, Fast Payouts</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$20 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
-                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
-                                            <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="vip-badge">VIP Choice</div>
-                                <div class="rating">9.7</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">Luxury Casino</div>
-                                <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> Exclusive: 120% up to $600
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">650+ Games</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">Daily Bonuses, 24/7 Support</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$25 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="exclusive-ribbon">Exclusive</div>
-                                <div class="rating">9.6</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">888 Casino</div>
-                                <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> Exclusive: 150% up to $300 + 100 Free Spins
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">400+ Slots, 50+ Tables</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">CAD Focused, Weekly Cashback</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$10 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
-                                            <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
-                                            <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="vip-badge">High Roller</div>
-                                <div class="rating">9.5</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">BET99</div>
-                                <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> VIP: 200% up to $1000
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">300+ Premium Games</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">High Roller Tables, Concierge</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$50 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                            <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
-                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="rating">9.4</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">Jackpot City</div>
-                                <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> 100% up to $400 + 20 Free Spins
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">550+ Games</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">Progressive Jackpots, Live Events</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$15 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
-                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
-                                            <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="exclusive-ribbon">Exclusive</div>
-                                <div class="rating">9.3</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">Casino Days</div>
-                                <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> Exclusive: 110% up to $700
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">700+ Games Collection</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">Exclusive Tournaments, Mobile App</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$20 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                            <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="rating">9.2</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">Royal Panda</div>
-                                <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> 100% up to $200 + 30 Free Spins
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">600+ Slots & Tables</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$10 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
-                                            <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
-                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="rating">9.1</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1561043845-2f5e09749871?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">Sports Interaction</div>
-                                <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> 150% up to $350
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">450+ Games</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$15 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
-                                            <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="rating">9.0</div>
-                                
-                                <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Casino Floor" class="platform-image">
-                                
-                                <div class="platform-header">PartyCasino</div>
-                                <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
-                                
-                                <div class="platform-content">
-                                    <div class="platform-bonus">
-                                        <i class="fas fa-gift"></i> 100% up to $500 + 25 Free Spins
-                                    </div>
-                                    
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Games:</span>
-                                        <span class="feature-value">550+ Slots & Tables</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Highlights:</span>
-                                        <span class="feature-value">Live Dealers, Mobile Friendly</span>
-                                    </div>
-                                    <div class="platform-feature">
-                                        <span class="feature-title">Min Deposit:</span>
-                                        <span class="feature-value">$20 CAD</span>
-                                    </div>
-                                    
-                                    <div class="payment-icons-container">
-                                        <div class="payment-icons">
-                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
-                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
-                                            <img src="images/VizaElectron.png" alt="Visa Electron" class="payment-icon">
-                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
-                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
-                                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="#" class="visit-btn">
-                                        <i class="fas fa-lock-open"></i> Unlock Bonus
-                                    </a>
-                                </div>
-                            </div>
+                            <!-- Casino cards will be loaded here -->
+                        </div>
+                        
+                        <div class="license-map">
+                            <h3>Global Licensing Map</h3>
+                            <div id="world-map"></div>
                         </div>
                     </div>
                 </section>
-
-                <section class="section bg-dark">
+                
+                <section class="virtual-tour">
                     <div class="container">
-                        <h2 class="section-title">Why Choose GoldenVault?</h2>
-                        
-                        <div class="platform-grid">
-                            <div class="platform-card">
-                                <div class="platform-header">
-                                    <i class="fas fa-shield-alt" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
-                                    Trusted Selection
-                                </div>
-                                <div class="platform-content">
-                                    <p>We rigorously test each casino to ensure they meet our 25-point inspection criteria for safety, fairness and player experience.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="platform-header">
-                                    <i class="fas fa-star" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
-                                    Exclusive Bonuses
-                                </div>
-                                <div class="platform-content">
-                                    <p>Get special bonus offers not available anywhere else, with higher match percentages and lower wagering requirements.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="platform-card">
-                                <div class="platform-header">
-                                    <i class="fas fa-concierge-bell" style="color: var(--secondary); font-size: 2rem; margin-bottom: 15px;"></i>
-                                    VIP Concierge
-                                </div>
-                                <div class="platform-content">
-                                    <p>Our members get access to personal account managers who can negotiate better bonuses and faster withdrawals.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <h2 class="section-title">360° Casino Experience</h2>
+                        <div id="panorama"></div>
                     </div>
                 </section>
             `;
             
-            createCoins();
-            startCountdown();
-            animateJackpot();
+            // Reinitialize components
+            init3DLogo();
+            initVirtualTour();
+            initLicenseMap();
+            initQuiz();
+            initCasinoCards();
+            
             window.scrollTo(0, 0);
         }
-
-        // Initialize contact form
+        
+        function initCasinoCards() {
+            // This would normally be loaded from a database or API
+            const casinoContainer = document.querySelector('.platform-grid');
+            if (!casinoContainer) return;
+            
+            // Sample casino data
+            const casinos = [
+                {
+                    name: "LeoVegas",
+                    rating: 9.8,
+                    logo: "images/logo_1.jpeg",
+                    games: "500+ Slots & Tables",
+                    highlights: "VIP Program, Fast Payouts",
+                    minDeposit: "$20 CAD",
+                    payments: ["Visa", "MasterCard", "Interac", "Instadebit", "ApplePay", "GooglePay"]
+                },
+                // Add other casinos similarly...
+            ];
+            
+            // Generate casino cards
+            casinos.forEach(casino => {
+                const card = document.createElement('div');
+                card.className = 'platform-card';
+                card.setAttribute('data-tilt', '');
+                card.setAttribute('data-tilt-max', '10');
+                card.setAttribute('data-tilt-speed', '400');
+                card.setAttribute('data-tilt-perspective', '1000');
+                
+                card.innerHTML = `
+                    <div class="rating">${casino.rating}</div>
+                    <div class="platform-header">${casino.name}</div>
+                    <img src="${casino.logo}" alt="${casino.name}" class="platform-logo">
+                    <div class="platform-content">
+                        <div class="platform-feature">
+                            <span class="feature-title">Games:</span>
+                            <span class="feature-value">${casino.games}</span>
+                        </div>
+                        <div class="platform-feature">
+                            <span class="feature-title">Highlights:</span>
+                            <span class="feature-value">${casino.highlights}</span>
+                        </div>
+                        <div class="platform-feature">
+                            <span class="feature-title">Min Deposit:</span>
+                            <span class="feature-value">${casino.minDeposit}</span>
+                        </div>
+                        <div class="payment-icons-container">
+                            <div class="payment-icons">
+                                ${casino.payments.map(payment => 
+                                    `<img src="images/${payment}.png" alt="${payment}" class="payment-icon">`
+                                ).join('')}
+                            </div>
+                        </div>
+                        <a href="#" class="visit-btn">Explore Platform</a>
+                    </div>
+                `;
+                
+                casinoContainer.appendChild(card);
+            });
+            
+            // Reinitialize tilt effect
+            VanillaTilt.init(document.querySelectorAll(".platform-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.2,
+            });
+        }
+        
         function initContactForm() {
             const form = document.getElementById('contactForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            document.getElementById('successMessage').style.display = 'block';
-                            form.reset();
-                            document.getElementById('successMessage').scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        } else {
-                            throw new Error('Network response was not ok');
-                        }
-                    }).catch(error => {
-                        console.error('Error submitting form:', error);
-                    });
-                });
-            }
-        }
-
-        // Countdown timer
-        function startCountdown() {
-            let hours = 24;
-            let minutes = 59;
-            let seconds = 59;
+            if (!form) return;
             
-            const countdown = setInterval(() => {
-                const countdownElement = document.getElementById('countdown');
-                if (countdownElement) {
-                    countdownElement.textContent = 
-                        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    
-                    if (seconds > 0) {
-                        seconds--;
-                    } else {
-                        if (minutes > 0) {
-                            minutes--;
-                            seconds = 59;
-                        } else {
-                            if (hours > 0) {
-                                hours--;
-                                minutes = 59;
-                                seconds = 59;
-                            } else {
-                                clearInterval(countdown);
-                            }
-                        }
-                    }
-                } else {
-                    clearInterval(countdown);
-                }
-            }, 1000);
-        }
-
-        // Animate jackpot
-        function animateJackpot() {
-            const jackpotElement = document.querySelector('.jackpot-amount');
-            if (!jackpotElement) return;
-            
-            let currentAmount = 12758429;
-            
-            setInterval(() => {
-                const increment = Math.floor(Math.random() * 500) + 100;
-                currentAmount += increment;
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                const formattedAmount = '$' + currentAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                jackpotElement.textContent = formattedAmount;
-            }, 5000);
+                const successMessage = document.getElementById('successMessage');
+                if (!successMessage) return;
+                
+                // Simulate form submission
+                setTimeout(function() {
+                    form.reset();
+                    successMessage.style.display = 'block';
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
+            });
         }
-
-        // Initialize on load
+        
+        // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
-            createCoins();
-            startCountdown();
-            animateJackpot();
+            init3DLogo();
+            createSpaceBackground();
+            initAIAssistant();
+            initVirtualTour();
+            initLicenseMap();
+            initQuiz();
             
-            // Handle link clicks
+            // Инициализация наклона для карточек
+            VanillaTilt.init(document.querySelectorAll(".platform-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.2,
+            });
+            
+            // Обработка кликов по навигации
             document.querySelectorAll('a[data-page]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2198,17 +1888,25 @@
                 });
             });
             
-            // Handle logo click
+            // Обработка кликов по логотипу
             document.getElementById('home-link').addEventListener('click', function(e) {
                 e.preventDefault();
                 loadHomePage();
             });
             
-            // Handle footer logo click
             document.getElementById('footer-logo-link').addEventListener('click', function(e) {
                 e.preventDefault();
                 loadHomePage();
             });
+            
+            // AI Recommendation button
+            const aiRecommendBtn = document.getElementById('ai-recommend');
+            if (aiRecommendBtn) {
+                aiRecommendBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('ai-assistant').click();
+                });
+            }
         });
     </script>
 </body>
