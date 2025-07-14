@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Canadian Gaming 2025 | GoldenVault.ca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,19 +20,29 @@
             --text-light: #ffffff;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             color: var(--secondary);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
@@ -39,7 +51,7 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header Styles */
         header {
             background: rgba(12, 27, 50, 0.9);
             padding: 20px 0;
@@ -74,10 +86,10 @@
 
         .nav-menu a {
             color: var(--text-light);
-            text-decoration: none;
             font-weight: 500;
             position: relative;
             padding: 5px 0;
+            transition: color 0.3s;
         }
 
         .nav-menu a::after {
@@ -91,6 +103,10 @@
             transition: width 0.3s;
         }
 
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+
         .nav-menu a:hover::after {
             width: 100%;
         }
@@ -98,6 +114,7 @@
         /* Hero Section */
         .hero {
             height: 80vh;
+            min-height: 600px;
             display: flex;
             align-items: center;
             text-align: center;
@@ -115,6 +132,7 @@
             font-size: 4rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
         }
 
         .hero p {
@@ -124,7 +142,7 @@
             color: var(--text-light);
         }
 
-        /* Casino Cards */
+        /* Main Content Sections */
         .section {
             padding: 100px 0;
             position: relative;
@@ -133,7 +151,6 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
-            position: relative;
         }
 
         .section-title h2 {
@@ -150,13 +167,14 @@
             margin: 0 auto;
         }
 
+        /* Casino Cards Grid */
         .platform-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
 
-        /* Card Animation */
+        /* Card Animation Effects */
         .card-animation-container {
             position: relative;
             z-index: 1;
@@ -242,6 +260,7 @@
             z-index: 2;
         }
 
+        /* Rating Badge */
         .rating {
             position: absolute;
             top: -15px;
@@ -260,6 +279,7 @@
             border: 3px solid var(--card-bg);
         }
 
+        /* Card Content */
         .platform-header {
             font-size: 1.5rem;
             font-weight: 700;
@@ -298,6 +318,7 @@
             font-weight: 500;
         }
 
+        /* Payment Methods */
         .payment-icons {
             display: flex;
             flex-wrap: wrap;
@@ -317,26 +338,27 @@
             transform: scale(1.1);
         }
 
-        .visit-btn {
-            display: block;
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
             background: linear-gradient(to right, var(--secondary), var(--accent));
             color: white;
-            text-align: center;
-            padding: 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
         }
 
-        .visit-btn:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
         }
@@ -358,6 +380,7 @@
         .footer-about p {
             opacity: 0.8;
             line-height: 1.8;
+            margin-top: 20px;
         }
 
         .footer-links h3 {
@@ -379,7 +402,6 @@
 
         .footer-links ul {
             list-style: none;
-            padding: 0;
         }
 
         .footer-links li {
@@ -388,7 +410,6 @@
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
             transition: all 0.3s;
         }
 
@@ -405,7 +426,7 @@
             opacity: 0.7;
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 3rem;
@@ -424,6 +445,13 @@
             .nav-menu {
                 margin-top: 20px;
                 gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 100px 0;
             }
             
             .hero h1 {
@@ -437,10 +465,29 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                gap: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container header-content">
             <a href="#">
@@ -448,25 +495,28 @@
             </a>
             <nav class="nav-menu">
                 <a href="#">Home</a>
-                <a href="#">Casinos</a>
+                <a href="#casinos">Casinos</a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Premium Canadian Gaming</h1>
+            <h1>Premium Canadian Gaming Experience</h1>
             <p>Discover the most exclusive casino platforms for sophisticated players in 2025</p>
-            <a href="#casinos" class="visit-btn">Explore Casinos</a>
+            <a href="#casinos" class="btn btn-primary">Explore Casinos</a>
         </div>
     </section>
 
+    <!-- Casino Section -->
     <section class="section" id="casinos">
         <div class="container">
             <div class="section-title">
                 <h2>Featured Casinos</h2>
+                <p>Top rated platforms for Canadian players</p>
             </div>
             
             <div class="platform-grid">
@@ -477,7 +527,7 @@
                         <div class="platform-card-inner">
                             <div class="rating">9.8</div>
                             <div class="platform-header">LeoVegas</div>
-                            <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
+                            <img src="images/logo_1.png" alt="LeoVegas" class="platform-logo">
                             
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
@@ -499,7 +549,7 @@
                                 <img src="images/bitcoin.png" alt="Bitcoin" class="payment-icon">
                             </div>
                             
-                            <a href="#" class="visit-btn">Visit Casino</a>
+                            <a href="#" class="btn btn-primary">Visit Casino</a>
                         </div>
                     </div>
                 </div>
@@ -511,7 +561,7 @@
                         <div class="platform-card-inner">
                             <div class="rating">9.6</div>
                             <div class="platform-header">888 Casino</div>
-                            <img src="images/logo_2.jpeg" alt="888 Casino" class="platform-logo">
+                            <img src="images/logo_2.png" alt="888 Casino" class="platform-logo">
                             
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
@@ -533,7 +583,7 @@
                                 <img src="images/skrill.png" alt="Skrill" class="payment-icon">
                             </div>
                             
-                            <a href="#" class="visit-btn">Visit Casino</a>
+                            <a href="#" class="btn btn-primary">Visit Casino</a>
                         </div>
                     </div>
                 </div>
@@ -545,7 +595,7 @@
                         <div class="platform-card-inner">
                             <div class="rating">9.4</div>
                             <div class="platform-header">Royal Panda</div>
-                            <img src="images/logo_3.jpeg" alt="Royal Panda" class="platform-logo">
+                            <img src="images/logo_3.png" alt="Royal Panda" class="platform-logo">
                             
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
@@ -567,7 +617,7 @@
                                 <img src="images/paypal.png" alt="PayPal" class="payment-icon">
                             </div>
                             
-                            <a href="#" class="visit-btn">Visit Casino</a>
+                            <a href="#" class="btn btn-primary">Visit Casino</a>
                         </div>
                     </div>
                 </div>
@@ -575,11 +625,12 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="images/logo-white.png" alt="GoldenVault.ca" class="logo" style="margin-bottom: 20px;">
+                    <img src="images/logo-white.png" alt="GoldenVault.ca" class="logo">
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                 </div>
                 
@@ -587,7 +638,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Top Casinos</a></li>
+                        <li><a href="#casinos">Top Casinos</a></li>
                         <li><a href="#">Bonuses</a></li>
                         <li><a href="#">Payment Methods</a></li>
                     </ul>
@@ -601,6 +652,16 @@
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Payment Methods</h3>
+                    <div class="payment-icons">
+                        <img src="images/visa.png" alt="Visa" class="payment-icon">
+                        <img src="images/mastercard.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                        <img src="images/bitcoin.png" alt="Bitcoin" class="payment-icon">
+                    </div>
                 </div>
             </div>
             
@@ -620,8 +681,15 @@
                 // Clear existing particles
                 container.innerHTML = '';
                 
-                // Create 15 particles per card
-                for (let i = 0; i < 15; i++) {
+                // Create particles for each card
+                const particleCount = 15;
+                const colors = [
+                    'rgba(201, 162, 39, 0.15)',
+                    'rgba(201, 162, 39, 0.2)',
+                    'rgba(166, 124, 82, 0.15)'
+                ];
+                
+                for (let i = 0; i < particleCount; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('card-particle');
                     
@@ -630,7 +698,7 @@
                     const posX = Math.random() * 100;
                     const delay = Math.random() * 15;
                     const duration = 10 + Math.random() * 20;
-                    const hue = 40 + Math.random() * 20; // Gold color range
+                    const colorIndex = Math.floor(Math.random() * colors.length);
                     
                     particle.style.width = `${size}px`;
                     particle.style.height = `${size}px`;
@@ -638,7 +706,7 @@
                     particle.style.top = `100%`;
                     particle.style.animationDelay = `${delay}s`;
                     particle.style.animationDuration = `${duration}s`;
-                    particle.style.backgroundColor = `hsla(${hue}, 70%, 50%, 0.15)`;
+                    particle.style.backgroundColor = colors[colorIndex];
                     
                     container.appendChild(particle);
                 }
@@ -651,6 +719,24 @@
             
             // Recreate particles on resize
             window.addEventListener('resize', createParticles);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
