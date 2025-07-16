@@ -516,53 +516,7 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
         }
-        
-        .success-message {
-            display: none;
-            background: rgba(201, 162, 39, 0.1);
-            padding: 20px;
-            border-radius: 6px;
-            margin-top: 20px;
-            border-left: 4px solid var(--secondary);
-        }
 
-        /* Navigation menu */
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .nav-menu a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 16px;
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        .nav-menu a:hover {
-            color: var(--secondary);
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s;
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-        
         /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
@@ -625,9 +579,9 @@
                 height: 100vh;
                 background: var(--primary);
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start; /* Changed from center to flex-start */
                 gap: 25px;
-                padding: 20px;
+                padding: 80px 30px 30px; /* Added more padding at top */
                 transition: right 0.3s ease;
                 z-index: 1000;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.3);
@@ -639,7 +593,9 @@
             
             .nav-menu a {
                 font-size: 18px;
-                padding: 10px 0;
+                padding: 10px 15px; /* Added horizontal padding */
+                border-radius: 4px;
+                background: rgba(201, 162, 39, 0.1);
             }
             
             /* Adjust header padding */
@@ -660,6 +616,15 @@
             /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
+            }
+            
+            /* Info page mobile adjustments */
+            .info-page {
+                padding: 40px 20px;
+            }
+            
+            .info-page h2 {
+                font-size: 1.8rem;
             }
         }
 
@@ -1107,11 +1072,6 @@
                     
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
-                
-                <div class="success-message" id="successMessage">
-                    <h3>Thank you for contacting us!</h3>
-                    <p>We have received your message and will respond to you at the email address provided within 24-48 hours.</p>
-                </div>
             </div>
         </div>
     </template>
@@ -1573,16 +1533,16 @@
                         }
                     }).then(response => {
                         if (response.ok) {
-                            document.getElementById('successMessage').style.display = 'block';
+                            // Clear the form
                             form.reset();
-                            document.getElementById('successMessage').scrollIntoView({
-                                behavior: 'smooth'
-                            });
+                            // Show a subtle notification
+                            alert('Your message has been sent successfully!');
                         } else {
                             throw new Error('Network response was not ok');
                         }
                     }).catch(error => {
                         console.error('Error submitting form:', error);
+                        alert('There was an error sending your message. Please try again later.');
                     });
                 });
             }
