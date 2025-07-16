@@ -35,7 +35,7 @@
         }
         
         header {
-            background: rgba(12, 27, 50, 0.8); /* Semi-transparent blue */
+            background: rgba(12, 27, 50, 0.8);
             color: white;
             padding: 15px 0;
             position: sticky;
@@ -73,25 +73,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Sticky mobile logo */
-        .sticky-logo {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            height: 40px;
-            z-index: 1002;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .sticky-logo.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        
         /* Hero section */
         .hero {
             height: 600px;
@@ -301,7 +282,7 @@
         }
         
         .payment-icons-container {
-            min-height: 100px; /* Fixed height for payment icons container */
+            min-height: 100px;
             margin: 20px 0;
         }
         
@@ -332,7 +313,7 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: auto; /* Push button to bottom */
+            margin-top: auto;
             transition: all 0.3s;
             text-transform: uppercase;
             font-size: 14px;
@@ -705,11 +686,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Sticky mobile logo -->
-    <a href="#" class="sticky-logo" id="sticky-logo">
-        <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca">
-    </a>
-
     <header>
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
@@ -1618,16 +1594,6 @@
             menu.classList.toggle('active');
         }
 
-        // Handle scroll for sticky logo
-        function handleScroll() {
-            const stickyLogo = document.getElementById('sticky-logo');
-            if (window.scrollY > 100) {
-                stickyLogo.classList.add('visible');
-            } else {
-                stickyLogo.classList.remove('visible');
-            }
-        }
-
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             createCoins();
@@ -1656,18 +1622,8 @@
                 loadHomePage();
             });
             
-            // Handle sticky logo click
-            document.getElementById('sticky-logo').addEventListener('click', function(e) {
-                e.preventDefault();
-                loadHomePage();
-                window.scrollTo(0, 0);
-            });
-            
             // Mobile menu button
             document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
-            
-            // Scroll event for sticky logo
-            window.addEventListener('scroll', handleScroll);
         });
     </script>
 </body>
