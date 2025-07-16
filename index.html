@@ -472,9 +472,10 @@
 
         /* Info pages styles */
         .info-page {
-            padding: 80px 0;
+            padding: 80px 20px;
             max-width: 800px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
         
         .info-page h2 {
@@ -528,6 +529,10 @@
             background-color: var(--card-bg);
             color: var(--text-dark);
             font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         
         .form-group textarea {
@@ -546,6 +551,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s;
+            width: 100%;
+            font-size: 16px;
         }
         
         .submit-btn:hover {
@@ -562,6 +569,18 @@
             font-size: 24px;
             cursor: pointer;
             z-index: 1001;
+        }
+        
+        /* Success message */
+        .success-message {
+            display: none;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--secondary);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid var(--secondary);
         }
         
         @media (max-width: 992px) {
@@ -662,11 +681,18 @@
             
             /* Info page mobile adjustments */
             .info-page {
-                padding: 40px 20px;
+                padding: 40px 15px;
             }
             
             .info-page h2 {
                 font-size: 1.8rem;
+            }
+            
+            /* Form adjustments for mobile */
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                font-size: 16px;
             }
         }
 
@@ -1089,7 +1115,8 @@
             <p>Have questions or need assistance? Our team is here to help you with any inquiries regarding our recommended platforms or services.</p>
             
             <div class="contact-form">
-                <form id="contactForm" action="https://formspree.io/f/xgegqjvq" method="POST">
+                <form id="contactForm" action="https://formspree.io/f/mjvnyqoq" method="POST">
+                    <input type="hidden" name="_replyto" value="goldenvault.ca@gmail.com">
                     <input type="hidden" name="_subject" value="New message from GoldenVault.ca">
                     <div class="form-group">
                         <label for="email">Your Email Address</label>
@@ -1114,6 +1141,9 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">Send Message</button>
+                    <div id="success-message" class="success-message">
+                        Your message has been sent successfully! We'll get back to you soon.
+                    </div>
                 </form>
             </div>
         </div>
@@ -1566,6 +1596,12 @@
             if (form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    const submitBtn = form.querySelector('.submit-btn');
+                    const successMessage = document.getElementById('success-message');
+                    
+                    // Disable submit button to prevent multiple submissions
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
                     
                     // Submit the form using Formspree
                     fetch(form.action, {
@@ -1576,16 +1612,26 @@
                         }
                     }).then(response => {
                         if (response.ok) {
+                            // Show success message
+                            successMessage.style.display = 'block';
                             // Clear the form
                             form.reset();
-                            // Show a subtle notification
-                            alert('Your message has been sent successfully!');
+                            // Reset button
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Send Message';
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(() => {
+                                successMessage.style.display = 'none';
+                            }, 5000);
                         } else {
                             throw new Error('Network response was not ok');
                         }
                     }).catch(error => {
                         console.error('Error submitting form:', error);
                         alert('There was an error sending your message. Please try again later.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
                     });
                 });
             }
