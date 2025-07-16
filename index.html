@@ -73,6 +73,42 @@
             transition: all 0.3s ease;
         }
 
+        /* Navigation menu */
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
         /* Hero section */
         .hero {
             height: 600px;
@@ -579,9 +615,10 @@
                 height: 100vh;
                 background: var(--primary);
                 flex-direction: column;
-                justify-content: flex-start; /* Changed from center to flex-start */
-                gap: 25px;
-                padding: 80px 30px 30px; /* Added more padding at top */
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 15px;
+                padding: 100px 30px 30px;
                 transition: right 0.3s ease;
                 z-index: 1000;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.3);
@@ -593,8 +630,13 @@
             
             .nav-menu a {
                 font-size: 18px;
-                padding: 10px 15px; /* Added horizontal padding */
+                padding: 10px 15px;
                 border-radius: 4px;
+                width: 100%;
+                color: var(--text-light);
+            }
+            
+            .nav-menu a:hover {
                 background: rgba(201, 162, 39, 0.1);
             }
             
@@ -1047,7 +1089,8 @@
             <p>Have questions or need assistance? Our team is here to help you with any inquiries regarding our recommended platforms or services.</p>
             
             <div class="contact-form">
-                <form id="contactForm" action="https://formspree.io/f/goldenvault.ca@gmail.com" method="POST">
+                <form id="contactForm" action="https://formspree.io/f/xgegqjvq" method="POST">
+                    <input type="hidden" name="_subject" value="New message from GoldenVault.ca">
                     <div class="form-group">
                         <label for="email">Your Email Address</label>
                         <input type="email" id="email" name="email" required>
