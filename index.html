@@ -55,6 +55,7 @@
             position: relative;
         }
         
+        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -75,6 +76,7 @@
             transition: all 0.3s ease;
         }
 
+        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -110,6 +112,7 @@
             width: 100%;
         }
 
+        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -118,7 +121,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2088&q=80') center/cover no-repeat;
+            background: url('images/treasure-bg.jpg') center/cover no-repeat;
         }
         
         .hero::before {
@@ -132,6 +135,7 @@
             z-index: 1;
         }
         
+        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -155,9 +159,6 @@
         }
         
         .coin {
-            width: 40px;
-            height: 40px;
-            background-image: url('https://i.imgur.com/5KQvX9L.png');
             animation-name: float-coin;
             filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
@@ -472,6 +473,7 @@
             transform: translateY(-3px);
         }
 
+        /* Info pages styles */
         .info-page {
             padding: 80px 20px;
             max-width: 800px;
@@ -561,6 +563,7 @@
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
         }
 
+        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -571,6 +574,7 @@
             z-index: 1001;
         }
         
+        /* Success and error messages */
         .success-message {
             display: none;
             background: rgba(201, 162, 39, 0.2);
@@ -593,9 +597,10 @@
             border: 1px solid #ff6b6b;
         }
         
+        /* New styles for added sections */
         .features-section {
             background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
-                        url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2088&q=80') center/cover no-repeat;
+                        url('images/luxury-chip-bg.jpg') center/cover no-repeat;
             padding: 100px 0;
             position: relative;
         }
@@ -775,6 +780,7 @@
                 margin: 30px 0;
             }
             
+            /* Mobile menu styles */
             .mobile-menu-btn {
                 display: block;
             }
@@ -813,10 +819,12 @@
                 background: rgba(201, 162, 39, 0.1);
             }
             
+            /* Adjust header padding */
             header {
                 padding: 10px 0;
             }
             
+            /* Adjust section padding */
             .section {
                 padding: 40px 0;
             }
@@ -826,14 +834,17 @@
                 padding: 50px 0;
             }
             
+            /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
             }
             
+            /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
             }
             
+            /* Info page mobile adjustments */
             .info-page {
                 padding: 40px 15px;
             }
@@ -842,6 +853,7 @@
                 font-size: 1.8rem;
             }
             
+            /* Form adjustments for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
@@ -887,10 +899,12 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add EmailJS library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+            // Initialize EmailJS with your public key
+            emailjs.init('F86aBv4ExO8ipV0wH');
         })();
     </script>
 </head>
@@ -898,7 +912,7 @@
     <header>
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
-                <img src="https://i.imgur.com/JfKYq7F.png" alt="GoldenVault.ca" class="footer-logo">
+                <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
             </a>
             
             <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
@@ -913,6 +927,7 @@
     </header>
 
     <main id="main-content">
+        <!-- Default home page -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
@@ -921,6 +936,7 @@
             </div>
         </section>
 
+        <!-- Why Choose Us Section -->
         <section class="features-section">
             <div class="container">
                 <h2 class="section-title">Why Trust GoldenVault.ca</h2>
@@ -962,6 +978,7 @@
             </div>
         </section>
 
+        <!-- Casino section with 9 casinos -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -977,7 +994,7 @@
                             <span itemprop="name">LeoVegas</span>
                             <meta itemprop="url" content="https://www.leovegas.com">
                         </div>
-                        <img src="https://i.imgur.com/5XwTQ9a.png" alt="LeoVegas" class="platform-logo">
+                        <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 Premium platform with 500+ slots and table games, VIP program and fast payouts. Minimum deposit $20 CAD.
@@ -996,12 +1013,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
-                                    <img src="https://i.imgur.com/7XKQv9F.png" alt="Apple Pay" class="payment-icon">
-                                    <img src="https://i.imgur.com/5KQvX9L.png" alt="Google Pay" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -1019,7 +1036,7 @@
                             <span itemprop="name">Luxury Casino</span>
                             <meta itemprop="url" content="https://www.luxurycasino.com">
                         </div>
-                        <img src="https://i.imgur.com/8KZQJ9F.png" alt="Luxury Casino" class="platform-logo">
+                        <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 Luxury Casino offers 650+ games with daily bonuses and 24/7 support. Minimum deposit $25 CAD.
@@ -1035,20 +1052,64 @@
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
                                 <span class="feature-value">$25 CAD</span>
-                            </div> 
+                            </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
-                    <!-- Casino 3 - JackpotCity -->
+                    <!-- Casino 3 - 888 Casino -->
+                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="9.6">
+                            <meta itemprop="bestRating" content="10">
+                            9.6
+                        </div>
+                        <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                            <span itemprop="name">888 Casino</span>
+                            <meta itemprop="url" content="https://www.888casino.com">
+                        </div>
+                        <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
+                        <div class="platform-content">
+                            <div itemprop="reviewBody" style="display:none">
+                                888 Casino features 400+ slots and 50+ tables with CAD focus and weekly cashback. Minimum deposit $10 CAD.
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Games:</span>
+                                <span class="feature-value">400+ Slots, 50+ Tables</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Highlights:</span>
+                                <span class="feature-value">CAD Focused, Weekly Cashback</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                            <div class="payment-icons-container">
+                                <div class="payment-icons">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                                    <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
+                                </div>
+                            </div>
+                            <a href="#" class="visit-btn">Explore Platform</a>
+                        </div>
+                    </div>
+
+                    <!-- Casino 4 - BET99 -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.5">
@@ -1056,40 +1117,41 @@
                             9.5
                         </div>
                         <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">JackpotCity</span>
-                            <meta itemprop="url" content="https://www.jackpotcitycasino.com">
+                            <span itemprop="name">BET99</span>
+                            <meta itemprop="url" content="https://www.bet99.com">
                         </div>
-                        <img src="https://i.imgur.com/3XvQZ2T.png" alt="JackpotCity" class="platform-logo">
+                        <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
-                                JackpotCity features progressive jackpots and live dealer games. Minimum deposit $10 CAD.
+                                BET99 offers 300+ premium games with high roller tables and concierge service. Minimum deposit $50 CAD.
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
-                                <span class="feature-value">Progressive Jackpots</span>
+                                <span class="feature-value">300+ Premium Games</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Live Dealers, Mobile App</span>
+                                <span class="feature-value">High Roller Tables, Concierge</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$10 CAD</span>
+                                <span class="feature-value">$50 CAD</span>
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
-                                    <img src="https://i.imgur.com/7XKQv9F.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
-                    <!-- Casino 4 - Spin Casino -->
+                    <!-- Casino 5 - Jackpot City -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.4">
@@ -1097,39 +1159,41 @@
                             9.4
                         </div>
                         <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">Spin Casino</span>
-                            <meta itemprop="url" content="https://www.spincasino.com">
+                            <span itemprop="name">Jackpot City</span>
+                            <meta itemprop="url" content="https://www.jackpotcitycasino.com">
                         </div>
-                        <img src="https://i.imgur.com/9YQvZ6L.png" alt="Spin Casino" class="platform-logo">
+                        <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
-                                Spin Casino offers premium slots and live dealer experience. Minimum deposit $10 CAD.
+                                Jackpot City features 550+ games with progressive jackpots and live events. Minimum deposit $15 CAD.
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
-                                <span class="feature-value">Premium Slots</span>
+                                <span class="feature-value">550+ Games</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Live Dealers, Weekly Bonuses</span>
+                                <span class="feature-value">Progressive Jackpots, Live Events</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$10 CAD</span>
+                                <span class="feature-value">$15 CAD</span>
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
-                    <!-- Casino 5 - Royal Vegas -->
+                    <!-- Casino 6 - Casino Days -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.3">
@@ -1137,39 +1201,41 @@
                             9.3
                         </div>
                         <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">Royal Vegas</span>
-                            <meta itemprop="url" content="https://www.royalvegas.com">
+                            <span itemprop="name">Casino Days</span>
+                            <meta itemprop="url" content="https://www.casinodays.com">
                         </div>
-                        <img src="https://i.imgur.com/7XKQv9F.png" alt="Royal Vegas" class="platform-logo">
+                        <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
-                                Royal Vegas provides royal treatment with exclusive VIP benefits. Minimum deposit $30 CAD.
+                                Casino Days offers 700+ games collection with exclusive tournaments and mobile app. Minimum deposit $20 CAD.
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
-                                <span class="feature-value">400+ Games</span>
+                                <span class="feature-value">700+ Games Collection</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">VIP Benefits, Loyalty Rewards</span>
+                                <span class="feature-value">Exclusive Tournaments, Mobile App</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$30 CAD</span>
+                                <span class="feature-value">$20 CAD</span>
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                    <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
-                    <!-- Casino 6 - Ruby Fortune -->
+                    <!-- Casino 7 - Royal Panda -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.2">
@@ -1177,39 +1243,41 @@
                             9.2
                         </div>
                         <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">Ruby Fortune</span>
-                            <meta itemprop="url" content="https://www.rubyfortune.com">
+                            <span itemprop="name">Royal Panda</span>
+                            <meta itemprop="url" content="https://www.royalpanda.com">
                         </div>
-                        <img src="https://i.imgur.com/5KQvX9L.png" alt="Ruby Fortune" class="platform-logo">
+                        <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
-                                Ruby Fortune offers high-quality games and generous bonuses. Minimum deposit $20 CAD.
+                                Royal Panda features 600+ slots and tables with daily free spins and loyalty rewards. Minimum deposit $10 CAD.
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
-                                <span class="feature-value">450+ Games</span>
+                                <span class="feature-value">600+ Slots & Tables</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Generous Bonuses, 24/7 Support</span>
+                                <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$20 CAD</span>
+                                <span class="feature-value">$10 CAD</span>
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
-                    <!-- Casino 7 - PlayOJO -->
+                    <!-- Casino 8 - Sports Interaction -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.1">
@@ -1217,39 +1285,41 @@
                             9.1
                         </div>
                         <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">PlayOJO</span>
-                            <meta itemprop="url" content="https://www.playojo.com">
+                            <span itemprop="name">Sports Interaction</span>
+                            <meta itemprop="url" content="https://www.sportsinteraction.com">
                         </div>
-                        <img src="https://i.imgur.com/RJdQ5Yp.png" alt="PlayOJO" class="platform-logo">
+                        <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
-                                PlayOJO offers unique no-wagering bonuses and fair play. Minimum deposit $10 CAD.
+                                Sports Interaction offers 450+ games with progressive jackpots and weekly bonuses. Minimum deposit $15 CAD.
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
-                                <span class="feature-value">No-Wagering Bonuses</span>
+                                <span class="feature-value">450+ Games</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Fair Play, Daily Cashback</span>
+                                <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$10 CAD</span>
+                                <span class="feature-value">$15 CAD</span>
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
                         </div>
                     </div>
 
-                    <!-- Casino 8 - 888 Casino -->
+                    <!-- Casino 9 - PartyCasino -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.0">
@@ -1257,21 +1327,21 @@
                             9.0
                         </div>
                         <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">888 Casino</span>
-                            <meta itemprop="url" content="https://www.888casino.com">
+                            <span itemprop="name">PartyCasino</span>
+                            <meta itemprop="url" content="https://www.partycasino.com">
                         </div>
-                        <img src="https://i.imgur.com/8KZQJ9F.png" alt="888 Casino" class="platform-logo">
+                        <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
-                                888 Casino offers premium gaming experience with exclusive rewards. Minimum deposit $20 CAD.
+                                PartyCasino offers 550+ slots and tables with live dealers and mobile friendly interface. Minimum deposit $20 CAD.
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Games:</span>
-                                <span class="feature-value">500+ Games</span>
+                                <span class="feature-value">550+ Slots & Tables</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Exclusive Rewards, VIP Club</span>
+                                <span class="feature-value">Live Dealers, Mobile Friendly</span>
                             </div>
                             <div class="platform-feature">
                                 <span class="feature-title">Min Deposit:</span>
@@ -1279,50 +1349,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
-                                </div>
-                            </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
-                        </div>
-                    </div>
-
-                    <!-- Casino 9 - Betway Casino -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
-                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                            <meta itemprop="ratingValue" content="8.9">
-                            <meta itemprop="bestRating" content="10">
-                            8.9
-                        </div>
-                        <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
-                            <span itemprop="name">Betway Casino</span>
-                            <meta itemprop="url" content="https://www.betway.com">
-                        </div>
-                        <img src="https://i.imgur.com/3XvQZ2T.png" alt="Betway Casino" class="platform-logo">
-                        <div class="platform-content">
-                            <div itemprop="reviewBody" style="display:none">
-                                Betway Casino offers diverse gaming options and sports betting. Minimum deposit $10 CAD.
-                            </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Games:</span>
-                                <span class="feature-value">Diverse Options</span>
-                            </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Highlights:</span>
-                                <span class="feature-value">Sports Betting, Live Casino</span>
-                            </div>
-                            <div class="platform-feature">
-                                <span class="feature-title">Min Deposit:</span>
-                                <span class="feature-value">$10 CAD</span>
-                            </div>
-                            <div class="payment-icons-container">
-                                <div class="payment-icons">
-                                    <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Visa" class="payment-icon">
-                                    <img src="https://i.imgur.com/8KZQJ9F.png" alt="MasterCard" class="payment-icon">
-                                    <img src="https://i.imgur.com/3XvQZ2T.png" alt="Interac" class="payment-icon">
-                                    <img src="https://i.imgur.com/9YQvZ6L.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/VizaElectron.png" alt="Visa Electron" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -1332,39 +1364,25 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section class="testimonials-section">
             <div class="testimonials-container">
-                <h2 class="section-title">Player Testimonials</h2>
+                <h2 class="section-title">Player Experiences</h2>
                 <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
-                    Hear from our community of discerning players about their experiences with our recommended platforms
+                    Don't just take our word for it - hear what our community of discerning players has to say
                 </p>
                 
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-content">
                             <p class="testimonial-text">
-                                "GoldenVault.ca led me to discover Luxury Casino, which has become my go-to platform. The VIP treatment is exceptional, and their recommendations were spot on."
+                                "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
                             </p>
                             <div class="testimonial-author">
-                                <img src="https://i.imgur.com/7XKQv9F.png" alt="Michael R." class="author-avatar">
-                                <div class="author-info">
-                                    <h4>Michael R.</h4>
-                                    <p>VIP Player since 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">
-                                "As a high roller, I appreciate the detailed analysis GoldenVault provides. Their payout speed comparisons saved me countless hours of research."
-                            </p>
-                            <div class="testimonial-author">
-                                <img src="https://i.imgur.com/5KQvX9L.png" alt="Sarah L." class="author-avatar">
+                                <img src="user1.jpg" alt="Sarah L." class="author-avatar">
                                 <div class="author-info">
                                     <h4>Sarah L.</h4>
-                                    <p>High-Stakes Player</p>
+                                    <p>High Roller, Toronto</p>
                                 </div>
                             </div>
                         </div>
@@ -1373,13 +1391,28 @@
                     <div class="testimonial-card">
                         <div class="testimonial-content">
                             <p class="testimonial-text">
-                                "The exclusive bonuses I've accessed through GoldenVault.ca have significantly increased my bankroll. Their team truly understands serious players."
+                                "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
                             </p>
                             <div class="testimonial-author">
-                                <img src="https://i.imgur.com/9YQvZ6L.png" alt="David K." class="author-avatar">
+                                <img src="user2.jpg" alt="David K." class="author-avatar">
                                 <div class="author-info">
                                     <h4>David K.</h4>
-                                    <p>Professional Gambler</p>
+                                    <p>Professional Player, Vancouver</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="user3.jpg" alt="Michael T." class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Michael T.</h4>
+                                    <p>Tech Executive, Montreal</p>
                                 </div>
                             </div>
                         </div>
@@ -1387,38 +1420,95 @@
                 </div>
             </div>
         </section>
+    </main>
 
-        <div id="about-page" class="info-page" style="display: none;">
+    <!-- Footer -->
+    <footer class="bg-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="logo-link" id="footer-logo-link">
+                        <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+                    </a>
+                    <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
+                    <div class="trust-badges">
+                        <img src="images/ssl-secure.png" alt="SSL Secure" class="trust-badge">
+                        <img src="images/gamcare-certified.png" alt="GamCare Certified" class="trust-badge">
+                        <img src="images/18plus.png" alt="18+ Only" class="trust-badge">
+                        <img src="images/regulated-cagc.png" alt="Regulated by CAGC" class="trust-badge">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-page="terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Payment Methods</h3>
+                    <div class="payment-icons">
+                        <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                        <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                        <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                        <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 GoldenVault.ca. All Rights Reserved. Must be 19+ to play.</p>
+                <p>Gambling can be addictive. Play responsibly. Ontario only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Templates for info pages -->
+    <template id="about-template">
+        <div class="info-page">
             <h2>About GoldenVault.ca</h2>
-            <p>Founded in 2020, GoldenVault.ca has established itself as Canada's premier guide to luxury online gaming experiences. Our team consists of industry veterans with decades of combined experience in premium casino operations, game development, and player advocacy.</p>
+            <p>Welcome to GoldenVault.ca, Canada's premier guide to luxury gaming experiences since 2015. We are dedicated to providing sophisticated players with the most comprehensive and reliable information about high-end online gaming platforms.</p>
             
             <h3>Our Mission</h3>
-            <p>We exist to empower discerning Canadian players with the knowledge and tools needed to navigate the complex world of high-end online gaming. Unlike mainstream review sites, we focus exclusively on aspects that matter to serious players:</p>
+            <p>Our mission is to curate the finest selection of premium online casinos, offering our users an unparalleled gaming experience with exclusive bonuses, VIP treatment, and the highest standards of security and fairness.</p>
+            
+            <h3>Our Team</h3>
+            <p>Our team consists of gaming industry veterans with over 50 years of combined experience. We meticulously review each platform to ensure it meets our strict criteria for excellence:</p>
             <ul>
-                <li>VIP program quality and benefits</li>
-                <li>High-stakes game availability and limits</li>
-                <li>Withdrawal speed and reliability</li>
-                <li>Exclusive bonuses and promotions</li>
-                <li>Customer service responsiveness</li>
+                <li>Game quality and variety</li>
+                <li>Security and licensing</li>
+                <li>Payment processing speed</li>
+                <li>Customer service excellence</li>
+                <li>VIP and high roller benefits</li>
             </ul>
             
-            <h3>Our Review Process</h3>
-            <p>Each platform we recommend undergoes a rigorous 50-point evaluation conducted by our team of experts. We maintain active accounts at all reviewed casinos to ensure our information remains current and accurate.</p>
+            <h3>Why Trust Us?</h3>
+            <p>We maintain complete editorial independence. Our reviews are based on thorough testing and objective criteria. We never allow commercial relationships to influence our ratings or recommendations.</p>
         </div>
+    </template>
 
-        <div id="contact-page" class="info-page" style="display: none;">
+    <template id="contact-template">
+        <div class="info-page">
             <h2>Contact Us</h2>
-            <p>Have questions about our recommended platforms or suggestions for our review team? We'd love to hear from you.</p>
+            <p>Have questions or need assistance? Our team is here to help you with any inquiries regarding our recommended platforms or services.</p>
             
             <div class="contact-form">
                 <form id="contactForm">
+                    <div class="form-group" style="position: absolute; left: -9999px;">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website">
+                    </div>
+                    
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label for="email">Your Email Address</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     
@@ -1426,10 +1516,11 @@
                         <label for="subject">Subject</label>
                         <select id="subject" name="subject" required>
                             <option value="">Select a topic</option>
-                            <option value="recommendation">Casino Recommendation</option>
-                            <option value="review">Review Suggestion</option>
-                            <option value="partnership">Partnership Inquiry</option>
-                            <option value="other">Other</option>
+                            <option value="Account Inquiry">Account Inquiry</option>
+                            <option value="Casino Recommendation">Casino Recommendation</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Partnership Opportunity">Partnership Opportunity</option>
+                            <option value="Other Question">Other Question</option>
                         </select>
                     </div>
                     
@@ -1439,223 +1530,777 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">Send Message</button>
+                    <div id="success-message" class="success-message">
+                        Your message has been sent successfully! We'll get back to you soon.
+                    </div>
+                    <div id="error-message" class="error-message">
+                        There was an error sending your message. Please try again later.
+                    </div>
                 </form>
-                
-                <div class="success-message" id="success-message">
-                    Thank you for your message! We'll respond within 24 hours.
-                </div>
-                
-                <div class="error-message" id="error-message">
-                    There was an error sending your message. Please try again later.
-                </div>
             </div>
         </div>
+    </template>
 
-        <div id="privacy-page" class="info-page" style="display: none;">
+    <template id="privacy-template">
+        <div class="info-page">
             <h2>Privacy Policy</h2>
             <p>Last Updated: January 1, 2025</p>
             
             <h3>Information We Collect</h3>
-            <p>We may collect personal information when you voluntarily submit it through our contact forms or newsletter signup. This may include your name, email address, and any other details you choose to provide.</p>
-            
-            <h3>How We Use Your Information</h3>
-            <p>The information we collect may be used to:</p>
+            <p>We collect information to provide better services to our users. The types of information we collect include:</p>
             <ul>
-                <li>Respond to your inquiries and provide customer support</li>
-                <li>Send periodic emails regarding our services or industry updates</li>
-                <li>Improve our website and services based on your feedback</li>
+                <li><strong>Personal Information:</strong> When you contact us, we may collect your name, email address, and other contact details.</li>
+                <li><strong>Usage Data:</strong> We collect information about how you interact with our website through cookies and similar technologies.</li>
+                <li><strong>Device Information:</strong> We may collect device-specific information such as your IP address, browser type, and operating system.</li>
             </ul>
             
-            <h3>Data Protection</h3>
-            <p>We implement appropriate security measures to protect against unauthorized access, alteration, or destruction of your personal information. However, no internet transmission is completely secure, and we cannot guarantee absolute security.</p>
+            <h3>How We Use Information</h3>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul>
+                <li>To provide, maintain, and improve our services</li>
+                <li>To respond to your inquiries and provide customer support</li>
+                <li>To analyze website usage and improve user experience</li>
+                <li>To detect, prevent, and address technical issues</li>
+            </ul>
+            
+            <h3>Information Sharing</h3>
+            <p>We do not sell or rent your personal information to third parties. We may share information with:</p>
+            <ul>
+                <li>Service providers who assist us in operating our website</li>
+                <li>Law enforcement or government agencies when required by law</li>
+            </ul>
+            
+            <h3>Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access, update, or delete your personal information</li>
+                <li>Opt-out of marketing communications</li>
+                <li>Request restriction of processing your data</li>
+            </ul>
+            
+            <h3>Cookies</h3>
+            <p>We use cookies to enhance your experience. You can set your browser to refuse all or some cookies, but this may affect website functionality.</p>
         </div>
+    </template>
 
-        <div id="terms-page" class="info-page" style="display: none;">
+    <template id="terms-template">
+        <div class="info-page">
             <h2>Terms of Service</h2>
             <p>Last Updated: January 1, 2025</p>
             
             <h3>Acceptance of Terms</h3>
-            <p>By accessing and using GoldenVault.ca, you accept and agree to be bound by these Terms of Service. If you do not agree, you should not use this website.</p>
+            <p>By accessing and using GoldenVault.ca, you accept and agree to be bound by these Terms of Service. If you do not agree, you must not use our website.</p>
             
-            <h3>Age Restrictions</h3>
-            <p>This website is intended for adults aged 19 or older, depending on the legal gambling age in your jurisdiction. By using this site, you confirm that you meet these age requirements.</p>
+            <h3>Eligibility</h3>
+            <p>You must be at least 19 years of age to use this website. By using GoldenVault.ca, you represent that you meet this age requirement.</p>
+            
+            <h3>Intellectual Property</h3>
+            <p>All content on this website, including text, graphics, logos, and images, is our property or the property of our licensors and is protected by copyright laws.</p>
+            
+            <h3>User Responsibilities</h3>
+            <p>You agree to:</p>
+            <ul>
+                <li>Use the website only for lawful purposes</li>
+                <li>Not attempt to gain unauthorized access to our systems</li>
+                <li>Not interfere with the proper working of the website</li>
+                <li>Not use the website to promote any illegal activities</li>
+            </ul>
             
             <h3>Disclaimer</h3>
-            <p>GoldenVault.ca provides information and reviews for entertainment purposes only. We do not guarantee winnings or accept responsibility for losses incurred at any gambling establishment. Please gamble responsibly.</p>
-        </div>
-    </main>
-
-    <footer class="bg-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <a href="#" class="logo-link">
-                        <img src="https://i.imgur.com/JfKYq7F.png" alt="GoldenVault.ca" class="footer-logo">
-                    </a>
-                    <p>GoldenVault.ca is Canada's premier guide to luxury online gaming experiences, providing expert reviews and exclusive insights for discerning players since 2020.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#" data-page="about">About Us</a></li>
-                        <li><a href="#" data-page="contact">Contact</a></li>
-                        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#" data-page="terms">Terms of Service</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Top Platforms</h3>
-                    <ul>
-                        <li><a href="#">LeoVegas</a></li>
-                        <li><a href="#">Luxury Casino</a></li>
-                        <li><a href="#">JackpotCity</a></li>
-                        <li><a href="#">Spin Casino</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">VIP Program Guide</a></li>
-                        <li><a href="#">High Roller Strategy</a></li>
-                        <li><a href="#">Banking Options</a></li>
-                        <li><a href="#">Game Developer Reviews</a></li>
-                    </ul>
-                </div>
-            </div>
+            <p>GoldenVault.ca provides information about online gaming for entertainment purposes only. We do not operate any gambling services and are not responsible for any losses incurred at third-party sites.</p>
             
-            <div class="trust-badges">
-                <img src="https://i.imgur.com/RJdQ5Yp.png" alt="Responsible Gaming" class="trust-badge">
-                <img src="https://i.imgur.com/8KZQJ9F.png" alt="SSL Secure" class="trust-badge">
-                <img src="https://i.imgur.com/3XvQZ2T.png" alt="Verified Reviews" class="trust-badge">
-            </div>
+            <h3>Limitation of Liability</h3>
+            <p>To the maximum extent permitted by law, GoldenVault.ca shall not be liable for any indirect, incidental, or consequential damages resulting from the use of our website.</p>
             
-            <div class="copyright">
-                &copy; 2025 GoldenVault.ca. All rights reserved. This is not a gambling site. We do not operate any gambling activities.
-            </div>
+            <h3>Changes to Terms</h3>
+            <p>We may modify these terms at any time. Your continued use of the website constitutes acceptance of the modified terms.</p>
         </div>
-    </footer>
+    </template>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const navMenu = document.getElementById('nav-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        
-        // Page navigation
-        const navLinks = document.querySelectorAll('.nav-menu a, .footer-links a[data-page]');
-        const mainContent = document.getElementById('main-content');
-        const infoPages = document.querySelectorAll('.info-page');
-        const heroSection = document.getElementById('hero-section');
-        const homeLink = document.getElementById('home-link');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const page = link.getAttribute('data-page');
-                
-                if (page) {
-                    // Hide all info pages and show the selected one
-                    infoPages.forEach(page => page.style.display = 'none');
-                    document.getElementById(`${page}-page`).style.display = 'block';
+        // Create falling coins (one-time)
+        function createCoins() {
+            const container = document.getElementById('coin-animation');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            class Coin {
+                constructor() {
+                    this.element = document.createElement('div');
+                    this.element.className = 'falling-item coin';
+                    this.element.style.backgroundImage = 'url(\'images/coin.png\')';
                     
-                    // Hide main content sections
-                    heroSection.style.display = 'none';
-                    document.getElementById('casinos-section').style.display = 'none';
-                    document.querySelector('.features-section').style.display = 'none';
-                    document.querySelector('.testimonials-section').style.display = 'none';
+                    this.size = 20 + Math.random() * 40;
+                    this.element.style.width = `${this.size}px`;
+                    this.element.style.height = `${this.size}px`;
                     
-                    // Scroll to top
-                    window.scrollTo(0, 0);
+                    this.posX = Math.random() * 100;
+                    this.posY = -this.size - Math.random() * 100;
+                    this.rotation = 0;
+                    this.speed = 1 + Math.random() * 2;
+                    this.rotationSpeed = 1 + Math.random() * 3;
+                    
+                    this.element.style.left = `${this.posX}%`;
+                    this.element.style.top = `${this.posY}px`;
+                    
+                    container.appendChild(this.element);
                 }
                 
-                // Close mobile menu if open
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        // Home link - show all main content
-        homeLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Show all main content sections
-            heroSection.style.display = 'flex';
-            document.getElementById('casinos-section').style.display = 'block';
-            document.querySelector('.features-section').style.display = 'block';
-            document.querySelector('.testimonials-section').style.display = 'block';
-            
-            // Hide all info pages
-            infoPages.forEach(page => page.style.display = 'none');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        });
-        
-        // Falling coins animation
-        function createFallingCoins() {
-            const container = document.getElementById('coin-animation');
-            const containerWidth = container.offsetWidth;
-            const containerHeight = container.offsetHeight;
-            
-            for (let i = 0; i < 15; i++) {
-                const coin = document.createElement('div');
-                coin.className = 'falling-item coin';
-                
-                // Random position and animation duration
-                const leftPos = Math.random() * containerWidth;
-                const animationDuration = 5 + Math.random() * 10;
-                const animationDelay = Math.random() * 5;
-                const size = 30 + Math.random() * 20;
-                
-                coin.style.left = `${leftPos}px`;
-                coin.style.width = `${size}px`;
-                coin.style.height = `${size}px`;
-                coin.style.animationDuration = `${animationDuration}s`;
-                coin.style.animationDelay = `${animationDelay}s`;
-                
-                container.appendChild(coin);
-            }
-        }
-        
-        // Initialize animations when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            createFallingCoins();
-            
-            // Contact form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
+                update() {
+                    this.posY += this.speed;
+                    this.rotation += this.rotationSpeed;
                     
-                    // Simulate form submission (replace with actual EmailJS code)
-                    const successMessage = document.getElementById('success-message');
-                    const errorMessage = document.getElementById('error-message');
-                    
-                    // Randomly show success or error for demo
-                    if (Math.random() > 0.3) {
-                        successMessage.style.display = 'block';
-                        errorMessage.style.display = 'none';
-                        contactForm.reset();
-                    } else {
-                        errorMessage.style.display = 'block';
-                        successMessage.style.display = 'none';
+                    if (this.posY > 600) {
+                        this.posY = -this.size;
+                        this.posX = Math.random() * 100;
                     }
                     
-                    // Scroll to message
-                    setTimeout(() => {
-                        if (successMessage.style.display === 'block') {
-                            successMessage.scrollIntoView({ behavior: 'smooth' });
-                        } else {
-                            errorMessage.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }, 100);
+                    this.element.style.top = `${this.posY}px`;
+                    this.element.style.transform = `rotate(${this.rotation}deg)`;
+                }
+            }
+            
+            const coins = [];
+            for (let i = 0; i < 25; i++) {
+                coins.push(new Coin());
+            }
+            
+            function animate() {
+                coins.forEach(coin => coin.update());
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+
+        // Load page
+        function loadPage(pageId) {
+            const mainContent = document.getElementById('main-content');
+            const template = document.getElementById(`${pageId}-template`);
+            
+            if (template) {
+                mainContent.innerHTML = '';
+                const clone = template.content.cloneNode(true);
+                mainContent.appendChild(clone);
+                
+                window.scrollTo(0, 0);
+                
+                if (pageId === 'contact') {
+                    initContactForm();
+                }
+            } else {
+                loadHomePage();
+            }
+        }
+
+        // Load home page
+        function loadHomePage() {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = `
+                <section class="hero" id="hero-section">
+                    <div class="animation-container" id="coin-animation"></div>
+                    <div class="hero-content">
+                        <h1>Luxury Canadian Gaming Experience</h1>
+                        <p>Discover the most exclusive platforms for sophisticated players</p>
+                    </div>
+                </section>
+
+                <section class="features-section">
+                    <div class="container">
+                        <h2 class="section-title">Why Trust GoldenVault.ca</h2>
+                        <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                            We go beyond simple reviews to bring you in-depth analysis and exclusive insights into Canada's premium gaming platforms
+                        </p>
+                        
+                        <div class="features-container">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/>
+                                    </svg>
+                                </div>
+                                <h3>Unbiased Expertise</h3>
+                                <p>Our team of gaming analysts has over 50 years combined experience in the industry, providing reviews you can trust without hidden agendas.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                    </svg>
+                                </div>
+                                <h3>Real-Time Updates</h3>
+                                <p>We continuously monitor all recommended platforms to ensure our information reflects current bonuses, payout speeds, and VIP benefits.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z"/>
+                                    </svg>
+                                </div>
+                                <h3>VIP Focus</h3>
+                                <p>We evaluate platforms through the lens of high-value players, focusing on aspects that matter most to serious gamers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section bg-medium" id="casinos-section">
+                    <div class="container section-content">
+                        <h2 class="section-title">Premium Casino Collection</h2>
+                        <div class="platform-grid">
+                            <!-- Casino 1 - LeoVegas -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.8">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.8
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">LeoVegas</span>
+                                    <meta itemprop="url" content="https://www.leovegas.com">
+                                </div>
+                                <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Premium platform with 500+ slots and table games, VIP program and fast payouts. Minimum deposit $20 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">500+ Slots & Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">VIP Program, Fast Payouts</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$20 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                            <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 2 - Luxury Casino -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.7">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.7
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Luxury Casino</span>
+                                    <meta itemprop="url" content="https://www.luxurycasino.com">
+                                </div>
+                                <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Luxury Casino offers 650+ games with daily bonuses and 24/7 support. Minimum deposit $25 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">650+ Games</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Daily Bonuses, 24/7 Support</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$25 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 3 - 888 Casino -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.6">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.6
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">888 Casino</span>
+                                    <meta itemprop="url" content="https://www.888casino.com">
+                                </div>
+                                <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        888 Casino features 400+ slots and 50+ tables with CAD focus and weekly cashback. Minimum deposit $10 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">400+ Slots, 50+ Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">CAD Focused, Weekly Cashback</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$10 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                            <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                                            <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 4 - BET99 -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.5">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.5
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">BET99</span>
+                                    <meta itemprop="url" content="https://www.bet99.com">
+                                </div>
+                                <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        BET99 offers 300+ premium games with high roller tables and concierge service. Minimum deposit $50 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">300+ Premium Games</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">High Roller Tables, Concierge</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$50 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                            <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 5 - Jackpot City -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.4">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.4
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Jackpot City</span>
+                                    <meta itemprop="url" content="https://www.jackpotcitycasino.com">
+                                </div>
+                                <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Jackpot City features 550+ games with progressive jackpots and live events. Minimum deposit $15 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">550+ Games</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Progressive Jackpots, Live Events</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$15 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                            <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 6 - Casino Days -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.3">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.3
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Casino Days</span>
+                                    <meta itemprop="url" content="https://www.casinodays.com">
+                                </div>
+                                <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Casino Days offers 700+ games collection with exclusive tournaments and mobile app. Minimum deposit $20 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">700+ Games Collection</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Exclusive Tournaments, Mobile App</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$20 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                            <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 7 - Royal Panda -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.2">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.2
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Royal Panda</span>
+                                    <meta itemprop="url" content="https://www.royalpanda.com">
+                                </div>
+                                <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Royal Panda features 600+ slots and tables with daily free spins and loyalty rewards. Minimum deposit $10 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">600+ Slots & Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$10 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 8 - Sports Interaction -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.1">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.1
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Sports Interaction</span>
+                                    <meta itemprop="url" content="https://www.sportsinteraction.com">
+                                </div>
+                                <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Sports Interaction offers 450+ games with progressive jackpots and weekly bonuses. Minimum deposit $15 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">450+ Games</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$15 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                            <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 9 - PartyCasino -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.0">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.0
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">PartyCasino</span>
+                                    <meta itemprop="url" content="https://www.partycasino.com">
+                                </div>
+                                <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        PartyCasino offers 550+ slots and tables with live dealers and mobile friendly interface. Minimum deposit $20 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">550+ Slots & Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Live Dealers, Mobile Friendly</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$20 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/VizaElectron.png" alt="Visa Electron" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="testimonials-section">
+                    <div class="testimonials-container">
+                        <h2 class="section-title">Player Experiences</h2>
+                        <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                            Don't just take our word for it - hear what our community of discerning players has to say
+                        </p>
+                        
+                        <div class="testimonials-grid">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">
+                                        "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <img src="user1.jpg" alt="Sarah L." class="author-avatar">
+                                        <div class="author-info">
+                                            <h4>Sarah L.</h4>
+                                            <p>High Roller, Toronto</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">
+                                        "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <img src="user2.jpg" alt="David K." class="author-avatar">
+                                        <div class="author-info">
+                                            <h4>David K.</h4>
+                                            <p>Professional Player, Vancouver</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">
+                                        "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <img src="user3.jpg" alt="Michael T." class="author-avatar">
+                                        <div class="author-info">
+                                            <h4>Michael T.</h4>
+                                            <p>Tech Executive, Montreal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            createCoins();
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize contact form
+        function initContactForm() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const submitBtn = form.querySelector('.submit-btn');
+                    
+                    // Hide previous messages
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                    
+                    // Check for bots (honeypot field)
+                    if (form.querySelector('#website').value) {
+                        return;
+                    }
+                    
+                    // Validate email
+                    const email = form.querySelector('#email').value;
+                    if (!email.includes('@') || !email.includes('.')) {
+                        errorMessage.textContent = 'Please enter a valid email address';
+                        errorMessage.style.display = 'block';
+                        return;
+                    }
+                    
+                    // Disable submit button to prevent multiple submissions
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    
+                    try {
+                        // Collect form data
+                        const formData = {
+                            from_name: form.querySelector('#name').value,
+                            from_email: form.querySelector('#email').value,
+                            subject: form.querySelector('#subject').value,
+                            message: form.querySelector('#message').value
+                        };
+                        
+                        // Send email using EmailJS
+                        const response = await emailjs.send(
+                            'service_7kutota', // Service ID
+                            'template_0l8ymit', // Template ID
+                            formData
+                        );
+                        
+                        console.log('Email successfully sent!', response.status, response.text);
+                        
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        
+                        // Clear the form
+                        form.reset();
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    } catch (error) {
+                        console.error('Error sending email:', error);
+                        errorMessage.style.display = 'block';
+                    } finally {
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }
                 });
             }
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            createCoins();
+            
+            // Handle link clicks
+            document.querySelectorAll('a[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    loadPage(pageId);
+                    
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.remove('active');
+                });
+            });
+            
+            // Handle logo click
+            document.getElementById('home-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                loadHomePage();
+            });
+            
+            // Handle footer logo click
+            document.getElementById('footer-logo-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                loadHomePage();
+            });
+            
+            // Mobile menu button
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
         });
     </script>
 </body>
