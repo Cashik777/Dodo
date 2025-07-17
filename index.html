@@ -598,44 +598,144 @@
         }
         
         /* New styles for added sections */
-        .features-grid {
+        .features-section {
+            background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
+                        url('images/luxury-chip-bg.jpg') center/cover no-repeat;
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .features-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         .feature-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
+            background: rgba(30, 42, 71, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 40px 30px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-color: rgba(201, 162, 39, 0.4);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            border: 2px solid var(--secondary);
+        }
+        
+        .feature-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--secondary);
         }
         
         .feature-card h3 {
             color: var(--secondary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
         
-        .testimonials {
+        .feature-card p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .testimonials-section {
+            background: var(--card-bg);
+            padding: 100px 0;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 30px;
+            margin-top: 50px;
         }
         
         .testimonial-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border-left: 4px solid var(--secondary);
         }
         
-        .testimonial-card p {
-            margin-bottom: 10px;
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            color: rgba(201, 162, 39, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid var(--secondary);
+        }
+        
+        .author-info h4 {
+            margin: 0;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .author-info p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         @media (max-width: 992px) {
@@ -653,6 +753,11 @@
             }
             .section {
                 padding: 60px 0;
+            }
+            
+            .features-section,
+            .testimonials-section {
+                padding: 70px 0;
             }
         }
         
@@ -724,6 +829,11 @@
                 padding: 40px 0;
             }
             
+            .features-section,
+            .testimonials-section {
+                padding: 50px 0;
+            }
+            
             /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
@@ -749,6 +859,14 @@
             .form-group select {
                 font-size: 16px;
             }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-card {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -768,6 +886,15 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
+            }
+            
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -810,25 +937,52 @@
         </section>
 
         <!-- Why Choose Us Section -->
-        <section class="section bg-dark">
+        <section class="features-section">
             <div class="container">
-                <h2 class="section-title">Why Choose GoldenVault.ca</h2>
-                <div class="features-grid">
+                <h2 class="section-title">Why Trust GoldenVault.ca</h2>
+                <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                    We go beyond simple reviews to bring you in-depth analysis and exclusive insights into Canada's premium gaming platforms
+                </p>
+                
+                <div class="features-container">
                     <div class="feature-card">
-                        <h3>Expert Reviews</h3>
-                        <p>Our team with 50+ years of experience thoroughly tests each platform</p>
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/>
+                            </svg>
+                        </div>
+                        <h3>Unbiased Expertise</h3>
+                        <p>Our team of gaming analysts has over 50 years combined experience in the industry, providing reviews you can trust without hidden agendas.</p>
                     </div>
+                    
                     <div class="feature-card">
-                        <h3>Honest Ratings</h3>
-                        <p>Independent assessments without advertising budget influence</p>
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <h3>Real-Time Updates</h3>
+                        <p>We continuously monitor all recommended platforms to ensure our information reflects current bonuses, payout speeds, and VIP benefits.</p>
                     </div>
+                    
                     <div class="feature-card">
-                        <h3>VIP Criteria</h3>
-                        <p>We evaluate casinos by the standards of discerning players</p>
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z"/>
+                            </svg>
+                        </div>
+                        <h3>VIP Focus</h3>
+                        <p>We evaluate platforms through the lens of high-value players, focusing on aspects that matter most to serious gamers.</p>
                     </div>
+                    
                     <div class="feature-card">
-                        <h3>Security</h3>
-                        <p>We recommend only licensed and verified platforms</p>
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                            </svg>
+                        </div>
+                        <h3>Verified Security</h3>
+                        <p>Every platform undergoes rigorous security checks before recommendation, ensuring your data and funds remain protected.</p>
                     </div>
                 </div>
             </div>
@@ -1221,21 +1375,57 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="section bg-dark">
-            <div class="container">
-                <h2 class="section-title">What Our Readers Say</h2>
-                <div class="testimonials">
+        <section class="testimonials-section">
+            <div class="testimonials-container">
+                <h2 class="section-title">Player Experiences</h2>
+                <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                    Don't just take our word for it - hear what our community of discerning players has to say
+                </p>
+                
+                <div class="testimonials-grid">
                     <div class="testimonial-card">
-                        <p>"Thanks to GoldenVault I found the perfect casino with fast payouts. The time savings are enormous!"</p>
-                        <p><strong>— Michael T., Toronto</strong></p>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="images/avatar1.jpg" alt="Michael T." class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Michael T.</h4>
+                                    <p>High Roller, Toronto</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="testimonial-card">
-                        <p>"The most honest reviews I've found. Saved me from several questionable platforms."</p>
-                        <p><strong>— Sarah L., Vancouver</strong></p>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="images/avatar2.jpg" alt="Sarah L." class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Sarah L.</h4>
+                                    <p>Professional Player, Vancouver</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="testimonial-card">
-                        <p>"As a high roller, I appreciate the VIP-focused reviews. Found my new favorite casino here."</p>
-                        <p><strong>— David K., Montreal</strong></p>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="images/avatar3.jpg" alt="David K." class="author-avatar">
+                                <div class="author-info">
+                                    <h4>David K.</h4>
+                                    <p>Tech Executive, Montreal</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1252,15 +1442,10 @@
                     </a>
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
-                        <a href="https://www.digicert.com/" target="_blank" rel="noopener">
-                            <img src="images/digicert-ssl.png" alt="SSL Secure" class="trust-badge">
-                        </a>
-                        <a href="https://www.gamcare.org.uk/" target="_blank" rel="noopener">
-                            <img src="images/gamcare-certified.png" alt="GamCare Certified" class="trust-badge">
-                        </a>
-                        <a href="https://www.gamingcommission.ca/" target="_blank" rel="noopener">
-                            <img src="images/regulated-cagc.png" alt="Regulated by CAGC" class="trust-badge">
-                        </a>
+                        <img src="images/ssl-secure.png" alt="SSL Secure" class="trust-badge">
+                        <img src="images/gamcare-certified.png" alt="GamCare Certified" class="trust-badge">
+                        <img src="images/18plus.png" alt="18+ Only" class="trust-badge">
+                        <img src="images/regulated-cagc.png" alt="Regulated by CAGC" class="trust-badge">
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1531,25 +1716,52 @@
                     </div>
                 </section>
 
-                <section class="section bg-dark">
+                <section class="features-section">
                     <div class="container">
-                        <h2 class="section-title">Why Choose GoldenVault.ca</h2>
-                        <div class="features-grid">
+                        <h2 class="section-title">Why Trust GoldenVault.ca</h2>
+                        <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                            We go beyond simple reviews to bring you in-depth analysis and exclusive insights into Canada's premium gaming platforms
+                        </p>
+                        
+                        <div class="features-container">
                             <div class="feature-card">
-                                <h3>Expert Reviews</h3>
-                                <p>Our team with 50+ years of experience thoroughly tests each platform</p>
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/>
+                                    </svg>
+                                </div>
+                                <h3>Unbiased Expertise</h3>
+                                <p>Our team of gaming analysts has over 50 years combined experience in the industry, providing reviews you can trust without hidden agendas.</p>
                             </div>
+                            
                             <div class="feature-card">
-                                <h3>Honest Ratings</h3>
-                                <p>Independent assessments without advertising budget influence</p>
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                    </svg>
+                                </div>
+                                <h3>Real-Time Updates</h3>
+                                <p>We continuously monitor all recommended platforms to ensure our information reflects current bonuses, payout speeds, and VIP benefits.</p>
                             </div>
+                            
                             <div class="feature-card">
-                                <h3>VIP Criteria</h3>
-                                <p>We evaluate casinos by the standards of discerning players</p>
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z"/>
+                                    </svg>
+                                </div>
+                                <h3>VIP Focus</h3>
+                                <p>We evaluate platforms through the lens of high-value players, focusing on aspects that matter most to serious gamers.</p>
                             </div>
+                            
                             <div class="feature-card">
-                                <h3>Security</h3>
-                                <p>We recommend only licensed and verified platforms</p>
+                                <div class="feature-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                                    </svg>
+                                </div>
+                                <h3>Verified Security</h3>
+                                <p>Every platform undergoes rigorous security checks before recommendation, ensuring your data and funds remain protected.</p>
                             </div>
                         </div>
                     </div>
@@ -1940,21 +2152,57 @@
                     </div>
                 </section>
 
-                <section class="section bg-dark">
-                    <div class="container">
-                        <h2 class="section-title">What Our Readers Say</h2>
-                        <div class="testimonials">
+                <section class="testimonials-section">
+                    <div class="testimonials-container">
+                        <h2 class="section-title">Player Experiences</h2>
+                        <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                            Don't just take our word for it - hear what our community of discerning players has to say
+                        </p>
+                        
+                        <div class="testimonials-grid">
                             <div class="testimonial-card">
-                                <p>"Thanks to GoldenVault I found the perfect casino with fast payouts. The time savings are enormous!"</p>
-                                <p><strong>— Michael T., Toronto</strong></p>
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">
+                                        "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <img src="images/avatar1.jpg" alt="Michael T." class="author-avatar">
+                                        <div class="author-info">
+                                            <h4>Michael T.</h4>
+                                            <p>High Roller, Toronto</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            
                             <div class="testimonial-card">
-                                <p>"The most honest reviews I've found. Saved me from several questionable platforms."</p>
-                                <p><strong>— Sarah L., Vancouver</strong></p>
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">
+                                        "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <img src="images/avatar2.jpg" alt="Sarah L." class="author-avatar">
+                                        <div class="author-info">
+                                            <h4>Sarah L.</h4>
+                                            <p>Professional Player, Vancouver</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            
                             <div class="testimonial-card">
-                                <p>"As a high roller, I appreciate the VIP-focused reviews. Found my new favorite casino here."</p>
-                                <p><strong>— David K., Montreal</strong></p>
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">
+                                        "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <img src="images/avatar3.jpg" alt="David K." class="author-avatar">
+                                        <div class="author-info">
+                                            <h4>David K.</h4>
+                                            <p>Tech Executive, Montreal</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
