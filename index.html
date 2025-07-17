@@ -7,6 +7,9 @@
     <meta name="description" content="GoldenVault.ca - лучший гид по премиум казино в Канаде. Обзоры топовых платформ, бонусы, рейтинги и советы для искушенных игроков.">
     <meta name="keywords" content="казино Канада, онлайн казино, премиум казино, лучшие казино, игровые платформы, обзоры казино">
     <meta name="author" content="GoldenVault.ca">
+    <!-- Added SSL security meta tags -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
     <style>
         :root {
             --primary: #0c1b32;
@@ -724,6 +727,13 @@
             margin-right: 15px;
             object-fit: cover;
             border: 2px solid var(--secondary);
+            background-color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
         }
         
         .author-info h4 {
@@ -736,6 +746,19 @@
             margin: 5px 0 0;
             font-size: 0.9rem;
             opacity: 0.8;
+        }
+        
+        /* SSL badge styles */
+        .ssl-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
         }
         
         @media (max-width: 992px) {
@@ -913,6 +936,7 @@
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
                 <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
+                <span class="ssl-badge">SSL Secured</span>
             </a>
             
             <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
@@ -1379,7 +1403,7 @@
                                 "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
                             </p>
                             <div class="testimonial-author">
-                                <img src="user1.jpg" alt="Sarah L." class="author-avatar">
+                                <div class="author-avatar">SL</div>
                                 <div class="author-info">
                                     <h4>Sarah L.</h4>
                                     <p>High Roller, Toronto</p>
@@ -1394,7 +1418,7 @@
                                 "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
                             </p>
                             <div class="testimonial-author">
-                                <img src="user2.jpg" alt="David K." class="author-avatar">
+                                <div class="author-avatar">DK</div>
                                 <div class="author-info">
                                     <h4>David K.</h4>
                                     <p>Professional Player, Vancouver</p>
@@ -1409,7 +1433,7 @@
                                 "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
                             </p>
                             <div class="testimonial-author">
-                                <img src="user3.jpg" alt="Michael T." class="author-avatar">
+                                <div class="author-avatar">MT</div>
                                 <div class="author-info">
                                     <h4>Michael T.</h4>
                                     <p>Tech Executive, Montreal</p>
@@ -2146,7 +2170,7 @@
                                         "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
                                     </p>
                                     <div class="testimonial-author">
-                                        <img src="user1.jpg" alt="Sarah L." class="author-avatar">
+                                        <div class="author-avatar">SL</div>
                                         <div class="author-info">
                                             <h4>Sarah L.</h4>
                                             <p>High Roller, Toronto</p>
@@ -2161,7 +2185,7 @@
                                         "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
                                     </p>
                                     <div class="testimonial-author">
-                                        <img src="user2.jpg" alt="David K." class="author-avatar">
+                                        <div class="author-avatar">DK</div>
                                         <div class="author-info">
                                             <h4>David K.</h4>
                                             <p>Professional Player, Vancouver</p>
@@ -2176,7 +2200,7 @@
                                         "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
                                     </p>
                                     <div class="testimonial-author">
-                                        <img src="user3.jpg" alt="Michael T." class="author-avatar">
+                                        <div class="author-avatar">MT</div>
                                         <div class="author-info">
                                             <h4>Michael T.</h4>
                                             <p>Tech Executive, Montreal</p>
