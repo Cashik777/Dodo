@@ -55,7 +55,6 @@
             position: relative;
         }
         
-        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -76,7 +75,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -112,7 +110,6 @@
             width: 100%;
         }
 
-        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -135,7 +132,6 @@
             z-index: 1;
         }
         
-        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -453,154 +449,62 @@
             font-size: 14px;
             opacity: 0.7;
         }
-        
+
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 25px;
             margin-top: 40px;
             flex-wrap: wrap;
         }
-        
+
         .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge-icon {
             width: 60px;
             height: 60px;
-            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 162, 39, 0.1);
             border-radius: 50%;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .trust-badge:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            opacity: 1;
-        }
-
-        /* Info pages styles */
-        .info-page {
-            padding: 80px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-        
-        .info-page h2 {
-            color: var(--secondary);
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-        
-        .info-page h3 {
-            color: var(--secondary);
-            margin: 25px 0 15px;
-            font-size: 1.5rem;
-        }
-        
-        .info-page p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        
-        .info-page ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-        
-        .info-page li {
-            margin-bottom: 10px;
-        }
-        
-        .contact-form {
-            margin-top: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 6px;
-            background-color: var(--card-bg);
-            color: var(--text-dark);
-            font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            width: 100%;
-            font-size: 16px;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
-        }
-
-        /* Mobile menu button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        
-        /* Success and error messages */
-        .success-message {
-            display: none;
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--secondary);
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            text-align: center;
             border: 1px solid var(--secondary);
-        }
-        
-        .error-message {
-            display: none;
-            background: rgba(255, 0, 0, 0.1);
-            color: #ff6b6b;
             padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            text-align: center;
-            border: 1px solid #ff6b6b;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
-        
-        /* New styles for added sections */
+
+        .trust-badge-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .trust-badge-text {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-light);
+            text-align: center;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover .trust-badge-icon {
+            background: rgba(201, 162, 39, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .trust-badge:hover .trust-badge-text {
+            opacity: 1;
+            color: var(--secondary);
+        }
+
         .features-section {
             background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
                         url('images/luxury-chip-bg.jpg') center/cover no-repeat;
@@ -740,6 +644,127 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+
+        .info-page {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        
+        .info-page h2 {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .info-page h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-page p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .info-page ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .info-page li {
+            margin-bottom: 10px;
+        }
+        
+        .contact-form {
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .success-message {
+            display: none;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--secondary);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid var(--secondary);
+        }
+        
+        .error-message {
+            display: none;
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #ff6b6b;
+        }
         
         @media (max-width: 992px) {
             h1 {
@@ -762,6 +787,10 @@
             .testimonials-section {
                 padding: 70px 0;
             }
+            
+            .trust-badges {
+                gap: 20px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -783,7 +812,6 @@
                 margin: 30px 0;
             }
             
-            /* Mobile menu styles */
             .mobile-menu-btn {
                 display: block;
             }
@@ -822,12 +850,10 @@
                 background: rgba(201, 162, 39, 0.1);
             }
             
-            /* Adjust header padding */
             header {
                 padding: 10px 0;
             }
             
-            /* Adjust section padding */
             .section {
                 padding: 40px 0;
             }
@@ -837,17 +863,14 @@
                 padding: 50px 0;
             }
             
-            /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
             }
             
-            /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
             }
             
-            /* Info page mobile adjustments */
             .info-page {
                 padding: 40px 15px;
             }
@@ -856,7 +879,6 @@
                 font-size: 1.8rem;
             }
             
-            /* Form adjustments for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
@@ -869,6 +891,20 @@
             
             .testimonial-card {
                 padding: 25px;
+            }
+            
+            .trust-badge {
+                min-width: 80px;
+            }
+            
+            .trust-badge-icon {
+                width: 50px;
+                height: 50px;
+                padding: 12px;
+            }
+            
+            .trust-badge-text {
+                font-size: 12px;
             }
         }
 
@@ -899,14 +935,16 @@
             .feature-card h3 {
                 font-size: 1.3rem;
             }
+            
+            .trust-badges {
+                gap: 15px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add EmailJS library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            // Initialize EmailJS with your public key
             emailjs.init('F86aBv4ExO8ipV0wH');
         })();
     </script>
@@ -930,7 +968,6 @@
     </header>
 
     <main id="main-content">
-        <!-- Default home page -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
@@ -939,13 +976,41 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
         <section class="features-section">
             <div class="container">
                 <h2 class="section-title">Why Trust GoldenVault.ca</h2>
                 <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
                     We go beyond simple reviews to bring you in-depth analysis and exclusive insights into Canada's premium gaming platforms
                 </p>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="var(--secondary)" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z"/>
+                            </svg>
+                        </div>
+                        <div class="trust-badge-text">SSL Secured</div>
+                    </div>
+
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="var(--secondary)" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 7.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM11 15h2v-2h-2v2z"/>
+                            </svg>
+                        </div>
+                        <div class="trust-badge-text">Licensed</div>
+                    </div>
+
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="var(--secondary)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                        <div class="trust-badge-text">Responsible Gaming</div>
+                    </div>
+                </div>
                 
                 <div class="features-container">
                     <div class="feature-card">
@@ -981,7 +1046,6 @@
             </div>
         </section>
 
-        <!-- Casino section with 9 casinos -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -1367,7 +1431,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section class="testimonials-section">
             <div class="testimonials-container">
                 <h2 class="section-title">Player Experiences</h2>
@@ -1425,7 +1488,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
@@ -1435,44 +1497,32 @@
                     </a>
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
-                        <!-- SSL Secure -->
-                        <a href="https://www.ssl.com/" target="_blank" rel="noopener noreferrer" title="SSL Secured">
-                            <svg class="trust-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60" height="60">
-                                <circle cx="24" cy="24" r="20" fill="#2ecc71"/>
-                                <path fill="#fff" d="M24 2a22 22 0 1 0 0 44 22 22 0 0 0 0-44zm0 40a18 18 0 1 1 0-36 18 18 0 0 1 0 36z"/>
-                                <path fill="#fff" d="M24 16a8 8 0 0 0-8 8v4h2v-4a6 6 0 0 1 12 0v4h2v-4a8 8 0 0 0-8-8z"/>
-                                <path fill="#fff" d="M24 32a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
-                            </svg>
-                        </a>
-                        
-                        <!-- GamCare Certified -->
-                        <a href="https://www.gamcare.org.uk/" target="_blank" rel="noopener noreferrer" title="GamCare Certified">
-                            <svg class="trust-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60" height="60">
-                                <circle cx="24" cy="24" r="20" fill="#e74c3c"/>
-                                <path fill="#fff" d="M24 2a22 22 0 1 0 0 44 22 22 0 0 0 0-44zm0 40a18 18 0 1 1 0-36 18 18 0 0 1 0 36z"/>
-                                <path fill="#fff" d="M24 18a6 6 0 0 0-6 6v4h2v-4a4 4 0 0 1 8 0v4h2v-4a6 6 0 0 0-6-6z"/>
-                                <circle cx="24" cy="34" r="4" fill="#fff"/>
-                            </svg>
-                        </a>
-                        
-                        <!-- 18+ Only -->
-                        <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" title="18+ Only">
-                            <svg class="trust-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60" height="60">
-                                <circle cx="24" cy="24" r="20" fill="#f39c12"/>
-                                <path fill="#fff" d="M24 2a22 22 0 1 0 0 44 22 22 0 0 0 0-44zm0 40a18 18 0 1 1 0-36 18 18 0 0 1 0 36z"/>
-                                <text x="24" y="30" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">18+</text>
-                            </svg>
-                        </a>
-                        
-                        <!-- Regulated by CAGC -->
-                        <a href="https://www.cagc.ca/" target="_blank" rel="noopener noreferrer" title="Regulated by CAGC">
-                            <svg class="trust-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60" height="60">
-                                <circle cx="24" cy="24" r="20" fill="#3498db"/>
-                                <path fill="#fff" d="M24 2a22 22 0 1 0 0 44 22 22 0 0 0 0-44zm0 40a18 18 0 1 1 0-36 18 18 0 0 1 0 36z"/>
-                                <text x="24" y="28" fill="#fff" font-size="10" text-anchor="middle">CAGC</text>
-                                <text x="24" y="38" fill="#fff" font-size="8" text-anchor="middle">Regulated</text>
-                            </svg>
-                        </a>
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill="var(--secondary)" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z"/>
+                                </svg>
+                            </div>
+                            <div class="trust-badge-text">SSL Secured</div>
+                        </div>
+
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill="var(--secondary)" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 7.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM11 15h2v-2h-2v2z"/>
+                                </svg>
+                            </div>
+                            <div class="trust-badge-text">Licensed</div>
+                        </div>
+
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill="var(--secondary)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                </svg>
+                            </div>
+                            <div class="trust-badge-text">Responsible Gaming</div>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1503,7 +1553,6 @@
         </div>
     </footer>
 
-    <!-- Templates for info pages -->
     <template id="about-template">
         <div class="info-page">
             <h2>About GoldenVault.ca</h2>
@@ -1655,234 +1704,259 @@
     </template>
 
     <script>
-        // Create falling coins (one-time)
-        function createCoins() {
-            const container = document.getElementById('coin-animation');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            
-            class Coin {
-                constructor() {
-                    this.element = document.createElement('div');
-                    this.element.className = 'falling-item coin';
-                    this.element.style.backgroundImage = 'url(\'images/coin.png\')';
-                    
-                    this.size = 20 + Math.random() * 40;
-                    this.element.style.width = `${this.size}px`;
-                    this.element.style.height = `${this.size}px`;
-                    
-                    this.posX = Math.random() * 100;
-                    this.posY = -this.size - Math.random() * 100;
-                    this.rotation = 0;
-                    this.speed = 1 + Math.random() * 2;
-                    this.rotationSpeed = 1 + Math.random() * 3;
-                    
-                    this.element.style.left = `${this.posX}%`;
-                    this.element.style.top = `${this.posY}px`;
-                    
-                    container.appendChild(this.element);
-                }
-                
-                update() {
-                    this.posY += this.speed;
-                    this.rotation += this.rotationSpeed;
-                    
-                    if (this.posY > 600) {
-                        this.posY = -this.size;
-                        this.posX = Math.random() * 100;
-                    }
-                    
-                    this.element.style.top = `${this.posY}px`;
-                    this.element.style.transform = `rotate(${this.rotation}deg)`;
-                }
-            }
-            
-            const coins = [];
-            for (let i = 0; i < 25; i++) {
-                coins.push(new Coin());
-            }
-            
-            function animate() {
-                coins.forEach(coin => coin.update());
-                requestAnimationFrame(animate);
-            }
-            
-            animate();
-        }
-
-        // Load page
-        function loadPage(pageId) {
-            const mainContent = document.getElementById('main-content');
-            const template = document.getElementById(`${pageId}-template`);
-            
-            if (template) {
-                mainContent.innerHTML = '';
-                const clone = template.content.cloneNode(true);
-                mainContent.appendChild(clone);
-                
-                window.scrollTo(0, 0);
-                
-                if (pageId === 'contact') {
-                    initContactForm();
-                }
-            } else {
-                loadHomePage();
-            }
-        }
-
-        // Load home page
-        function loadHomePage() {
-            const mainContent = document.getElementById('main-content');
-            mainContent.innerHTML = `
-                <section class="hero" id="hero-section">
-                    <div class="animation-container" id="coin-animation"></div>
-                    <div class="hero-content">
-                        <h1>Luxury Canadian Gaming Experience</h1>
-                        <p>Discover the most exclusive platforms for sophisticated players</p>
-                    </div>
-                </section>
-
-                <section class="features-section">
-                    <div class="container">
-                        <h2 class="section-title">Why Trust GoldenVault.ca</h2>
-                                                <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
-                            We go beyond simple reviews to bring you in-depth analysis and exclusive insights into Canada's premium gaming platforms
-                        </p>
-                        
-                        <div class="features-container">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/>
-                                    </svg>
-                                </div>
-                                <h3>Unbiased Expertise</h3>
-                                <p>Our team of gaming analysts has over 50 years combined experience in the industry, providing reviews you can trust without hidden agendas.</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                                    </svg>
-                                </div>
-                                <h3>Real-Time Updates</h3>
-                                <p>We continuously monitor all recommended platforms to ensure our information reflects current bonuses, payout speeds, and VIP benefits.</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z"/>
-                                    </svg>
-                                </div>
-                                <h3>VIP Focus</h3>
-                                <p>We evaluate platforms through the lens of high-value players, focusing on aspects that matter most to serious gamers.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="section bg-medium" id="casinos-section">
-                    <div class="container section-content">
-                        <h2 class="section-title">Premium Casino Collection</h2>
-                        <div class="platform-grid">
-                            <!-- Casino cards will be loaded here -->
-                        </div>
-                    </div>
-                </section>
-
-                <section class="testimonials-section">
-                    <div class="testimonials-container">
-                        <h2 class="section-title">Player Experiences</h2>
-                        <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
-                            Don't just take our word for it - hear what our community of discerning players has to say
-                        </p>
-                        
-                        <div class="testimonials-grid">
-                            <!-- Testimonials will be loaded here -->
-                        </div>
-                    </div>
-                </section>
-            `;
-            
-            createCoins();
-        }
-
-        // Initialize contact form
-        function initContactForm() {
-            const contactForm = document.getElementById('contactForm');
-            const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Hide previous messages
-                    successMessage.style.display = 'none';
-                    errorMessage.style.display = 'none';
-                    
-                    // Get form data
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        subject: document.getElementById('subject').value,
-                        message: document.getElementById('message').value
-                    };
-                    
-                    // Send email using EmailJS
-                    emailjs.send('service_goldenvault', 'template_goldenvault', formData)
-                        .then(function(response) {
-                            console.log('SUCCESS!', response.status, response.text);
-                            successMessage.style.display = 'block';
-                            contactForm.reset();
-                        }, function(error) {
-                            console.log('FAILED...', error);
-                            errorMessage.style.display = 'block';
-                        });
-                });
-            }
-        }
-
-        // Initialize mobile menu
-        function initMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const navMenu = document.getElementById('nav-menu');
-            
-            if (mobileMenuBtn && navMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navMenu.classList.toggle('active');
-                    this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-                });
-            }
-        }
-
-        // Initialize navigation
-        function initNavigation() {
-            const navLinks = document.querySelectorAll('.nav-menu a, #home-link, #footer-logo-link');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const page = this.getAttribute('data-page') || 'home';
-                    loadPage(page);
-                    
-                    // Close mobile menu if open
-                    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-                    const navMenu = document.getElementById('nav-menu');
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        mobileMenuBtn.textContent = '☰';
-                    }
-                });
-            });
-        }
-
-        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
+            // Create falling coins
+            function createCoins() {
+                const container = document.getElementById('coin-animation');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                class Coin {
+                    constructor() {
+                        this.element = document.createElement('div');
+                        this.element.className = 'falling-item coin';
+                        this.element.style.backgroundImage = 'url(\'images/coin.png\')';
+                        
+                        this.size = 20 + Math.random() * 40;
+                        this.element.style.width = `${this.size}px`;
+                        this.element.style.height = `${this.size}px`;
+                        
+                        this.posX = Math.random() * 100;
+                        this.posY = -this.size - Math.random() * 100;
+                        this.rotation = 0;
+                        this.speed = 1 + Math.random() * 2;
+                        this.rotationSpeed = 1 + Math.random() * 3;
+                        
+                        this.element.style.left = `${this.posX}%`;
+                        this.element.style.top = `${this.posY}px`;
+                        
+                        container.appendChild(this.element);
+                    }
+                    
+                    update() {
+                        this.posY += this.speed;
+                        this.rotation += this.rotationSpeed;
+                        
+                        if (this.posY > 600) {
+                            this.posY = -this.size;
+                            this.posX = Math.random() * 100;
+                        }
+                        
+                        this.element.style.top = `${this.posY}px`;
+                        this.element.style.transform = `rotate(${this.rotation}deg)`;
+                    }
+                }
+                
+                const coins = [];
+                for (let i = 0; i < 25; i++) {
+                    coins.push(new Coin());
+                }
+                
+                function animate() {
+                    coins.forEach(coin => coin.update());
+                    requestAnimationFrame(animate);
+                }
+                
+                animate();
+            }
+
+            // Load page
+            function loadPage(pageId) {
+                const mainContent = document.getElementById('main-content');
+                const template = document.getElementById(`${pageId}-template`);
+                
+                if (template) {
+                    mainContent.innerHTML = '';
+                    const clone = template.content.cloneNode(true);
+                    mainContent.appendChild(clone);
+                    
+                    window.scrollTo(0, 0);
+                    
+                    if (pageId === 'contact') {
+                        initContactForm();
+                    }
+                } else {
+                    loadHomePage();
+                }
+            }
+
+            // Load home page
+            function loadHomePage() {
+                const mainContent = document.getElementById('main-content');
+                mainContent.innerHTML = `
+                    <section class="hero" id="hero-section">
+                        <div class="animation-container" id="coin-animation"></div>
+                        <div class="hero-content">
+                            <h1>Luxury Canadian Gaming Experience</h1>
+                            <p>Discover the most exclusive platforms for sophisticated players</p>
+                        </div>
+                    </section>
+
+                    <section class="features-section">
+                        <div class="container">
+                            <h2 class="section-title">Why Trust GoldenVault.ca</h2>
+                            <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                                We go beyond simple reviews to bring you in-depth analysis and exclusive insights into Canada's premium gaming platforms
+                            </p>
+                            
+                            <div class="trust-badges">
+                                <div class="trust-badge">
+                                    <div class="trust-badge-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill="var(--secondary)" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="trust-badge-text">SSL Secured</div>
+                                </div>
+
+                                <div class="trust-badge">
+                                    <div class="trust-badge-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill="var(--secondary)" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 7.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM11 15h2v-2h-2v2z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="trust-badge-text">Licensed</div>
+                                </div>
+
+                                <div class="trust-badge">
+                                    <div class="trust-badge-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill="var(--secondary)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="trust-badge-text">Responsible Gaming</div>
+                                </div>
+                            </div>
+                            
+                            <div class="features-container">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Unbiased Expertise</h3>
+                                    <p>Our team of gaming analysts has over 50 years combined experience in the industry, providing reviews you can trust without hidden agendas.</p>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Real-Time Updates</h3>
+                                    <p>We continuously monitor all recommended platforms to ensure our information reflects current bonuses, payout speeds, and VIP benefits.</p>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z"/>
+                                        </svg>
+                                    </div>
+                                    <h3>VIP Focus</h3>
+                                    <p>We evaluate platforms through the lens of high-value players, focusing on aspects that matter most to serious gamers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section bg-medium" id="casinos-section">
+                        <div class="container section-content">
+                            <h2 class="section-title">Premium Casino Collection</h2>
+                            <div class="platform-grid">
+                                <!-- Casino cards will be loaded here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="testimonials-section">
+                        <div class="testimonials-container">
+                            <h2 class="section-title">Player Experiences</h2>
+                            <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem;">
+                                Don't just take our word for it - hear what our community of discerning players has to say
+                            </p>
+                            
+                            <div class="testimonials-grid">
+                                <!-- Testimonials will be loaded here -->
+                            </div>
+                        </div>
+                    </section>
+                `;
+                
+                createCoins();
+            }
+
+            // Initialize contact form
+            function initContactForm() {
+                const contactForm = document.getElementById('contactForm');
+                const successMessage = document.getElementById('success-message');
+                const errorMessage = document.getElementById('error-message');
+                
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        successMessage.style.display = 'none';
+                        errorMessage.style.display = 'none';
+                        
+                        const formData = {
+                            name: document.getElementById('name').value,
+                            email: document.getElementById('email').value,
+                            subject: document.getElementById('subject').value,
+                            message: document.getElementById('message').value
+                        };
+                        
+                        emailjs.send('service_goldenvault', 'template_goldenvault', formData)
+                            .then(function(response) {
+                                console.log('SUCCESS!', response.status, response.text);
+                                successMessage.style.display = 'block';
+                                contactForm.reset();
+                            }, function(error) {
+                                console.log('FAILED...', error);
+                                errorMessage.style.display = 'block';
+                            });
+                    });
+                }
+            }
+
+            // Initialize mobile menu
+            function initMobileMenu() {
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const navMenu = document.getElementById('nav-menu');
+                
+                if (mobileMenuBtn && navMenu) {
+                    mobileMenuBtn.addEventListener('click', function() {
+                        navMenu.classList.toggle('active');
+                        this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+                    });
+                }
+            }
+
+            // Initialize navigation
+            function initNavigation() {
+                const navLinks = document.querySelectorAll('.nav-menu a, #home-link, #footer-logo-link');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const page = this.getAttribute('data-page') || 'home';
+                        loadPage(page);
+                        
+                        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                        const navMenu = document.getElementById('nav-menu');
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            mobileMenuBtn.textContent = '☰';
+                        }
+                    });
+                });
+            }
+
+            // Initialize the page
             loadHomePage();
             initMobileMenu();
             initNavigation();
