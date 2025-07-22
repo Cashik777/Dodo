@@ -29,7 +29,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            touch-action: pan-y;
+            touch-action: pan-y; /* Prevent zooming on touch devices */
         }
         
         .container {
@@ -56,6 +56,7 @@
             position: relative;
         }
         
+        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -76,6 +77,7 @@
             transition: all 0.3s ease;
         }
 
+        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -111,6 +113,7 @@
             width: 100%;
         }
 
+        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -119,8 +122,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(rgba(12, 27, 50, 0.9), rgba(12, 27, 50, 0.9)), 
-                        url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            background: url('images/treasure-bg.jpg') center/cover no-repeat;
         }
         
         .hero::before {
@@ -134,6 +136,7 @@
             z-index: 1;
         }
         
+        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -154,28 +157,23 @@
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             z-index: 2;
-            will-change: transform;
         }
         
         .coin {
-            animation: float-coin 8s linear infinite;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23c9a227"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="8" fill="%23e6c229"/><path d="M12 4a8 8 0 0 1 0 16" stroke="%23a67c52" stroke-width="1.5"/></svg>');
-        }
-        
-        .diamond {
-            animation: float-diamond 12s linear infinite;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23c9a227"><path d="M12 2L5 12l7 10 7-10z"/></svg>');
+            animation-name: float-coin;
+            filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.7));
         }
         
         @keyframes float-coin {
-            0% { transform: translateY(-100px) rotate(0) scale(0.8); }
-            100% { transform: translateY(600px) rotate(360deg) scale(1.2); }
+            0% { transform: translateY(-100px) rotate(0); }
+            100% { transform: translateY(600px) rotate(360deg); }
         }
         
-        @keyframes float-diamond {
-            0% { transform: translateY(-150px) rotate(0) scale(0.7); opacity: 0; }
-            20% { opacity: 0.8; }
-            100% { transform: translateY(600px) rotate(180deg) scale(1); opacity: 0; }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding: 0 20px;
         }
         
         h1 {
@@ -252,17 +250,16 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 1px solid rgba(201, 162, 39, 0.15);
             display: flex;
             flex-direction: column;
-            transform-style: preserve-3d;
         }
         
         .platform-card:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(201, 162, 39, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 18px 42px rgba(0,0,0,0.25);
         }
         
         .platform-card::before {
@@ -477,38 +474,134 @@
             transform: translateY(-3px);
         }
 
-        /* Новые стили для улучшений */
-        .live-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: #ff4757;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            animation: pulse 2s infinite;
-            z-index: 3;
+        /* Info pages styles */
+        .info-page {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .info-page h2 {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
         }
         
-        .micro-review {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed rgba(201, 162, 39, 0.3);
-            font-size: 12px;
+        .info-page h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-page p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .info-page ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .info-page li {
+            margin-bottom: 10px;
+        }
+        
+        .contact-form {
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
             color: var(--secondary);
         }
         
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Success and error messages */
+        .success-message {
+            display: none;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--secondary);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid var(--secondary);
+        }
+        
+        .error-message {
+            display: none;
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #ff6b6b;
+        }
+        
+        /* New styles for added sections */
         .features-section {
             background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
-                        url('https://images.unsplash.com/photo-1639754390580-2e7437267698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80') center/cover no-repeat;
+                        url('images/luxury-chip-bg.jpg') center/cover no-repeat;
             padding: 100px 0;
             position: relative;
         }
@@ -595,13 +688,6 @@
             position: relative;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border-left: 4px solid var(--secondary);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .testimonial-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.2);
         }
         
         .testimonial-card::before {
@@ -653,7 +739,6 @@
             opacity: 0.8;
         }
         
-        /* Адаптивные стили */
         @media (max-width: 992px) {
             h1 {
                 font-size: 3rem;
@@ -696,6 +781,7 @@
                 margin: 30px 0;
             }
             
+            /* Mobile menu styles */
             .mobile-menu-btn {
                 display: block;
             }
@@ -734,10 +820,12 @@
                 background: rgba(201, 162, 39, 0.1);
             }
             
+            /* Adjust header padding */
             header {
                 padding: 10px 0;
             }
             
+            /* Adjust section padding */
             .section {
                 padding: 40px 0;
             }
@@ -747,14 +835,17 @@
                 padding: 50px 0;
             }
             
+            /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
             }
             
+            /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
             }
             
+            /* Info page mobile adjustments */
             .info-page {
                 padding: 40px 15px;
             }
@@ -763,6 +854,7 @@
                 font-size: 1.8rem;
             }
             
+            /* Form adjustments for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
@@ -808,9 +900,11 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add EmailJS library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
+            // Initialize EmailJS with your public key
             emailjs.init('F86aBv4ExO8ipV0wH');
         })();
     </script>
@@ -819,7 +913,7 @@
     <header>
         <div class="container header-content">
             <a href="#" class="logo-link" id="home-link">
-                <img src="https://via.placeholder.com/200x60.png?text=GoldenVault.ca" alt="GoldenVault.ca" class="footer-logo">
+                <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
             </a>
             
             <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
@@ -834,6 +928,7 @@
     </header>
 
     <main id="main-content">
+        <!-- Default home page -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
@@ -842,6 +937,7 @@
             </div>
         </section>
 
+        <!-- Why Choose Us Section -->
         <section class="features-section">
             <div class="container">
                 <h2 class="section-title">Why Trust GoldenVault.ca</h2>
@@ -883,6 +979,7 @@
             </div>
         </section>
 
+        <!-- Casino section with 9 casinos -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -898,7 +995,7 @@
                             <span itemprop="name">LeoVegas</span>
                             <meta itemprop="url" content="https://www.leovegas.com">
                         </div>
-                        <img src="https://via.placeholder.com/200x80.png?text=LeoVegas" alt="LeoVegas" class="platform-logo">
+                        <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 Premium platform with 500+ slots and table games, VIP program and fast payouts. Minimum deposit $20 CAD.
@@ -917,18 +1014,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Instadebit" alt="Instadebit" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=GooglePay" alt="Google Pay" class="payment-icon">
-                                </div>
-                            </div>
-                            <div class="micro-review">
-                                <div style="display:flex; align-items:center;">
-                                    <img src="https://i.pravatar.cc/30?img=1" style="border-radius:50%;margin-right:8px;" alt="User">
-                                    <span>Выплатили $5000 без проблем!</span>
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -946,7 +1037,7 @@
                             <span itemprop="name">Luxury Casino</span>
                             <meta itemprop="url" content="https://www.luxurycasino.com">
                         </div>
-                        <img src="https://via.placeholder.com/200x80.png?text=Luxury+Casino" alt="Luxury Casino" class="platform-logo">
+                        <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 Luxury Casino offers 650+ games with daily bonuses and 24/7 support. Minimum deposit $25 CAD.
@@ -965,18 +1056,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Echeck" alt="Echeck" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Instadebit" alt="Instadebit" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=BTC" alt="Bitcoin" class="payment-icon">
-                                </div>
-                            </div>
-                            <div class="micro-review">
-                                <div style="display:flex; align-items:center;">
-                                    <img src="https://i.pravatar.cc/30?img=2" style="border-radius:50%;margin-right:8px;" alt="User">
-                                    <span>Лучший сервис в Канаде!</span>
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -994,7 +1079,7 @@
                             <span itemprop="name">888 Casino</span>
                             <meta itemprop="url" content="https://www.888casino.com">
                         </div>
-                        <img src="https://via.placeholder.com/200x80.png?text=888+Casino" alt="888 Casino" class="platform-logo">
+                        <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 888 Casino features 400+ slots and 50+ tables with CAD focus and weekly cashback. Minimum deposit $10 CAD.
@@ -1013,18 +1098,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=GooglePay" alt="Google Pay" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Paysafe" alt="Paysafecard" class="payment-icon">
-                                </div>
-                            </div>
-                            <div class="micro-review">
-                                <div style="display:flex; align-items:center;">
-                                    <img src="https://i.pravatar.cc/30?img=3" style="border-radius:50%;margin-right:8px;" alt="User">
-                                    <span>Мой любимый сайт 3 года!</span>
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                                    <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -1042,7 +1121,7 @@
                             <span itemprop="name">BET99</span>
                             <meta itemprop="url" content="https://www.bet99.com">
                         </div>
-                        <img src="https://via.placeholder.com/200x80.png?text=BET99" alt="BET99" class="platform-logo">
+                        <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 BET99 offers 300+ premium games with high roller tables and concierge service. Minimum deposit $50 CAD.
@@ -1061,18 +1140,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Echeck" alt="Echeck" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Bank" alt="Bank Transfer" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Payz" alt="Payz" class="payment-icon">
-                                </div>
-                            </div>
-                            <div class="micro-review">
-                                <div style="display:flex; align-items:center;">
-                                    <img src="https://i.pravatar.cc/30?img=4" style="border-radius:50%;margin-right:8px;" alt="User">
-                                    <span>Быстрые выплаты за 2 часа</span>
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -1090,7 +1163,7 @@
                             <span itemprop="name">Jackpot City</span>
                             <meta itemprop="url" content="https://www.jackpotcitycasino.com">
                         </div>
-                        <img src="https://via.placeholder.com/200x80.png?text=Jackpot+City" alt="Jackpot City" class="platform-logo">
+                        <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 Jackpot City features 550+ games with progressive jackpots and live events. Minimum deposit $15 CAD.
@@ -1109,18 +1182,12 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Instadebit" alt="Instadebit" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Paysafe" alt="Paysafecard" class="payment-icon">
-                                </div>
-                            </div>
-                            <div class="micro-review">
-                                <div style="display:flex; align-items:center;">
-                                    <img src="https://i.pravatar.cc/30?img=5" style="border-radius:50%;margin-right:8px;" alt="User">
-                                    <span>Выиграл $1200 вчера!</span>
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                    <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -1138,7 +1205,7 @@
                             <span itemprop="name">Casino Days</span>
                             <meta itemprop="url" content="https://www.casinodays.com">
                         </div>
-                        <img src="https://via.placeholder.com/200x80.png?text=Casino+Days" alt="Casino Days" class="platform-logo">
+                        <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
                         <div class="platform-content">
                             <div itemprop="reviewBody" style="display:none">
                                 Casino Days offers 700+ games collection with exclusive tournaments and mobile app. Minimum deposit $20 CAD.
@@ -1157,18 +1224,138 @@
                             </div>
                             <div class="payment-icons-container">
                                 <div class="payment-icons">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Neteller" alt="Neteller" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Skrill" alt="Skrill" class="payment-icon">
-                                    <img src="https://via.placeholder.com/50x32.png?text=Klarna" alt="Klarna" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                    <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                 </div>
                             </div>
-                            <div class="micro-review">
-                                <div style="display:flex; align-items:center;">
-                                    <img src="https://i.pravatar.cc/30?img=6" style="border-radius:50%;margin-right:8px;" alt="User">
-                                    <span>VIP-программа топовая</span>
+                            <a href="#" class="visit-btn">Explore Platform</a>
+                        </div>
+                    </div>
+
+                    <!-- Casino 7 - Royal Panda -->
+                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="9.2">
+                            <meta itemprop="bestRating" content="10">
+                            9.2
+                        </div>
+                        <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                            <span itemprop="name">Royal Panda</span>
+                            <meta itemprop="url" content="https://www.royalpanda.com">
+                        </div>
+                        <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
+                        <div class="platform-content">
+                            <div itemprop="reviewBody" style="display:none">
+                                Royal Panda features 600+ slots and tables with daily free spins and loyalty rewards. Minimum deposit $10 CAD.
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Games:</span>
+                                <span class="feature-value">600+ Slots & Tables</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Highlights:</span>
+                                <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$10 CAD</span>
+                            </div>
+                            <div class="payment-icons-container">
+                                <div class="payment-icons">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                    <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                </div>
+                            </div>
+                            <a href="#" class="visit-btn">Explore Platform</a>
+                        </div>
+                    </div>
+
+                    <!-- Casino 8 - Sports Interaction -->
+                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="9.1">
+                            <meta itemprop="bestRating" content="10">
+                            9.1
+                        </div>
+                        <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                            <span itemprop="name">Sports Interaction</span>
+                            <meta itemprop="url" content="https://www.sportsinteraction.com">
+                        </div>
+                        <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
+                        <div class="platform-content">
+                            <div itemprop="reviewBody" style="display:none">
+                                Sports Interaction offers 450+ games with progressive jackpots and weekly bonuses. Minimum deposit $15 CAD.
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Games:</span>
+                                <span class="feature-value">450+ Games</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Highlights:</span>
+                                <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$15 CAD</span>
+                            </div>
+                            <div class="payment-icons-container">
+                                <div class="payment-icons">
+                                    <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                    <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                </div>
+                            </div>
+                            <a href="#" class="visit-btn">Explore Platform</a>
+                        </div>
+                    </div>
+
+                    <!-- Casino 9 - PartyCasino -->
+                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="9.0">
+                            <meta itemprop="bestRating" content="10">
+                            9.0
+                        </div>
+                        <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                            <span itemprop="name">PartyCasino</span>
+                            <meta itemprop="url" content="https://www.partycasino.com">
+                        </div>
+                        <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
+                        <div class="platform-content">
+                            <div itemprop="reviewBody" style="display:none">
+                                PartyCasino offers 550+ slots and tables with live dealers and mobile friendly interface. Minimum deposit $20 CAD.
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Games:</span>
+                                <span class="feature-value">550+ Slots & Tables</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Highlights:</span>
+                                <span class="feature-value">Live Dealers, Mobile Friendly</span>
+                            </div>
+                            <div class="platform-feature">
+                                <span class="feature-title">Min Deposit:</span>
+                                <span class="feature-value">$20 CAD</span>
+                            </div>
+                            <div class="payment-icons-container">
+                                <div class="payment-icons">
+                                    <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                    <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                    <img src="images/VizaElectron.png" alt="Visa Electron" class="payment-icon">
+                                    <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                    <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                    <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                 </div>
                             </div>
                             <a href="#" class="visit-btn">Explore Platform</a>
@@ -1178,6 +1365,7 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section class="testimonials-section">
             <div class="testimonials-container">
                 <h2 class="section-title">Player Experiences</h2>
@@ -1192,7 +1380,7 @@
                                 "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
                             </p>
                             <div class="testimonial-author">
-                                <img src="https://i.pravatar.cc/100?img=7" alt="Sarah L." class="author-avatar">
+                                <img src="images/user1.jpg" alt="Sarah L." class="author-avatar">
                                 <div class="author-info">
                                     <h4>Sarah L.</h4>
                                     <p>High Roller, Toronto</p>
@@ -1207,7 +1395,7 @@
                                 "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
                             </p>
                             <div class="testimonial-author">
-                                <img src="https://i.pravatar.cc/100?img=8" alt="David K." class="author-avatar">
+                                <img src="images/user2.jpg" alt="David K." class="author-avatar">
                                 <div class="author-info">
                                     <h4>David K.</h4>
                                     <p>Professional Player, Vancouver</p>
@@ -1222,7 +1410,7 @@
                                 "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
                             </p>
                             <div class="testimonial-author">
-                                <img src="https://i.pravatar.cc/100?img=9" alt="Michael T." class="author-avatar">
+                                <img src="images/user3.jpg" alt="Michael T." class="author-avatar">
                                 <div class="author-info">
                                     <h4>Michael T.</h4>
                                     <p>Tech Executive, Montreal</p>
@@ -1235,17 +1423,18 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
                     <a href="#" class="logo-link" id="footer-logo-link">
-                        <img src="https://via.placeholder.com/200x60.png?text=GoldenVault.ca" alt="GoldenVault.ca" class="footer-logo">
+                        <img src="images/GoldenVault.ca.png" alt="GoldenVault.ca" class="footer-logo">
                     </a>
                     <p>GoldenVault.ca is Canada's premier guide to luxury gaming experiences, providing expert reviews since 2015.</p>
                     <div class="trust-badges">
-                        <img src="https://via.placeholder.com/100x60.png?text=SSL" alt="SSL Secure" class="trust-badge">
-                        <img src="https://via.placeholder.com/100x60.png?text=Secure" alt="Secure Gaming" class="trust-badge">
+                        <img src="images/ssl-secure.png" alt="SSL Secure" class="trust-badge">
+                        <img src="images/secure-gaming.png" alt="Secure Gaming" class="trust-badge">
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1260,12 +1449,12 @@
                 <div class="footer-links">
                     <h3>Payment Methods</h3>
                     <div class="payment-icons">
-                        <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                        <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                        <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                        <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                        <img src="https://via.placeholder.com/50x32.png?text=GooglePay" alt="Google Pay" class="payment-icon">
-                        <img src="https://via.placeholder.com/50x32.png?text=BTC" alt="Bitcoin" class="payment-icon">
+                        <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                        <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/interac.png" alt="Interac" class="payment-icon">
+                        <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                        <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                        <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                     </div>
                 </div>
             </div>
@@ -1428,33 +1617,28 @@
     </template>
 
     <script>
-        // Создание падающих элементов с улучшенной физикой
-        function createFallingElements() {
+        // Create falling coins (one-time)
+        function createCoins() {
             const container = document.getElementById('coin-animation');
             if (!container) return;
             
             container.innerHTML = '';
             
-            class FallingElement {
-                constructor(type) {
+            class Coin {
+                constructor() {
                     this.element = document.createElement('div');
-                    this.element.className = `falling-item ${type}`;
+                    this.element.className = 'falling-item coin';
+                    this.element.style.backgroundImage = 'url(\'images/coin.png\')';
                     
-                    this.type = type;
-                    this.size = type === 'coin' 
-                        ? 20 + Math.random() * 40 
-                        : 15 + Math.random() * 30;
-                    
+                    this.size = 20 + Math.random() * 40;
                     this.element.style.width = `${this.size}px`;
                     this.element.style.height = `${this.size}px`;
                     
                     this.posX = Math.random() * 100;
-                    this.posY = -this.size - Math.random() * 200;
-                    this.rotation = Math.random() * 360;
-                    this.speed = 1 + Math.random() * 3;
-                    this.rotationSpeed = 0.5 + Math.random() * 2;
-                    this.amplitude = 2 + Math.random() * 5;
-                    this.xOffset = Math.random() * 100;
+                    this.posY = -this.size - Math.random() * 100;
+                    this.rotation = 0;
+                    this.speed = 1 + Math.random() * 2;
+                    this.rotationSpeed = 1 + Math.random() * 3;
                     
                     this.element.style.left = `${this.posX}%`;
                     this.element.style.top = `${this.posY}px`;
@@ -1462,88 +1646,34 @@
                     container.appendChild(this.element);
                 }
                 
-                update(time) {
+                update() {
                     this.posY += this.speed;
                     this.rotation += this.rotationSpeed;
-                    this.posX = this.xOffset + Math.sin(time * 0.001 + this.xOffset) * this.amplitude;
                     
                     if (this.posY > 600) {
                         this.posY = -this.size;
                         this.posX = Math.random() * 100;
-                        this.xOffset = this.posX;
                     }
                     
-                    this.element.style.left = `${this.posX}%`;
                     this.element.style.top = `${this.posY}px`;
-                    this.element.style.transform = `rotate(${this.rotation}deg) scale(${1 + Math.sin(time * 0.005) * 0.1})`;
-                    
-                    if (this.type === 'diamond') {
-                        const shineOpacity = 0.3 + Math.sin(time * 0.01) * 0.3;
-                        this.element.style.filter = `drop-shadow(0 0 8px rgba(255, 255, 255, ${shineOpacity}))`;
-                    }
+                    this.element.style.transform = `rotate(${this.rotation}deg)`;
                 }
             }
             
-            const elements = [];
-            for (let i = 0; i < 15; i++) {
-                elements.push(new FallingElement('coin'));
-            }
-            for (let i = 0; i < 10; i++) {
-                elements.push(new FallingElement('diamond'));
+            const coins = [];
+            for (let i = 0; i < 25; i++) {
+                coins.push(new Coin());
             }
             
-            let lastTime = 0;
-            function animate(time) {
-                if (!lastTime) lastTime = time;
-                const deltaTime = time - lastTime;
-                lastTime = time;
-                
-                elements.forEach(el => el.update(time));
+            function animate() {
+                coins.forEach(coin => coin.update());
                 requestAnimationFrame(animate);
             }
             
-            requestAnimationFrame(animate);
+            animate();
         }
 
-        // Добавление микроотзывов
-        function addMicroReviews() {
-            const reviews = [
-                "Выплатили $5000 без проблем!",
-                "Лучший сервис в Канаде!",
-                "Мой любимый сайт 3 года!",
-                "Быстрые выплаты за 2 часа",
-                "Выиграл $1200 вчера!",
-                "VIP-программа топовая"
-            ];
-            
-            document.querySelectorAll('.platform-card').forEach((card, index) => {
-                const reviewElement = document.createElement('div');
-                reviewElement.className = 'micro-review';
-                reviewElement.innerHTML = `
-                    <div style="display:flex; align-items:center; margin-top:10px;">
-                        <img src="https://i.pravatar.cc/30?img=${index + 3}" 
-                             style="border-radius:50%;margin-right:8px;" 
-                             alt="User">
-                        <span>${reviews[index % reviews.length]}</span>
-                    </div>
-                `;
-                card.querySelector('.platform-content').appendChild(reviewElement);
-            });
-        }
-
-        // Добавление live-бейджей
-        function addLiveBadges() {
-            document.querySelectorAll('.platform-card').forEach((card, index) => {
-                setTimeout(() => {
-                    const liveBadge = document.createElement('div');
-                    liveBadge.className = 'live-badge';
-                    liveBadge.textContent = `${Math.floor(Math.random() * 5) + 1} viewing now`;
-                    card.appendChild(liveBadge);
-                }, index * 300);
-            });
-        }
-
-        // Загрузка страницы
+        // Load page
         function loadPage(pageId) {
             const mainContent = document.getElementById('main-content');
             const template = document.getElementById(`${pageId}-template`);
@@ -1563,7 +1693,7 @@
             }
         }
 
-        // Загрузка домашней страницы
+        // Load home page
         function loadHomePage() {
             const mainContent = document.getElementById('main-content');
             mainContent.innerHTML = `
@@ -1631,7 +1761,7 @@
                                     <span itemprop="name">LeoVegas</span>
                                     <meta itemprop="url" content="https://www.leovegas.com">
                                 </div>
-                                <img src="https://via.placeholder.com/200x80.png?text=LeoVegas" alt="LeoVegas" class="platform-logo">
+                                <img src="images/logo_1.jpeg" alt="LeoVegas" class="platform-logo">
                                 <div class="platform-content">
                                     <div itemprop="reviewBody" style="display:none">
                                         Premium platform with 500+ slots and table games, VIP program and fast payouts. Minimum deposit $20 CAD.
@@ -1650,18 +1780,12 @@
                                     </div>
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Instadebit" alt="Instadebit" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=GooglePay" alt="Google Pay" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    <div class="micro-review">
-                                        <div style="display:flex; align-items:center;">
-                                            <img src="https://i.pravatar.cc/30?img=1" style="border-radius:50%;margin-right:8px;" alt="User">
-                                            <span>Выплатили $5000 без проблем!</span>
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                            <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                         </div>
                                     </div>
                                     <a href="#" class="visit-btn">Explore Platform</a>
@@ -1679,7 +1803,7 @@
                                     <span itemprop="name">Luxury Casino</span>
                                     <meta itemprop="url" content="https://www.luxurycasino.com">
                                 </div>
-                                <img src="https://via.placeholder.com/200x80.png?text=Luxury+Casino" alt="Luxury Casino" class="platform-logo">
+                                <img src="images/logo_2.jpeg" alt="Luxury Casino" class="platform-logo">
                                 <div class="platform-content">
                                     <div itemprop="reviewBody" style="display:none">
                                         Luxury Casino offers 650+ games with daily bonuses and 24/7 support. Minimum deposit $25 CAD.
@@ -1698,18 +1822,12 @@
                                     </div>
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Echeck" alt="Echeck" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Instadebit" alt="Instadebit" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=BTC" alt="Bitcoin" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    <div class="micro-review">
-                                        <div style="display:flex; align-items:center;">
-                                            <img src="https://i.pravatar.cc/30?img=2" style="border-radius:50%;margin-right:8px;" alt="User">
-                                            <span>Лучший сервис в Канаде!</span>
+                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                         </div>
                                     </div>
                                     <a href="#" class="visit-btn">Explore Platform</a>
@@ -1727,7 +1845,7 @@
                                     <span itemprop="name">888 Casino</span>
                                     <meta itemprop="url" content="https://www.888casino.com">
                                 </div>
-                                <img src="https://via.placeholder.com/200x80.png?text=888+Casino" alt="888 Casino" class="platform-logo">
+                                <img src="images/logo_3.jpeg" alt="888 Casino" class="platform-logo">
                                 <div class="platform-content">
                                     <div itemprop="reviewBody" style="display:none">
                                         888 Casino features 400+ slots and 50+ tables with CAD focus and weekly cashback. Minimum deposit $10 CAD.
@@ -1746,18 +1864,12 @@
                                     </div>
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=GooglePay" alt="Google Pay" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Paysafe" alt="Paysafecard" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    <div class="micro-review">
-                                        <div style="display:flex; align-items:center;">
-                                            <img src="https://i.pravatar.cc/30?img=3" style="border-radius:50%;margin-right:8px;" alt="User">
-                                            <span>Мой любимый сайт 3 года!</span>
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                            <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
+                                            <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                         </div>
                                     </div>
                                     <a href="#" class="visit-btn">Explore Platform</a>
@@ -1775,7 +1887,7 @@
                                     <span itemprop="name">BET99</span>
                                     <meta itemprop="url" content="https://www.bet99.com">
                                 </div>
-                                <img src="https://via.placeholder.com/200x80.png?text=BET99" alt="BET99" class="platform-logo">
+                                <img src="images/logo_4.jpeg" alt="BET99" class="platform-logo">
                                 <div class="platform-content">
                                     <div itemprop="reviewBody" style="display:none">
                                         BET99 offers 300+ premium games with high roller tables and concierge service. Minimum deposit $50 CAD.
@@ -1794,18 +1906,12 @@
                                     </div>
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Echeck" alt="Echeck" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Bank" alt="Bank Transfer" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Payz" alt="Payz" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    <div class="micro-review">
-                                        <div style="display:flex; align-items:center;">
-                                            <img src="https://i.pravatar.cc/30?img=4" style="border-radius:50%;margin-right:8px;" alt="User">
-                                            <span>Быстрые выплаты за 2 часа</span>
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                            <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                         </div>
                                     </div>
                                     <a href="#" class="visit-btn">Explore Platform</a>
@@ -1823,7 +1929,7 @@
                                     <span itemprop="name">Jackpot City</span>
                                     <meta itemprop="url" content="https://www.jackpotcitycasino.com">
                                 </div>
-                                <img src="https://via.placeholder.com/200x80.png?text=Jackpot+City" alt="Jackpot City" class="platform-logo">
+                                <img src="images/logo_5.jpeg" alt="Jackpot City" class="platform-logo">
                                 <div class="platform-content">
                                     <div itemprop="reviewBody" style="display:none">
                                         Jackpot City features 550+ games with progressive jackpots and live events. Minimum deposit $15 CAD.
@@ -1842,18 +1948,12 @@
                                     </div>
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Instadebit" alt="Instadebit" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=ApplePay" alt="Apple Pay" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Paysafe" alt="Paysafecard" class="payment-icon">
-                                        </div>
-                                    </div>
-                                    <div class="micro-review">
-                                        <div style="display:flex; align-items:center;">
-                                            <img src="https://i.pravatar.cc/30?img=5" style="border-radius:50%;margin-right:8px;" alt="User">
-                                            <span>Выиграл $1200 вчера!</span>
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/ApplePay.png" alt="Apple Pay" class="payment-icon">
+                                            <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                         </div>
                                     </div>
                                     <a href="#" class="visit-btn">Explore Platform</a>
@@ -1871,7 +1971,7 @@
                                     <span itemprop="name">Casino Days</span>
                                     <meta itemprop="url" content="https://www.casinodays.com">
                                 </div>
-                                <img src="https://via.placeholder.com/200x80.png?text=Casino+Days" alt="Casino Days" class="platform-logo">
+                                <img src="images/logo_6.jpeg" alt="Casino Days" class="platform-logo">
                                 <div class="platform-content">
                                     <div itemprop="reviewBody" style="display:none">
                                         Casino Days offers 700+ games collection with exclusive tournaments and mobile app. Minimum deposit $20 CAD.
@@ -1890,18 +1990,138 @@
                                     </div>
                                     <div class="payment-icons-container">
                                         <div class="payment-icons">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Interac" alt="Interac" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Visa" alt="Visa" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=MC" alt="MasterCard" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Neteller" alt="Neteller" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Skrill" alt="Skrill" class="payment-icon">
-                                            <img src="https://via.placeholder.com/50x32.png?text=Klarna" alt="Klarna" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
+                                            <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                         </div>
                                     </div>
-                                    <div class="micro-review">
-                                        <div style="display:flex; align-items:center;">
-                                            <img src="https://i.pravatar.cc/30?img=6" style="border-radius:50%;margin-right:8px;" alt="User">
-                                            <span>VIP-программа топовая</span>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 7 - Royal Panda -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.2">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.2
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Royal Panda</span>
+                                    <meta itemprop="url" content="https://www.royalpanda.com">
+                                </div>
+                                <img src="images/logo_7.jpeg" alt="Royal Panda" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Royal Panda features 600+ slots and tables with daily free spins and loyalty rewards. Minimum deposit $10 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">600+ Slots & Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Daily Free Spins, Loyalty Rewards</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$10 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Instadebit.png" alt="Instadebit" class="payment-icon">
+                                            <img src="images/MuchBetter.png" alt="MuchBetter" class="payment-icon">
+                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 8 - Sports Interaction -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.1">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.1
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">Sports Interaction</span>
+                                    <meta itemprop="url" content="https://www.sportsinteraction.com">
+                                </div>
+                                <img src="images/logo_8.jpeg" alt="Sports Interaction" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        Sports Interaction offers 450+ games with progressive jackpots and weekly bonuses. Minimum deposit $15 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">450+ Games</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Progressive Jackpots, Weekly Bonuses</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$15 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/Payz.png" alt="Payz" class="payment-icon">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Echeck.png" alt="Echeck" class="payment-icon">
+                                            <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
+                                        </div>
+                                    </div>
+                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                </div>
+                            </div>
+
+                            <!-- Casino 9 - PartyCasino -->
+                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="9.0">
+                                    <meta itemprop="bestRating" content="10">
+                                    9.0
+                                </div>
+                                <div class="platform-header" itemprop="itemReviewed" itemscope itemtype="https://schema.org/OnlineStore">
+                                    <span itemprop="name">PartyCasino</span>
+                                    <meta itemprop="url" content="https://www.partycasino.com">
+                                </div>
+                                <img src="images/logo_9.jpeg" alt="PartyCasino" class="platform-logo">
+                                <div class="platform-content">
+                                    <div itemprop="reviewBody" style="display:none">
+                                        PartyCasino offers 550+ slots and tables with live dealers and mobile friendly interface. Minimum deposit $20 CAD.
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Games:</span>
+                                        <span class="feature-value">550+ Slots & Tables</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Highlights:</span>
+                                        <span class="feature-value">Live Dealers, Mobile Friendly</span>
+                                    </div>
+                                    <div class="platform-feature">
+                                        <span class="feature-title">Min Deposit:</span>
+                                        <span class="feature-value">$20 CAD</span>
+                                    </div>
+                                    <div class="payment-icons-container">
+                                        <div class="payment-icons">
+                                            <img src="images/interac.png" alt="Interac" class="payment-icon">
+                                            <img src="images/Visa.png" alt="Visa" class="payment-icon">
+                                            <img src="images/VizaElectron.png" alt="Visa Electron" class="payment-icon">
+                                            <img src="images/MasterCard.png" alt="MasterCard" class="payment-icon">
+                                            <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
+                                            <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                         </div>
                                     </div>
                                     <a href="#" class="visit-btn">Explore Platform</a>
@@ -1925,7 +2145,7 @@
                                         "After years of bouncing between platforms, GoldenVault helped me find the perfect match. The VIP program analysis was spot-on - I'm now getting comps I never knew existed."
                                     </p>
                                     <div class="testimonial-author">
-                                        <img src="https://i.pravatar.cc/100?img=7" alt="Sarah L." class="author-avatar">
+                                        <img src="images/user1.jpg" alt="Sarah L." class="author-avatar">
                                         <div class="author-info">
                                             <h4>Sarah L.</h4>
                                             <p>High Roller, Toronto</p>
@@ -1940,7 +2160,7 @@
                                         "The payout speed comparisons saved me from a nightmare. Thanks to GoldenVault, I found a casino that processes withdrawals in hours, not days. Game changer!"
                                     </p>
                                     <div class="testimonial-author">
-                                        <img src="https://i.pravatar.cc/100?img=8" alt="David K." class="author-avatar">
+                                        <img src="images/user2.jpg" alt="David K." class="author-avatar">
                                         <div class="author-info">
                                             <h4>David K.</h4>
                                             <p>Professional Player, Vancouver</p>
@@ -1955,7 +2175,7 @@
                                         "As someone who values security, the detailed licensing and encryption breakdowns gave me confidence I wasn't finding elsewhere. Finally a resource that gets it."
                                     </p>
                                     <div class="testimonial-author">
-                                        <img src="https://i.pravatar.cc/100?img=9" alt="Michael T." class="author-avatar">
+                                        <img src="images/user3.jpg" alt="Michael T." class="author-avatar">
                                         <div class="author-info">
                                             <h4>Michael T.</h4>
                                             <p>Tech Executive, Montreal</p>
@@ -1968,13 +2188,11 @@
                 </section>
             `;
             
-            createFallingElements();
-            addMicroReviews();
-            addLiveBadges();
+            createCoins();
             window.scrollTo(0, 0);
         }
 
-        // Инициализация контактной формы
+        // Initialize contact form
         function initContactForm() {
             const form = document.getElementById('contactForm');
             const successMessage = document.getElementById('success-message');
@@ -1985,13 +2203,16 @@
                     e.preventDefault();
                     const submitBtn = form.querySelector('.submit-btn');
                     
+                    // Hide previous messages
                     successMessage.style.display = 'none';
                     errorMessage.style.display = 'none';
                     
+                    // Check for bots (honeypot field)
                     if (form.querySelector('#website').value) {
                         return;
                     }
                     
+                    // Validate email
                     const email = form.querySelector('#email').value;
                     if (!email.includes('@') || !email.includes('.')) {
                         errorMessage.textContent = 'Please enter a valid email address';
@@ -1999,10 +2220,12 @@
                         return;
                     }
                     
+                    // Disable submit button to prevent multiple submissions
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Sending...';
                     
                     try {
+                        // Collect form data
                         const formData = {
                             from_name: form.querySelector('#name').value,
                             from_email: form.querySelector('#email').value,
@@ -2010,17 +2233,22 @@
                             message: form.querySelector('#message').value
                         };
                         
+                        // Send email using EmailJS
                         const response = await emailjs.send(
-                            'service_7kutota',
-                            'template_0l8ymit',
+                            'service_7kutota', // Service ID
+                            'template_0l8ymit', // Template ID
                             formData
                         );
                         
                         console.log('Email successfully sent!', response.status, response.text);
                         
+                        // Show success message
                         successMessage.style.display = 'block';
+                        
+                        // Clear the form
                         form.reset();
                         
+                        // Hide success message after 5 seconds
                         setTimeout(() => {
                             successMessage.style.display = 'none';
                         }, 5000);
@@ -2028,6 +2256,7 @@
                         console.error('Error sending email:', error);
                         errorMessage.style.display = 'block';
                     } finally {
+                        // Re-enable submit button
                         submitBtn.disabled = false;
                         submitBtn.textContent = 'Send Message';
                     }
@@ -2035,37 +2264,41 @@
             }
         }
 
-        // Переключение мобильного меню
+        // Toggle mobile menu
         function toggleMobileMenu() {
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
 
-        // Инициализация при загрузке
+        // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
-            createFallingElements();
-            addMicroReviews();
-            addLiveBadges();
+            createCoins();
             
+            // Handle link clicks
             document.querySelectorAll('a[data-page]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const pageId = this.getAttribute('data-page');
                     loadPage(pageId);
+                    
+                    // Close mobile menu if open
                     document.getElementById('nav-menu').classList.remove('active');
                 });
             });
             
+            // Handle logo click
             document.getElementById('home-link').addEventListener('click', function(e) {
                 e.preventDefault();
                 loadHomePage();
             });
             
+            // Handle footer logo click
             document.getElementById('footer-logo-link').addEventListener('click', function(e) {
                 e.preventDefault();
                 loadHomePage();
             });
             
+            // Mobile menu button
             document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
         });
     </script>
