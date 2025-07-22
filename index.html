@@ -29,7 +29,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            touch-action: pan-y; /* Prevent zooming on touch devices */
+            touch-action: pan-y;
         }
         
         .container {
@@ -56,7 +56,6 @@
             position: relative;
         }
         
-        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -77,7 +76,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -113,7 +111,6 @@
             width: 100%;
         }
 
-        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -123,6 +120,7 @@
             position: relative;
             overflow: hidden;
             background: url('images/treasure-bg.jpg') center/cover no-repeat;
+            perspective: 1000px;
         }
         
         .hero::before {
@@ -136,7 +134,6 @@
             z-index: 1;
         }
         
-        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -157,6 +154,7 @@
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             z-index: 2;
+            transition: transform 0.2s ease;
         }
         
         .coin {
@@ -169,11 +167,22 @@
             100% { transform: translateY(600px) rotate(360deg); }
         }
         
+        .gold-dust {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(201,162,39,0.8) 0%, rgba(201,162,39,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
         .hero-content {
             position: relative;
             z-index: 10;
             width: 100%;
             padding: 0 20px;
+            transform-style: preserve-3d;
         }
         
         h1 {
@@ -184,6 +193,16 @@
             letter-spacing: 1.5px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
             line-height: 1.2;
+            animation: textReveal 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes textReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero p {
@@ -195,6 +214,9 @@
             color: var(--text-light);
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
             letter-spacing: 0.5px;
+            animation: textReveal 1.5s ease-out 0.3s forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
         
         .section {
@@ -227,6 +249,12 @@
             margin-bottom: 50px;
             position: relative;
             font-weight: 700;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { text-shadow: 0 0 5px rgba(201, 162, 39, 0.5); }
+            to { text-shadow: 0 0 20px rgba(201, 162, 39, 0.8); }
         }
         
         .section-title::after {
@@ -236,6 +264,13 @@
             height: 4px;
             background: var(--secondary);
             margin: 15px auto 0;
+            animation: scaleIn 1s ease-out forwards;
+            transform-origin: center;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
         }
         
         .platform-grid {
@@ -255,10 +290,31 @@
             border: 1px solid rgba(201, 162, 39, 0.15);
             display: flex;
             flex-direction: column;
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: cardAppear 0.6s ease-out forwards;
         }
         
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .platform-card:nth-child(1) { animation-delay: 0.1s; }
+        .platform-card:nth-child(2) { animation-delay: 0.2s; }
+        .platform-card:nth-child(3) { animation-delay: 0.3s; }
+        .platform-card:nth-child(4) { animation-delay: 0.4s; }
+        .platform-card:nth-child(5) { animation-delay: 0.5s; }
+        .platform-card:nth-child(6) { animation-delay: 0.6s; }
+        .platform-card:nth-child(7) { animation-delay: 0.7s; }
+        .platform-card:nth-child(8) { animation-delay: 0.8s; }
+        .platform-card:nth-child(9) { animation-delay: 0.9s; }
+        
         .platform-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
             box-shadow: 0 18px 42px rgba(0,0,0,0.25);
         }
         
@@ -361,12 +417,35 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
         .visit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
             background: linear-gradient(to right, #d4af37, #b58e2b);
+        }
+        
+        .visit-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+        
+        .visit-btn:hover::after {
+            left: 100%;
         }
         
         .rating {
@@ -386,6 +465,12 @@
             box-shadow: 0 5px 15px rgba(201, 162, 39, 0.3);
             border: 3px solid var(--card-bg);
             z-index: 2;
+            animation: fillRating 1.5s ease-out forwards;
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        }
+        
+        @keyframes fillRating {
+            to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
         }
         
         footer {
@@ -474,7 +559,6 @@
             transform: translateY(-3px);
         }
 
-        /* Info pages styles */
         .info-page {
             padding: 80px 20px;
             max-width: 800px;
@@ -564,7 +648,6 @@
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
         }
 
-        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -575,7 +658,6 @@
             z-index: 1001;
         }
         
-        /* Success and error messages */
         .success-message {
             display: none;
             background: rgba(201, 162, 39, 0.2);
@@ -598,7 +680,6 @@
             border: 1px solid #ff6b6b;
         }
         
-        /* New styles for added sections */
         .features-section {
             background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
                         url('images/luxury-chip-bg.jpg') center/cover no-repeat;
@@ -624,12 +705,19 @@
             transition: all 0.4s ease;
             border: 1px solid rgba(201, 162, 39, 0.2);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: breathe 4s infinite ease-in-out;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             border-color: rgba(201, 162, 39, 0.4);
+            animation: none;
         }
         
         .feature-icon {
@@ -688,7 +776,21 @@
             position: relative;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border-left: 4px solid var(--secondary);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: testimonialAppear 0.6s ease-out forwards;
         }
+        
+        @keyframes testimonialAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
         
         .testimonial-card::before {
             content: '"';
@@ -781,7 +883,6 @@
                 margin: 30px 0;
             }
             
-            /* Mobile menu styles */
             .mobile-menu-btn {
                 display: block;
             }
@@ -820,12 +921,10 @@
                 background: rgba(201, 162, 39, 0.1);
             }
             
-            /* Adjust header padding */
             header {
                 padding: 10px 0;
             }
             
-            /* Adjust section padding */
             .section {
                 padding: 40px 0;
             }
@@ -835,17 +934,14 @@
                 padding: 50px 0;
             }
             
-            /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
             }
             
-            /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
             }
             
-            /* Info page mobile adjustments */
             .info-page {
                 padding: 40px 15px;
             }
@@ -854,7 +950,6 @@
                 font-size: 1.8rem;
             }
             
-            /* Form adjustments for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
@@ -900,11 +995,9 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add EmailJS library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            // Initialize EmailJS with your public key
             emailjs.init('F86aBv4ExO8ipV0wH');
         })();
     </script>
@@ -928,7 +1021,6 @@
     </header>
 
     <main id="main-content">
-        <!-- Default home page -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
@@ -937,7 +1029,6 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
         <section class="features-section">
             <div class="container">
                 <h2 class="section-title">Why Trust GoldenVault.ca</h2>
@@ -979,7 +1070,6 @@
             </div>
         </section>
 
-        <!-- Casino section with 9 casinos -->
         <section class="section bg-medium" id="casinos-section">
             <div class="container section-content">
                 <h2 class="section-title">Premium Casino Collection</h2>
@@ -1365,7 +1455,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section class="testimonials-section">
             <div class="testimonials-container">
                 <h2 class="section-title">Player Experiences</h2>
@@ -1423,7 +1512,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-footer">
         <div class="container">
             <div class="footer-content">
@@ -1465,7 +1553,6 @@
         </div>
     </footer>
 
-    <!-- Templates for info pages -->
     <template id="about-template">
         <div class="info-page">
             <h2>About GoldenVault.ca</h2>
@@ -1617,7 +1704,7 @@
     </template>
 
     <script>
-        // Create falling coins (one-time)
+        // Create falling coins and gold dust
         function createCoins() {
             const container = document.getElementById('coin-animation');
             if (!container) return;
@@ -1665,8 +1752,43 @@
                 coins.push(new Coin());
             }
             
+            // Create gold dust particles
+            const dustParticles = [];
+            for (let i = 0; i < 50; i++) {
+                const dust = document.createElement('div');
+                dust.className = 'gold-dust';
+                dust.style.left = `${Math.random() * 100}%`;
+                dust.style.top = `${Math.random() * 100}%`;
+                dust.style.opacity = Math.random() * 0.5;
+                dust.style.width = `${2 + Math.random() * 4}px`;
+                dust.style.height = dust.style.width;
+                container.appendChild(dust);
+                dustParticles.push(dust);
+            }
+            
+            // Mouse move effect for coins
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth) * 100;
+                mouseY = (e.clientY / window.innerHeight) * 100;
+            });
+            
             function animate() {
-                coins.forEach(coin => coin.update());
+                coins.forEach(coin => {
+                    coin.update();
+                    
+                    // Add attraction effect to mouse
+                    const dx = mouseX - parseFloat(coin.element.style.left);
+                    const dy = mouseY - (parseFloat(coin.element.style.top) / 6;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 20) {
+                        coin.element.style.left = `${parseFloat(coin.element.style.left) + dx * 0.02}%`;
+                    }
+                });
+                
                 requestAnimationFrame(animate);
             }
             
