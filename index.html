@@ -29,9 +29,137 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            touch-action: pan-y; /* Prevent zooming on touch devices */
+            touch-action: pan-y;
         }
         
+        /* New animation keyframes */
+        @keyframes northernLights {
+            0% { box-shadow: 0 0 10px 5px rgba(201, 162, 39, 0.3); }
+            25% { box-shadow: 0 0 15px 7px rgba(166, 124, 82, 0.4); }
+            50% { box-shadow: 0 0 20px 10px rgba(201, 162, 39, 0.5); }
+            75% { box-shadow: 0 0 15px 7px rgba(166, 124, 82, 0.4); }
+            100% { box-shadow: 0 0 10px 5px rgba(201, 162, 39, 0.3); }
+        }
+        
+        @keyframes burningEdge {
+            0% { box-shadow: 0 0 5px 0 rgba(201, 162, 39, 0.7); }
+            50% { box-shadow: 0 0 15px 5px rgba(201, 162, 39, 0.9); }
+            100% { box-shadow: 0 0 5px 0 rgba(201, 162, 39, 0.7); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes shine {
+            0% { background-position: -100%; }
+            100% { background-position: 100%; }
+        }
+        
+        /* New psychological triggers */
+        .urgency-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            z-index: 3;
+        }
+        
+        .exclusive-tag {
+            position: absolute;
+            top: 10px;
+            left: -5px;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 3px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%, 10% 50%);
+            z-index: 3;
+        }
+        
+        .limited-spots {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--secondary);
+            font-style: italic;
+        }
+        
+        .limited-spots::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--secondary);
+            animation: shine 3s infinite linear;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+        
+        /* Enhanced button effects */
+        .visit-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visit-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0) 45%,
+                rgba(255,255,255,0.5) 50%,
+                rgba(255,255,255,0) 55%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        /* Enhanced card effects */
+        .platform-card {
+            position: relative;
+        }
+        
+        .platform-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            pointer-events: none;
+            animation: burningEdge 3s infinite;
+        }
+        
+        /* Enhanced rating animation */
+        .rating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Rest of your existing styles... */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,7 +184,6 @@
             position: relative;
         }
         
-        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -77,7 +204,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -113,7 +239,6 @@
             width: 100%;
         }
 
-        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -136,7 +261,6 @@
             z-index: 1;
         }
         
-        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -474,7 +598,6 @@
             transform: translateY(-3px);
         }
 
-        /* Info pages styles */
         .info-page {
             padding: 80px 20px;
             max-width: 800px;
@@ -564,7 +687,6 @@
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
         }
 
-        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -575,7 +697,6 @@
             z-index: 1001;
         }
         
-        /* Success and error messages */
         .success-message {
             display: none;
             background: rgba(201, 162, 39, 0.2);
@@ -598,7 +719,6 @@
             border: 1px solid #ff6b6b;
         }
         
-        /* New styles for added sections */
         .features-section {
             background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
                         url('images/luxury-chip-bg.jpg') center/cover no-repeat;
@@ -781,7 +901,6 @@
                 margin: 30px 0;
             }
             
-            /* Mobile menu styles */
             .mobile-menu-btn {
                 display: block;
             }
@@ -820,12 +939,10 @@
                 background: rgba(201, 162, 39, 0.1);
             }
             
-            /* Adjust header padding */
             header {
                 padding: 10px 0;
             }
             
-            /* Adjust section padding */
             .section {
                 padding: 40px 0;
             }
@@ -835,17 +952,14 @@
                 padding: 50px 0;
             }
             
-            /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
             }
             
-            /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
             }
             
-            /* Info page mobile adjustments */
             .info-page {
                 padding: 40px 15px;
             }
@@ -854,7 +968,6 @@
                 font-size: 1.8rem;
             }
             
-            /* Form adjustments for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
@@ -900,11 +1013,9 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add EmailJS library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            // Initialize EmailJS with your public key
             emailjs.init('F86aBv4ExO8ipV0wH');
         })();
     </script>
@@ -928,7 +1039,6 @@
     </header>
 
     <main id="main-content">
-        <!-- Default home page -->
         <section class="hero" id="hero-section">
             <div class="animation-container" id="coin-animation"></div>
             <div class="hero-content">
@@ -986,6 +1096,7 @@
                 <div class="platform-grid">
                     <!-- Casino 1 - LeoVegas -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="urgency-badge">HOT TODAY</div>
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.8">
                             <meta itemprop="bestRating" content="10">
@@ -1022,12 +1133,14 @@
                                     <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Claim Exclusive Bonus</a>
+                            <div class="limited-spots">Limited spots available!</div>
                         </div>
                     </div>
 
                     <!-- Casino 2 - Luxury Casino -->
                     <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="exclusive-tag">EXCLUSIVE</div>
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.7">
                             <meta itemprop="bestRating" content="10">
@@ -1064,7 +1177,8 @@
                                     <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Unlock VIP Access</a>
+                            <div class="limited-spots">Only 5 spots left!</div>
                         </div>
                     </div>
 
@@ -1106,7 +1220,7 @@
                                     <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Get 100% Bonus</a>
                         </div>
                     </div>
 
@@ -1148,7 +1262,7 @@
                                     <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Join High Rollers</a>
                         </div>
                     </div>
 
@@ -1190,7 +1304,7 @@
                                     <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Spin to Win</a>
                         </div>
                     </div>
 
@@ -1232,7 +1346,7 @@
                                     <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Play Now</a>
                         </div>
                     </div>
 
@@ -1274,7 +1388,7 @@
                                     <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Start Playing</a>
                         </div>
                     </div>
 
@@ -1316,7 +1430,7 @@
                                     <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Join Now</a>
                         </div>
                     </div>
 
@@ -1358,7 +1472,7 @@
                                     <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                 </div>
                             </div>
-                            <a href="#" class="visit-btn">Explore Platform</a>
+                            <a href="#" class="visit-btn">Register Today</a>
                         </div>
                     </div>
                 </div>
@@ -1752,6 +1866,7 @@
                         <div class="platform-grid">
                             <!-- Casino 1 - LeoVegas -->
                             <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="urgency-badge">HOT TODAY</div>
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.8">
                                     <meta itemprop="bestRating" content="10">
@@ -1788,12 +1903,14 @@
                                             <img src="images/GooglePay.png" alt="Google Pay" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Claim Exclusive Bonus</a>
+                                    <div class="limited-spots">Limited spots available!</div>
                                 </div>
                             </div>
 
                             <!-- Casino 2 - Luxury Casino -->
                             <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                                <div class="exclusive-tag">EXCLUSIVE</div>
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.7">
                                     <meta itemprop="bestRating" content="10">
@@ -1830,7 +1947,8 @@
                                             <img src="images/BTC.png" alt="Bitcoin" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Unlock VIP Access</a>
+                                    <div class="limited-spots">Only 5 spots left!</div>
                                 </div>
                             </div>
 
@@ -1872,7 +1990,7 @@
                                             <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Get 100% Bonus</a>
                                 </div>
                             </div>
 
@@ -1914,7 +2032,7 @@
                                             <img src="images/Payz.png" alt="Payz" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Join High Rollers</a>
                                 </div>
                             </div>
 
@@ -1956,7 +2074,7 @@
                                             <img src="images/Paysafecard.png" alt="Paysafecard" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Spin to Win</a>
                                 </div>
                             </div>
 
@@ -1998,7 +2116,7 @@
                                             <img src="images/Klarna.png" alt="Klarna" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Play Now</a>
                                 </div>
                             </div>
 
@@ -2040,7 +2158,7 @@
                                             <img src="images/Neteller.png" alt="Neteller" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Start Playing</a>
                                 </div>
                             </div>
 
@@ -2082,7 +2200,7 @@
                                             <img src="images/BankTransfer.png" alt="Bank Transfer" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Join Now</a>
                                 </div>
                             </div>
 
@@ -2124,7 +2242,7 @@
                                             <img src="images/Skrill.png" alt="Skrill" class="payment-icon">
                                         </div>
                                     </div>
-                                    <a href="#" class="visit-btn">Explore Platform</a>
+                                    <a href="#" class="visit-btn">Register Today</a>
                                 </div>
                             </div>
                         </div>
@@ -2300,6 +2418,18 @@
             
             // Mobile menu button
             document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+            
+            // Add click tracking for casino buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('visit-btn')) {
+                    e.preventDefault();
+                    // Track the click in your analytics
+                    console.log('Clicked casino button:', e.target.textContent.trim());
+                    // Here you would normally redirect to the casino URL
+                    // For now we'll just show an alert
+                    alert('This would redirect to the casino registration page');
+                }
+            });
         });
     </script>
 </body>
