@@ -29,9 +29,209 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            touch-action: pan-y; /* Prevent zooming on touch devices */
+            touch-action: pan-y;
         }
         
+        /* New keyframes for animations */
+        @keyframes auraGlow {
+            0% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 0.5; transform: scale(0.95); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translateY(-2px) scale(1); }
+            50% { transform: translateY(-2px) scale(1.05); }
+            100% { transform: translateY(-2px) scale(1); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            20% { transform: translateX(100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(201, 162, 39, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.3); }
+        }
+        
+        @keyframes attentionPulse {
+            0% { transform: translateY(-2px) scale(1); box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4); }
+            50% { transform: translateY(-2px) scale(1.1); box-shadow: 0 6px 30px rgba(201, 162, 39, 0.7); }
+            100% { transform: translateY(-2px) scale(1); box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4); }
+        }
+        
+        /* Enhanced visit button styles */
+        .visit-btn {
+            display: block;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visit-btn::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0) 70%);
+            border-radius: 12px;
+            animation: auraGlow 3s infinite ease-in-out;
+            z-index: -1;
+        }
+        
+        .visit-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 5s infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .visit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+            background: linear-gradient(to right, #d4af37, #b58e2b);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        
+        .visit-btn:hover::after {
+            opacity: 1;
+        }
+        
+        .visit-btn.attention {
+            animation: attentionPulse 2s infinite ease-in-out;
+        }
+        
+        /* Enhanced platform card styles with different glow colors */
+        .platform-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            display: flex;
+            flex-direction: column;
+            animation: borderGlow 4s infinite ease-in-out;
+        }
+        
+        /* Individual card glow colors */
+        .platform-card.card-1 {
+            animation-name: borderGlow;
+        }
+        
+        .platform-card.card-2 {
+            animation-name: borderGlow, borderGlowColor2;
+        }
+        
+        .platform-card.card-3 {
+            animation-name: borderGlow, borderGlowColor3;
+        }
+        
+        .platform-card.card-4 {
+            animation-name: borderGlow, borderGlowColor4;
+        }
+        
+        .platform-card.card-5 {
+            animation-name: borderGlow, borderGlowColor5;
+        }
+        
+        .platform-card.card-6 {
+            animation-name: borderGlow, borderGlowColor6;
+        }
+        
+        .platform-card.card-7 {
+            animation-name: borderGlow, borderGlowColor7;
+        }
+        
+        .platform-card.card-8 {
+            animation-name: borderGlow, borderGlowColor8;
+        }
+        
+        .platform-card.card-9 {
+            animation-name: borderGlow, borderGlowColor9;
+        }
+        
+        @keyframes borderGlowColor2 {
+            0% { box-shadow: 0 0 10px rgba(166, 124, 82, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(166, 124, 82, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(166, 124, 82, 0.3); }
+        }
+        
+        @keyframes borderGlowColor3 {
+            0% { box-shadow: 0 0 10px rgba(210, 180, 140, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(210, 180, 140, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(210, 180, 140, 0.3); }
+        }
+        
+        @keyframes borderGlowColor4 {
+            0% { box-shadow: 0 0 10px rgba(184, 134, 11, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(184, 134, 11, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(184, 134, 11, 0.3); }
+        }
+        
+        @keyframes borderGlowColor5 {
+            0% { box-shadow: 0 0 10px rgba(218, 165, 32, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(218, 165, 32, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(218, 165, 32, 0.3); }
+        }
+        
+        @keyframes borderGlowColor6 {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+        }
+        
+        @keyframes borderGlowColor7 {
+            0% { box-shadow: 0 0 10px rgba(192, 192, 192, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(192, 192, 192, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(192, 192, 192, 0.3); }
+        }
+        
+        @keyframes borderGlowColor8 {
+            0% { box-shadow: 0 0 10px rgba(169, 169, 169, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(169, 169, 169, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(169, 169, 169, 0.3); }
+        }
+        
+        @keyframes borderGlowColor9 {
+            0% { box-shadow: 0 0 10px rgba(139, 69, 19, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(139, 69, 19, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(139, 69, 19, 0.3); }
+        }
+        
+        /* Rest of your existing CSS remains unchanged */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,7 +256,6 @@
             position: relative;
         }
         
-        /* Logo styles */
         .logo-link {
             display: inline-block;
             transition: all 0.3s ease;
@@ -77,7 +276,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Navigation menu */
         .nav-menu {
             display: flex;
             gap: 25px;
@@ -113,7 +311,6 @@
             width: 100%;
         }
 
-        /* Hero section */
         .hero {
             height: 600px;
             display: flex;
@@ -136,7 +333,6 @@
             z-index: 1;
         }
         
-        /* Animation elements */
         .animation-container {
             position: absolute;
             top: 0;
@@ -245,18 +441,6 @@
             margin: 60px 0;
         }
         
-        .platform-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            border: 1px solid rgba(201, 162, 39, 0.15);
-            display: flex;
-            flex-direction: column;
-        }
-        
         .platform-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 18px 42px rgba(0,0,0,0.25);
@@ -342,31 +526,6 @@
         
         .payment-icon:hover {
             transform: scale(1.1);
-        }
-        
-        .visit-btn {
-            display: block;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            color: white;
-            text-align: center;
-            padding: 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: auto;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
-        }
-        
-        .visit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
-            background: linear-gradient(to right, #d4af37, #b58e2b);
         }
         
         .rating {
@@ -474,7 +633,6 @@
             transform: translateY(-3px);
         }
 
-        /* Info pages styles */
         .info-page {
             padding: 80px 20px;
             max-width: 800px;
@@ -564,7 +722,6 @@
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
         }
 
-        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -575,7 +732,6 @@
             z-index: 1001;
         }
         
-        /* Success and error messages */
         .success-message {
             display: none;
             background: rgba(201, 162, 39, 0.2);
@@ -598,7 +754,6 @@
             border: 1px solid #ff6b6b;
         }
         
-        /* New styles for added sections */
         .features-section {
             background: linear-gradient(rgba(20, 30, 50, 0.9), rgba(20, 30, 50, 0.9)), 
                         url('images/luxury-chip-bg.jpg') center/cover no-repeat;
@@ -781,7 +936,6 @@
                 margin: 30px 0;
             }
             
-            /* Mobile menu styles */
             .mobile-menu-btn {
                 display: block;
             }
@@ -820,12 +974,10 @@
                 background: rgba(201, 162, 39, 0.1);
             }
             
-            /* Adjust header padding */
             header {
                 padding: 10px 0;
             }
             
-            /* Adjust section padding */
             .section {
                 padding: 40px 0;
             }
@@ -835,17 +987,14 @@
                 padding: 50px 0;
             }
             
-            /* Adjust platform card padding */
             .platform-content {
                 padding: 15px;
             }
             
-            /* Adjust footer padding */
             footer {
                 padding: 50px 0 20px;
             }
             
-            /* Info page mobile adjustments */
             .info-page {
                 padding: 40px 15px;
             }
@@ -854,7 +1003,6 @@
                 font-size: 1.8rem;
             }
             
-            /* Form adjustments for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
@@ -985,7 +1133,7 @@
                 <h2 class="section-title">Premium Casino Collection</h2>
                 <div class="platform-grid">
                     <!-- Casino 1 - LeoVegas -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-1" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.8">
                             <meta itemprop="bestRating" content="10">
@@ -1027,7 +1175,7 @@
                     </div>
 
                     <!-- Casino 2 - Luxury Casino -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-2" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.7">
                             <meta itemprop="bestRating" content="10">
@@ -1069,7 +1217,7 @@
                     </div>
 
                     <!-- Casino 3 - 888 Casino -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-3" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.6">
                             <meta itemprop="bestRating" content="10">
@@ -1111,7 +1259,7 @@
                     </div>
 
                     <!-- Casino 4 - BET99 -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-4" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.5">
                             <meta itemprop="bestRating" content="10">
@@ -1153,7 +1301,7 @@
                     </div>
 
                     <!-- Casino 5 - Jackpot City -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-5" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.4">
                             <meta itemprop="bestRating" content="10">
@@ -1195,7 +1343,7 @@
                     </div>
 
                     <!-- Casino 6 - Casino Days -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-6" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.3">
                             <meta itemprop="bestRating" content="10">
@@ -1237,7 +1385,7 @@
                     </div>
 
                     <!-- Casino 7 - Royal Panda -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-7" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.2">
                             <meta itemprop="bestRating" content="10">
@@ -1279,7 +1427,7 @@
                     </div>
 
                     <!-- Casino 8 - Sports Interaction -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-8" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.1">
                             <meta itemprop="bestRating" content="10">
@@ -1321,7 +1469,7 @@
                     </div>
 
                     <!-- Casino 9 - PartyCasino -->
-                    <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                    <div class="platform-card card-9" itemscope itemtype="https://schema.org/Review">
                         <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                             <meta itemprop="ratingValue" content="9.0">
                             <meta itemprop="bestRating" content="10">
@@ -1751,7 +1899,7 @@
                         <h2 class="section-title">Premium Casino Collection</h2>
                         <div class="platform-grid">
                             <!-- Casino 1 - LeoVegas -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-1" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.8">
                                     <meta itemprop="bestRating" content="10">
@@ -1793,7 +1941,7 @@
                             </div>
 
                             <!-- Casino 2 - Luxury Casino -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-2" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.7">
                                     <meta itemprop="bestRating" content="10">
@@ -1835,7 +1983,7 @@
                             </div>
 
                             <!-- Casino 3 - 888 Casino -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-3" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.6">
                                     <meta itemprop="bestRating" content="10">
@@ -1877,7 +2025,7 @@
                             </div>
 
                             <!-- Casino 4 - BET99 -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-4" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.5">
                                     <meta itemprop="bestRating" content="10">
@@ -1919,7 +2067,7 @@
                             </div>
 
                             <!-- Casino 5 - Jackpot City -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-5" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.4">
                                     <meta itemprop="bestRating" content="10">
@@ -1961,7 +2109,7 @@
                             </div>
 
                             <!-- Casino 6 - Casino Days -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-6" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.3">
                                     <meta itemprop="bestRating" content="10">
@@ -2003,7 +2151,7 @@
                             </div>
 
                             <!-- Casino 7 - Royal Panda -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-7" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.2">
                                     <meta itemprop="bestRating" content="10">
@@ -2045,7 +2193,7 @@
                             </div>
 
                             <!-- Casino 8 - Sports Interaction -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-8" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.1">
                                     <meta itemprop="bestRating" content="10">
@@ -2087,7 +2235,7 @@
                             </div>
 
                             <!-- Casino 9 - PartyCasino -->
-                            <div class="platform-card" itemscope itemtype="https://schema.org/Review">
+                            <div class="platform-card card-9" itemscope itemtype="https://schema.org/Review">
                                 <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="9.0">
                                     <meta itemprop="bestRating" content="10">
@@ -2190,6 +2338,19 @@
             
             createCoins();
             window.scrollTo(0, 0);
+            
+            // Add attention class to buttons after 10 seconds
+            setTimeout(() => {
+                const buttons = document.querySelectorAll('.visit-btn');
+                buttons.forEach(button => {
+                    button.classList.add('attention');
+                    
+                    // Remove attention class when hovered
+                    button.addEventListener('mouseenter', () => {
+                        button.classList.remove('attention');
+                    });
+                });
+            }, 10000);
         }
 
         // Initialize contact form
